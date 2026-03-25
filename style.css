@@ -451,10 +451,10 @@ a{color:inherit;text-decoration:none;}
 }
 .team-photo--gera{
   object-position:center top;
-  transform:scale(1.45) translateY(32px);
+  transform:scale(1.45) translateY(55px);
 }
 .team-card:hover .team-photo--gera{
-  transform:scale(1.52) translateY(32px);
+  transform:scale(1.52) translateY(55px);
 }
 .team-info{flex:1;min-width:0;}
 .team-name{font-size:1.1rem;font-weight:700;margin-bottom:3px;}
