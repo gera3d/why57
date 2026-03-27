@@ -247,7 +247,6 @@ a{color:inherit;text-decoration:none;}
   animation:phoneHover 7s ease-in-out infinite;
 }
 @keyframes phoneHover{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
-.spotlight-phones{width:100%;max-width:460px;filter:drop-shadow(0 20px 48px rgba(0,0,0,.6));}
 
 /* ════════════════════════════════
    MARQUEE
