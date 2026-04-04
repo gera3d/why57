@@ -344,23 +344,19 @@ a{color:inherit;text-decoration:none;}
 }
 .result-card--lg{padding:36px;}
 .result-logo-area{
-  padding:10px 14px;
-  background:#fff;
-  border-radius:8px;
+  margin-bottom: 0.5rem;
   display:inline-flex;
   align-items:center;
   width:fit-content;
-  min-height:52px;
 }
 .result-logo{
-  height:32px;width:auto;max-width:140px;
+  height:80px;width:auto;max-width:240px;
   object-fit:contain;
   filter:none;
-  opacity:0.6;
-  transition:opacity 0.2s var(--ease);
+  transition: transform 0.2s var(--ease);
 }
 .result-card:hover .result-logo {
-  opacity:1;
+  transform: translateY(-2px);
 }
 .metric-n{font-size:2.8rem;font-weight:800;color:var(--text);line-height:1;letter-spacing:-0.03em;}
 .metric-n em{font-style:normal;color:var(--orange);font-size:1.8rem;}
@@ -743,8 +739,8 @@ a{color:inherit;text-decoration:none;}
   .metric-l{font-size:.62rem;}
   .result-card h3{font-size:.92rem;}
   .result-card p{font-size:.8rem;}
-  .result-logo-area{padding:7px 10px;min-height:40px;}
-  .result-logo{height:24px;}
+  .result-logo-area{padding:0;min-height:auto;margin-bottom:0.5rem;}
+  .result-logo{height:54px;}
   .result-tags span{font-size:.62rem;padding:2px 8px;}
 
   /* Process */
