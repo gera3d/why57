@@ -78,6 +78,32 @@
     .result-row-item .metric-n { font-size: 2.2rem; font-weight: 800; color: var(--orange); display: block; }
     .result-row-item .metric-l { font-size: 0.8rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
     .result-row-item p { font-size: 0.9rem; color: #bbb; margin-top: 0.4rem; }
+
+    /* ── Case Study Hero Override ── */
+    .cs-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+    @media (max-width: 768px) {
+      .cs-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem 3rem; }
+      .cs-hero-visual { display: none; }
+    }
+    .cs-hero-left { text-align: left; }
+    .cs-hero-left .hero-badge { display: inline-block; margin-bottom: 1.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; font-size: 0.7rem; }
+    .cs-hero-left .hero-headline { font-size: clamp(1.7rem, 2.8vw, 2.4rem); text-align: left; line-height: 1.15; margin-bottom: 1.25rem; }
+    .cs-hero-left .hero-sub { text-align: left; max-width: 540px; margin: 0 0 2rem 0; }
+    .cs-hero-left .hero-actions { justify-content: flex-start; }
+    .cs-hero-visual { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+    .cs-stat-hero { text-align: center; }
+    .cs-stat-hero .big-num { font-size: clamp(4rem, 8vw, 7rem); font-weight: 800; color: var(--orange); line-height: 1; display: block; }
+    .cs-stat-hero .big-label { font-size: 0.9rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.5rem; display: block; }
+    .cs-client-logo-hero { max-height: 60px; max-width: 200px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; }
+    .cs-client-logo-hero-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem 2rem; display: inline-flex; align-items:center; justify-content:center; }
   </style>
 </head>
 <body>
@@ -98,24 +124,35 @@
     </div>
   </header>
 
-  <section class="hero" id="hero" style="min-height: 60vh;">
+  <section class="hero" id="hero" style="min-height: unset; padding: 0;">
     <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
     <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
-
-    <div class="hero-content" style="max-width: 820px; margin: 0 auto; text-align: center;">
-      <div class="hero-badge fade-up">Case Study · DriveSavers Data Recovery · Novato, CA</div>
-      <h1 class="hero-headline fade-up delay-1">
-        All-time high traffic. <span class="text-orange">300+ reviews in one quarter.</span> 15% sales lift.
-      </h1>
-      <p class="hero-sub fade-up delay-2">
-        The world's most trusted data recovery company had a legacy site that hadn't kept up with their reputation. We rebuilt the whole digital stack — SEO, site architecture, review engine — and the results came immediately.
-      </p>
-      <div class="hero-actions fade-up delay-3">
-        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="heroBook">Overhaul Our Digital Presence</a>
-        <a href="../index.html" class="btn-ghost">← Back to 57</a>
+    <div class="cs-hero-inner">
+      <div class="cs-hero-left">
+        <div class="hero-badge fade-up">Case Study &middot; DriveSavers &middot; Novato, CA</div>
+        <h1 class="hero-headline fade-up delay-1">
+          We rebuilt their<br />entire digital stack.<br /><span class="text-orange">Revenue followed.</span>
+        </h1>
+        <p class="hero-sub fade-up delay-2">
+          A 40-year-old company with a legendary reputation and a website that didn't reflect it. Full site overhaul, SEO infrastructure, and review engine — all shipped simultaneously.
+        </p>
+        <div class="hero-actions fade-up delay-3">
+          <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="heroBook">Overhaul Our Digital Presence</a>
+          <a href="../index.html" class="btn-ghost">&larr; Back to 57</a>
+        </div>
+      </div>
+      <div class="cs-hero-visual">
+        <div class="cs-stat-hero fade-up">
+          <span class="big-num">15%</span>
+          <span class="big-label">Sales revenue lift</span>
+        </div>
+        <div class="cs-client-logo-hero-wrap fade-up delay-1">
+          <img src="../images/DriveSavers_logo.png" alt="DriveSavers Data Recovery" class="cs-client-logo-hero" />
+        </div>
       </div>
     </div>
   </section>
+
 
   <div class="cs-metrics">
     <div class="container">
