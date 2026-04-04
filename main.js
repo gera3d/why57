@@ -71,25 +71,42 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
 });
 
 /* ─── Stat counter animation ──────────────────────────────── */
-const statNums = document.querySelectorAll('.stat-n');
+const statNums = document.querySelectorAll('.stat-n, .big-num');
 const countIO  = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
       const el    = e.target;
-      const raw   = el.textContent.replace(/[^0-9.]/g, '');
-      const end   = parseFloat(raw);
-      const suffix = el.textContent.replace(/[0-9.]/g, '');
-      if (isNaN(end)) return;
+      
+      // Safely extract prefix, number, and suffix
+      const match = el.textContent.trim().match(/^([^0-9]*)([0-9.,]+)(.*)$/);
+      if (!match) {
+        countIO.unobserve(el);
+        return;
+      }
+      
+      const prefix = match[1];
+      const rawNumStr = match[2].replace(/,/g, '');
+      const suffix = match[3];
+      const end = parseFloat(rawNumStr);
+      
+      // Skip animation if the suffix contains another number (e.g. ranges like 30-50%)
+      if (isNaN(end) || /\d/.test(suffix)) {
+        countIO.unobserve(el);
+        return;
+      }
+      
       let start = 0;
       const dur = 1400;
       const step = (ts) => {
         if (!start) start = ts;
         const pct = Math.min((ts - start) / dur, 1);
         const ease = 1 - Math.pow(1 - pct, 3);
-        el.textContent = (end < 50 ? (ease * end).toFixed(end % 1 !== 0 ? 1 : 0) : Math.round(ease * end)) + suffix;
+        const currentNum = end < 50 ? (ease * end).toFixed(end % 1 !== 0 ? 1 : 0) : Math.round(ease * end);
+        el.textContent = prefix + (end >= 1000 ? currentNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : currentNum) + suffix;
         if (pct < 1) requestAnimationFrame(step);
       };
+      
       requestAnimationFrame(step);
       countIO.unobserve(el);
     });
