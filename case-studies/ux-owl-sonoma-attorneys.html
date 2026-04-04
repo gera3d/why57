@@ -87,30 +87,40 @@
     .result-row-item p { font-size: 0.9rem; color: #bbb; margin-top: 0.4rem; }
 
     /* ── Case Study Hero Override ── */
-    .cs-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 2rem 4rem;
+    .cs-hero-visual { display: flex; justify-content: flex-end; align-items: center; position: relative; padding-right: 2rem; }
+    .cs-glass-card {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 28px;
+      padding: 4rem 3rem;
+      text-align: center;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+      backdrop-filter: blur(24px) saturate(180%);
+      transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    @media (max-width: 768px) {
-      .cs-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem 3rem; }
-      .cs-hero-visual { display: none; }
+    @media (max-width: 960px) {
+      .cs-glass-card { transform: none; padding: 3rem 2rem; margin-top:2rem;}
+      .cs-hero-visual { padding-right: 0;}
     }
-    .cs-hero-left { text-align: left; }
-    .cs-hero-left .hero-badge { display: inline-block; margin-bottom: 1.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; font-size: 0.7rem; }
-    .cs-hero-left .hero-headline { font-size: clamp(1.7rem, 2.8vw, 2.4rem); text-align: left; line-height: 1.15; margin-bottom: 1.25rem; }
-    .cs-hero-left .hero-sub { text-align: left; max-width: 540px; margin: 0 0 2rem 0; }
-    .cs-hero-left .hero-actions { justify-content: flex-start; }
-    .cs-hero-visual { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
-    .cs-stat-hero { text-align: center; }
-    .cs-stat-hero .big-num { font-size: clamp(4rem, 8vw, 7rem); font-weight: 800; color: var(--orange); line-height: 1; display: block; }
-    .cs-stat-hero .big-label { font-size: 0.9rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.5rem; display: block; }
-    .cs-client-logo-hero { max-height: 60px; max-width: 200px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; }
-    .cs-client-logo-hero-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem 2rem; display: inline-flex; align-items:center; justify-content:center; }
+    .cs-glass-card:hover { transform: perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-8px); }
+    .cs-glass-card::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(var(--glow), 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cs-glass-num {
+      font-size: clamp(4rem, 6vw, 6rem); font-weight: 800;
+      line-height: 1; letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #fff 0%, var(--orange) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem; filter: drop-shadow(0 4px 12px rgba(var(--glow), 0.3));
+    }
+    .cs-glass-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dim); font-weight: 700; margin-top: 1rem; }
+    .cs-glass-sub { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
@@ -132,31 +142,29 @@
     </div>
   </header>
 
-  <section class="hero" id="hero" style="min-height: unset; padding: 0;">
+  <section class="hero" id="hero">
     <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
     <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
-    <div class="cs-hero-inner">
-      <div class="cs-hero-left">
-        <div class="hero-badge fade-up">Case Study &middot; UX Owl &middot; Sonoma County, CA</div>
-        <h1 class="hero-headline fade-up delay-1">
-          Marketing they couldn&rsquo;t measure.<br /><span class="text-orange">Results they finally could.</span>
-        </h1>
-        <p class="hero-sub fade-up delay-2">
-          Solo attorneys in wine country had beautiful brochure websites that generated zero measurable business. We replaced gut-feel marketing with lead-generating systems and dashboards that told the truth.
-        </p>
-        <div class="hero-actions fade-up delay-3">
-          <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="heroBook">Build Something Like This</a>
-          <a href="../index.html" class="btn-ghost">&larr; Back to 57</a>
-        </div>
+    
+    <div class="hero-content">
+      <div class="hero-badge fade-up">Case Study &middot; UX Owl &middot; Sonoma County, CA</div>
+      <h1 class="hero-headline fade-up delay-1">
+        Marketing they couldn&rsquo;t measure. <span class="text-orange">Results they finally could.</span>
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        Solo attorneys in wine country had beautiful brochure websites that generated zero measurable business. We replaced gut-feel marketing with lead-generating systems and dashboards that told the truth.
+      </p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="heroBook">Build Something Like This</a>
+        <a href="../index.html" class="btn-ghost">&larr; Back to 57</a>
       </div>
-      <div class="cs-hero-visual">
-        <div class="cs-stat-hero fade-up">
-          <span class="big-num">50%</span>
-          <span class="big-label">More qualified leads</span>
-        </div>
-        <div class="cs-stat-hero fade-up delay-1" style="margin-top: 0.5rem;">
-          <span style="font-size:1rem; color:var(--dim); font-weight:500;">Sonoma County Attorneys</span>
-        </div>
+    </div>
+
+    <div class="cs-hero-visual fade-up delay-4">
+      <div class="cs-glass-card">
+        <div class="cs-glass-num">50%</div>
+        <div class="cs-glass-label">More qualified leads</div>
+        <span class="cs-glass-sub">For Sonoma County Attorneys</span>
       </div>
     </div>
   </section>
