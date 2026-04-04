@@ -71,27 +71,28 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
 });
 
 /* ─── Stat counter animation ──────────────────────────────── */
-const statNums = document.querySelectorAll('.stat-n, .big-num');
+const statNums = document.querySelectorAll('.stat-n, .big-num, .result-row-item .metric-n, .cs-glass-num');
 const countIO  = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
       const el    = e.target;
       
-      // Safely extract prefix, number, and suffix
-      const match = el.textContent.trim().match(/^([^0-9]*)([0-9.,]+)(.*)$/);
-      if (!match) {
-        countIO.unobserve(el);
-        return;
+      const txt = el.textContent.trim();
+      const parts = [];
+      let re = /([0-9.,]+)/g;
+      let lastIdx = 0;
+      let match;
+      
+      while ((match = re.exec(txt)) !== null) {
+        if (match.index > lastIdx) parts.push({ type: 'str', val: txt.substring(lastIdx, match.index) });
+        parts.push({ type: 'num', end: parseFloat(match[1].replace(/,/g, '')), origStr: match[1] });
+        lastIdx = re.lastIndex;
       }
-      
-      const prefix = match[1];
-      const rawNumStr = match[2].replace(/,/g, '');
-      const suffix = match[3];
-      const end = parseFloat(rawNumStr);
-      
-      // Skip animation if the suffix contains another number (e.g. ranges like 30-50%)
-      if (isNaN(end) || /\d/.test(suffix)) {
+      if (lastIdx < txt.length) parts.push({ type: 'str', val: txt.substring(lastIdx) });
+
+      // Only animate if we found numbers
+      if (!parts.some(p => p.type === 'num' && !isNaN(p.end))) {
         countIO.unobserve(el);
         return;
       }
@@ -102,8 +103,20 @@ const countIO  = new IntersectionObserver(
         if (!start) start = ts;
         const pct = Math.min((ts - start) / dur, 1);
         const ease = 1 - Math.pow(1 - pct, 3);
-        const currentNum = end < 50 ? (ease * end).toFixed(end % 1 !== 0 ? 1 : 0) : Math.round(ease * end);
-        el.textContent = prefix + (end >= 1000 ? currentNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : currentNum) + suffix;
+        
+        let out = '';
+        for (const p of parts) {
+          if (p.type === 'str') {
+            out += p.val;
+          } else if (isNaN(p.end)) {
+            out += p.origStr; // fallback for unparseable chunks
+          } else {
+            const currentNum = p.end < 50 ? (ease * p.end).toFixed(p.end % 1 !== 0 ? 1 : 0) : Math.round(ease * p.end);
+            out += p.end >= 1000 ? currentNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : currentNum;
+          }
+        }
+        
+        el.textContent = out;
         if (pct < 1) requestAnimationFrame(step);
       };
       
