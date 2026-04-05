@@ -535,6 +535,7 @@
     let accessToken = null;
     let tokenClient = null;
     let rangeDays = 28;
+    const TOKEN_KEY = 'why57_dash_token';
     let trendChart = null;
     let channelChart = null;
 
@@ -616,6 +617,11 @@
           callback: (response) => {
             if (response.error) { showError('OAuth error: ' + response.error); return; }
             accessToken = response.access_token;
+            // Persist token for the session (expires_in is in seconds, typically 3600)
+            sessionStorage.setItem(TOKEN_KEY, JSON.stringify({
+              token: accessToken,
+              expiry: Date.now() + (response.expires_in || 3600) * 1000 - 60000, // 1 min buffer
+            }));
             updateAuthUI(true);
             loadAllData();
           },
@@ -623,9 +629,27 @@
       });
     }
 
+    // Restore session token on load — skip sign-in if still valid
+    function restoreToken() {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem(TOKEN_KEY));
+        if (saved && saved.token && saved.expiry > Date.now()) {
+          accessToken = saved.token;
+          updateAuthUI(true);
+          loadAllData();
+          return true;
+        }
+      } catch {}
+      return false;
+    }
+
     // Trigger init once GIS is ready (for page load with saved config)
     window.addEventListener('load', () => {
-      if (cfg.clientId) initTokenClient();
+      if (cfg.clientId) {
+        initTokenClient();
+        // Try to reuse existing session token before showing sign-in prompt
+        restoreToken();
+      }
     });
 
     /* ═══════════════════════════════════════════════
@@ -641,13 +665,14 @@
         // Sign out
         google.accounts.oauth2.revoke(accessToken, () => {});
         accessToken = null;
+        sessionStorage.removeItem(TOKEN_KEY);
         updateAuthUI(false);
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('auth-required').style.display = 'block';
         return;
       }
       if (!tokenClient) initTokenClient();
-      waitForGIS(() => tokenClient.requestAccessToken({ prompt: 'consent' }));
+      waitForGIS(() => tokenClient.requestAccessToken({ prompt: '' }));
     }
 
     function updateAuthUI(signedIn) {
