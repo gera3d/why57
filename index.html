@@ -1089,5 +1089,11 @@
 
   <script src="roi-bridge.js?v=3"></script>
   <script src="main.js"></script>
+
+  <!-- A/B Testing: Firebase Remote Config + experiment variant application -->
+  <!-- firebase-config.js loads Firebase, fetches variant assignments, dispatches why57:rc-ready -->
+  <!-- experiments.js listens for that event and applies DOM mutations per variant -->
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="experiments.js"></script>
 </body>
 </html>

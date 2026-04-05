@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "hero_headline": {
+      "defaultValue": { "value": "We build software that pays for itself." },
+      "description": "Hero section H1. Experiment 1: headline framing (gain vs loss-averse).",
+      "valueType": "STRING"
+    },
+    "hero_headline_sub": {
+      "defaultValue": { "value": "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond." },
+      "description": "Hero sub-headline. Paired with hero_headline experiment.",
+      "valueType": "STRING"
+    },
+    "hero_cta_primary": {
+      "defaultValue": { "value": "Book a Free Call" },
+      "description": "Primary CTA button text. Experiment 2: CTA copy test.",
+      "valueType": "STRING"
+    },
+    "nav_cta": {
+      "defaultValue": { "value": "Book a Call" },
+      "description": "Navigation CTA button text. Paired with hero_cta_primary.",
+      "valueType": "STRING"
+    },
+    "intake_above_fold": {
+      "defaultValue": { "value": "false" },
+      "description": "Experiment 3: Move intake form above the fold as the hero element.",
+      "valueType": "BOOLEAN"
+    },
+    "show_price_signal": {
+      "defaultValue": { "value": "false" },
+      "description": "Experiment 4: Show pricing signal near CTA.",
+      "valueType": "BOOLEAN"
+    },
+    "price_signal_text": {
+      "defaultValue": { "value": "Most projects: $5k\u2013$25k \u00b7 Fixed price, scoped upfront." },
+      "description": "Text shown near CTA when show_price_signal is true.",
+      "valueType": "STRING"
+    },
+    "social_proof_above_fold": {
+      "defaultValue": { "value": "false" },
+      "description": "Experiment 5: Move stats row (9k reviews, 10x ROI) above the hero headline.",
+      "valueType": "BOOLEAN"
+    },
+    "hero_badge_text": {
+      "defaultValue": { "value": "Custom Software Development" },
+      "description": "Hero badge label. Modified in Experiment 6 (57Seconds hero).",
+      "valueType": "STRING"
+    },
+    "hero_lead_service": {
+      "defaultValue": { "value": "default" },
+      "description": "Experiment 6: 'default' = generic hero. '57seconds' = review growth lead.",
+      "valueType": "STRING"
+    }
+  },
+  "version": {
+    "description": "Baseline defaults — all experiments in draft/control state"
+  }
+}

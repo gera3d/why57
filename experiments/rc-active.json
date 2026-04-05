@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "hero_headline": {
+      "defaultValue": { "value": "We build software that pays for itself." },
+      "description": "Hero H1. Edit defaultValue here to roll out a winning variant to 100%.",
+      "valueType": "STRING"
+    },
+    "hero_headline_sub": {
+      "defaultValue": { "value": "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond." },
+      "description": "Hero sub-headline.",
+      "valueType": "STRING"
+    },
+    "hero_cta_primary": {
+      "defaultValue": { "value": "Book a Free Call" },
+      "description": "Primary CTA text.",
+      "valueType": "STRING"
+    },
+    "nav_cta": {
+      "defaultValue": { "value": "Book a Call" },
+      "description": "Nav CTA text.",
+      "valueType": "STRING"
+    },
+    "intake_above_fold": {
+      "defaultValue": { "value": "false" },
+      "description": "Intake form position experiment.",
+      "valueType": "BOOLEAN"
+    },
+    "show_price_signal": {
+      "defaultValue": { "value": "false" },
+      "description": "Price signal near CTA.",
+      "valueType": "BOOLEAN"
+    },
+    "price_signal_text": {
+      "defaultValue": { "value": "Most projects: $5k\u2013$25k \u00b7 Fixed price, scoped upfront." },
+      "description": "Price signal copy.",
+      "valueType": "STRING"
+    },
+    "social_proof_above_fold": {
+      "defaultValue": { "value": "false" },
+      "description": "Social proof placement experiment.",
+      "valueType": "BOOLEAN"
+    },
+    "hero_badge_text": {
+      "defaultValue": { "value": "Custom Software Development" },
+      "description": "Hero badge text.",
+      "valueType": "STRING"
+    },
+    "hero_lead_service": {
+      "defaultValue": { "value": "default" },
+      "description": "Hero lead service. Set to '57seconds' to activate 57Seconds variant for 100% of users.",
+      "valueType": "STRING"
+    }
+  },
+  "version": {
+    "description": "Active production config — push this file to deploy winning variants"
+  }
+}
