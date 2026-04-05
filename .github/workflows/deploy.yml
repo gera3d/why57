@@ -1,18 +1,32 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Generate site-config.js from secrets
         run: |
-          cat > site-config.js <<EOF
+          cat > site-config.js << 'ENDOFCONFIG'
           window.WHY57_FIREBASE = {
             apiKey:            "${{ secrets.FIREBASE_API_KEY }}",
             authDomain:        "${{ secrets.FIREBASE_AUTH_DOMAIN }}",
@@ -22,23 +36,13 @@ jobs:
             appId:             "${{ secrets.FIREBASE_APP_ID }}",
             measurementId:     "${{ secrets.FIREBASE_MEASUREMENT_ID }}",
           };
-          EOF
+          ENDOFCONFIG
 
-      # ── Add your deploy step here ─────────────────────────────────────────
-      # Examples:
-      #
-      # GitHub Pages:
-      # - uses: actions/upload-pages-artifact@v3
-      #   with: { path: '.' }
-      # - uses: actions/deploy-pages@v4
-      #
-      # Vercel (via CLI):
-      # - run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-      #
-      # Cloudflare Pages:
-      # - uses: cloudflare/pages-action@v1
-      #   with:
-      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      #     projectName: why57
-      #     directory: .
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
