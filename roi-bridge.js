@@ -1,6 +1,18 @@
 (() => {
   const COOKIE_NAME = "why57_roi_context";
   const BOOKING_URL = "https://calendar.app.google/93NLV73sQd1DXuUB6";
+  const RECOMMENDATION_LABELS = {
+    stay: "Stay with SaaS for now",
+    hybrid: "Hybrid approach",
+    custom: "Custom software"
+  };
+  const PROJECT_TYPE_LABELS = {
+    workflow_automation: "workflow automation",
+    internal_ops_tool: "internal operations tooling",
+    custom_crm: "a custom CRM",
+    customer_portal: "a customer portal",
+    reporting_dashboard: "a reporting dashboard"
+  };
 
   function readCookie(name) {
     const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
@@ -24,6 +36,25 @@
       .filter(Boolean)
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
       .join(" ");
+  }
+
+  function recommendationLabel(value) {
+    return RECOMMENDATION_LABELS[value] || titleCase(value || "custom software");
+  }
+
+  function projectTypeLabel(value) {
+    return PROJECT_TYPE_LABELS[value] || titleCase(value || "workflow automation");
+  }
+
+  function hasMeaningfulContext(context) {
+    if (!context || typeof context !== "object") return false;
+
+    return Boolean(
+      context.recommendation ||
+      context.project_type ||
+      Number.isFinite(Number(context.readiness_score)) ||
+      Number.isFinite(Number(context.break_even_months))
+    );
   }
 
   function pushEvent(eventName, detail = {}) {
@@ -76,7 +107,7 @@
   }
 
   function renderContext(context) {
-    if (!context) return;
+    if (!hasMeaningfulContext(context)) return;
 
     const label = document.getElementById("roiBridgeLabel");
     const title = document.getElementById("roiBridgeTitle");
@@ -89,13 +120,13 @@
     if (label) label.textContent = "From Your ROI Calculator";
     if (title) title.textContent = "You already have the numbers. Let's turn them into a build plan.";
     if (copy) {
-      const rec = titleCase(context.recommendation || "custom software");
+      const rec = recommendationLabel(context.recommendation);
       const months = context.break_even_months ? `${context.break_even_months} months` : "a practical payback window";
-      const projectType = titleCase(context.project_type || "workflow automation");
-      copy.textContent = `Your latest calculator result points to a ${rec} approach for ${projectType}, with an estimated break-even timeline of ${months}. Bring that context into the call and we can pressure-test the scope together.`;
+      const projectType = projectTypeLabel(context.project_type);
+      copy.textContent = `Your latest calculator result points to ${rec.toLowerCase()} for ${projectType}, with an estimated break-even timeline of ${months}. Bring that context into the call and we can pressure-test the scope together.`;
     }
-    if (recommendation) recommendation.textContent = titleCase(context.recommendation || "Hybrid build");
-    if (score) score.textContent = String(context.readiness_score || 0);
+    if (recommendation) recommendation.textContent = recommendationLabel(context.recommendation || "hybrid");
+    if (score) score.textContent = context.readiness_score != null ? String(context.readiness_score) : "Not available";
     if (breakEven) {
       breakEven.textContent = context.break_even_months
         ? `${context.break_even_months} months`
