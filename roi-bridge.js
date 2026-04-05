@@ -1,6 +1,7 @@
 (() => {
   const COOKIE_NAME = "why57_roi_context";
   const BOOKING_URL = "https://calendar.app.google/93NLV73sQd1DXuUB6";
+  const LEAD_CAPTURE_ENDPOINT = "https://why57-roi-intake.gera-695.workers.dev/";
   const RECOMMENDATION_LABELS = {
     stay: "Stay with SaaS for now",
     hybrid: "Hybrid approach",
@@ -69,6 +70,53 @@
     }
   }
 
+  function compactObject(value) {
+    return Object.fromEntries(
+      Object.entries(value).filter(([, item]) => item !== "" && item !== null && item !== undefined)
+    );
+  }
+
+  function sendLeadCapture(eventType, context, detail = {}) {
+    if (!LEAD_CAPTURE_ENDPOINT || !context) return;
+
+    const payload = {
+      event_type: eventType,
+      sent_at: new Date().toISOString(),
+      context,
+      detail: compactObject({
+        site_source: "why57.com",
+        page_url: window.location.href,
+        referrer: document.referrer || "",
+        ...detail
+      })
+    };
+
+    const body = JSON.stringify(payload);
+
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([body], { type: "application/json" });
+        navigator.sendBeacon(LEAD_CAPTURE_ENDPOINT, blob);
+        return;
+      }
+    } catch (_error) {
+      // Fall back to fetch if sendBeacon is blocked.
+    }
+
+    fetch(LEAD_CAPTURE_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body,
+      keepalive: true,
+      mode: "cors",
+      credentials: "omit"
+    }).catch(() => {
+      // Best-effort only. Booking should never fail because analytics is down.
+    });
+  }
+
   function annotateBookingLinks(context) {
     document.querySelectorAll(`a[href="${BOOKING_URL}"]`).forEach((link) => {
       if (!context) return;
@@ -84,13 +132,18 @@
   function bindBookingTracking(context) {
     document.querySelectorAll(`a[href="${BOOKING_URL}"]`).forEach((link) => {
       link.addEventListener("click", () => {
-        pushEvent("main_site_booking_clicked", {
+        const detail = {
           cta_location: link.id || link.dataset.ctaLocation || "booking_link",
           recommendation: context?.recommendation || "",
           readiness_score: context?.readiness_score || 0,
           break_even_months: context?.break_even_months || 0,
           project_type: context?.project_type || "",
           session_id: context?.session_id || ""
+        };
+
+        pushEvent("main_site_booking_clicked", detail);
+        sendLeadCapture("main_site_booking_clicked", context, {
+          cta_location: detail.cta_location
         });
       });
     });
