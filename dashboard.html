@@ -180,6 +180,11 @@
       display: flex; align-items: center; gap: 8px;
     }
     .section-label::before { content: ''; width: 12px; height: 1px; background: var(--orange); }
+    .section-desc {
+      font-size: .82rem; color: var(--muted); margin: -4px 0 20px; max-width: 680px; line-height: 1.65;
+    }
+    .chart-subtitle { font-size: .75rem; color: var(--dim); margin-top: -14px; margin-bottom: 18px; line-height: 1.5; }
+    .metric-tip { font-size: .69rem; color: var(--dim); margin-top: 6px; line-height: 1.4; }
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -377,7 +382,8 @@
 
       <!-- GA4 Metrics -->
       <div class="metrics-section">
-        <div class="section-label">Google Analytics 4</div>
+        <div class="section-label">Site Traffic</div>
+        <p class="section-desc">How many real people visited, how long they stayed, and whether they engaged. These are your core health metrics — a sustained drop in any of them means something needs attention.</p>
         <div class="metrics-grid" id="ga4-metrics">
           <div class="metric-card"><div class="metric-label">Users</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
           <div class="metric-card"><div class="metric-label">Sessions</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
@@ -389,7 +395,8 @@
 
       <!-- Search Console Metrics -->
       <div class="metrics-section">
-        <div class="section-label">Google Search Console</div>
+        <div class="section-label">Search Visibility</div>
+        <p class="section-desc">How your site performs in Google search results. Impressions = how often you appear; Clicks = how often people actually visit. A low CTR means your page titles or meta descriptions need improvement. A high Average Position (close to 1) means Google trusts your content.</p>
         <div class="metrics-grid" id="sc-metrics">
           <div class="metric-card"><div class="metric-label">Clicks</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
           <div class="metric-card"><div class="metric-label">Impressions</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
@@ -401,13 +408,15 @@
       <!-- Charts -->
       <div class="charts-grid">
         <div class="chart-card">
-          <h3>Sessions &amp; Clicks — Daily Trend</h3>
+          <h3>Daily Sessions Trend</h3>
+          <p class="chart-subtitle">A rising trend means your content and outreach are working. Sudden dips can signal algorithm changes, broken pages, or seasonal slowdowns — worth investigating quickly.</p>
           <div class="chart-wrap">
             <canvas id="trend-chart"></canvas>
           </div>
         </div>
         <div class="chart-card">
           <h3>Traffic by Channel</h3>
+          <p class="chart-subtitle">Where your visitors come from. Organic = free Google traffic you've earned. Direct = people who already know you. Referral = other sites sending you visitors. Over-reliance on one channel is a risk.</p>
           <div class="chart-wrap">
             <canvas id="channel-chart"></canvas>
           </div>
@@ -418,8 +427,11 @@
       <div class="tables-grid">
         <div class="table-card">
           <div class="table-header">
-            <h3>Top Pages</h3>
-            <span>by sessions</span>
+            <h3>Most Visited Pages</h3>
+            <span title="All traffic sources — GA4">all traffic</span>
+          </div>
+          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
+            Your highest-traffic pages across all sources. These are your best performers — protect them, keep them updated, and create more content like them.
           </div>
           <table>
             <thead><tr><th>Page</th><th>Sessions</th><th>Views</th></tr></thead>
@@ -428,8 +440,11 @@
         </div>
         <div class="table-card">
           <div class="table-header">
-            <h3>Top Queries</h3>
-            <span>by clicks</span>
+            <h3>Top Search Queries</h3>
+            <span title="Google Search Console">organic only</span>
+          </div>
+          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
+            The exact words people type into Google to find you. Low CTR on a high-impression query = opportunity to rewrite your title tag. Low position = invest in that topic.
           </div>
           <table>
             <thead><tr><th>Query</th><th>Clicks</th><th>CTR</th><th>Pos.</th></tr></thead>
@@ -438,12 +453,15 @@
         </div>
       </div>
 
-      <!-- Top Landing Pages from Search Console -->
+      <!-- SC pages + Devices -->
       <div class="tables-grid">
         <div class="table-card">
           <div class="table-header">
-            <h3>Top Landing Pages (Search)</h3>
-            <span>by clicks</span>
+            <h3>Pages Winning in Search</h3>
+            <span title="Google Search Console">organic clicks</span>
+          </div>
+          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
+            Which of your pages Google is sending the most organic traffic to — your SEO winners. A page with high impressions but low clicks needs a better title or meta description.
           </div>
           <table>
             <thead><tr><th>Page</th><th>Clicks</th><th>Impr.</th><th>CTR</th></tr></thead>
@@ -452,8 +470,11 @@
         </div>
         <div class="table-card">
           <div class="table-header">
-            <h3>Device Breakdown</h3>
-            <span>GA4 sessions</span>
+            <h3>Visitor Devices</h3>
+            <span title="GA4 sessions">by sessions</span>
+          </div>
+          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
+            How people are accessing your site. If mobile is dominant, your mobile experience must be flawless. Use this to prioritize where you test design changes.
           </div>
           <table>
             <thead><tr><th>Device</th><th>Sessions</th><th>Share</th></tr></thead>
@@ -707,12 +728,13 @@
     /* ═══════════════════════════════════════════════
        RENDER HELPERS
     ═══════════════════════════════════════════════ */
-    function renderMetricCard(label, value, sub = '') {
+    function renderMetricCard(label, value, sub = '', tip = '') {
       return `
         <div class="metric-card">
           <div class="metric-label">${label}</div>
           <div class="metric-value">${value}</div>
           ${sub ? `<div class="metric-sub">${sub}</div>` : ''}
+          ${tip ? `<div class="metric-tip">${tip}</div>` : ''}
         </div>`;
     }
 
@@ -854,11 +876,11 @@
       const m = data.totals?.[0]?.metricValues || data.rows?.[0]?.metricValues || [];
       const get = (i) => parseFloat(m[i]?.value || 0);
       document.getElementById('ga4-metrics').innerHTML = [
-        renderMetricCard('Users', fmt(get(0)), `${rangeDays}-day total`),
-        renderMetricCard('Sessions', fmt(get(1)), `${rangeDays}-day total`),
-        renderMetricCard('Page Views', fmt(get(2)), `${rangeDays}-day total`),
-        renderMetricCard('Bounce Rate', fmtPct(get(3)), 'of all sessions'),
-        renderMetricCard('Avg. Session', fmtSec(get(4)), 'time on site'),
+        renderMetricCard('Users', fmt(get(0)), `${rangeDays}-day total`, 'Unique people who visited — your real audience size'),
+        renderMetricCard('Sessions', fmt(get(1)), `${rangeDays}-day total`, 'Total visits including return trips by the same person'),
+        renderMetricCard('Page Views', fmt(get(2)), `${rangeDays}-day total`, 'Total pages loaded — higher means deeper engagement'),
+        renderMetricCard('Bounce Rate', fmtPct(get(3)), 'of all sessions', 'Left after one page — under 50% is healthy for most sites'),
+        renderMetricCard('Avg. Session', fmtSec(get(4)), 'time on site', 'How long people stay — longer means they find value'),
       ].join('');
     }
 
@@ -868,10 +890,10 @@
     function renderSCOverview(data) {
       const r = data.rows?.[0] || {};
       document.getElementById('sc-metrics').innerHTML = [
-        renderMetricCard('Clicks', fmt(r.clicks), `${rangeDays}-day total`),
-        renderMetricCard('Impressions', fmt(r.impressions), `${rangeDays}-day total`),
-        renderMetricCard('Avg. CTR', fmtPct(r.ctr), 'of impressions'),
-        renderMetricCard('Avg. Position', fmtPos(r.position), 'search rank'),
+        renderMetricCard('Clicks', fmt(r.clicks), `${rangeDays}-day total`, 'Visitors arriving from Google search results'),
+        renderMetricCard('Impressions', fmt(r.impressions), `${rangeDays}-day total`, 'Times your site appeared in search — your visibility footprint'),
+        renderMetricCard('Avg. CTR', fmtPct(r.ctr), 'of impressions', 'Click-through rate — above 3% is strong; rewrite titles if low'),
+        renderMetricCard('Avg. Position', fmtPos(r.position), 'search rank', 'Your average Google ranking — position 1–10 means page one'),
       ].join('');
     }
 
