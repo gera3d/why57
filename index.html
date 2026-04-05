@@ -242,6 +242,117 @@
     </div>
   </div>
 
+  <!-- ══ START HERE ══ -->
+  <section class="section section--start" id="start-here">
+    <div class="container">
+      <div class="start-shell fade-up">
+        <div class="start-copy">
+          <p class="label">Start Here</p>
+          <h2 class="section-title">Point us at the bottleneck. <span class="text-muted">We'll point you at the right next move.</span></h2>
+          <p class="section-sub">Answer three quick questions. We'll steer you toward the best path: a strategy call, the ROI calculator, or a focused 57Seconds demo.</p>
+          <div class="intake-progress" aria-hidden="true">
+            <div class="intake-progress-top">
+              <span>Fast qualification</span>
+              <strong id="intakeProgressLabel">Step 1 of 3</strong>
+            </div>
+            <div class="intake-progress-bar"><span id="intakeProgressFill"></span></div>
+          </div>
+        </div>
+
+        <div class="intake-stage" id="intakePlanner">
+          <div class="intake-question is-active" data-step="0" data-group="pain">
+            <p class="intake-question-kicker">Step 1</p>
+            <h3>What's hurting most right now?</h3>
+            <div class="intake-options">
+              <button type="button" class="intake-option" data-group="pain" data-value="manual_work" data-label="Manual work">
+                <strong>Manual work is eating the week</strong>
+                <span>Data entry, status chasing, repetitive updates, spreadsheet cleanup.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="pain" data-value="disconnected_tools" data-label="Disconnected tools">
+                <strong>Our tools don't talk to each other</strong>
+                <span>CRM, billing, scheduling, and comms all live in different places.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="pain" data-value="reviews" data-label="Review growth">
+                <strong>We need more reviews and reputation lift</strong>
+                <span>Customers are happy, but the ask is inconsistent and results are invisible.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="pain" data-value="client_experience" data-label="Client experience">
+                <strong>Clients need a better experience</strong>
+                <span>Portals, updates, approvals, and self-serve access are all too manual.</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="intake-question" data-step="1" data-group="team" hidden>
+            <p class="intake-question-kicker">Step 2</p>
+            <h3>How big is the team behind this?</h3>
+            <div class="intake-options">
+              <button type="button" class="intake-option" data-group="team" data-value="solo" data-label="Solo or founder-led">
+                <strong>Just me or a very small team</strong>
+                <span>We need something lean that pays back quickly.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="team" data-value="small" data-label="2 to 10 people">
+                <strong>2 to 10 people</strong>
+                <span>We need a focused first version without months of overhead.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="team" data-value="mid" data-label="11 to 50 people">
+                <strong>11 to 50 people</strong>
+                <span>Multiple roles touch the workflow and handoffs are getting expensive.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="team" data-value="large" data-label="50 plus people">
+                <strong>50+ people</strong>
+                <span>We need alignment, permissions, reporting, and systems that scale.</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="intake-question" data-step="2" data-group="goal" hidden>
+            <p class="intake-question-kicker">Step 3</p>
+            <h3>What would the best first win look like?</h3>
+            <div class="intake-options">
+              <button type="button" class="intake-option" data-group="goal" data-value="automate" data-label="Automate a workflow">
+                <strong>Automate one painful workflow first</strong>
+                <span>Start small, prove value, and expand once the savings are obvious.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="goal" data-value="replace" data-label="Replace spreadsheets">
+                <strong>Replace spreadsheets with one operating system</strong>
+                <span>Get the team out of manual work and into a single source of truth.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="goal" data-value="portal" data-label="Launch a portal">
+                <strong>Launch a client portal or customer dashboard</strong>
+                <span>Reduce back-and-forth and make the experience feel premium.</span>
+              </button>
+              <button type="button" class="intake-option" data-group="goal" data-value="reviews" data-label="Grow reviews">
+                <strong>Turn happy customers into more 5-star reviews</strong>
+                <span>Build trust faster and make your reputation impossible to ignore.</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="intake-summary" id="intakeSummary" hidden>
+            <p class="intake-question-kicker">Recommended next step</p>
+            <h3 id="intakeRecommendationTitle">Start with the ROI calculator</h3>
+            <p id="intakeRecommendationCopy">Your answers point toward a focused automation project with a strong business-case angle. Start with a quick estimate, then use that output to scope the build.</p>
+            <div class="intake-tags">
+              <span class="intake-tag" id="intakePainTag">Manual work</span>
+              <span class="intake-tag" id="intakeTeamTag">2 to 10 people</span>
+              <span class="intake-tag" id="intakeGoalTag">Automate a workflow</span>
+            </div>
+            <div class="intake-actions">
+              <a href="https://roi.why57.com/?utm_source=why57&utm_medium=intake_primary&utm_campaign=main_site_referral" class="btn-primary" id="intakePrimaryLink" data-base-href="https://roi.why57.com/?utm_source=why57&utm_medium=intake_primary&utm_campaign=main_site_referral" data-roi-link="intake">Try the ROI Calculator</a>
+              <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-ghost" id="intakeSecondaryLink" data-cta-location="intake_secondary_booking">Book a Strategy Call</a>
+            </div>
+          </div>
+
+          <div class="intake-controls">
+            <button type="button" class="intake-back" id="intakeBack" hidden>Back</button>
+            <button type="button" class="intake-reset" id="intakeReset" hidden>Start Over</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ PROBLEM ══ -->
   <section class="section" id="problem">
     <div class="container">
@@ -297,16 +408,34 @@
           <div class="svc-icon-wrap"><span class="svc-icon">⚡</span></div>
           <h3>Custom Web Apps</h3>
           <p>Dashboards, internal tools, and operations platforms built for how your team actually works — not how some template assumes you do.</p>
+          <button type="button" class="svc-toggle" aria-expanded="false">Best Fit + Scope</button>
+          <div class="svc-detail" hidden>
+            <div class="svc-detail-row"><span>Best for</span><p>Teams who need one clean workspace for approvals, statuses, reporting, and day-to-day execution.</p></div>
+            <div class="svc-detail-row"><span>Usually includes</span><p>Custom roles, dashboards, activity history, and workflow-specific views.</p></div>
+            <div class="svc-detail-row"><span>Typical first release</span><p>3 to 6 weeks for a narrow but meaningful operational win.</p></div>
+          </div>
         </div>
         <div class="svc-card fade-up delay-1">
           <div class="svc-icon-wrap"><span class="svc-icon">🔄</span></div>
           <h3>Workflow Automation</h3>
           <p>Automated lead routing, invoice generation, status updates, and reporting. Remove the manual steps that slow your team down every day.</p>
+          <button type="button" class="svc-toggle" aria-expanded="false">Best Fit + Scope</button>
+          <div class="svc-detail" hidden>
+            <div class="svc-detail-row"><span>Best for</span><p>Founder-led teams buried in repetitive admin or handoff mistakes.</p></div>
+            <div class="svc-detail-row"><span>Common integrations</span><p>CRMs, Google Workspace, scheduling tools, billing systems, and SMS/email triggers.</p></div>
+            <div class="svc-detail-row"><span>Typical first release</span><p>1 to 3 high-friction workflows automated end-to-end.</p></div>
+          </div>
         </div>
         <div class="svc-card fade-up delay-2">
           <div class="svc-icon-wrap"><span class="svc-icon">🏠</span></div>
           <h3>Client Portals</h3>
           <p>White-labeled login experiences that make your clients feel like they're using enterprise software. Build trust, reduce support calls.</p>
+          <button type="button" class="svc-toggle" aria-expanded="false">Best Fit + Scope</button>
+          <div class="svc-detail" hidden>
+            <div class="svc-detail-row"><span>Best for</span><p>Businesses tired of sending status updates, files, invoices, and approvals by hand.</p></div>
+            <div class="svc-detail-row"><span>Usually includes</span><p>Secure login, document access, milestone tracking, and branded client views.</p></div>
+            <div class="svc-detail-row"><span>Typical first release</span><p>A focused portal with one or two core client actions done well.</p></div>
+          </div>
         </div>
         <div class="svc-card svc-card--featured fade-up delay-3">
           <span class="featured-badge">Flagship Product</span>
@@ -315,17 +444,35 @@
           </div>
           <h3>57Seconds — Review Growth</h3>
           <p>Automated, agent-specific review requests triggered after every customer call. Turn happy customers into 5-star Google reviews — on autopilot.</p>
+          <button type="button" class="svc-toggle" aria-expanded="false">Best Fit + Scope</button>
+          <div class="svc-detail" hidden>
+            <div class="svc-detail-row"><span>Best for</span><p>Call-heavy teams where reputation directly affects close rate, trust, or local search visibility.</p></div>
+            <div class="svc-detail-row"><span>Usually includes</span><p>Agent attribution, post-call SMS, reputation landing pages, and review tracking.</p></div>
+            <div class="svc-detail-row"><span>Fastest win</span><p>Proving review growth inside one team before rolling it out more broadly.</p></div>
+          </div>
           <a href="#results" class="svc-link">See the results →</a>
         </div>
         <div class="svc-card fade-up delay-1">
           <div class="svc-icon-wrap"><span class="svc-icon">🔌</span></div>
           <h3>Data Integrations</h3>
           <p>Connect your CRM, scheduling tool, billing system, and comms apps into a single source of truth. One place. One version of reality.</p>
+          <button type="button" class="svc-toggle" aria-expanded="false">Best Fit + Scope</button>
+          <div class="svc-detail" hidden>
+            <div class="svc-detail-row"><span>Best for</span><p>Teams doing the same copy-paste work across systems every day.</p></div>
+            <div class="svc-detail-row"><span>Common integrations</span><p>Salesforce, HubSpot, QuickBooks, Calendly, Twilio, Sheets, and internal databases.</p></div>
+            <div class="svc-detail-row"><span>Typical first release</span><p>One shared pipeline view or a fully automated handoff between tools.</p></div>
+          </div>
         </div>
         <div class="svc-card fade-up delay-2">
           <div class="svc-icon-wrap"><span class="svc-icon">📈</span></div>
           <h3>CRM & Ops Platforms</h3>
           <p>Replace the pile of spreadsheets with a real operations system. Track leads, manage pipelines, generate reports — without ever opening Excel again.</p>
+          <button type="button" class="svc-toggle" aria-expanded="false">Best Fit + Scope</button>
+          <div class="svc-detail" hidden>
+            <div class="svc-detail-row"><span>Best for</span><p>Operators who need visibility across leads, production, delivery, and team performance.</p></div>
+            <div class="svc-detail-row"><span>Usually includes</span><p>Pipeline views, reporting dashboards, automations, permissions, and custom workflows.</p></div>
+            <div class="svc-detail-row"><span>Typical first release</span><p>A lean ops platform that replaces the spreadsheet stack without boiling the ocean.</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -380,7 +527,18 @@
           <div class="result-tags">
             <span>Automation</span><span>Review Engine</span><span>SMS</span><span>Custom Dashboard</span>
           </div>
-          <a href="case-studies/health-for-california-review-engine.html" class="result-link">Read Full Case Study &rarr;</a>
+          <div class="result-actions">
+            <button type="button" class="result-toggle" aria-expanded="false">Quick Breakdown</button>
+            <a href="case-studies/health-for-california-review-engine.html" class="result-link">Read Full Case Study &rarr;</a>
+          </div>
+          <div class="result-breakdown" hidden>
+            <div class="result-breakdown-grid">
+              <div class="result-breakdown-item"><span>Problem</span><p>Great agent experiences were not turning into visible Google trust at scale.</p></div>
+              <div class="result-breakdown-item"><span>Build</span><p>Agent landing pages, triggered SMS asks, and management visibility into review velocity.</p></div>
+              <div class="result-breakdown-item"><span>Timeline</span><p>Started as a focused internal engine, then matured into the foundation of 57Seconds.</p></div>
+              <div class="result-breakdown-item"><span>Outcome</span><p>9,000+ verified reviews and a reputation flywheel that compounds every month.</p></div>
+            </div>
+          </div>
         </article>
 
         <article class="result-card result-card--lg fade-up delay-1">
@@ -396,47 +554,84 @@
           <div class="result-tags">
             <span>Review Engine</span><span>SEO</span><span>Agent Attribution</span>
           </div>
-          <a href="case-studies/drivesavers-seo-overhaul.html" class="result-link">Read Full Case Study &rarr;</a>
+          <div class="result-actions">
+            <button type="button" class="result-toggle" aria-expanded="false">Quick Breakdown</button>
+            <a href="case-studies/drivesavers-seo-overhaul.html" class="result-link">Read Full Case Study &rarr;</a>
+          </div>
+          <div class="result-breakdown" hidden>
+            <div class="result-breakdown-grid">
+              <div class="result-breakdown-item"><span>Problem</span><p>Brand authority was not fully reflected in reviews, organic traffic, or on-site conversion.</p></div>
+              <div class="result-breakdown-item"><span>Build</span><p>57Seconds deployment plus a full site and SEO infrastructure overhaul.</p></div>
+              <div class="result-breakdown-item"><span>Timeline</span><p>Review growth and search gains stacked together instead of running as separate projects.</p></div>
+              <div class="result-breakdown-item"><span>Outcome</span><p>300+ new reviews in Q1 and all-time high traffic with better conversion quality.</p></div>
+            </div>
+          </div>
         </article>
       </div>
 
-      <!-- 3-col: smaller cards -->
-      <div class="results-grid">
-        <article class="result-card fade-up">
-          <div class="result-metric">
-            <span class="metric-n">200<em>+</em></span>
-            <span class="metric-l">Sites deployed in under 4 hours</span>
+      <div class="results-carousel fade-up">
+        <div class="results-carousel-head">
+          <div>
+            <p class="results-carousel-kicker">More case studies</p>
+            <p class="results-carousel-copy">The rest are there if someone wants to keep digging, without crowding the main proof.</p>
           </div>
-          <h3>Rapid Deployment Platform</h3>
-          <p class="result-client">Nuvolum (Digital Marketing Agency)</p>
-          <p>Built a deployment system that launches fully branded websites with custom 4K video in under 4 hours. The agency grew from <strong>7 to 50 employees</strong> in 4 years — the system is still running today.</p>
-          <div class="result-tags"><span>Custom Platform</span><span>Automation</span></div>
-          <a href="case-studies/nuvolum-deployment-platform.html" class="result-link">Read Full Case Study &rarr;</a>
-        </article>
+          <div class="results-carousel-controls" aria-label="Case study carousel controls">
+            <button type="button" class="results-carousel-button" id="resultsCarouselPrev" aria-label="Previous case study" disabled>Prev</button>
+            <button type="button" class="results-carousel-button" id="resultsCarouselNext" aria-label="Next case study">Next</button>
+          </div>
+        </div>
 
-        <article class="result-card fade-up delay-1">
-          <div class="result-metric">
-            <span class="metric-n">30–50<em>%</em></span>
-            <span class="metric-l">Increase in qualified leads</span>
-          </div>
-          <h3>Lead-Generating Attorney Sites</h3>
-          <p class="result-client">UX Owl (Co-Founded)</p>
-          <p>Solo attorneys in Sonoma County with "brochure websites" that generated zero business. Built lead-generating sites + LinkedIn campaigns with custom reporting dashboards tracking which efforts converted.</p>
-          <div class="result-tags"><span>Web Apps</span><span>Analytics</span></div>
-          <a href="case-studies/ux-owl-sonoma-attorneys.html" class="result-link">Read Full Case Study &rarr;</a>
-        </article>
+        <div class="results-carousel-window" id="resultsCarousel" tabindex="0" aria-label="Additional case studies">
+          <div class="results-carousel-track">
+            <article class="result-card result-card--slide">
+              <div class="result-metric">
+                <span class="metric-n">200<em>+</em></span>
+                <span class="metric-l">Sites deployed in under 4 hours</span>
+              </div>
+              <h3>Rapid Deployment Platform</h3>
+              <p class="result-client">Nuvolum (Digital Marketing Agency)</p>
+              <p>Built a deployment system that launches fully branded websites with custom 4K video in under 4 hours. The agency grew from <strong>7 to 50 employees</strong> in 4 years — the system is still running today.</p>
+              <div class="result-tags"><span>Custom Platform</span><span>Automation</span></div>
+              <div class="result-actions">
+                <button type="button" class="result-toggle" aria-expanded="false">Quick Breakdown</button>
+                <a href="case-studies/nuvolum-deployment-platform.html" class="result-link">Read Full Case Study &rarr;</a>
+              </div>
+              <div class="result-breakdown" hidden>
+                <div class="result-breakdown-grid">
+                  <div class="result-breakdown-item"><span>Problem</span><p>Site launches were bottlenecked by manual setup and creative production overhead.</p></div>
+                  <div class="result-breakdown-item"><span>Build</span><p>A branded deployment engine that standardized setup, content, and launch operations.</p></div>
+                  <div class="result-breakdown-item"><span>Timeline</span><p>Built to create immediate production leverage, not a giant internal software project.</p></div>
+                  <div class="result-breakdown-item"><span>Outcome</span><p>200+ fast launches and operational leverage that supported major agency growth.</p></div>
+                </div>
+              </div>
+            </article>
 
-        <article class="result-card fade-up delay-2">
-          <div class="result-metric">
-            <span class="metric-n">2/6</span>
-            <span class="metric-l">IBM pitches funded</span>
+            <article class="result-card result-card--slide">
+              <div class="result-metric">
+                <span class="metric-n">30–50<em>%</em></span>
+                <span class="metric-l">Increase in qualified leads</span>
+              </div>
+              <h3>Lead-Generating Attorney Sites</h3>
+              <p class="result-client">UX Owl (Co-Founded)</p>
+              <p>Solo attorneys in Sonoma County with "brochure websites" that generated zero business. Built lead-generating sites + LinkedIn campaigns with custom reporting dashboards tracking which efforts converted.</p>
+              <div class="result-tags"><span>Web Apps</span><span>Analytics</span></div>
+              <div class="result-actions">
+                <button type="button" class="result-toggle" aria-expanded="false">Quick Breakdown</button>
+                <a href="case-studies/ux-owl-sonoma-attorneys.html" class="result-link">Read Full Case Study &rarr;</a>
+              </div>
+              <div class="result-breakdown" hidden>
+                <div class="result-breakdown-grid">
+                  <div class="result-breakdown-item"><span>Problem</span><p>Local firms had brochure sites with weak differentiation and no attribution on lead sources.</p></div>
+                  <div class="result-breakdown-item"><span>Build</span><p>Lead-focused sites, campaign infrastructure, and conversion reporting dashboards.</p></div>
+                  <div class="result-breakdown-item"><span>Timeline</span><p>Designed to create a better first pipeline before layering on bigger systems.</p></div>
+                  <div class="result-breakdown-item"><span>Outcome</span><p>30 to 50 percent more qualified leads with clearer reporting on what drove them.</p></div>
+                </div>
+              </div>
+            </article>
           </div>
-          <h3>Enterprise Video Pitching</h3>
-          <p class="result-client">GoldMail (SaaS)</p>
-          <p>Worked directly with IBM teams to develop persuasive video pitches for internal funding rounds. B2C Avon campaign achieved <strong>13% conversion rate</strong> — well above industry average.</p>
-          <div class="result-tags"><span>Enterprise</span><span>B2B</span></div>
-          <a href="#" class="result-link" style="visibility: hidden; pointer-events: none;">Read Full Case Study &rarr;</a>
-        </article>
+        </div>
+
+        <p class="results-carousel-status" id="resultsCarouselStatus" aria-live="polite">1 / 2</p>
       </div>
     </div>
   </section>
@@ -470,6 +665,47 @@
     </div>
   </section>
 
+  <!-- ══ FIT ══ -->
+  <section class="section fit-section" id="fit">
+    <div class="container">
+      <div class="section-header">
+        <p class="label fade-up">Mutual Fit</p>
+        <h2 class="section-title fade-up delay-1">Some projects move fast. <span class="text-muted">Some should wait.</span></h2>
+        <p class="section-sub fade-up delay-2">The best engagements start with a clear bottleneck, an owner on your side, and a first version that's worth shipping now.</p>
+      </div>
+      <div class="fit-shell fade-up">
+        <div class="fit-toggle" role="tablist" aria-label="Mutual fit tabs">
+          <button type="button" class="fit-tab is-active" id="fit-tab-good" role="tab" data-fit-target="fit-good" aria-selected="true" aria-controls="fit-good">We're a Fit</button>
+          <button type="button" class="fit-tab" id="fit-tab-not" role="tab" data-fit-target="fit-not" aria-selected="false" aria-controls="fit-not" tabindex="-1">Not Yet</button>
+        </div>
+        <div class="fit-grid">
+          <article class="fit-card is-active" id="fit-good" role="tabpanel" aria-labelledby="fit-tab-good" tabindex="0">
+            <p class="fit-card-kicker">Good fit</p>
+            <ul class="fit-list">
+              <li>You can point to a real bottleneck costing time, revenue, or trust.</li>
+              <li>You want a sharp first release, not a giant 12-month rewrite.</li>
+              <li>Someone on your team can own feedback and decisions during the build.</li>
+              <li>You care about outcomes, not just buying dev hours.</li>
+            </ul>
+          </article>
+          <article class="fit-card fit-card--muted" id="fit-not" role="tabpanel" aria-labelledby="fit-tab-not" tabindex="0" hidden>
+            <p class="fit-card-kicker">Not yet</p>
+            <ul class="fit-list">
+              <li>The problem is still vague and changes every time we describe it.</li>
+              <li>You want a bargain-bin build before validating the workflow.</li>
+              <li>No one can own the project internally once it goes live.</li>
+              <li>You need a generalist freelancer more than a scoped systems partner.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="fit-footer">
+          <p>If this sounds like your situation, we can usually map the first version in one call.</p>
+          <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="fitBook" data-cta-location="fit_section_booking">Book the Right-Sized Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ ROI CALCULATOR ══ -->
   <section class="section roi-section" id="roi-planner">
     <div class="container">
@@ -493,17 +729,68 @@
             </div>
           </div>
           <div class="roi-actions">
-            <a href="https://roi.why57.com/?utm_source=why57&utm_medium=section_cta&utm_campaign=main_site_referral" class="btn-primary" data-roi-link="section">Try the ROI Calculator</a>
+            <a href="https://roi.why57.com/?utm_source=why57&utm_medium=section_cta&utm_campaign=main_site_referral" class="btn-primary" id="roiPrimaryLink" data-base-href="https://roi.why57.com/?utm_source=why57&utm_medium=section_cta&utm_campaign=main_site_referral" data-roi-link="section">Try the ROI Calculator</a>
             <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-ghost" id="roiBook">Book a Strategy Call</a>
           </div>
         </div>
         <div class="roi-aside">
-          <p class="roi-aside-kicker">Best for owners asking:</p>
-          <ul class="roi-points">
-            <li>Will custom software actually save enough to justify the build?</li>
-            <li>Should we automate one workflow first or replace the whole process?</li>
-            <li>How fast could this pay back if we get the scope right?</li>
-          </ul>
+          <div class="roi-teaser">
+            <p class="roi-aside-kicker">Run a 30-second estimate</p>
+            <div class="roi-fields">
+              <label class="roi-field" for="roiHoursInput">
+                <span class="roi-field-copy">
+                  <strong>Hours lost each week</strong>
+                  <small>How much manual work should disappear first?</small>
+                </span>
+                <input type="range" min="2" max="40" step="1" value="10" id="roiHoursInput" />
+                <span class="roi-field-value"><strong id="roiHoursValue">10</strong><span>hrs</span></span>
+              </label>
+
+              <label class="roi-field" for="roiRateInput">
+                <span class="roi-field-copy">
+                  <strong>Blended hourly cost</strong>
+                  <small>Payroll, opportunity cost, or contractor equivalent.</small>
+                </span>
+                <input type="range" min="25" max="180" step="5" value="65" id="roiRateInput" />
+                <span class="roi-field-value"><strong id="roiRateValue">$65</strong><span>/hr</span></span>
+              </label>
+
+              <label class="roi-field" for="roiPeopleInput">
+                <span class="roi-field-copy">
+                  <strong>People affected</strong>
+                  <small>How many teammates touch this workflow today?</small>
+                </span>
+                <input type="range" min="1" max="20" step="1" value="4" id="roiPeopleInput" />
+                <span class="roi-field-value"><strong id="roiPeopleValue">4</strong><span>people</span></span>
+              </label>
+            </div>
+
+            <div class="roi-teaser-output">
+              <div class="roi-teaser-metric">
+                <span>Monthly waste</span>
+                <strong id="roiTeaserMonthly">$11,258</strong>
+              </div>
+              <div class="roi-teaser-metric">
+                <span>Annual opportunity</span>
+                <strong id="roiTeaserAnnual">$135,096</strong>
+              </div>
+              <div class="roi-teaser-metric">
+                <span>Suggested first move</span>
+                <strong id="roiTeaserRecommendation">Hybrid build</strong>
+              </div>
+            </div>
+
+            <p class="roi-teaser-note">Directional estimate only. The full calculator lets you pressure-test scope and payback more precisely.</p>
+          </div>
+
+          <div class="roi-points-card">
+            <p class="roi-aside-kicker">Best for owners asking:</p>
+            <ul class="roi-points">
+              <li>Will custom software actually save enough to justify the build?</li>
+              <li>Should we automate one workflow first or replace the whole process?</li>
+              <li>How fast could this pay back if we get the scope right?</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -518,64 +805,149 @@
           Don't take our word for it.
         </h2>
       </div>
-      <div class="testi-grid">
+      <div class="testi-carousel fade-up">
+        <div class="testi-carousel-head">
+          <div>
+            <p class="testi-carousel-kicker">Recommendation archive</p>
+            <p class="testi-carousel-copy">A broader mix of direct client feedback and long-form recommendations from people who've worked with us closely.</p>
+          </div>
+          <div class="testi-carousel-controls" aria-label="Testimonial carousel controls">
+            <button type="button" class="testi-carousel-button" id="testiCarouselPrev" aria-label="Previous testimonials" disabled>Prev</button>
+            <button type="button" class="testi-carousel-button" id="testiCarouselNext" aria-label="Next testimonials">Next</button>
+          </div>
+        </div>
 
-        <figure class="testi-card fade-up">
-          <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-          <blockquote>"Gera is not just a developer — he's a technologist, a designer, and an innovator. He has an uncanny ability to understand a business problem and translate it directly into software that solves it. Working with Why57 felt like having a CTO on demand."</blockquote>
-          <figcaption>
-            <div class="testi-avatar" style="background:linear-gradient(135deg,#E04C28,#FF7940);">
-              <span>TH</span>
-            </div>
-            <div class="testi-author-info">
-              <strong>Tom Hakel</strong>
-              <span>CEO, Synergy Marketing Associates</span>
-            </div>
-          </figcaption>
-        </figure>
+        <div class="testi-carousel-window" id="testiCarousel" tabindex="0" aria-label="Client testimonials">
+          <div class="testi-track">
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"The review system Gera built transformed our agents' online presence overnight. We went from virtually no reviews to thousands — and our agents are now winning clients on reputation instead of price. It pays for itself every single month."</blockquote>
+              <figcaption>
+                <div class="testi-avatar testi-avatar--logo">
+                  <img src="images/hfc_logo_v2.png" alt="Health for California" class="testi-company-logo" />
+                </div>
+                <div class="testi-author-info">
+                  <strong>Health for California</strong>
+                  <span>Insurance Marketplace Client</span>
+                </div>
+              </figcaption>
+            </figure>
 
-        <figure class="testi-card fade-up delay-1">
-          <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-          <blockquote>"The review system Gera built transformed our agents' online presence overnight. We went from virtually no reviews to thousands — and our agents are now winning clients on reputation instead of price. It pays for itself every single month."</blockquote>
-          <figcaption>
-            <div class="testi-avatar testi-avatar--logo">
-              <img src="images/hfc_logo_v2.png" alt="Health for California" class="testi-company-logo" />
-            </div>
-            <div class="testi-author-info">
-              <strong>Health for California</strong>
-              <span>Insurance Marketplace Client</span>
-            </div>
-          </figcaption>
-        </figure>
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"What used to take weeks per client now takes a single afternoon. Gera built us a deployment system that scaled our agency from 7 to 50 people. The software literally paid for itself in the first month."</blockquote>
+              <figcaption>
+                <div class="testi-avatar" style="background:linear-gradient(135deg,#2d2d2d,#555);">
+                  <span>NV</span>
+                </div>
+                <div class="testi-author-info">
+                  <strong>Nuvolum</strong>
+                  <span>Digital Marketing Agency</span>
+                </div>
+              </figcaption>
+            </figure>
 
-        <figure class="testi-card fade-up delay-2">
-          <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-          <blockquote>"What used to take weeks per client now takes a single afternoon. Gera built us a deployment system that scaled our agency from 7 to 50 people. The software literally paid for itself in the first month."</blockquote>
-          <figcaption>
-            <div class="testi-avatar" style="background:linear-gradient(135deg,#2d2d2d,#555);">
-              <span>NV</span>
-            </div>
-            <div class="testi-author-info">
-              <strong>Nuvolum</strong>
-              <span>Digital Marketing Agency</span>
-            </div>
-          </figcaption>
-        </figure>
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"Our website traffic hit all-time highs after working with Gera. He overhauled our site, built our SEO strategy, and introduced systems that boosted team productivity by 27%. He thinks like a business owner — not just a developer."</blockquote>
+              <figcaption>
+                <div class="testi-avatar testi-avatar--logo">
+                  <img src="images/DriveSavers_logo.png" alt="DriveSavers" class="testi-company-logo" />
+                </div>
+                <div class="testi-author-info">
+                  <strong>DriveSavers</strong>
+                  <span>Data Recovery Company</span>
+                </div>
+              </figcaption>
+            </figure>
 
-        <figure class="testi-card fade-up delay-1">
-          <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-          <blockquote>"Our website traffic hit all-time highs after working with Gera. He overhauled our site, built our SEO strategy, and introduced systems that boosted team productivity by 27%. He thinks like a business owner — not just a developer."</blockquote>
-          <figcaption>
-            <div class="testi-avatar testi-avatar--logo">
-              <img src="images/DriveSavers_logo.png" alt="DriveSavers" class="testi-company-logo" />
-            </div>
-            <div class="testi-author-info">
-              <strong>DriveSavers</strong>
-              <span>Data Recovery Company</span>
-            </div>
-          </figcaption>
-        </figure>
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"Gera is an incredible collection of technologist, designer and innovator. He has a deep sense of business process and develops unique, functional websites and software tool sets that simply work."</blockquote>
+              <figcaption>
+                <div class="testi-avatar" style="background:linear-gradient(135deg,#E04C28,#FF7940);">
+                  <span>TH</span>
+                </div>
+                <div class="testi-author-info">
+                  <strong>Tom Hakel</strong>
+                  <span>Chief Strategy Officer</span>
+                </div>
+              </figcaption>
+            </figure>
 
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"We hired Gera to help us speed up our website and optimize our plug-ins. He did that and much more. We now have a fast website, a better user experience, and a site that's easier and more fun to manage."</blockquote>
+              <figcaption>
+                <div class="testi-avatar" style="background:linear-gradient(135deg,#4c5a7d,#8aa0d6);">
+                  <span>JH</span>
+                </div>
+                <div class="testi-author-info">
+                  <strong>Julie Halpin</strong>
+                  <span>Business Owner</span>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"At Nuvolum, I could always count on him to produce an excellent product and give me expert support in web design and SEO. His commitment to excellence and great ideas made him a pleasure to work with."</blockquote>
+              <figcaption>
+                <div class="testi-avatar" style="background:linear-gradient(135deg,#905f37,#d59a5e);">
+                  <span>JS</span>
+                </div>
+                <div class="testi-author-info">
+                  <strong>Jenna Sherron Stutsman</strong>
+                  <span>Real Estate Broker</span>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"Gera is an end-to-end developer who checks all the boxes you need, and didn't know. He pairs top-tier development skills with sharp business acumen, upbeat energy, and clear communication."</blockquote>
+              <figcaption>
+                <div class="testi-avatar" style="background:linear-gradient(135deg,#1d4b52,#52a6b3);">
+                  <span>MV</span>
+                </div>
+                <div class="testi-author-info">
+                  <strong>Mark Vargus</strong>
+                  <span>Financial Analyst at CBRE</span>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"Gera created a campaign for our North Bay Networking Group that reached the highest response yet for our Eventbrite customers. He understood our brand, delivered exceptional results, and made it clear he cared about outcomes."</blockquote>
+              <figcaption>
+                <div class="testi-avatar" style="background:linear-gradient(135deg,#5b3a7d,#b07ce1);">
+                  <span>GJ</span>
+                </div>
+                <div class="testi-author-info">
+                  <strong>Greg Jons</strong>
+                  <span>Founder</span>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testi-card testi-slide">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"Gera is a strategist. What makes him such a leader is his high-level mindset and ability to see the larger picture. He makes sure programming time is spent effectively while following a real methodology."</blockquote>
+              <figcaption>
+                <div class="testi-avatar" style="background:linear-gradient(135deg,#374f2c,#7dbb5c);">
+                  <span>NB</span>
+                </div>
+                <div class="testi-author-info">
+                  <strong>Nate Bauer</strong>
+                  <span>Digital Marketer at Exchange Bank</span>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <p class="testi-carousel-status" id="testiCarouselStatus" aria-live="polite">1 / 9</p>
       </div>
     </div>
   </section>
@@ -676,6 +1048,12 @@
       </div>
     </div>
   </section>
+
+  <div class="mobile-sticky-cta" aria-label="Quick mobile actions">
+    <a href="tel:+17076945624" class="mobile-sticky-link mobile-sticky-link--ghost">Call</a>
+    <a href="https://roi.why57.com/?utm_source=why57&utm_medium=mobile_sticky&utm_campaign=main_site_referral" class="mobile-sticky-link" data-base-href="https://roi.why57.com/?utm_source=why57&utm_medium=mobile_sticky&utm_campaign=main_site_referral" data-roi-link="mobile_sticky">ROI</a>
+    <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="mobile-sticky-link mobile-sticky-link--primary" data-cta-location="mobile_sticky_booking">Book Call</a>
+  </div>
 
   <!-- ══ FOOTER ══ -->
   <footer class="footer">
