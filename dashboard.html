@@ -181,10 +181,21 @@
     }
     .section-label::before { content: ''; width: 12px; height: 1px; background: var(--orange); }
     .section-desc {
-      font-size: .82rem; color: var(--muted); margin: -4px 0 20px; max-width: 680px; line-height: 1.65;
+      font-size: .84rem; color: var(--muted); margin: 2px 0 22px; max-width: 680px; line-height: 1.7;
     }
-    .chart-subtitle { font-size: .75rem; color: var(--dim); margin-top: -14px; margin-bottom: 18px; line-height: 1.5; }
-    .metric-tip { font-size: .69rem; color: var(--dim); margin-top: 6px; line-height: 1.4; }
+    /* Insight callout — above table pairs */
+    .insight-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 12px;
+    }
+    @media (max-width: 900px) { .insight-row { grid-template-columns: 1fr; } }
+    .insight-box {
+      background: rgba(224,76,40,0.06); border: 1px solid rgba(224,76,40,0.14);
+      border-radius: var(--r); padding: 14px 18px;
+    }
+    .insight-box strong { display: block; font-size: .78rem; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: .02em; }
+    .insight-box p { font-size: .76rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .chart-subtitle { font-size: .78rem; color: var(--muted); margin: -12px 0 18px; line-height: 1.6; }
+    .metric-tip { font-size: .7rem; color: var(--dim); margin-top: 6px; line-height: 1.45; border-top: 1px solid var(--border); padding-top: 8px; }
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -406,32 +417,47 @@
       </div>
 
       <!-- Charts -->
+      <div class="insight-row" style="margin-bottom:12px;">
+        <div class="insight-box">
+          <strong>Daily Sessions Trend</strong>
+          <p>A rising line means your content and outreach are working. Sudden dips can signal algorithm changes, broken pages, or seasonal slowdowns — worth investigating fast.</p>
+        </div>
+        <div class="insight-box">
+          <strong>Traffic by Channel</strong>
+          <p>Organic = free Google traffic you've earned. Direct = people who already know you. Referral = other sites linking to you. Over-reliance on one channel is a business risk.</p>
+        </div>
+      </div>
       <div class="charts-grid">
         <div class="chart-card">
           <h3>Daily Sessions Trend</h3>
-          <p class="chart-subtitle">A rising trend means your content and outreach are working. Sudden dips can signal algorithm changes, broken pages, or seasonal slowdowns — worth investigating quickly.</p>
           <div class="chart-wrap">
             <canvas id="trend-chart"></canvas>
           </div>
         </div>
         <div class="chart-card">
           <h3>Traffic by Channel</h3>
-          <p class="chart-subtitle">Where your visitors come from. Organic = free Google traffic you've earned. Direct = people who already know you. Referral = other sites sending you visitors. Over-reliance on one channel is a risk.</p>
           <div class="chart-wrap">
             <canvas id="channel-chart"></canvas>
           </div>
         </div>
       </div>
 
-      <!-- Tables -->
+      <!-- Tables: pages + queries -->
+      <div class="insight-row">
+        <div class="insight-box">
+          <strong>Most Visited Pages</strong>
+          <p>Your highest-traffic pages across all channels. These are your best performers — keep them updated and create more content like them.</p>
+        </div>
+        <div class="insight-box">
+          <strong>Top Search Queries</strong>
+          <p>The exact words people type into Google to find you. High impressions + low CTR = rewrite that page's title tag. Low position = invest more in that topic.</p>
+        </div>
+      </div>
       <div class="tables-grid">
         <div class="table-card">
           <div class="table-header">
             <h3>Most Visited Pages</h3>
-            <span title="All traffic sources — GA4">all traffic</span>
-          </div>
-          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
-            Your highest-traffic pages across all sources. These are your best performers — protect them, keep them updated, and create more content like them.
+            <span>all traffic · GA4</span>
           </div>
           <table>
             <thead><tr><th>Page</th><th>Sessions</th><th>Views</th></tr></thead>
@@ -441,10 +467,7 @@
         <div class="table-card">
           <div class="table-header">
             <h3>Top Search Queries</h3>
-            <span title="Google Search Console">organic only</span>
-          </div>
-          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
-            The exact words people type into Google to find you. Low CTR on a high-impression query = opportunity to rewrite your title tag. Low position = invest in that topic.
+            <span>organic · Search Console</span>
           </div>
           <table>
             <thead><tr><th>Query</th><th>Clicks</th><th>CTR</th><th>Pos.</th></tr></thead>
@@ -453,15 +476,22 @@
         </div>
       </div>
 
-      <!-- SC pages + Devices -->
+      <!-- Tables: SC pages + devices -->
+      <div class="insight-row">
+        <div class="insight-box">
+          <strong>Pages Winning in Search</strong>
+          <p>Which pages Google sends organic traffic to — your SEO winners. High impressions + low clicks means the page needs a better title or meta description.</p>
+        </div>
+        <div class="insight-box">
+          <strong>Visitor Devices</strong>
+          <p>How people access your site. If mobile dominates, your mobile experience is your most important design priority.</p>
+        </div>
+      </div>
       <div class="tables-grid">
         <div class="table-card">
           <div class="table-header">
             <h3>Pages Winning in Search</h3>
-            <span title="Google Search Console">organic clicks</span>
-          </div>
-          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
-            Which of your pages Google is sending the most organic traffic to — your SEO winners. A page with high impressions but low clicks needs a better title or meta description.
+            <span>organic · Search Console</span>
           </div>
           <table>
             <thead><tr><th>Page</th><th>Clicks</th><th>Impr.</th><th>CTR</th></tr></thead>
@@ -471,10 +501,7 @@
         <div class="table-card">
           <div class="table-header">
             <h3>Visitor Devices</h3>
-            <span title="GA4 sessions">by sessions</span>
-          </div>
-          <div style="padding:0 22px 10px;font-size:.72rem;color:var(--dim);line-height:1.5;border-bottom:1px solid var(--border);">
-            How people are accessing your site. If mobile is dominant, your mobile experience must be flawless. Use this to prioritize where you test design changes.
+            <span>by sessions · GA4</span>
           </div>
           <table>
             <thead><tr><th>Device</th><th>Sessions</th><th>Share</th></tr></thead>
