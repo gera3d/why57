@@ -1,0 +1,30 @@
+# Claude Code internals
+.claude/
+
+# Python scratch scripts (utility files, not part of the site)
+*.py
+__pycache__/
+*.pyc
+
+# Scratch / temp files
+*.txt
+crop_out.txt
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Node (if ever used)
+node_modules/
