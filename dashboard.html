@@ -902,6 +902,21 @@
     function renderGA4Overview(data) {
       const m = data.totals?.[0]?.metricValues || data.rows?.[0]?.metricValues || [];
       const get = (i) => parseFloat(m[i]?.value || 0);
+      const hasData = get(0) > 0 || get(1) > 0;
+
+      if (!hasData) {
+        document.getElementById('ga4-metrics').innerHTML = `
+          <div class="metric-card" style="grid-column:1/-1;text-align:center;padding:32px 24px;">
+            <div style="font-size:1.5rem;margin-bottom:12px;">📊</div>
+            <div style="font-size:.95rem;font-weight:600;margin-bottom:8px;">GA4 is collecting data</div>
+            <div style="font-size:.8rem;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.6;">
+              Your Google Analytics tag is installed and firing correctly. Traffic data
+              typically appears within 24–48 hours of the first visit. Check back tomorrow.
+            </div>
+          </div>`;
+        return;
+      }
+
       document.getElementById('ga4-metrics').innerHTML = [
         renderMetricCard('Users', fmt(get(0)), `${rangeDays}-day total`, 'Unique people who visited — your real audience size'),
         renderMetricCard('Sessions', fmt(get(1)), `${rangeDays}-day total`, 'Total visits including return trips by the same person'),
@@ -915,7 +930,19 @@
        RENDER: SC OVERVIEW
     ═══════════════════════════════════════════════ */
     function renderSCOverview(data) {
-      const r = data.rows?.[0] || {};
+      if (!data.rows?.length) {
+        document.getElementById('sc-metrics').innerHTML = `
+          <div class="metric-card" style="grid-column:1/-1;text-align:center;padding:32px 24px;">
+            <div style="font-size:1.5rem;margin-bottom:12px;">🔍</div>
+            <div style="font-size:.95rem;font-weight:600;margin-bottom:8px;">No search data yet</div>
+            <div style="font-size:.8rem;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.6;">
+              Search Console data appears once Google has crawled and indexed your pages.
+              This typically takes a few days to a few weeks for a new site.
+            </div>
+          </div>`;
+        return;
+      }
+      const r = data.rows[0];
       document.getElementById('sc-metrics').innerHTML = [
         renderMetricCard('Clicks', fmt(r.clicks), `${rangeDays}-day total`, 'Visitors arriving from Google search results'),
         renderMetricCard('Impressions', fmt(r.impressions), `${rangeDays}-day total`, 'Times your site appeared in search — your visibility footprint'),
