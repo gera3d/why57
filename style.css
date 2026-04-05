@@ -388,6 +388,100 @@ a{color:inherit;text-decoration:none;}
 .process-step p{font-size:.875rem;color:var(--muted);line-height:1.75;}
 
 /* ════════════════════════════════
+   ROI BRIDGE
+════════════════════════════════ */
+.roi-section{
+  background:
+    radial-gradient(circle at top right, rgba(var(--glow),0.14), transparent 38%),
+    linear-gradient(180deg, rgba(9,9,15,0.96), rgba(7,7,13,1));
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.roi-card{
+  display:grid;
+  grid-template-columns:minmax(0,1.7fr) minmax(280px,0.9fr);
+  gap:24px;
+  padding:40px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+  border:1px solid rgba(var(--glow),0.2);
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.35);
+}
+.roi-card-copy{min-width:0;}
+.roi-copy{
+  max-width:680px;
+  font-size:.98rem;
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:24px;
+}
+.roi-metrics{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:12px;
+  margin-bottom:24px;
+}
+.roi-metric{
+  padding:16px 18px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.roi-metric-label{
+  display:block;
+  font-size:.7rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--dim);
+  margin-bottom:6px;
+}
+.roi-metric-value{
+  display:block;
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--text);
+}
+.roi-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.roi-aside{
+  padding:24px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:16px;
+  align-self:stretch;
+}
+.roi-aside-kicker{
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:14px;
+}
+.roi-points{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.roi-points li{
+  position:relative;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:.88rem;
+  line-height:1.7;
+}
+.roi-points li::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  color:var(--orange);
+}
+
+/* ════════════════════════════════
    TESTIMONIALS — 2x2 grid
 ════════════════════════════════ */
 .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -573,6 +667,8 @@ a{color:inherit;text-decoration:none;}
   .results-hero-grid,.results-grid{grid-template-columns:1fr;}
   .process-steps{grid-template-columns:1fr;gap:12px;}
   .process-arrow{display:none;}
+  .roi-card{grid-template-columns:1fr;padding:28px;}
+  .roi-metrics{grid-template-columns:1fr 1fr 1fr;}
   .testi-grid{grid-template-columns:1fr;}
   .team-grid{grid-template-columns:1fr;}
 
@@ -654,6 +750,22 @@ a{color:inherit;text-decoration:none;}
   .process-step p{font-size:.8rem;}
   .step-num{font-size:.62rem;}
 
+  /* ROI */
+  .roi-card{padding:22px 18px;border-radius:16px;}
+  .roi-copy{font-size:.86rem;line-height:1.7;margin-bottom:18px;}
+  .roi-metrics{grid-template-columns:1fr;gap:8px;margin-bottom:18px;}
+  .roi-metric{padding:14px 16px;border-radius:10px;}
+  .roi-metric-value{font-size:.96rem;}
+  .roi-actions{flex-direction:column;}
+  .roi-actions .btn-primary,
+  .roi-actions .btn-ghost{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+  .roi-aside{padding:18px;border-radius:12px;}
+  .roi-points li{font-size:.8rem;line-height:1.65;}
+
   /* Testimonials */
   .testi-card{padding:22px 18px;gap:12px;}
   .testi-card blockquote{font-size:.84rem;line-height:1.7;}
@@ -696,4 +808,3 @@ a{color:inherit;text-decoration:none;}
   .label{font-size:.65rem;letter-spacing:.12em;}
   .section-header{margin-bottom:28px;}
 }
-
