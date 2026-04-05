@@ -295,6 +295,217 @@
       font-size: .75rem; color: var(--dim);
     }
     .dash-footer a { color: var(--orange); }
+
+    /* ── View tabs (Analytics | Experiments) ── */
+    .view-tabs {
+      display: flex; gap: 4px; margin-top: 24px;
+      border-bottom: 1px solid var(--border); padding-bottom: 0;
+    }
+    .view-tab {
+      padding: 8px 18px 10px; border-radius: 8px 8px 0 0;
+      border: 1px solid transparent; border-bottom: none;
+      background: transparent; color: var(--muted);
+      font-family: var(--font); font-size: .82rem; font-weight: 500;
+      cursor: pointer; transition: all .2s; position: relative; bottom: -1px;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      background: var(--bg-card); border-color: var(--border);
+      border-bottom-color: var(--bg); color: var(--text);
+    }
+    .view-tab .tab-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; border-radius: 5px; margin-left: 6px;
+      font-size: .65rem; font-weight: 700;
+      background: rgba(224,76,40,0.15); color: var(--orange);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: block; }
+
+    /* ── Experiments panel ── */
+    .exp-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 28px; padding-top: 36px;
+    }
+    .exp-header-left h2 { font-size: 1.1rem; font-weight: 700; letter-spacing: -.015em; }
+    .exp-header-left p  { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+    .exp-summary { display: flex; gap: 20px; align-items: center; }
+    .exp-sum-item { font-size: .78rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .exp-sum-dot  { width: 7px; height: 7px; border-radius: 50%; }
+    .exp-sum-dot.running   { background: #4ade80; box-shadow: 0 0 6px rgba(74,222,128,.5); }
+    .exp-sum-dot.completed { background: var(--dim); }
+    .exp-sum-dot.draft     { background: rgba(255,121,64,.6); }
+
+    /* ── Experiment card ── */
+    .exp-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r-lg); margin-bottom: 16px; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .exp-card:hover { border-color: var(--border-h); }
+    .exp-card-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 22px 24px 18px; gap: 16px;
+    }
+    .exp-card-title { font-size: .95rem; font-weight: 700; letter-spacing: -.01em; }
+    .exp-card-hypo  { font-size: .78rem; color: var(--muted); margin-top: 4px; line-height: 1.55; max-width: 560px; }
+    .exp-card-meta  { font-size: .72rem; color: var(--dim); margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .exp-card-meta span { display: flex; align-items: center; gap: 4px; }
+    .exp-status-badge {
+      flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 20px; font-size: .7rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+    }
+    .exp-status-badge.running   { background: rgba(74,222,128,.12);  color: #4ade80;  border: 1px solid rgba(74,222,128,.2); }
+    .exp-status-badge.completed { background: rgba(237,237,239,.06); color: var(--muted); border: 1px solid var(--border); }
+    .exp-status-badge.draft     { background: rgba(255,121,64,.12);  color: var(--amber); border: 1px solid rgba(255,121,64,.25); }
+    .exp-status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .exp-status-badge.running .exp-status-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity:1; } 50% { opacity:.35; } }
+
+    /* ── Metrics table inside card ── */
+    .exp-metrics {
+      border-top: 1px solid var(--border); padding: 0 24px 20px;
+    }
+    .exp-metrics-label {
+      font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dim); padding: 14px 0 10px;
+    }
+    .exp-metric-row {
+      display: grid; grid-template-columns: 180px 90px 90px 100px 100px 120px auto;
+      gap: 8px; align-items: center; padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: .8rem;
+    }
+    .exp-metric-row:last-child { border-bottom: none; }
+    .exp-metric-row.header-row {
+      font-size: .68rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--dim); padding: 6px 0 8px;
+    }
+    @media (max-width: 900px) {
+      .exp-metric-row { grid-template-columns: 1fr 70px 70px 80px 90px 100px auto; gap: 6px; font-size: .74rem; }
+    }
+    @media (max-width: 640px) {
+      .exp-metric-row { grid-template-columns: 1fr 60px 60px 70px; }
+      .exp-metric-row > *:nth-child(n+5) { display: none; }
+    }
+    .exp-metric-name { color: var(--text); font-weight: 500; }
+    .exp-metric-val  { color: var(--muted); text-align: right; }
+    .exp-lift        { text-align: right; font-weight: 600; }
+    .exp-lift.pos    { color: #4ade80; }
+    .exp-lift.neg    { color: #f87171; }
+    .exp-lift.neu    { color: var(--dim); }
+    .exp-pval        { text-align: right; font-size: .75rem; color: var(--dim); }
+    .exp-sig-bar     { height: 5px; border-radius: 3px; background: var(--border); overflow: hidden; }
+    .exp-sig-fill    { height: 100%; border-radius: 3px; transition: width .6s var(--ease); }
+    .exp-sig-fill.sig   { background: #4ade80; }
+    .exp-sig-fill.insig { background: var(--dim); }
+    .exp-verdict     { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; text-align: right; }
+    .exp-verdict.winner  { color: #4ade80; }
+    .exp-verdict.loser   { color: #f87171; }
+    .exp-verdict.neutral { color: var(--dim); }
+    .exp-verdict.guardrail-fail { color: #f87171; }
+
+    /* ── Traffic split bar ── */
+    .exp-split {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 24px; border-top: 1px solid var(--border);
+      font-size: .75rem; color: var(--muted);
+    }
+    .exp-split-label { white-space: nowrap; }
+    .exp-split-bar   { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; display: flex; }
+    .exp-split-seg   { height: 100%; }
+    .exp-split-seg.control { background: rgba(237,237,239,.3); }
+    .exp-split-seg.variant { background: var(--orange); }
+    .exp-split-users { white-space: nowrap; }
+
+    /* ── Time series mini chart ── */
+    .exp-chart-wrap {
+      padding: 16px 24px 20px; border-top: 1px solid var(--border);
+    }
+    .exp-chart-label {
+      font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 10px;
+    }
+    .exp-chart-canvas { height: 80px; }
+
+    /* ── Actions bar ── */
+    .exp-actions {
+      display: flex; gap: 8px; padding: 14px 24px;
+      border-top: 1px solid var(--border); align-items: center;
+    }
+    .btn-exp-action {
+      padding: 6px 14px; border-radius: 7px; font-family: var(--font);
+      font-size: .78rem; font-weight: 600; cursor: pointer; transition: all .2s;
+    }
+    .btn-exp-rollout {
+      background: rgba(74,222,128,.12); color: #4ade80;
+      border: 1px solid rgba(74,222,128,.25);
+    }
+    .btn-exp-rollout:hover { background: rgba(74,222,128,.2); }
+    .btn-exp-stop {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-exp-stop:hover { border-color: var(--border-h); color: var(--text); }
+    .btn-exp-firebase {
+      background: transparent; color: var(--dim);
+      border: 1px solid transparent; margin-left: auto;
+      font-weight: 500;
+    }
+    .btn-exp-firebase:hover { color: var(--orange); }
+    .exp-actions-note { font-size: .72rem; color: var(--dim); margin-left: 4px; }
+
+    /* ── Empty state ── */
+    .exp-empty {
+      text-align: center; padding: 64px 24px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+    }
+    .exp-empty-icon { font-size: 2.4rem; margin-bottom: 16px; opacity: .5; }
+    .exp-empty h3   { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .exp-empty p    { font-size: .82rem; color: var(--muted); max-width: 420px; margin: 0 auto 24px; line-height: 1.65; }
+    .btn-exp-start  {
+      padding: 10px 22px; border-radius: 8px; border: none;
+      background: var(--orange); color: #fff;
+      font-family: var(--font); font-size: .85rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s; text-decoration: none;
+      display: inline-block;
+    }
+    .btn-exp-start:hover { opacity: .88; }
+
+    /* ── Guardrail section ── */
+    .exp-guardrails {
+      border-top: 1px solid var(--border); padding: 14px 24px 18px;
+    }
+    .exp-guardrails-label {
+      font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 10px;
+    }
+    .exp-guardrail-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .78rem; color: var(--muted); margin-bottom: 6px;
+    }
+    .exp-guardrail-row:last-child { margin-bottom: 0; }
+    .exp-guardrail-icon { font-size: .9rem; width: 18px; text-align: center; }
+
+    /* ── CLI Quick-ref box ── */
+    .exp-cli-box {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 20px 24px; margin-top: 28px;
+    }
+    .exp-cli-box h4 { font-size: .82rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+    .exp-cli-commands { display: flex; flex-direction: column; gap: 8px; }
+    .exp-cli-cmd {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: .76rem;
+    }
+    .exp-cli-cmd code {
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      border-radius: 5px; padding: 4px 8px; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: .73rem; color: var(--amber); white-space: nowrap; flex-shrink: 0;
+    }
+    .exp-cli-cmd span { color: var(--dim); padding-top: 2px; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -328,6 +539,19 @@
       <div class="label">Analytics</div>
       <h1>Site Performance</h1>
       <p>GA4 + Search Console — why57.com</p>
+      <div class="view-tabs">
+        <button class="view-tab active" onclick="switchView('analytics', this)">
+          Analytics
+        </button>
+        <button class="view-tab" onclick="switchView('experiments', this)">
+          Experiments
+          <span class="tab-badge" id="exp-running-count">—</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Range tabs — only shown in analytics view -->
+    <div id="range-tabs-row" style="margin-bottom:28px;">
       <div class="range-tabs">
         <button class="range-tab active" data-days="28" onclick="setRange(28, this)">28 days</button>
         <button class="range-tab" data-days="14" onclick="setRange(14, this)">14 days</button>
@@ -388,6 +612,8 @@
     <!-- Error message -->
     <div class="error-msg" id="error-msg"></div>
 
+    <!-- ═══ ANALYTICS VIEW ═══ -->
+    <div class="view-panel active" id="view-analytics">
     <!-- Dashboard -->
     <div id="dashboard">
 
@@ -511,6 +737,66 @@
       </div>
 
     </div><!-- /dashboard -->
+    </div><!-- /view-analytics -->
+
+    <!-- ═══ EXPERIMENTS VIEW ═══ -->
+    <div class="view-panel" id="view-experiments">
+
+      <div class="exp-header">
+        <div class="exp-header-left">
+          <h2>Split Tests</h2>
+          <p>Firebase A/B Testing — Remote Config experiments running on why57.com</p>
+        </div>
+        <div class="exp-summary">
+          <div class="exp-sum-item"><span class="exp-sum-dot running"></span><span id="exp-count-running">0 running</span></div>
+          <div class="exp-sum-item"><span class="exp-sum-dot completed"></span><span id="exp-count-completed">0 completed</span></div>
+          <div class="exp-sum-item"><span class="exp-sum-dot draft"></span><span id="exp-count-draft">0 draft</span></div>
+        </div>
+      </div>
+
+      <!-- Experiment cards rendered by experiments-dashboard.js -->
+      <div id="exp-cards-container">
+
+        <!-- ── Skeleton / loading state ── -->
+        <div class="exp-card" id="exp-loading-card">
+          <div class="exp-card-head">
+            <div>
+              <div class="exp-card-title" style="color:var(--dim);">Loading experiment data…</div>
+              <div class="exp-card-hypo" style="margin-top:8px;"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /exp-cards-container -->
+
+      <!-- CLI quick-reference — always visible -->
+      <div class="exp-cli-box">
+        <h4>CLI Quick Reference — Configure experiments from your terminal</h4>
+        <div class="exp-cli-commands">
+          <div class="exp-cli-cmd">
+            <code>firebase remoteconfig:get -o experiments/rc-snapshot.json</code>
+            <span>Download current Remote Config (all parameters + values) to a local file</span>
+          </div>
+          <div class="exp-cli-cmd">
+            <code>firebase remoteconfig:set experiments/rc-active.json</code>
+            <span>Push a new config template — use to roll out a winning variant to 100% of users</span>
+          </div>
+          <div class="exp-cli-cmd">
+            <code>firebase remoteconfig:versions:list</code>
+            <span>List all published versions — find a version number to roll back to</span>
+          </div>
+          <div class="exp-cli-cmd">
+            <code>firebase remoteconfig:rollback --version-number 5</code>
+            <span>Instantly revert Remote Config to a previous version</span>
+          </div>
+          <div class="exp-cli-cmd">
+            <code>firebase open remoteconfig</code>
+            <span>Open Firebase Remote Config console in browser — create/manage experiments here</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /view-experiments -->
 
     <div class="dash-footer">
       <span>why57.com — private dashboard</span>
@@ -1129,6 +1415,29 @@
         </tr>`;
       }).join('');
     }
+
+    /* ── View tab switching ── */
+    function switchView(view, btn) {
+      // Toggle tab buttons
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Toggle panels
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('view-' + view).classList.add('active');
+
+      // Show/hide range tabs (only relevant for analytics)
+      const rangeRow = document.getElementById('range-tabs-row');
+      if (rangeRow) rangeRow.style.display = (view === 'analytics') ? '' : 'none';
+
+      // Trigger experiment data load on first switch
+      if (view === 'experiments' && typeof window.loadExperiments === 'function') {
+        window.loadExperiments(accessToken, cfg);
+      }
+    }
   </script>
+
+  <!-- Experiments dashboard: renders experiment cards from GA4 event data -->
+  <script src="experiments-dashboard.js"></script>
 </body>
 </html>

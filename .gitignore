@@ -26,5 +26,8 @@ crop_out.txt
 .env.local
 .env.*.local
 
+# Firebase config (real values injected by CI — see site-config.example.js)
+site-config.js
+
 # Node (if ever used)
 node_modules/
