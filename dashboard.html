@@ -618,7 +618,7 @@
             if (response.error) { showError('OAuth error: ' + response.error); return; }
             accessToken = response.access_token;
             // Persist token for the session (expires_in is in seconds, typically 3600)
-            sessionStorage.setItem(TOKEN_KEY, JSON.stringify({
+            localStorage.setItem(TOKEN_KEY, JSON.stringify({
               token: accessToken,
               expiry: Date.now() + (response.expires_in || 3600) * 1000 - 60000, // 1 min buffer
             }));
@@ -632,7 +632,7 @@
     // Restore session token on load — skip sign-in if still valid
     function restoreToken() {
       try {
-        const saved = JSON.parse(sessionStorage.getItem(TOKEN_KEY));
+        const saved = JSON.parse(localStorage.getItem(TOKEN_KEY));
         if (saved && saved.token && saved.expiry > Date.now()) {
           accessToken = saved.token;
           updateAuthUI(true);
@@ -665,7 +665,7 @@
         // Sign out
         google.accounts.oauth2.revoke(accessToken, () => {});
         accessToken = null;
-        sessionStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(TOKEN_KEY);
         updateAuthUI(false);
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('auth-required').style.display = 'block';
