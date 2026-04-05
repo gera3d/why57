@@ -80,7 +80,41 @@
         ],
         "sameAs": [
           "https://share.google/WOtVrd4zFFLoNMDso"
-        ]
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software & Automation Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom Web Applications"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Workflow Automation Systems"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Client Portals"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Review Growth Engines"
+              }
+            }
+          ]
+        }
       },
       {
         "@type": "Person",
@@ -384,9 +418,8 @@
           <h3>Lead-Generating Attorney Sites</h3>
           <p class="result-client">UX Owl (Co-Founded)</p>
           <p>Solo attorneys in Sonoma County with "brochure websites" that generated zero business. Built lead-generating sites + LinkedIn campaigns with custom reporting dashboards tracking which efforts converted.</p>
-          <a href="case-studies/ux-owl-sonoma-attorneys.html" style="color:var(--orange); font-size: 0.9rem; margin-top: 1rem; display: inline-block;">Read Sonoma County Case Study &rarr;</a>
-          <br>
-          <div class="result-tags" style="margin-top: 0.5rem;"><span>Web Apps</span><span>Analytics</span></div>
+          <div class="result-tags"><span>Web Apps</span><span>Analytics</span></div>
+          <a href="case-studies/ux-owl-sonoma-attorneys.html" class="result-link">Read Full Case Study &rarr;</a>
         </article>
 
         <article class="result-card fade-up delay-2">
@@ -398,6 +431,7 @@
           <p class="result-client">GoldMail (SaaS)</p>
           <p>Worked directly with IBM teams to develop persuasive video pitches for internal funding rounds. B2C Avon campaign achieved <strong>13% conversion rate</strong> — well above industry average.</p>
           <div class="result-tags"><span>Enterprise</span><span>B2B</span></div>
+          <a href="#" class="result-link" style="visibility: hidden; pointer-events: none;">Read Full Case Study &rarr;</a>
         </article>
       </div>
     </div>
@@ -439,7 +473,6 @@
         <p class="label fade-up">What Clients Say</p>
         <h2 class="section-title fade-up delay-1" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
           Don't take our word for it.
-          <a href="https://share.google/WOtVrd4zFFLoNMDso" target="_blank" rel="noopener" class="text-muted" style="font-size: 1.2rem; text-decoration: underline; font-weight: 500;">Read our verified Google Reviews &rarr;</a>
         </h2>
       </div>
       <div class="testi-grid">
@@ -589,22 +622,22 @@
         <p class="label fade-up">Common Questions</p>
         <h2 class="section-title fade-up delay-1">Straight answers. <span class="text-muted">No fluff.</span></h2>
       </div>
-      <div style="max-width:780px;margin:2rem auto 0;display:flex;flex-direction:column;gap:1.25rem">
-        <details style="background:var(--card);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;cursor:pointer">
-          <summary style="font-weight:600;font-size:1.05rem;color:var(--text);list-style:none;display:flex;justify-content:space-between">Do you work with businesses in Napa Valley? <span style="color:var(--orange)">+</span></summary>
-          <p style="margin-top:1rem;color:#ccc;line-height:1.7">Yes. We work with businesses across Napa Valley and the broader Bay Area. Most engagements start with a Zoom call, so geography is rarely a constraint.</p>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-summary">Do you work with businesses in Napa Valley? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Yes. We work with businesses across Napa Valley and the broader Bay Area. Most engagements start with a Zoom call, so geography is rarely a constraint.</p>
         </details>
-        <details style="background:var(--card);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;cursor:pointer">
-          <summary style="font-weight:600;font-size:1.05rem;color:var(--text);list-style:none;display:flex;justify-content:space-between">What does a custom software project typically cost? <span style="color:var(--orange)">+</span></summary>
-          <p style="margin-top:1rem;color:#ccc;line-height:1.7">Most projects run between $5,000&#x2013;$25,000 depending on scope. We don&#x27;t do hourly billing &#x2014; we scope a fixed deliverable and price it upfront. No surprise invoices.</p>
+        <details class="faq-item">
+          <summary class="faq-summary">What does a custom software project typically cost? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Most projects run between $5,000&#x2013;$25,000 depending on scope. We don&#x27;t do hourly billing &#x2014; we scope a fixed deliverable and price it upfront. No surprise invoices.</p>
         </details>
-        <details style="background:var(--card);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;cursor:pointer">
-          <summary style="font-weight:600;font-size:1.05rem;color:var(--text);list-style:none;display:flex;justify-content:space-between">How long does a project take to ship? <span style="color:var(--orange)">+</span></summary>
-          <p style="margin-top:1rem;color:#ccc;line-height:1.7">A focused automation or web app ships in 4&#x2013;8 weeks. We give you a realistic timeline upfront &#x2014; before you sign anything.</p>
+        <details class="faq-item">
+          <summary class="faq-summary">How long does a project take to ship? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">A focused automation or web app ships in 4&#x2013;8 weeks. We give you a realistic timeline upfront &#x2014; before you sign anything.</p>
         </details>
-        <details style="background:var(--card);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;cursor:pointer">
-          <summary style="font-weight:600;font-size:1.05rem;color:var(--text);list-style:none;display:flex;justify-content:space-between">Do you integrate with Salesforce, QuickBooks, or Google Sheets? <span style="color:var(--orange)">+</span></summary>
-          <p style="margin-top:1rem;color:#ccc;line-height:1.7">Yes. If it has an API or webhook, we can connect it. Common integrations: Salesforce, HubSpot, QuickBooks, Calendly, Twilio, and Google Workspace.</p>
+        <details class="faq-item">
+          <summary class="faq-summary">Do you integrate with Salesforce, QuickBooks, or Google Sheets? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Yes. If it has an API or webhook, we can connect it. Common integrations: Salesforce, HubSpot, QuickBooks, Calendly, Twilio, and Google Workspace.</p>
         </details>
       </div>
     </div>
@@ -632,11 +665,13 @@
       </a>
       
       <address class="footer-address">
-        <strong style="color:var(--text);font-weight:600;">57 Custom Software Development</strong><br>
-        362 City Center Dr<br>
-        Rohnert Park, CA 94928<br>
-        <a href="tel:+17076945624">(707) 694-5624</a><br>
-        <time itemprop="openingHours" datetime="Mo-Fr 09:00-17:00">Mon-Fri 9:00 AM - 5:00 PM</time>
+        <span>57 Custom Software Development</span>
+        <span class="footer-sep">&bull;</span>
+        <a href="https://maps.google.com/?q=362+City+Center+Dr,+Rohnert+Park,+CA+94928" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">362 City Center Dr, Rohnert Park, CA 94928</a>
+        <span class="footer-sep">&bull;</span>
+        <a href="tel:+17076945624">(707) 694-5624</a>
+        <span class="footer-sep">&bull;</span>
+        <time itemprop="openingHours" datetime="Mo-Fr 09:00-17:00">Mon–Fri 9 AM – 5 PM</time>
       </address>
 
       <nav class="footer-nav" aria-label="Footer navigation">

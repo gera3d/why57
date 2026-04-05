@@ -80,7 +80,41 @@
         ],
         "sameAs": [
           "https://share.google/WOtVrd4zFFLoNMDso"
-        ]
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software & Automation Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom Web Applications"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Workflow Automation Systems"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Client Portals"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Review Growth Engines"
+              }
+            }
+          ]
+        }
       },
       {
         "@type": "Person",
@@ -105,6 +139,19 @@
           "https://github.com/arsen3d"
         ]
       }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Do you work with businesses outside of Sonoma County?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We work with businesses across the Bay Area and beyond. Most engagements start with a Zoom call."}},
+      {"@type": "Question", "name": "What does a custom software project typically cost?", "acceptedAnswer": {"@type": "Answer", "text": "Most projects run between $5,000-$25,000. We scope a fixed deliverable and price it upfront. No hourly billing."}},
+      {"@type": "Question", "name": "How long does a project take to ship?", "acceptedAnswer": {"@type": "Answer", "text": "4-8 weeks for a focused automation or web app. We give you the timeline before you sign anything."}},
+      {"@type": "Question", "name": "Do you integrate with Salesforce, QuickBooks, or Google Sheets?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If it has an API, we can connect it. Common integrations include Salesforce, HubSpot, QuickBooks, Calendly, and Twilio."}}
     ]
   }
   </script>
@@ -333,7 +380,7 @@
           <div class="result-tags">
             <span>Automation</span><span>Review Engine</span><span>SMS</span><span>Custom Dashboard</span>
           </div>
-          <a href="case-studies/health-for-california-review-engine.html" style="color:var(--orange); font-size: 0.9rem; margin-top: 1rem; display: inline-block;">Read Full Case Study &rarr;</a>
+          <a href="case-studies/health-for-california-review-engine.html" class="result-link">Read Full Case Study &rarr;</a>
         </article>
 
         <article class="result-card result-card--lg fade-up delay-1">
@@ -349,7 +396,7 @@
           <div class="result-tags">
             <span>Review Engine</span><span>SEO</span><span>Agent Attribution</span>
           </div>
-          <a href="case-studies/drivesavers-seo-overhaul.html" style="color:var(--orange); font-size: 0.9rem; margin-top: 1rem; display: inline-block;">Read Full Case Study &rarr;</a>
+          <a href="case-studies/drivesavers-seo-overhaul.html" class="result-link">Read Full Case Study &rarr;</a>
         </article>
       </div>
 
@@ -364,7 +411,7 @@
           <p class="result-client">Nuvolum (Digital Marketing Agency)</p>
           <p>Built a deployment system that launches fully branded websites with custom 4K video in under 4 hours. The agency grew from <strong>7 to 50 employees</strong> in 4 years — the system is still running today.</p>
           <div class="result-tags"><span>Custom Platform</span><span>Automation</span></div>
-          <a href="case-studies/nuvolum-deployment-platform.html" style="color:var(--orange); font-size: 0.9rem; margin-top: 1rem; display: inline-block;">Read Full Case Study &rarr;</a>
+          <a href="case-studies/nuvolum-deployment-platform.html" class="result-link">Read Full Case Study &rarr;</a>
         </article>
 
         <article class="result-card fade-up delay-1">
@@ -375,9 +422,8 @@
           <h3>Lead-Generating Attorney Sites</h3>
           <p class="result-client">UX Owl (Co-Founded)</p>
           <p>Solo attorneys in Sonoma County with "brochure websites" that generated zero business. Built lead-generating sites + LinkedIn campaigns with custom reporting dashboards tracking which efforts converted.</p>
-          <a href="case-studies/ux-owl-sonoma-attorneys.html" style="color:var(--orange); font-size: 0.9rem; margin-top: 1rem; display: inline-block;">Read Sonoma County Case Study &rarr;</a>
-          <br>
-          <div class="result-tags" style="margin-top: 0.5rem;"><span>Web Apps</span><span>Analytics</span></div>
+          <div class="result-tags"><span>Web Apps</span><span>Analytics</span></div>
+          <a href="case-studies/ux-owl-sonoma-attorneys.html" class="result-link">Read Full Case Study &rarr;</a>
         </article>
 
         <article class="result-card fade-up delay-2">
@@ -389,6 +435,7 @@
           <p class="result-client">GoldMail (SaaS)</p>
           <p>Worked directly with IBM teams to develop persuasive video pitches for internal funding rounds. B2C Avon campaign achieved <strong>13% conversion rate</strong> — well above industry average.</p>
           <div class="result-tags"><span>Enterprise</span><span>B2B</span></div>
+          <a href="#" class="result-link" style="visibility: hidden; pointer-events: none;">Read Full Case Study &rarr;</a>
         </article>
       </div>
     </div>
@@ -469,7 +516,6 @@
         <p class="label fade-up">What Clients Say</p>
         <h2 class="section-title fade-up delay-1" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
           Don't take our word for it.
-          <a href="https://share.google/WOtVrd4zFFLoNMDso" target="_blank" rel="noopener" class="text-muted" style="font-size: 1.2rem; text-decoration: underline; font-weight: 500;">Read our verified Google Reviews &rarr;</a>
         </h2>
       </div>
       <div class="testi-grid">
@@ -589,6 +635,34 @@
     </div>
   </section>
 
+  <!-- ══ FAQ ══ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <p class="label fade-up">Common Questions</p>
+        <h2 class="section-title fade-up delay-1">Straight answers. <span class="text-muted">No fluff.</span></h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-summary">Do you work with businesses outside of Sonoma County? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Yes. We work with businesses across the Bay Area and beyond. Most engagements start with a Zoom call, so geography is rarely a constraint.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-summary">What does a custom software project typically cost? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Most projects run between $5,000&ndash;$25,000 depending on scope. We don't do hourly billing &mdash; we scope a fixed deliverable and price it upfront. No surprise invoices.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-summary">How long does a project take to ship? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">A focused automation or web app ships in 4&ndash;8 weeks. We give you a realistic timeline upfront &mdash; before you sign anything.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-summary">Do you integrate with Salesforce, QuickBooks, or Google Sheets? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Yes. If it has an API or webhook, we can connect it. Common integrations: Salesforce, HubSpot, QuickBooks, Calendly, Twilio, and Google Workspace.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ CTA ══ -->
   <section class="section cta-section" id="contact">
     <div class="container">
@@ -611,11 +685,13 @@
       </a>
       
       <address class="footer-address">
-        <strong style="color:var(--text);font-weight:600;">57 Custom Software Development</strong><br>
-        362 City Center Dr<br>
-        Rohnert Park, CA 94928<br>
-        <a href="tel:+17076945624">(707) 694-5624</a><br>
-        <time itemprop="openingHours" datetime="Mo-Fr 09:00-17:00">Mon-Fri 9:00 AM - 5:00 PM</time>
+        <span>57 Custom Software Development</span>
+        <span class="footer-sep">&bull;</span>
+        <a href="https://maps.google.com/?q=362+City+Center+Dr,+Rohnert+Park,+CA+94928" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">362 City Center Dr, Rohnert Park, CA 94928</a>
+        <span class="footer-sep">&bull;</span>
+        <a href="tel:+17076945624">(707) 694-5624</a>
+        <span class="footer-sep">&bull;</span>
+        <time itemprop="openingHours" datetime="Mo-Fr 09:00-17:00">Mon–Fri 9 AM – 5 PM</time>
       </address>
 
       <nav class="footer-nav" aria-label="Footer navigation">

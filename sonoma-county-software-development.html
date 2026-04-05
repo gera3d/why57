@@ -80,7 +80,41 @@
         ],
         "sameAs": [
           "https://share.google/WOtVrd4zFFLoNMDso"
-        ]
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software & Automation Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom Web Applications"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Workflow Automation Systems"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Client Portals"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Review Growth Engines"
+              }
+            }
+          ]
+        }
       },
       {
         "@type": "Person",
@@ -396,6 +430,7 @@
           <p class="result-client">GoldMail (SaaS)</p>
           <p>Worked directly with IBM teams to develop persuasive video pitches for internal funding rounds. B2C Avon campaign achieved <strong>13% conversion rate</strong> — well above industry average.</p>
           <div class="result-tags"><span>Enterprise</span><span>B2B</span></div>
+          <a href="#" class="result-link" style="visibility: hidden; pointer-events: none;">Read Full Case Study &rarr;</a>
         </article>
       </div>
     </div>
@@ -437,7 +472,6 @@
         <p class="label fade-up">What Clients Say</p>
         <h2 class="section-title fade-up delay-1" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
           Don't take our word for it.
-          <a href="https://share.google/WOtVrd4zFFLoNMDso" target="_blank" rel="noopener" class="text-muted" style="font-size: 1.2rem; text-decoration: underline; font-weight: 500;">Read our verified Google Reviews &rarr;</a>
         </h2>
       </div>
       <div class="testi-grid">
@@ -587,22 +621,22 @@
         <p class="label fade-up">Common Questions</p>
         <h2 class="section-title fade-up delay-1">Straight answers. <span class="text-muted">No fluff.</span></h2>
       </div>
-      <div style="max-width:780px; margin:2rem auto 0; display:flex; flex-direction:column; gap:1.25rem;">
-        <details style="background:var(--card); border:1px solid var(--border); border-radius:0.75rem; padding:1.5rem; cursor:pointer;">
-          <summary style="font-weight:600; font-size:1.05rem; color:var(--text); list-style:none; display:flex; justify-content:space-between;">Do you work with businesses outside Rohnert Park? <span style="color:var(--orange);">+</span></summary>
-          <p style="margin-top:1rem; color:#ccc; line-height:1.7;">Yes. Our home base is Rohnert Park but we serve all of Sonoma County — Santa Rosa, Petaluma, Healdsburg, Sebastopol, Windsor, and beyond. The majority of our discovery calls and project kickoffs happen over Zoom, so geography is rarely a constraint.</p>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-summary">Do you work with businesses outside Rohnert Park? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Yes. Our home base is Rohnert Park but we serve all of Sonoma County — Santa Rosa, Petaluma, Healdsburg, Sebastopol, Windsor, and beyond. The majority of our discovery calls and project kickoffs happen over Zoom, so geography is rarely a constraint.</p>
         </details>
-        <details style="background:var(--card); border:1px solid var(--border); border-radius:0.75rem; padding:1.5rem; cursor:pointer;">
-          <summary style="font-weight:600; font-size:1.05rem; color:var(--text); list-style:none; display:flex; justify-content:space-between;">What does a custom software project typically cost? <span style="color:var(--orange);">+</span></summary>
-          <p style="margin-top:1rem; color:#ccc; line-height:1.7;">Most projects run between $5,000–$25,000 depending on scope. We don't do hourly billing — we scope a fixed deliverable and put a clear number on it before you commit to anything. No surprise invoices halfway through.</p>
+        <details class="faq-item">
+          <summary class="faq-summary">What does a custom software project typically cost? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Most projects run between $5,000–$25,000 depending on scope. We don't do hourly billing — we scope a fixed deliverable and put a clear number on it before you commit to anything. No surprise invoices halfway through.</p>
         </details>
-        <details style="background:var(--card); border:1px solid var(--border); border-radius:0.75rem; padding:1.5rem; cursor:pointer;">
-          <summary style="font-weight:600; font-size:1.05rem; color:var(--text); list-style:none; display:flex; justify-content:space-between;">How long does a project take to ship? <span style="color:var(--orange);">+</span></summary>
-          <p style="margin-top:1rem; color:#ccc; line-height:1.7;">A focused automation or custom web app typically ships in 4–8 weeks. More complex platforms with multiple integrations take longer. We give you a realistic timeline upfront — not one designed to get you to sign and then slip.</p>
+        <details class="faq-item">
+          <summary class="faq-summary">How long does a project take to ship? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">A focused automation or custom web app typically ships in 4–8 weeks. More complex platforms with multiple integrations take longer. We give you a realistic timeline upfront — not one designed to get you to sign and then slip.</p>
         </details>
-        <details style="background:var(--card); border:1px solid var(--border); border-radius:0.75rem; padding:1.5rem; cursor:pointer;">
-          <summary style="font-weight:600; font-size:1.05rem; color:var(--text); list-style:none; display:flex; justify-content:space-between;">Do you integrate with tools like Salesforce, QuickBooks, or Google Sheets? <span style="color:var(--orange);">+</span></summary>
-          <p style="margin-top:1rem; color:#ccc; line-height:1.7;">Yes. Our most common integrations are CRMs, billing systems, scheduling apps, and Google Workspace. If it has an API or a webhook, we can connect it. We've integrated with Salesforce, HubSpot, QuickBooks, Calendly, Twilio, and dozens of others.</p>
+        <details class="faq-item">
+          <summary class="faq-summary">Do you integrate with tools like Salesforce, QuickBooks, or Google Sheets? <span class="faq-icon">+</span></summary>
+          <p class="faq-answer">Yes. Our most common integrations are CRMs, billing systems, scheduling apps, and Google Workspace. If it has an API or a webhook, we can connect it. We've integrated with Salesforce, HubSpot, QuickBooks, Calendly, Twilio, and dozens of others.</p>
         </details>
       </div>
     </div>
@@ -630,11 +664,13 @@
       </a>
       
       <address class="footer-address">
-        <strong style="color:var(--text);font-weight:600;">57 Custom Software Development</strong><br>
-        362 City Center Dr<br>
-        Rohnert Park, CA 94928<br>
-        <a href="tel:+17076945624">(707) 694-5624</a><br>
-        <time itemprop="openingHours" datetime="Mo-Fr 09:00-17:00">Mon-Fri 9:00 AM - 5:00 PM</time>
+        <span>57 Custom Software Development</span>
+        <span class="footer-sep">&bull;</span>
+        <a href="https://maps.google.com/?q=362+City+Center+Dr,+Rohnert+Park,+CA+94928" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">362 City Center Dr, Rohnert Park, CA 94928</a>
+        <span class="footer-sep">&bull;</span>
+        <a href="tel:+17076945624">(707) 694-5624</a>
+        <span class="footer-sep">&bull;</span>
+        <time itemprop="openingHours" datetime="Mo-Fr 09:00-17:00">Mon–Fri 9 AM – 5 PM</time>
       </address>
 
       <nav class="footer-nav" aria-label="Footer navigation">
