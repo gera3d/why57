@@ -33,6 +33,7 @@ jobs:
           [ -z "${{ secrets.FIREBASE_STORAGE_BUCKET }}"     ] && missing+=("FIREBASE_STORAGE_BUCKET")
           [ -z "${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}"] && missing+=("FIREBASE_MESSAGING_SENDER_ID")
           [ -z "${{ secrets.FIREBASE_APP_ID }}"             ] && missing+=("FIREBASE_APP_ID")
+          [ -z "${{ secrets.FIREBASE_MEASUREMENT_ID }}"     ] && missing+=("FIREBASE_MEASUREMENT_ID")
           if [ ${#missing[@]} -gt 0 ]; then
             echo "❌ Missing GitHub Secrets: ${missing[*]}"
             echo "Add them at: Settings → Secrets and variables → Actions"

@@ -67,8 +67,11 @@ const DEFAULT_CONFIG = {
 let _rc = null;
 
 async function initFirebase() {
-  if (!FIREBASE_CONFIG.apiKey) {
-    console.warn('[why57] Firebase config missing — copy site-config.example.js to site-config.js');
+  const REQUIRED = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
+  const missing  = REQUIRED.filter(k => !FIREBASE_CONFIG[k]);
+  if (missing.length > 0) {
+    console.warn('[why57] Firebase config incomplete — missing:', missing.join(', '),
+      '\nCopy site-config.example.js → site-config.js and fill in the values.');
     window.why57RC = { ...DEFAULT_CONFIG };
     document.dispatchEvent(new CustomEvent('why57:rc-ready', { detail: window.why57RC }));
     return;

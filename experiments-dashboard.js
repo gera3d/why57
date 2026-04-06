@@ -44,6 +44,7 @@ const EXPERIMENT_REGISTRY = [
     control:      { label: 'Control', description: '"We build software that pays for itself."' },
     variant:      { label: 'Variant A', description: '"Stop losing revenue to manual processes."' },
     trafficSplit: 50,    // % to variant; remainder goes to control
+    targetDays:   14,    // minimum days to run before reading results
     firebaseExpId: null, // set this to the numeric ID from Firebase Console URL once created
     rcParams:     ['hero_headline', 'hero_headline_sub'],
     notes:        'Run for minimum 14 days. Target: statistical significance at p < 0.05.',
@@ -61,6 +62,7 @@ const EXPERIMENT_REGISTRY = [
     control:      { label: 'Control', description: '"Book a Free Call"' },
     variant:      { label: 'Variant A', description: '"See If You\'re a Fit"' },
     trafficSplit: 50,
+    targetDays:   14,
     firebaseExpId: null,
     rcParams:     ['hero_cta_primary', 'nav_cta'],
     notes:        'Also updates fitBook, roiBook, ctaBook buttons for consistent messaging.',
@@ -78,6 +80,7 @@ const EXPERIMENT_REGISTRY = [
     control:      { label: 'Control', description: 'Intake appears after hero value prop (below fold)' },
     variant:      { label: 'Variant A', description: 'Intake is the hero — first thing visible above fold' },
     trafficSplit: 50,
+    targetDays:   21,   // higher risk — run longer to reduce false positives
     firebaseExpId: null,
     rcParams:     ['intake_above_fold'],
     notes:        'High-risk / high-reward. Monitor bounce rate carefully — if it rises >5% vs. control, stop early.',
@@ -95,6 +98,7 @@ const EXPERIMENT_REGISTRY = [
     control:      { label: 'Control', description: 'No price signal (current — pricing only in FAQ)' },
     variant:      { label: 'Variant A', description: '"Most projects: $5k–$25k · Fixed price, scoped upfront." shown below CTA' },
     trafficSplit: 50,
+    targetDays:   14,
     firebaseExpId: '1',
     rcParams:     ['show_price_signal', 'price_signal_text'],
     notes:        'NNG research: pricing is #1 most-needed info on vendor sites. Low risk, high potential.',
@@ -112,6 +116,7 @@ const EXPERIMENT_REGISTRY = [
     control:      { label: 'Control', description: 'Stats row below headline (current position)' },
     variant:      { label: 'Variant A', description: 'Stats row above headline — first content visible' },
     trafficSplit: 50,
+    targetDays:   14,
     firebaseExpId: null,
     rcParams:     ['social_proof_above_fold'],
     notes:        'Pairs well with the hero headline test. Run separately first to isolate effect.',
@@ -129,6 +134,7 @@ const EXPERIMENT_REGISTRY = [
     control:      { label: 'Control', description: 'Generic "Custom Software Development" hero (current)' },
     variant:      { label: 'Variant A', description: '57Seconds review growth hero with 9,000+ reviews proof point' },
     trafficSplit: 50,
+    targetDays:   21,   // high-risk / high-reward — run longer before concluding
     firebaseExpId: null,
     rcParams:     ['hero_lead_service', 'hero_badge_text'],
     notes:        'Best tested on Sonoma County + Marin pages where service businesses dominate. Target those pages first.',
@@ -363,21 +369,25 @@ function renderExperimentCard(exp, impressions, conversions) {
   const expImpressions = impressions[exp.id] || {};
   const expConversions  = conversions[exp.id]  || {};
 
-  const controlUsers     = expImpressions['control'] || expImpressions[exp.control.label] || 0;
-  const variantUsers     = expImpressions['variant'] || expImpressions[exp.variant.label] || 0;
-  const controlConverted = expConversions['control']  || expConversions[exp.control.label]  || 0;
-  const variantConverted = expConversions['variant']  || expConversions[exp.variant.label]  || 0;
+  // GA4 returns variant_name exactly as sent by trackExperiment() — always 'control' or 'variant'
+  const controlUsers     = expImpressions['control'] || 0;
+  const variantUsers     = expImpressions['variant'] || 0;
+  const controlConverted = expConversions['control']  || 0;
+  const variantConverted = expConversions['variant']  || 0;
 
   const totalUsers = controlUsers + variantUsers;
+  const EMPTY_STATS = { lift: null, pValue: null, significant: false, confidencePct: 0,
+                        controlRate: null, variantRate: null, ciLow: null, ciHigh: null };
   const stats = (isRunning || isCompleted)
     ? zTest(controlUsers, controlConverted, variantUsers, variantConverted)
-    : { lift: null, pValue: null, significant: false, confidencePct: 0 };
+    : EMPTY_STATS;
 
   // Days running
   let daysRunning = '';
   if (exp.startDate) {
-    const diff = Math.floor((Date.now() - new Date(exp.startDate)) / 86400000);
-    daysRunning = `Day ${diff} of ~14`;
+    const diff   = Math.floor((Date.now() - new Date(exp.startDate)) / 86400000);
+    const target = exp.targetDays || 14;
+    daysRunning  = `Day ${diff} of ~${target}`;
   }
 
   // Status badge
@@ -455,11 +465,7 @@ function renderExperimentCard(exp, impressions, conversions) {
     <!-- Bounce rate guardrail row — monitored manually in GA4 -->
     <div class="exp-metric-row" style="opacity:.65;">
       <span class="exp-metric-name">Bounce rate <span style="font-size:.68rem;color:var(--dim);">(guardrail)</span></span>
-      <span class="exp-metric-val" style="font-size:.7rem;color:var(--dim);" colspan="5">Monitor in GA4 → stop if variant &gt;5% higher than control</span>
-      <span class="exp-metric-val"></span>
-      <span class="exp-lift neu"></span>
-      <span class="exp-pval"></span>
-      <div class="exp-sig-bar"></div>
+      <span style="grid-column:2/7;font-size:.7rem;color:var(--dim);">Monitor in GA4 → stop if variant &gt;5% higher than control</span>
       <span class="exp-verdict neutral" style="font-size:.68rem;">Manual</span>
     </div>` : ''}
   </div>
@@ -535,7 +541,7 @@ window.loadExperiments = async function loadExperiments(token, cfg) {
   const draft     = EXPERIMENT_REGISTRY.filter(e => e.status === 'draft').length;
 
   const badge = document.getElementById('exp-running-count');
-  if (badge) badge.textContent = running || draft;
+  if (badge) badge.textContent = running > 0 ? running : '—';
 
   const runningEl   = document.getElementById('exp-count-running');
   const completedEl = document.getElementById('exp-count-completed');
