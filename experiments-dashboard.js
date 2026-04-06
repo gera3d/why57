@@ -203,16 +203,23 @@ function normalCDF(z) {
  * Returns parsed { rows, rowCount } or null on error.
  */
 async function ga4Report(token, propertyId, body) {
-  const res = await fetch(
-    `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
-    {
-      method:  'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body:    JSON.stringify(body),
-    }
-  );
-  if (!res.ok) return null;
-  return res.json();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000); // 10s timeout
+  try {
+    const res = await fetch(
+      `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
+      {
+        method:  'POST',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body:    JSON.stringify(body),
+        signal:  controller.signal,
+      }
+    );
+    if (!res.ok) return null;
+    return res.json();
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 /**
@@ -444,16 +451,17 @@ function renderExperimentCard(exp, impressions, conversions) {
       </span>
     </div>
 
-    <!-- Bounce rate guardrail row (always shown) -->
-    <div class="exp-metric-row">
+    ${exp.guardrails.includes('bounce_rate') ? `
+    <!-- Bounce rate guardrail row — monitored manually in GA4 -->
+    <div class="exp-metric-row" style="opacity:.65;">
       <span class="exp-metric-name">Bounce rate <span style="font-size:.68rem;color:var(--dim);">(guardrail)</span></span>
-      <span class="exp-metric-val">—</span>
-      <span class="exp-metric-val">—</span>
-      <span class="exp-lift neu">—</span>
-      <span class="exp-pval">—</span>
+      <span class="exp-metric-val" style="font-size:.7rem;color:var(--dim);" colspan="5">Monitor in GA4 → stop if variant &gt;5% higher than control</span>
+      <span class="exp-metric-val"></span>
+      <span class="exp-lift neu"></span>
+      <span class="exp-pval"></span>
       <div class="exp-sig-bar"></div>
-      <span class="exp-verdict neutral">Monitoring</span>
-    </div>
+      <span class="exp-verdict neutral" style="font-size:.68rem;">Manual</span>
+    </div>` : ''}
   </div>
 
   ${isDraft ? `
@@ -510,7 +518,6 @@ let _experimentsLoaded = false;
 window.loadExperiments = async function loadExperiments(token, cfg) {
   // Only fetch once per session (data changes slowly)
   if (_experimentsLoaded) return;
-  _experimentsLoaded = true;
 
   const container = document.getElementById('exp-cards-container');
   if (!container) return;
@@ -523,12 +530,12 @@ window.loadExperiments = async function loadExperiments(token, cfg) {
   const badge = document.getElementById('exp-running-count');
   if (badge) badge.textContent = running || draft;
 
-  document.getElementById('exp-count-running')?.textContent   !== undefined &&
-    (document.getElementById('exp-count-running').textContent   = `${running} running`);
-  document.getElementById('exp-count-completed')?.textContent !== undefined &&
-    (document.getElementById('exp-count-completed').textContent = `${completed} completed`);
-  document.getElementById('exp-count-draft')?.textContent     !== undefined &&
-    (document.getElementById('exp-count-draft').textContent     = `${draft} draft`);
+  const runningEl   = document.getElementById('exp-count-running');
+  const completedEl = document.getElementById('exp-count-completed');
+  const draftEl     = document.getElementById('exp-count-draft');
+  if (runningEl)   runningEl.textContent   = `${running} running`;
+  if (completedEl) completedEl.textContent = `${completed} completed`;
+  if (draftEl)     draftEl.textContent     = `${draft} draft`;
 
   // Fetch GA4 data (only if authenticated + custom dimensions registered)
   let impressions = {};
@@ -557,9 +564,13 @@ window.loadExperiments = async function loadExperiments(token, cfg) {
             conversions[exp.id] = parsed[exp.id] || {};
           });
       });
+
+      // Mark loaded only after a successful fetch
+      _experimentsLoaded = true;
     } catch (err) {
       console.warn('[why57] Experiment GA4 fetch failed:', err.message);
       // Render with empty data — cards still show structure
+      // _experimentsLoaded stays false so a refresh can retry
     }
   }
 

@@ -17,7 +17,7 @@ Firebase A/B Testing (Console)
 
 1. Go to https://console.firebase.google.com
 2. Click **Add project** → name it `why57-ab`
-3. Enable **Google Analytics** → link to your existing GA4 property (`G-358H0FHG50`)
+3. Enable **Google Analytics** → link to your existing GA4 property (find it in GA4 → Admin → Property Settings → Measurement ID, e.g. `G-XXXXXXXXXX`)
 4. Go to **Project Settings** → **Your apps** → **Add app** → Web
 5. Copy the config object and paste it into `firebase-config.js` → `FIREBASE_CONFIG`
 

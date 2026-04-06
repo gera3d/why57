@@ -52,9 +52,10 @@ function applyExpHeroHeadline(rc) {
     trackExperiment('hero_headline', 'control');
   }
 
-  // Apply sub-headline variant if set
+  // Apply sub-headline variant if it differs from the control value
+  const CONTROL_SUB = "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond.";
   const subEl = document.querySelector('.hero-sub');
-  if (subEl && rc.hero_headline_sub && rc.hero_headline_sub !== el.closest('.hero-content')?.querySelector('.hero-sub')?.textContent?.trim()) {
+  if (subEl && rc.hero_headline_sub && rc.hero_headline_sub !== CONTROL_SUB) {
     subEl.textContent = rc.hero_headline_sub;
   }
 }

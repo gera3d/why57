@@ -24,6 +24,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate Firebase secrets
+        run: |
+          missing=()
+          [ -z "${{ secrets.FIREBASE_API_KEY }}"            ] && missing+=("FIREBASE_API_KEY")
+          [ -z "${{ secrets.FIREBASE_AUTH_DOMAIN }}"        ] && missing+=("FIREBASE_AUTH_DOMAIN")
+          [ -z "${{ secrets.FIREBASE_PROJECT_ID }}"         ] && missing+=("FIREBASE_PROJECT_ID")
+          [ -z "${{ secrets.FIREBASE_STORAGE_BUCKET }}"     ] && missing+=("FIREBASE_STORAGE_BUCKET")
+          [ -z "${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}"] && missing+=("FIREBASE_MESSAGING_SENDER_ID")
+          [ -z "${{ secrets.FIREBASE_APP_ID }}"             ] && missing+=("FIREBASE_APP_ID")
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "❌ Missing GitHub Secrets: ${missing[*]}"
+            echo "Add them at: Settings → Secrets and variables → Actions"
+            exit 1
+          fi
+          echo "✅ All Firebase secrets present"
+
       - name: Generate site-config.js from secrets
         run: |
           cat > site-config.js << 'ENDOFCONFIG'

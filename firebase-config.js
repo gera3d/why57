@@ -86,7 +86,7 @@ async function initFirebase() {
     // In production, Remote Config caches for 12 hours.
     // During development, set to 0 to always get fresh values.
     _rc.settings.minimumFetchIntervalMillis =
-      window.location.hostname === 'localhost' ? 0 : 43200000; // 12 hours
+      ['localhost', '127.0.0.1'].includes(window.location.hostname) ? 0 : 43200000; // 12 hours
 
     // Fetch latest variant assignments from Firebase
     await fetchAndActivate(_rc);
@@ -105,8 +105,8 @@ async function initFirebase() {
       hero_lead_service:       getString(_rc, 'hero_lead_service'),
     };
 
-    // Log the experiment impression to GA4 (used by Firebase to count enrollments)
-    logEvent(analytics, 'rc_fetch_success');
+    // Log successful RC fetch so we can track initialization rate in GA4
+    logEvent(analytics, 'rc_fetch_success', { variant_count: Object.keys(window.why57RC).length });
 
   } catch (err) {
     // On failure, fall back to defaults — site still works normally
