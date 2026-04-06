@@ -486,24 +486,31 @@ function renderExperimentCard(exp, impressions, conversions) {
   <!-- Actions -->
   <div class="exp-actions">
     ${isRunning && stats.significant && stats.lift > 0 ? `
-      <button class="btn-exp-action btn-exp-rollout" onclick="rollOutWinner('${exp.id}')">
-        Roll Out Winner →
-      </button>
+      <a class="btn-exp-action btn-exp-rollout"
+         href="https://console.firebase.google.com/project/why57-ab/config/experiment${exp.firebaseExpId ? '/results/' + exp.firebaseExpId : 's'}"
+         target="_blank" rel="noopener"
+         title="Open Firebase to stop the experiment, then push rc-active.json with the winning variant value">
+        Roll Out Winner ↗
+      </a>
     ` : ''}
     ${isRunning ? `
-      <button class="btn-exp-action btn-exp-stop" onclick="stopExperiment('${exp.id}')">
-        Stop Experiment
-      </button>
+      <a class="btn-exp-action btn-exp-stop"
+         href="https://console.firebase.google.com/project/why57-ab/config/experiment/results/${exp.firebaseExpId || ''}"
+         target="_blank" rel="noopener">
+        Stop Experiment ↗
+      </a>
     ` : ''}
     ${isDraft ? `
-      <button class="btn-exp-action btn-exp-rollout" onclick="startExperiment('${exp.id}')">
+      <a class="btn-exp-action btn-exp-rollout"
+         href="https://console.firebase.google.com/project/why57-ab/config/experiment/create"
+         target="_blank" rel="noopener">
         Start in Firebase →
-      </button>
+      </a>
     ` : ''}
     <a class="btn-exp-action btn-exp-firebase"
-       href="https://console.firebase.google.com/project/why57-ab/config/experiments"
+       href="https://console.firebase.google.com/project/why57-ab/config/experiment${exp.firebaseExpId ? '/results/' + exp.firebaseExpId : 's'}"
        target="_blank" rel="noopener">
-      Open Firebase Console ↗
+      Open in Firebase ↗
     </a>
   </div>
 </div>`;
@@ -581,42 +588,20 @@ window.loadExperiments = async function loadExperiments(token, cfg) {
 };
 
 /* ═══════════════════════════════════════════════════════════
-   ACTION HANDLERS — deep-link into Firebase Console
-   (actual start/stop lives in Firebase, not here)
+   EXPERIMENT LIFECYCLE — quick reference
+   All start/stop actions happen in Firebase Console.
+   Dashboard buttons deep-link directly to the right page.
+
+   START:  Firebase Console → A/B Testing → Create Experiment
+           Then set status: 'running' + startDate in EXPERIMENT_REGISTRY
+
+   STOP:   Firebase Console → experiment results → Stop
+           Then set status: 'completed' + endDate in EXPERIMENT_REGISTRY
+
+   ROLL OUT WINNER:
+           1. Edit experiments/rc-active.json — change the winning
+              param's defaultValue to the winning variant's value
+           2. firebase remoteconfig:set experiments/rc-active.json
+           3. Stop the experiment in Firebase Console
+           4. Set status: 'completed' in EXPERIMENT_REGISTRY
 ═══════════════════════════════════════════════════════════ */
-
-window.startExperiment = function(expId) {
-  const exp = EXPERIMENT_REGISTRY.find(e => e.id === expId);
-  if (!exp) return;
-  // Open Firebase A/B Testing — user creates the experiment there
-  const url = 'https://console.firebase.google.com/project/why57-ab/config/experiments';
-  window.open(url, '_blank', 'noopener');
-  // Show CLI hint
-  alert(
-    `To start "${exp.name}":\n\n` +
-    `1. Open Firebase Console → A/B Testing → Create Experiment\n` +
-    `2. Set Remote Config parameters: ${exp.rcParams.join(', ')}\n` +
-    `3. Set traffic split to ${exp.trafficSplit}% variant\n` +
-    `4. Set primary metric: ${exp.primaryMetric}\n\n` +
-    `Then update status to 'running' in experiments-dashboard.js`
-  );
-};
-
-window.stopExperiment = function(expId) {
-  const exp = EXPERIMENT_REGISTRY.find(e => e.id === expId);
-  if (!exp) return;
-  window.open('https://console.firebase.google.com/project/why57-ab/config/experiments', '_blank', 'noopener');
-};
-
-window.rollOutWinner = function(expId) {
-  const exp = EXPERIMENT_REGISTRY.find(e => e.id === expId);
-  if (!exp) return;
-  const cmd = `firebase remoteconfig:set experiments/rc-winner-${expId}.json`;
-  alert(
-    `Roll out winner for "${exp.name}":\n\n` +
-    `1. Update experiments/rc-active.json — set ${exp.rcParams.join(', ')} to the winning variant values\n` +
-    `2. Run: ${cmd}\n` +
-    `3. Stop the experiment in Firebase Console\n` +
-    `4. Update status to 'completed' in experiments-dashboard.js`
-  );
-};

@@ -754,16 +754,6 @@
         </div>
       </div>
 
-      <!-- One-time GA4 setup notice — shown until custom dimensions are registered -->
-      <div id="exp-ga4-setup-notice" style="background:rgba(224,76,40,0.08);border:1px solid rgba(224,76,40,0.25);border-radius:10px;padding:16px 20px;margin-bottom:20px;font-size:.82rem;line-height:1.65;color:var(--muted);">
-        <strong style="color:var(--text);">⚙️ One-time GA4 setup required for experiment data</strong><br/>
-        Go to <strong>GA4 → Admin → Custom Definitions → Custom Dimensions</strong> and add two event-scoped dimensions:<br/>
-        &nbsp;&nbsp;• <code style="color:var(--amber);">experiment_name</code> — Event parameter: <code style="color:var(--amber);">experiment_name</code><br/>
-        &nbsp;&nbsp;• <code style="color:var(--amber);">variant_name</code> — Event parameter: <code style="color:var(--amber);">variant_name</code><br/>
-        Once registered, enrollment counts and conversion rates will populate here within 24–48 hours.
-        <button onclick="document.getElementById('exp-ga4-setup-notice').style.display='none'" style="float:right;background:none;border:none;color:var(--dim);cursor:pointer;font-size:1rem;line-height:1;margin-top:-2px;" title="Dismiss">×</button>
-      </div>
-
       <!-- Experiment cards rendered by experiments-dashboard.js -->
       <div id="exp-cards-container">
 
@@ -825,7 +815,7 @@
     const STORAGE_KEY = 'why57_dash_config';
     const DEFAULTS = {
       clientId: '891798563031-v8cda2va4hrn29dlan6adcereacohd57.apps.googleusercontent.com',
-      propertyId: '292639830',
+      propertyId: '531150669',
       scUrl: 'https://why57.com/',
     };
     let accessToken = null;
