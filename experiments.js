@@ -99,18 +99,17 @@ function applyExpIntakePosition(rc) {
     return;
   }
 
-  const heroContent = document.querySelector('.hero-content');
-  const intake = document.getElementById('intake') || document.querySelector('.intake-section');
-  if (!heroContent || !intake) return;
+  const heroSection  = document.querySelector('.hero') || document.querySelector('main') || document.body;
+  const intakeSection = document.getElementById('start-here') || document.querySelector('.intake-stage')?.closest('section');
+  const heroElement   = document.querySelector('.hero-content')?.closest('section') || document.querySelector('.hero');
+  if (!intakeSection || !heroElement) return;
 
-  // Visually promote intake to top of hero
-  heroContent.style.display = 'flex';
-  heroContent.style.flexDirection = 'column';
-  intake.style.order = '-1';
-  intake.style.marginBottom = '32px';
+  // Move the intake section before the hero section so it appears above fold
+  heroElement.parentNode?.insertBefore(intakeSection, heroElement);
+  intakeSection.style.marginBottom = '32px';
 
   // Reduce visual weight of the headline since intake is now primary
-  const headline = heroContent.querySelector('.hero-headline');
+  const headline = document.querySelector('.hero-headline');
   if (headline) headline.style.fontSize = 'clamp(1.4rem, 2.5vw, 2rem)';
 
   trackExperiment('intake_position', 'variant');
