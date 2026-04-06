@@ -15,9 +15,19 @@ Firebase A/B Testing (Console)
 
 ## Step 1 — Create Firebase Project
 
+**Your GA4 property details (already set up):**
+| Field | Value |
+|-------|-------|
+| GA4 Property ID (numeric) | `531150669` |
+| Measurement ID | `G-358H0FHG50` |
+| Dashboard default | already set to `531150669` |
+
+> ⚠️ A second GA4 property (`292639830` / `G-0800YRKXPK`) was created accidentally and receives **no traffic**. If you see it in Google Analytics, you can archive or delete it — it is safe to remove.
+
+**Firebase project setup (already done for why57-ab):**
 1. Go to https://console.firebase.google.com
 2. Click **Add project** → name it `why57-ab`
-3. Enable **Google Analytics** → link to your existing GA4 property (find it in GA4 → Admin → Property Settings → Measurement ID, e.g. `G-XXXXXXXXXX`)
+3. Enable **Google Analytics** → link to GA4 property `531150669` (Measurement ID `G-358H0FHG50`)
 4. Go to **Project Settings** → **Your apps** → **Add app** → Web
 5. Copy the config object and paste it into `firebase-config.js` → `FIREBASE_CONFIG`
 

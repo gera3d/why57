@@ -575,7 +575,7 @@
         </div>
         <div class="config-field">
           <label>GA4 Property ID (numeric)</label>
-          <input type="text" id="cfg-property-id" placeholder="e.g. 123456789" />
+          <input type="text" id="cfg-property-id" placeholder="531150669" />
         </div>
         <div class="config-field">
           <label>Search Console Site URL</label>
@@ -830,6 +830,12 @@
     function loadConfig() {
       try {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        // Migration: replace the old empty GA4 property with the real one.
+        // The wrong property (292639830 / G-0800YRKXPK) received no traffic data.
+        if (saved.propertyId === '292639830') {
+          saved.propertyId = DEFAULTS.propertyId;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...saved }));
+        }
         return { ...DEFAULTS, ...saved };
       } catch { return { ...DEFAULTS }; }
     }
@@ -1014,35 +1020,49 @@
        API HELPERS
     ═══════════════════════════════════════════════ */
     async function gaPost(endpoint, body) {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + accessToken,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.error?.message || `GA4 API error ${res.status}`);
+      const ctrl = new AbortController();
+      const tid  = setTimeout(() => ctrl.abort(), 10000);
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + accessToken,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+          signal: ctrl.signal,
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err?.error?.message || `GA4 API error ${res.status}`);
+        }
+        return res.json();
+      } finally {
+        clearTimeout(tid);
       }
-      return res.json();
     }
 
     async function scPost(url, body) {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + accessToken,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.error?.message || `Search Console API error ${res.status}`);
+      const ctrl = new AbortController();
+      const tid  = setTimeout(() => ctrl.abort(), 10000);
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + accessToken,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+          signal: ctrl.signal,
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err?.error?.message || `Search Console API error ${res.status}`);
+        }
+        return res.json();
+      } finally {
+        clearTimeout(tid);
       }
-      return res.json();
     }
 
     /* ═══════════════════════════════════════════════
