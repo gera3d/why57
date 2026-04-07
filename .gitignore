@@ -1,6 +1,9 @@
 # Claude Code internals
 .claude/
 
+# Local dev server (not part of the site)
+serve.sh
+
 # Python scratch scripts (utility files, not part of the site)
 *.py
 __pycache__/

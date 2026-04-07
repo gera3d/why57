@@ -630,6 +630,18 @@
         </div>
       </div>
 
+      <!-- Lead Generation Metrics -->
+      <div class="metrics-section">
+        <div class="section-label">Lead Generation</div>
+        <p class="section-desc">The actions that directly drive revenue — visitors who raised their hand. These are more important than raw traffic. A week with fewer visitors but more intakes is a better week.</p>
+        <div class="metrics-grid" id="conversion-metrics">
+          <div class="metric-card"><div class="metric-label">Intake Completions</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
+          <div class="metric-card"><div class="metric-label">Booking Clicks</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
+          <div class="metric-card"><div class="metric-label">ROI Calculator</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
+          <div class="metric-card"><div class="metric-label">Intake Rate</div><div class="metric-value metric-loading"><div class="spinner"></div></div></div>
+        </div>
+      </div>
+
       <!-- Search Console Metrics -->
       <div class="metrics-section">
         <div class="section-label">Search Visibility</div>
@@ -732,6 +744,40 @@
           <table>
             <thead><tr><th>Device</th><th>Sessions</th><th>Share</th></tr></thead>
             <tbody id="device-body"><tr><td colspan="3" style="padding:20px;text-align:center;color:var(--dim);"><div class="spinner"></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tables: geo + landing pages -->
+      <div class="insight-row">
+        <div class="insight-box">
+          <strong>Traffic by Region</strong>
+          <p>Where your visitors actually come from. You've built pages targeting Sonoma County, Marin, Napa, Bay Area, and Silicon Valley — this confirms whether that targeting is pulling the right audience.</p>
+        </div>
+        <div class="insight-box">
+          <strong>Top Landing Pages by Intakes</strong>
+          <p>Which entry points lead to completed intakes. This shows the landing page visitors arrived on before submitting the qualifier — tells you which pages are actually driving leads, not just traffic.</p>
+        </div>
+      </div>
+      <div class="tables-grid">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Traffic by Region</h3>
+            <span>sessions · GA4</span>
+          </div>
+          <table>
+            <thead><tr><th>Region</th><th>Sessions</th><th>Share</th></tr></thead>
+            <tbody id="geo-body"><tr><td colspan="3" style="padding:20px;text-align:center;color:var(--dim);"><div class="spinner"></div></td></tr></tbody>
+          </table>
+        </div>
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Top Landing Pages by Intakes</h3>
+            <span>intake_completed · GA4</span>
+          </div>
+          <table>
+            <thead><tr><th>Landing Page</th><th>Intakes</th></tr></thead>
+            <tbody id="landing-conv-body"><tr><td colspan="2" style="padding:20px;text-align:center;color:var(--dim);"><div class="spinner"></div></td></tr></tbody>
           </table>
         </div>
       </div>
@@ -1075,7 +1121,7 @@
       if (n >= 1000) return n.toLocaleString();
       return Math.round(n).toLocaleString();
     }
-    function fmtPct(n) { return n != null ? (n * 100).toFixed(1) + '%' : '—'; }
+    function fmtDecPct(n) { return n != null ? (n * 100).toFixed(1) + '%' : '—'; }
     function fmtSec(n) {
       if (!n) return '—';
       const m = Math.floor(n / 60), s = Math.round(n % 60);
@@ -1096,20 +1142,6 @@
         </div>`;
     }
 
-    function ga4Row(data, dim) {
-      // GA4 runReport response → map rows by dimension value
-      const map = {};
-      if (!data.rows) return map;
-      const dimIdx = data.dimensionHeaders.findIndex(h => h.name === dim);
-      data.rows.forEach(row => {
-        const key = row.dimensionValues[dimIdx]?.value;
-        const vals = {};
-        data.metricHeaders.forEach((h, i) => { vals[h.name] = parseFloat(row.metricValues[i]?.value || 0); });
-        map[key] = vals;
-      });
-      return map;
-    }
-
     /* ═══════════════════════════════════════════════
        LOAD ALL DATA
     ═══════════════════════════════════════════════ */
@@ -1125,7 +1157,7 @@
       const SC_BASE  = 'https://searchconsole.googleapis.com/webmasters/v3/sites/' + encodeURIComponent(cfg.scUrl) + '/searchAnalytics/query';
 
       try {
-        const [gaOverview, gaTrend, gaChannels, gaPages, gaDevices, scOverview, scQueries, scPages] = await Promise.all([
+        const [gaOverview, gaTrend, gaChannels, gaPages, gaDevices, scOverview, scQueries, scPages, gaConversions, gaGeo, gaLandingConv] = await Promise.all([
           // GA4: overview metrics
           gaPost(`${GA4_BASE}:runReport`, {
             dateRanges: [{ startDate: start, endDate: end }],
@@ -1172,28 +1204,58 @@
             orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
           }),
 
-          // Search Console: overview
-          scPost(SC_BASE, {
-            startDate: start, endDate: end,
-            dimensions: [],
-          }),
+          // Search Console: overview — .catch so SC errors don't break GA4 sections
+          scPost(SC_BASE, { startDate: start, endDate: end, dimensions: [] }).catch(() => ({})),
 
           // Search Console: top queries
-          scPost(SC_BASE, {
-            startDate: start, endDate: end,
-            dimensions: ['query'],
-            rowLimit: 10,
-          }),
+          scPost(SC_BASE, { startDate: start, endDate: end, dimensions: ['query'], rowLimit: 10 }).catch(() => ({})),
 
           // Search Console: top pages
-          scPost(SC_BASE, {
-            startDate: start, endDate: end,
-            dimensions: ['page'],
-            rowLimit: 10,
-          }),
+          scPost(SC_BASE, { startDate: start, endDate: end, dimensions: ['page'], rowLimit: 10 }).catch(() => ({})),
+
+          // GA4: conversion events (intake, booking, ROI calculator)
+          gaPost(`${GA4_BASE}:runReport`, {
+            dateRanges: [{ startDate: start, endDate: end }],
+            dimensions: [{ name: 'eventName' }],
+            metrics: [{ name: 'eventCount' }],
+            dimensionFilter: {
+              filter: {
+                fieldName: 'eventName',
+                inListFilter: {
+                  values: ['intake_completed', 'main_site_booking_clicked', 'roi_calculator_clicked'],
+                },
+              },
+            },
+            limit: 3,
+          }).catch(() => ({})),
+
+          // GA4: sessions by region (geo targeting validation)
+          gaPost(`${GA4_BASE}:runReport`, {
+            dateRanges: [{ startDate: start, endDate: end }],
+            dimensions: [{ name: 'region' }],
+            metrics: [{ name: 'sessions' }],
+            orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
+            limit: 15,
+          }).catch(() => ({})),
+
+          // GA4: intake completions by landing page
+          gaPost(`${GA4_BASE}:runReport`, {
+            dateRanges: [{ startDate: start, endDate: end }],
+            dimensions: [{ name: 'landingPage' }],
+            metrics: [{ name: 'eventCount' }],
+            dimensionFilter: {
+              filter: {
+                fieldName: 'eventName',
+                stringFilter: { value: 'intake_completed', matchType: 'EXACT' },
+              },
+            },
+            orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
+            limit: 10,
+          }).catch(() => ({})),
         ]);
 
         renderGA4Overview(gaOverview);
+        renderConversions(gaConversions, gaOverview);
         renderSCOverview(scOverview);
         renderTrendChart(gaTrend);
         renderChannelChart(gaChannels);
@@ -1201,6 +1263,8 @@
         renderTopQueries(scQueries);
         renderSCPages(scPages);
         renderDevices(gaDevices);
+        renderGeo(gaGeo);
+        renderLandingConversions(gaLandingConv);
 
         document.getElementById('last-updated').textContent =
           'Updated ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
@@ -1217,14 +1281,26 @@
         ['Users','Sessions','Page Views','Bounce Rate','Avg. Session']
           .map(l => `<div class="metric-card"><div class="metric-label">${l}</div><div class="metric-value">${spinner}</div></div>`)
           .join('');
+      document.getElementById('conversion-metrics').innerHTML =
+        ['Intake Completions','Booking Clicks','ROI Calculator','Intake Rate']
+          .map(l => `<div class="metric-card"><div class="metric-label">${l}</div><div class="metric-value">${spinner}</div></div>`)
+          .join('');
       document.getElementById('sc-metrics').innerHTML =
         ['Clicks','Impressions','Avg. CTR','Avg. Position']
           .map(l => `<div class="metric-card"><div class="metric-label">${l}</div><div class="metric-value">${spinner}</div></div>`)
           .join('');
-      ['top-pages-body','top-queries-body','top-sc-pages-body','device-body'].forEach(id => {
+      const tableColspans = {
+        'top-pages-body': 3, 'top-queries-body': 4,
+        'top-sc-pages-body': 4, 'device-body': 3,
+      };
+      Object.entries(tableColspans).forEach(([id, cols]) => {
         document.getElementById(id).innerHTML =
-          `<tr><td colspan="5" style="padding:20px;text-align:center;color:var(--dim);">${spinner}</td></tr>`;
+          `<tr><td colspan="${cols}" style="padding:20px;text-align:center;color:var(--dim);">${spinner}</td></tr>`;
       });
+      document.getElementById('geo-body').innerHTML =
+        `<tr><td colspan="3" style="padding:20px;text-align:center;color:var(--dim);">${spinner}</td></tr>`;
+      document.getElementById('landing-conv-body').innerHTML =
+        `<tr><td colspan="2" style="padding:20px;text-align:center;color:var(--dim);">${spinner}</td></tr>`;
     }
 
     /* ═══════════════════════════════════════════════
@@ -1252,7 +1328,7 @@
         renderMetricCard('Users', fmt(get(0)), `${rangeDays}-day total`, 'Unique people who visited — your real audience size'),
         renderMetricCard('Sessions', fmt(get(1)), `${rangeDays}-day total`, 'Total visits including return trips by the same person'),
         renderMetricCard('Page Views', fmt(get(2)), `${rangeDays}-day total`, 'Total pages loaded — higher means deeper engagement'),
-        renderMetricCard('Bounce Rate', fmtPct(get(3)), 'of all sessions', 'Left after one page — under 50% is healthy for most sites'),
+        renderMetricCard('Bounce Rate', fmtDecPct(get(3)), 'of all sessions', 'Left after one page — under 50% is healthy for most sites'),
         renderMetricCard('Avg. Session', fmtSec(get(4)), 'time on site', 'How long people stay — longer means they find value'),
       ].join('');
     }
@@ -1277,7 +1353,7 @@
       document.getElementById('sc-metrics').innerHTML = [
         renderMetricCard('Clicks', fmt(r.clicks), `${rangeDays}-day total`, 'Visitors arriving from Google search results'),
         renderMetricCard('Impressions', fmt(r.impressions), `${rangeDays}-day total`, 'Times your site appeared in search — your visibility footprint'),
-        renderMetricCard('Avg. CTR', fmtPct(r.ctr), 'of impressions', 'Click-through rate — above 3% is strong; rewrite titles if low'),
+        renderMetricCard('Avg. CTR', fmtDecPct(r.ctr), 'of impressions', 'Click-through rate — above 3% is strong; rewrite titles if low'),
         renderMetricCard('Avg. Position', fmtPos(r.position), 'search rank', 'Your average Google ranking — position 1–10 means page one'),
       ].join('');
     }
@@ -1396,7 +1472,7 @@
       const tbody = document.getElementById('top-pages-body');
       if (!data.rows?.length) { tbody.innerHTML = '<tr class="empty-row"><td colspan="3">No data available</td></tr>'; return; }
       tbody.innerHTML = data.rows.map((row, i) => {
-        const path = row.dimensionValues[0].value;
+        const path = (row.dimensionValues[0].value || '/').split('?')[0] || '/';
         const sessions = fmt(parseFloat(row.metricValues[0].value));
         const views = fmt(parseFloat(row.metricValues[1].value));
         const label = path === '/' ? 'Home' : path.replace(/^\/|\/$/g, '').replace(/-/g, ' ');
@@ -1418,7 +1494,7 @@
         <tr>
           <td><span class="td-rank">${i+1}</span><span class="td-page" title="${row.keys[0]}">${row.keys[0]}</span></td>
           <td>${fmt(row.clicks)}</td>
-          <td>${fmtPct(row.ctr)}</td>
+          <td>${fmtDecPct(row.ctr)}</td>
           <td>${fmtPos(row.position)}</td>
         </tr>`).join('');
     }
@@ -1437,7 +1513,7 @@
           <td><span class="td-rank">${i+1}</span><span class="td-page" title="${url}">${label}</span></td>
           <td>${fmt(row.clicks)}</td>
           <td>${fmt(row.impressions)}</td>
-          <td>${fmtPct(row.ctr)}</td>
+          <td>${fmtDecPct(row.ctr)}</td>
         </tr>`;
       }).join('');
     }
@@ -1464,6 +1540,101 @@
               </div>
             </div>
           </td>
+        </tr>`;
+      }).join('');
+    }
+
+    /* ═══════════════════════════════════════════════
+       RENDER: CONVERSIONS (Lead Generation)
+    ═══════════════════════════════════════════════ */
+    function renderConversions(eventData, overviewData) {
+      const overviewMetrics = overviewData.totals?.[0]?.metricValues || overviewData.rows?.[0]?.metricValues || [];
+      const totalSessions = parseFloat(overviewMetrics[1]?.value || 0);
+
+      const counts = {};
+      if (eventData.rows) {
+        eventData.rows.forEach(row => {
+          counts[row.dimensionValues[0].value] = parseFloat(row.metricValues[0].value || 0);
+        });
+      }
+
+      const intakes  = counts['intake_completed']           || 0;
+      const bookings = counts['main_site_booking_clicked']  || 0;
+      const roi      = counts['roi_calculator_clicked']     || 0;
+      const rate     = totalSessions > 0 ? ((intakes / totalSessions) * 100).toFixed(1) + '%' : '—';
+
+      const noEvents = intakes === 0 && bookings === 0 && roi === 0;
+      if (noEvents) {
+        document.getElementById('conversion-metrics').innerHTML = `
+          <div class="metric-card" style="grid-column:1/-1;text-align:center;padding:32px 24px;">
+            <div style="font-size:1.5rem;margin-bottom:12px;">🎯</div>
+            <div style="font-size:.95rem;font-weight:600;margin-bottom:8px;">No conversion events recorded yet</div>
+            <div style="font-size:.8rem;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.6;">
+              GA4 custom events (<code style="color:var(--amber);">intake_completed</code>, <code style="color:var(--amber);">main_site_booking_clicked</code>, <code style="color:var(--amber);">roi_calculator_clicked</code>) fire when visitors engage with the intake form, CTA buttons, or ROI calculator. Events typically appear within a few hours of the first interaction.
+            </div>
+          </div>`;
+        return;
+      }
+
+      document.getElementById('conversion-metrics').innerHTML = [
+        renderMetricCard('Intake Completions', fmt(intakes), `${rangeDays}-day total`,
+          'Visitors who finished the 3-question qualifier — your most qualified inbound leads'),
+        renderMetricCard('Booking Clicks', fmt(bookings), `${rangeDays}-day total`,
+          'Clicks on "Book a Free Call" or "See If You\'re a Fit" — direct revenue intent signal'),
+        renderMetricCard('ROI Calculator', fmt(roi), `${rangeDays}-day total`,
+          'Visitors who used the ROI calculator — high-intent prospects researching payback time'),
+        renderMetricCard('Intake Rate', rate, 'of all sessions',
+          'What % of visitors complete the intake. B2B lead form benchmarks: 2–5% is healthy'),
+      ].join('');
+    }
+
+    /* ═══════════════════════════════════════════════
+       RENDER: GEO (Traffic by Region)
+    ═══════════════════════════════════════════════ */
+    function renderGeo(data) {
+      const tbody = document.getElementById('geo-body');
+      const rows = (data.rows || []).filter(r => r.dimensionValues[0].value !== '(not set)');
+      if (!rows.length) {
+        tbody.innerHTML = '<tr class="empty-row"><td colspan="3">Geographic data appears once traffic has been recorded</td></tr>';
+        return;
+      }
+      const total = rows.reduce((s, r) => s + parseFloat(r.metricValues[0].value), 0);
+      tbody.innerHTML = rows.map((row, i) => {
+        const region   = row.dimensionValues[0].value || '(unknown)';
+        const sessions = parseFloat(row.metricValues[0].value);
+        const pct      = total > 0 ? ((sessions / total) * 100).toFixed(1) + '%' : '—';
+        return `<tr>
+          <td><span class="td-rank">${i + 1}</span><span class="td-page">${region}</span></td>
+          <td>${fmt(sessions)}</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;justify-content:flex-end;">
+              <span>${pct}</span>
+              <div style="width:48px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
+                <div style="height:100%;width:${pct};background:var(--orange);border-radius:2px;"></div>
+              </div>
+            </div>
+          </td>
+        </tr>`;
+      }).join('');
+    }
+
+    /* ═══════════════════════════════════════════════
+       RENDER: LANDING PAGE CONVERSIONS
+    ═══════════════════════════════════════════════ */
+    function renderLandingConversions(data) {
+      const tbody = document.getElementById('landing-conv-body');
+      if (!data.rows?.length) {
+        tbody.innerHTML = '<tr class="empty-row"><td colspan="2">Intake completions will appear here once visitors engage with the form</td></tr>';
+        return;
+      }
+      tbody.innerHTML = data.rows.map((row, i) => {
+        const raw     = row.dimensionValues[0].value || '/';
+        const path    = raw.split('?')[0] || '/';  // strip query strings (?utm_source=…)
+        const intakes = parseFloat(row.metricValues[0].value);
+        const label   = path === '/' ? 'Home' : path.replace(/^\/|\/$/g, '').replace(/-/g, ' ');
+        return `<tr>
+          <td><span class="td-rank">${i + 1}</span><span class="td-page" title="${path}">${label}</span></td>
+          <td>${fmt(intakes)}</td>
         </tr>`;
       }).join('');
     }
