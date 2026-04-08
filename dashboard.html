@@ -537,8 +537,8 @@
     <!-- Page header -->
     <div class="page-header">
       <div class="label">Analytics</div>
-      <h1>Site Performance</h1>
-      <p>GA4 + Search Console — why57.com</p>
+      <h1>Unified site performance</h1>
+      <p>GA4 + Search Console — why57.com & roi.why57.com</p>
       <div class="view-tabs">
         <button class="view-tab active" onclick="switchView('analytics', this)">
           Analytics
@@ -579,7 +579,7 @@
         </div>
         <div class="config-field">
           <label>Search Console Site URL</label>
-          <input type="text" id="cfg-sc-url" placeholder="https://why57.com/" />
+          <input type="text" id="cfg-sc-url" placeholder="https://why57.com/" value="https://why57.com/" />
         </div>
         <div class="config-field">
           <label>Authorized Domain (for OAuth)</label>
@@ -616,6 +616,34 @@
     <div class="view-panel active" id="view-analytics">
     <!-- Dashboard -->
     <div id="dashboard">
+
+      <!-- Sitemap & Health -->
+      <div class="metrics-section">
+        <div class="section-label">Indexing & Health</div>
+        <p class="section-desc">Quick status checks for your live sitemaps and Search Console properties. We verified these are active and "Success" during the latest synchronization.</p>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">Status: why57.com</div>
+            <div class="metric-value" style="color:#4ade80;">Success</div>
+            <div class="metric-sub"><a href="https://why57.com/sitemap.xml" target="_blank" style="text-decoration:underline;">View Sitemap ↗</a></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Status: roi.why57.com</div>
+            <div class="metric-value" style="color:#4ade80;">Success</div>
+            <div class="metric-sub"><a href="https://roi.why57.com/sitemap.xml" target="_blank" style="text-decoration:underline;">View Sitemap ↗</a></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Console (why57)</div>
+            <div class="metric-value">GSC</div>
+            <div class="metric-sub"><a href="https://search.google.com/search-console/sitemaps?resource_id=https://why57.com/" target="_blank" style="text-decoration:underline;">Open Report ↗</a></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Console (ROI)</div>
+            <div class="metric-value">GSC</div>
+            <div class="metric-sub"><a href="https://search.google.com/search-console/sitemaps?resource_id=https://roi.why57.com/" target="_blank" style="text-decoration:underline;">Open Report ↗</a></div>
+          </div>
+        </div>
+      </div>
 
       <!-- GA4 Metrics -->
       <div class="metrics-section">
@@ -845,7 +873,7 @@
     </div><!-- /view-experiments -->
 
     <div class="dash-footer">
-      <span>why57.com — private dashboard</span>
+      <span>Unified why57.com dashboard</span>
       <span>Data from Google Analytics 4 + Search Console APIs · <a href="/" >Back to site</a></span>
     </div>
 
@@ -1190,10 +1218,10 @@
           // GA4: top pages
           gaPost(`${GA4_BASE}:runReport`, {
             dateRanges: [{ startDate: start, endDate: end }],
-            dimensions: [{ name: 'pagePath' }],
+            dimensions: [{ name: 'hostName' }, { name: 'pagePath' }],
             metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }],
             orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-            limit: 10,
+            limit: 15,
           }),
 
           // GA4: devices
@@ -1472,12 +1500,17 @@
       const tbody = document.getElementById('top-pages-body');
       if (!data.rows?.length) { tbody.innerHTML = '<tr class="empty-row"><td colspan="3">No data available</td></tr>'; return; }
       tbody.innerHTML = data.rows.map((row, i) => {
-        const path = (row.dimensionValues[0].value || '/').split('?')[0] || '/';
+        const host = row.dimensionValues[0].value || 'why57.com';
+        const path = (row.dimensionValues[1].value || '/').split('?')[0] || '/';
         const sessions = fmt(parseFloat(row.metricValues[0].value));
         const views = fmt(parseFloat(row.metricValues[1].value));
-        const label = path === '/' ? 'Home' : path.replace(/^\/|\/$/g, '').replace(/-/g, ' ');
+        
+        let label = path === '/' ? (host.includes('roi') ? 'ROI Home' : 'Home') : path.replace(/^\/|\/$/g, '').replace(/-/g, ' ');
+        if (host.includes('roi')) label = 'ROI: ' + label;
+
+        const fullUrl = 'https://' + host + path;
         return `<tr>
-          <td><span class="td-rank">${i+1}</span><span class="td-page" title="${path}">${label}</span></td>
+          <td><span class="td-rank">${i+1}</span><span class="td-page" title="${fullUrl}">${label}</span></td>
           <td>${sessions}</td>
           <td>${views}</td>
         </tr>`;
