@@ -119,10 +119,10 @@ function applyExpIntakePosition(rc) {
 // Tests showing "Most projects: $5k–$25k · Fixed price, scoped upfront." near CTAs.
 // Based on NNG research: pricing is the #1 most-needed info on vendor sites.
 function applyExpPriceSignal(rc) {
+  // Price signal text disabled — always treat as control.
+  trackExperiment('price_signal', 'control');
+  return;
   if (!rc.show_price_signal) {
-    trackExperiment('price_signal', 'control');
-    return;
-  }
 
   const text = rc.price_signal_text || "Most projects: $5k–$25k · Fixed price, scoped upfront.";
 
