@@ -518,6 +518,137 @@
     </div>
   </section>
 
+  <!-- ══ FIT ══ -->
+  <section class="section fit-section" id="fit">
+    <div class="container">
+      <div class="section-header">
+        <p class="label fade-up">Mutual Fit</p>
+        <h2 class="section-title fade-up delay-1">Some projects move fast. <span class="text-muted">Some should wait.</span></h2>
+        <p class="section-sub fade-up delay-2">The best engagements start with a clear bottleneck, an owner on your side, and a first version that's worth shipping now.</p>
+      </div>
+      <div class="fit-shell fade-up">
+        <div class="fit-toggle" role="tablist" aria-label="Mutual fit tabs">
+          <button type="button" class="fit-tab is-active" id="fit-tab-good" role="tab" data-fit-target="fit-good" aria-selected="true" aria-controls="fit-good">We're a Fit</button>
+          <button type="button" class="fit-tab" id="fit-tab-not" role="tab" data-fit-target="fit-not" aria-selected="false" aria-controls="fit-not" tabindex="-1">Not Yet</button>
+        </div>
+        <div class="fit-grid">
+          <article class="fit-card is-active" id="fit-good" role="tabpanel" aria-labelledby="fit-tab-good" tabindex="0">
+            <p class="fit-card-kicker">Good fit</p>
+            <ul class="fit-list">
+              <li>You can point to a real bottleneck costing time, revenue, or trust.</li>
+              <li>You want a sharp first release, not a giant 12-month rewrite.</li>
+              <li>Someone on your team can own feedback and decisions during the build.</li>
+              <li>You care about outcomes, not just buying dev hours.</li>
+            </ul>
+          </article>
+          <article class="fit-card fit-card--muted" id="fit-not" role="tabpanel" aria-labelledby="fit-tab-not" tabindex="0" hidden>
+            <p class="fit-card-kicker">Not yet</p>
+            <ul class="fit-list">
+              <li>The problem is still vague and changes every time we describe it.</li>
+              <li>You want a bargain-bin build before validating the workflow.</li>
+              <li>No one can own the project internally once it goes live.</li>
+              <li>You need a generalist freelancer more than a scoped systems partner.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="fit-footer">
+          <p>If this sounds like your situation, we can usually map the first version in one call.</p>
+          <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="fitBook" data-cta-location="fit_section_booking">Book the Right-Sized Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ROI CALCULATOR ══ -->
+  <section class="section roi-section" id="roi-planner">
+    <div class="container">
+      <div class="roi-card fade-up" id="roiBridgeCard">
+        <div class="roi-card-copy">
+          <p class="label" id="roiBridgeLabel">ROI Calculator</p>
+          <h2 class="section-title" id="roiBridgeTitle">Need the numbers before the meeting?</h2>
+          <p class="roi-copy" id="roiBridgeCopy">Use our custom software ROI calculator to estimate payback timing, see whether a lightweight build or deeper platform makes sense, and walk into the call with a sharper business case.</p>
+          <div class="roi-metrics" id="roiBridgeMetrics" hidden>
+            <div class="roi-metric">
+              <span class="roi-metric-label">Recommendation</span>
+              <strong class="roi-metric-value" id="roiMetricRecommendation">Hybrid build</strong>
+            </div>
+            <div class="roi-metric">
+              <span class="roi-metric-label">Readiness score</span>
+              <strong class="roi-metric-value" id="roiMetricScore">0</strong>
+            </div>
+            <div class="roi-metric">
+              <span class="roi-metric-label">Break-even</span>
+              <strong class="roi-metric-value" id="roiMetricBreakEven">0 months</strong>
+            </div>
+          </div>
+          <div class="roi-actions">
+            <a href="https://roi.why57.com/?utm_source=why57&utm_medium=section_cta&utm_campaign=main_site_referral" class="btn-primary" id="roiPrimaryLink" data-base-href="https://roi.why57.com/?utm_source=why57&utm_medium=section_cta&utm_campaign=main_site_referral" data-roi-link="section">Try the ROI Calculator</a>
+            <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-ghost" id="roiBook">Book a Strategy Call</a>
+          </div>
+        </div>
+        <div class="roi-aside">
+          <div class="roi-teaser">
+            <p class="roi-aside-kicker">Run a 30-second estimate</p>
+            <div class="roi-fields">
+              <label class="roi-field" for="roiHoursInput">
+                <span class="roi-field-copy">
+                  <strong>Hours lost each week</strong>
+                  <small>How much manual work should disappear first?</small>
+                </span>
+                <input type="range" min="2" max="40" step="1" value="10" id="roiHoursInput" />
+                <span class="roi-field-value"><strong id="roiHoursValue">10</strong><span>hrs</span></span>
+              </label>
+
+              <label class="roi-field" for="roiRateInput">
+                <span class="roi-field-copy">
+                  <strong>Blended hourly cost</strong>
+                  <small>Payroll, opportunity cost, or contractor equivalent.</small>
+                </span>
+                <input type="range" min="25" max="180" step="5" value="65" id="roiRateInput" />
+                <span class="roi-field-value"><strong id="roiRateValue">$65</strong><span>/hr</span></span>
+              </label>
+
+              <label class="roi-field" for="roiPeopleInput">
+                <span class="roi-field-copy">
+                  <strong>People affected</strong>
+                  <small>How many teammates touch this workflow today?</small>
+                </span>
+                <input type="range" min="1" max="20" step="1" value="4" id="roiPeopleInput" />
+                <span class="roi-field-value"><strong id="roiPeopleValue">4</strong><span>people</span></span>
+              </label>
+            </div>
+
+            <div class="roi-teaser-output">
+              <div class="roi-teaser-metric">
+                <span>Monthly waste</span>
+                <strong id="roiTeaserMonthly">$11,258</strong>
+              </div>
+              <div class="roi-teaser-metric">
+                <span>Annual opportunity</span>
+                <strong id="roiTeaserAnnual">$135,096</strong>
+              </div>
+              <div class="roi-teaser-metric">
+                <span>Suggested first move</span>
+                <strong id="roiTeaserRecommendation">Hybrid build</strong>
+              </div>
+            </div>
+
+            <p class="roi-teaser-note">Directional estimate only. The full calculator lets you pressure-test scope and payback more precisely.</p>
+          </div>
+
+          <div class="roi-points-card">
+            <p class="roi-aside-kicker">Best for owners asking:</p>
+            <ul class="roi-points">
+              <li>Will custom software actually save enough to justify the build?</li>
+              <li>Should we automate one workflow first or replace the whole process?</li>
+              <li>How fast could this pay back if we get the scope right?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ TESTIMONIALS ══ -->
   <section class="section" id="testimonials">
     <div class="container">
