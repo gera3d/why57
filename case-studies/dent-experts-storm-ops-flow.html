@@ -106,16 +106,19 @@
       background: radial-gradient(circle at center, rgba(var(--glow), 0.15) 0%, transparent 60%);
       pointer-events: none;
     }
-    .cs-phone-img {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 20px;
-      display: block;
-      margin: 0 auto 1.25rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    .cs-glass-logo {
+      height: 140px; margin: 0 auto 1.5rem;
+      object-fit: contain; width: auto; max-width: 280px; display: block;
     }
-    .cs-glass-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dim); font-weight: 700; }
-    .cs-glass-sub { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500; margin-top: 0.35rem; }
+    .cs-glass-num {
+      font-size: clamp(4rem, 6vw, 6rem); font-weight: 800;
+      line-height: 1; letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #fff 0%, var(--orange) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 0.5rem; filter: drop-shadow(0 4px 12px rgba(var(--glow), 0.3));
+    }
+    .cs-glass-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dim); font-weight: 700; margin-top: 1rem; }
+    .cs-glass-sub { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500; margin-top: 0.5rem; }
 
     /* ── App Visual Section ── */
     .cs-app-visual { max-width: 780px; margin: 2.5rem auto 0; }
@@ -161,9 +164,10 @@
 
     <div class="cs-hero-visual fade-up delay-4">
       <div class="cs-glass-card">
-        <img src="../images/dent_experts_iphone.png" alt="Storm Ops Flow iPhone app — field job dashboard" class="cs-phone-img" />
-        <div class="cs-glass-label">Storm Ops Flow</div>
-        <span class="cs-glass-sub">Custom iPhone app + ops platform</span>
+        <img src="../images/storm_ops_flow_logo.png" alt="Storm Ops Flow" class="cs-glass-logo" />
+        <div class="cs-glass-num">iOS</div>
+        <div class="cs-glass-label">Native iPhone App</div>
+        <span class="cs-glass-sub">+ Storm Ops workflow platform</span>
       </div>
     </div>
   </section>
@@ -269,8 +273,8 @@
         </blockquote>
         <figcaption style="margin-top: 1.5rem;">
           <div style="display:flex; align-items:center; justify-content:center; gap:1rem;">
-            <div class="testi-avatar" style="background:linear-gradient(135deg,#1a3a5c,#2e6da4); flex-shrink:0;">
-              <span>DE</span>
+            <div class="testi-avatar testi-avatar--logo" style="flex-shrink:0;">
+              <img src="../images/storm_ops_flow_logo.png" alt="Storm Ops Flow" class="testi-company-logo" />
             </div>
             <div style="text-align:left;">
               <strong style="display:block; color:var(--text);">Dent Experts</strong>
