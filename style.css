@@ -420,6 +420,16 @@ input:focus-visible{
 .svc-detail-row p{font-size:.81rem;color:var(--muted);line-height:1.7;}
 .svc-link{display:inline-block;margin-top:14px;font-size:.82rem;font-weight:500;color:var(--amber);transition:color .2s;}
 .svc-link:hover{color:var(--orange);}
+.services-bridge{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;
+  margin-top:14px;padding:22px 24px;border:1px solid rgba(var(--glow),.28);border-radius:14px;
+  background:linear-gradient(100deg,rgba(var(--glow),.10),rgba(255,255,255,.025));
+  transition:border-color .2s,transform .2s,background .2s;
+}
+.services-bridge:hover{border-color:rgba(var(--glow),.55);background:linear-gradient(100deg,rgba(var(--glow),.16),rgba(255,255,255,.04));transform:translateY(-2px);}
+.services-bridge-kicker{padding:5px 8px;border-radius:6px;background:rgba(var(--glow),.18);color:var(--amber);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.services-bridge-copy{display:grid;gap:3px;}.services-bridge-copy strong{font-size:.98rem;letter-spacing:-.01em;}.services-bridge-copy small{font-size:.84rem;color:var(--muted);}
+.services-bridge-link{color:var(--amber);font-size:.83rem;font-weight:600;white-space:nowrap;}.services-bridge-link b{font-size:1rem;margin-left:5px;}
 
 /* ════════════════════════════════
    SPOTLIGHT
@@ -1134,6 +1144,7 @@ input:focus-visible{
   /* Grids */
   .problem-grid{grid-template-columns:1fr 1fr;}
   .services-grid{grid-template-columns:1fr 1fr;}
+  .services-bridge{grid-template-columns:auto 1fr;}.services-bridge-link{grid-column:2;}
   .spotlight-inner{grid-template-columns:1fr;gap:40px;}
   .spotlight-visual{display:none;}
   .results-hero-grid,.results-grid{grid-template-columns:1fr;}
@@ -1278,6 +1289,7 @@ input:focus-visible{
 
   /* Services */
   .services-grid{grid-template-columns:1fr;}
+  .services-bridge{grid-template-columns:1fr;gap:10px;padding:20px 18px;}.services-bridge-kicker{width:max-content;}.services-bridge-link{grid-column:auto;}
   .svc-card{padding:22px 18px;}
   .svc-icon-wrap{width:40px;height:40px;font-size:1.2rem;margin-bottom:14px;}
   .svc-card h3{font-size:.9rem;}
