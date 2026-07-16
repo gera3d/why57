@@ -309,6 +309,43 @@
               <span class="intake-tag" id="intakeTeamTag">2 to 10 people</span>
               <span class="intake-tag" id="intakeGoalTag">Automate a workflow</span>
             </div>
+            <form class="lead-capture-form" data-lead-form data-lead-source="qualification_quiz" hidden>
+              <div class="lead-capture-heading">
+                <strong>Want a useful follow-up?</strong>
+                <span>Send your context to Gera and get the booking link by email.</span>
+              </div>
+              <div class="lead-capture-grid">
+                <label>
+                  <span>Name</span>
+                  <input type="text" name="name" autocomplete="name" maxlength="120" required />
+                </label>
+                <label>
+                  <span>Work email</span>
+                  <input type="email" name="email" autocomplete="email" maxlength="320" required />
+                </label>
+                <label>
+                  <span>Company <em>optional</em></span>
+                  <input type="text" name="company" autocomplete="organization" maxlength="160" />
+                </label>
+                <label>
+                  <span>What is breaking down? <em>optional</em></span>
+                  <textarea name="message" rows="3" maxlength="2000"></textarea>
+                </label>
+              </div>
+              <input type="hidden" name="pain" id="intakeLeadPain" />
+              <input type="hidden" name="team" id="intakeLeadTeam" />
+              <input type="hidden" name="goal" id="intakeLeadGoal" />
+              <input type="hidden" name="interest" id="intakeLeadInterest" />
+              <input type="hidden" name="recommendation" id="intakeLeadRecommendation" />
+              <label class="lead-capture-trap" aria-hidden="true">
+                Website
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+              <div class="lead-capture-submit">
+                <button type="submit" class="btn-primary">Send My Context</button>
+                <p class="lead-capture-confirmation" data-lead-status role="status" aria-live="polite"></p>
+              </div>
+            </form>
             <div class="intake-actions">
               <a href="https://roi.why57.com/" class="btn-primary" id="intakePrimaryLink" data-base-href="https://roi.why57.com/" data-roi-link="intake">Try the ROI Calculator</a>
               <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-ghost" id="intakeSecondaryLink" data-cta-location="intake_secondary_booking">Book a Strategy Call</a>
@@ -964,6 +1001,16 @@
   </footer>
 
   <script src="roi-bridge.js?v=3"></script>
+  <script>
+    const why57LocalLeadTest = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    window.WHY57_LEAD_INTAKE = {
+      enabled: why57LocalLeadTest,
+      endpoint: why57LocalLeadTest
+        ? 'http://127.0.0.1:8787/v1/leads'
+        : 'https://why57-roi-intake.gera-695.workers.dev/v1/leads'
+    };
+  </script>
+  <script src="lead-capture.js"></script>
   <script src="main.js"></script>
 
   <!-- A/B Testing: Firebase Remote Config + experiment variant application -->
