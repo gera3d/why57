@@ -305,7 +305,7 @@ input:focus-visible{
   100%{box-shadow:0 0 16px rgba(var(--glow),0.25);}
 }
 .hero-headline{
-  font-size:clamp(3rem,5.35vw,4.75rem);font-weight:800;
+  font-size:clamp(3rem,4.5vw,4rem);font-weight:800;
   line-height:1.01;letter-spacing:-0.05em;
   margin-bottom:24px;color:var(--text);max-width:720px;
 }
@@ -1188,8 +1188,8 @@ input:focus-visible{
   .hero-visual{padding:12px 20px 0;}
   .hero-phones{max-width:210px;}
   .hero-badge{font-size:.64rem;padding:5px 10px;letter-spacing:.08em;}
-  .hero-headline{font-size:clamp(2.25rem,10.7vw,2.75rem);line-height:1.02;margin-bottom:16px;}
-  .hero-sub{font-size:.93rem;line-height:1.62;margin-bottom:22px;}
+  .hero-headline{font-size:clamp(2rem,8.85vw,2.2rem);line-height:1.04;letter-spacing:-.045em;margin-bottom:16px;}
+  .hero-sub{font-size:.9rem;line-height:1.56;margin-bottom:20px;}
   .hero-actions{gap:8px;margin-bottom:16px;}
   .btn-primary{padding:14px 20px;font-size:.88rem;}
   .btn-ghost{padding:13px 20px;font-size:.86rem;}

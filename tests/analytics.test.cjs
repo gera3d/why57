@@ -189,6 +189,11 @@ test("homepage prototype hero keeps an explicit qualified-review analytics hook"
   const heroLink = homepage.match(/<a[^>]+id="heroPrototypeReview"[^>]*>/)?.[0];
 
   assert.ok(heroLink, "Expected the homepage prototype-review CTA to exist");
+  assert.match(homepage, /<title>57 \| Custom Software Development/);
+  assert.match(homepage, /meta name="description" content="57 Custom Software Development/);
+  assert.match(homepage, /Turn prototypes and broken workflows into/);
+  assert.match(homepage, /Start a Custom Software Plan/);
+  assert.match(homepage, /href="#start-here"/);
   assert.match(heroLink, /href="ai-app-prototype-to-production\.html#send-prototype"/);
   assert.match(heroLink, /data-cta-location="homepage_hero_prototype"/);
   assert.match(heroLink, /data-offer="prototype_review"/);
