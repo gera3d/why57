@@ -12,5 +12,13 @@ binding = "ROI_LEADS"
 id = "03f3adeef039444ab08a5bde2db7c3d7"
 preview_id = "03f3adeef039444ab08a5bde2db7c3d7"
 
+# Deployment gate: replace this placeholder with the ID returned by
+# `wrangler d1 create why57-intake` before any production deploy.
+[[d1_databases]]
+binding = "INTAKE_DB"
+database_name = "why57-intake"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
 [vars]
 ROI_DATA_TTL_SECONDS = "15552000"

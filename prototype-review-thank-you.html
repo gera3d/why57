@@ -67,29 +67,37 @@
 
   <script>
     (() => {
-      const submissionId = new URLSearchParams(window.location.search).get('submission');
+      const receipt = new URLSearchParams(window.location.search).get('receipt');
       const reference = document.getElementById('thanksReference');
-      if (!submissionId) return;
+      if (!/^[a-f0-9]{64}$/.test(String(receipt || ''))) return;
 
-      reference.textContent = `Reference ${submissionId.slice(0, 8).toUpperCase()}`;
+      fetch('https://why57-roi-intake.gera-695.workers.dev/conversion-receipt', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ receipt })
+      })
+        .then(async (response) => {
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || !result.ok || result.event_type !== 'prototype_review_submitted') return;
+          if (result.reference) reference.textContent = `Reference ${result.reference}`;
+          if (result.claimed !== true) return;
 
-      try {
-        const eventKey = `why57_prototype_review_tracked_${submissionId}`;
-        if (window.sessionStorage.getItem(eventKey)) return;
-        window.sessionStorage.setItem(eventKey, '1');
-      } catch (_error) {
-        // Analytics still fires if session storage is unavailable.
-      }
-
-      const detail = {
-        form_id: 'prototype_review',
-        submission_transport: 'no_js_fallback',
-        submission_id: submissionId
-      };
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'prototype_review_submitted', detail);
-      }
-      window.dispatchEvent(new CustomEvent('why57:prototype_review_submitted', { detail }));
+          const detail = {
+            form_id: 'prototype_review',
+            submission_transport: 'no_js_fallback',
+            submission_id: result.submission_id
+          };
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'prototype_review_submitted', detail);
+          }
+          window.dispatchEvent(new CustomEvent('why57:prototype_review_submitted', { detail }));
+        })
+        .catch(() => {
+          // Delivery remains complete; an unavailable receipt endpoint must fail closed for analytics.
+        });
     })();
   </script>
 </body>

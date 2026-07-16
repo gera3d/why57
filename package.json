@@ -7,6 +7,7 @@
     "qa:syntax": "node qa/js-syntax.mjs",
     "qa:external": "node qa/site-qa.mjs --external",
     "qa:mobile": "bash qa/mobile-smoke.sh",
-    "qa:all": "npm run qa && npm run qa:mobile"
+    "qa:funnel": "bash qa/funnel-contract-smoke.sh",
+    "qa:all": "npm run qa && npm run qa:mobile && npm run qa:funnel"
   }
 }
