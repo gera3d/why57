@@ -24,6 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate technical SEO
+        run: node scripts/seo-audit.mjs
+
       - name: Validate Firebase secrets
         run: |
           missing=()

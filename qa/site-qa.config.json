@@ -1,0 +1,69 @@
+{
+  "siteOrigin": "https://why57.com",
+  "analyticsId": "G-358H0FHG50",
+  "sitemapPath": "sitemap.xml",
+  "runtimeGeneratedAssets": {
+    "site-config.js": "site-config.example.js"
+  },
+  "ignoredHtml": [
+    "404.html",
+    "dashboard.html",
+    "marin-county-software-development.html",
+    "napa-valley-tech-automation.html",
+    "petaluma-software-development.html",
+    "prototype-review-thank-you.html",
+    "santa-rosa-software-development.html"
+  ],
+  "criticalDestinations": [
+    {
+      "name": "booking calendar",
+      "hrefPrefix": "https://calendar.app.google/93NLV73sQd1DXuUB6",
+      "minimumReferences": 1,
+      "analyticsHook": true,
+      "liveCheck": true
+    },
+    {
+      "name": "ROI calculator",
+      "hrefPrefix": "https://roi.why57.com/",
+      "minimumReferences": 1,
+      "analyticsHook": true,
+      "liveCheck": true
+    },
+    {
+      "name": "AI prototype page",
+      "hrefPrefix": "ai-app-prototype-to-production.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Review-request workflow case study",
+      "hrefPrefix": "case-studies/review-request-workflow.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Website, search, and operations case study",
+      "hrefPrefix": "case-studies/website-search-operations-workflow.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Branded-site deployment case study",
+      "hrefPrefix": "case-studies/branded-site-deployment-platform.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Field inspection operations case study",
+      "hrefPrefix": "case-studies/field-inspection-operations-platform.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Professional-services attribution case study",
+      "hrefPrefix": "case-studies/professional-services-lead-attribution.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    }
+  ]
+}

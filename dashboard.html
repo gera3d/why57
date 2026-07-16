@@ -1241,7 +1241,7 @@
           // Search Console: top pages
           scPost(SC_BASE, { startDate: start, endDate: end, dimensions: ['page'], rowLimit: 10 }).catch(() => ({})),
 
-          // GA4: conversion events (intake, booking, ROI calculator)
+          // GA4: completed outcomes plus micro-conversion funnel events
           gaPost(`${GA4_BASE}:runReport`, {
             dateRanges: [{ startDate: start, endDate: end }],
             dimensions: [{ name: 'eventName' }],
@@ -1250,11 +1250,20 @@
               filter: {
                 fieldName: 'eventName',
                 inListFilter: {
-                  values: ['intake_completed', 'main_site_booking_clicked', 'roi_calculator_clicked'],
+                  values: [
+                    'prototype_review_submitted',
+                    'lead_submitted',
+                    'roi_report_requested',
+                    'calendar_booking_completed',
+                    'calendar_booking_clicked',
+                    'roi_calculator_clicked',
+                    'intake_completed',
+                    'main_site_booking_clicked',
+                  ],
                 },
               },
             },
-            limit: 3,
+            limit: 8,
           }).catch(() => ({})),
 
           // GA4: sessions by region (geo targeting validation)
@@ -1591,33 +1600,40 @@
         });
       }
 
-      const intakes  = counts['intake_completed']           || 0;
-      const bookings = counts['main_site_booking_clicked']  || 0;
-      const roi      = counts['roi_calculator_clicked']     || 0;
-      const rate     = totalSessions > 0 ? ((intakes / totalSessions) * 100).toFixed(1) + '%' : '—';
+      const intakes = counts['intake_completed'] || 0;
+      const bookings = (counts['calendar_booking_clicked'] || 0) +
+        (counts['main_site_booking_clicked'] || 0); // Preserve historical click reporting.
+      const roi = counts['roi_calculator_clicked'] || 0;
+      const completed = [
+        'prototype_review_submitted',
+        'lead_submitted',
+        'roi_report_requested',
+        'calendar_booking_completed',
+      ].reduce((total, eventName) => total + (counts[eventName] || 0), 0);
+      const rate = totalSessions > 0 ? ((completed / totalSessions) * 100).toFixed(1) + '%' : '—';
 
-      const noEvents = intakes === 0 && bookings === 0 && roi === 0;
+      const noEvents = intakes === 0 && bookings === 0 && roi === 0 && completed === 0;
       if (noEvents) {
         document.getElementById('conversion-metrics').innerHTML = `
           <div class="metric-card" style="grid-column:1/-1;text-align:center;padding:32px 24px;">
             <div style="font-size:1.5rem;margin-bottom:12px;">🎯</div>
             <div style="font-size:.95rem;font-weight:600;margin-bottom:8px;">No conversion events recorded yet</div>
             <div style="font-size:.8rem;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.6;">
-              GA4 custom events (<code style="color:var(--amber);">intake_completed</code>, <code style="color:var(--amber);">main_site_booking_clicked</code>, <code style="color:var(--amber);">roi_calculator_clicked</code>) fire when visitors engage with the intake form, CTA buttons, or ROI calculator. Events typically appear within a few hours of the first interaction.
+              GA4 records completed outcomes separately from micro-conversions. Booking and calculator clicks show intent; only submitted, requested, or confirmed success events count as completed outcomes.
             </div>
           </div>`;
         return;
       }
 
       document.getElementById('conversion-metrics').innerHTML = [
-        renderMetricCard('Intake Completions', fmt(intakes), `${rangeDays}-day total`,
-          'Visitors who finished the 3-question qualifier — your most qualified inbound leads'),
+        renderMetricCard('Completed Key Events', fmt(completed), `${rangeDays}-day total`,
+          'Successful lead submissions, ROI report requests, prototype reviews, or confirmed bookings'),
         renderMetricCard('Booking Clicks', fmt(bookings), `${rangeDays}-day total`,
-          'Clicks on "Book a Free Call" or "See If You\'re a Fit" — direct revenue intent signal'),
+          'Micro-conversion: outbound scheduling intent, not a confirmed appointment or lead'),
         renderMetricCard('ROI Calculator', fmt(roi), `${rangeDays}-day total`,
-          'Visitors who used the ROI calculator — high-intent prospects researching payback time'),
-        renderMetricCard('Intake Rate', rate, 'of all sessions',
-          'What % of visitors complete the intake. B2B lead form benchmarks: 2–5% is healthy'),
+          `Calculator clicks; ${fmt(intakes)} visitors also completed the on-site qualifier`),
+        renderMetricCard('Completed Outcome Rate', rate, 'of all sessions',
+          'Successful outcome events divided by sessions; clicks and qualifier completion are excluded'),
       ].join('');
     }
 

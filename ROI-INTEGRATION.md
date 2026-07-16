@@ -6,8 +6,8 @@ This document describes how `why57.com`, `roi.why57.com`, GA4, and the Cloudflar
 
 - `roi.why57.com` runs the ROI calculator
 - `why57.com` links to the calculator and reads shared ROI context back from the calculator
-- GA4 is shared across both properties
-- a Cloudflare Worker stores lead context server-side at `https://why57-roi-intake.gera-695.workers.dev/`
+- GA4 is shared across both hostnames
+- a Cloudflare Worker stores ROI interaction context server-side at `https://why57-roi-intake.gera-695.workers.dev/`
 
 ## Why this exists
 
@@ -24,25 +24,26 @@ That gives the site:
 
 1. A visitor uses `roi.why57.com`.
 2. The calculator fires GA4 events and writes `why57_roi_context` on `.why57.com`.
-3. Booking CTA clicks on the calculator send a best-effort POST to the Worker.
+3. Booking CTA clicks on the calculator can send a best-effort interaction POST to the Worker.
 4. `why57.com` reads the shared cookie and personalizes the ROI handoff section.
-5. Booking CTA clicks on `why57.com` send a second best-effort POST to the same Worker.
+5. Booking CTA clicks on `why57.com` send a second best-effort interaction POST to the same Worker when ROI context exists.
 6. The Worker normalizes and stores the payload in Cloudflare KV.
 
 ## Key files
 
-ROI calculator repo:
+ROI calculator repository:
 
-- [index.html](/Users/gerayeremin/Documents/New%20project/custom-software-roi-calculator/index.html)
-- [calculator.js](/Users/gerayeremin/Documents/New%20project/custom-software-roi-calculator/calculator.js)
-- [INTEGRATIONS.md](/Users/gerayeremin/Documents/New%20project/custom-software-roi-calculator/INTEGRATIONS.md)
+- `index.html`
+- `calculator.js`
+- `INTEGRATIONS.md`
 
 Main site repo:
 
-- [index.html](/Users/gerayeremin/Documents/New%20project/why57/index.html)
-- [roi-bridge.js](/Users/gerayeremin/Documents/New%20project/why57/roi-bridge.js)
-- [cloudflare/why57-roi-intake/worker.js](/Users/gerayeremin/Documents/New%20project/why57/cloudflare/why57-roi-intake/worker.js)
-- [cloudflare/why57-roi-intake/wrangler.toml](/Users/gerayeremin/Documents/New%20project/why57/cloudflare/why57-roi-intake/wrangler.toml)
+- `index.html`
+- `analytics.js`
+- `roi-bridge.js`
+- `cloudflare/why57-roi-intake/worker.js`
+- `cloudflare/why57-roi-intake/wrangler.toml`
 
 ## Worker behavior
 
@@ -53,7 +54,8 @@ Accepted origins:
 
 Storage model:
 
-- `lead:<yyyy-mm-dd>:<session_id>:<uuid>`
+- `event:<yyyy-mm-dd>:<session_id>:<uuid>` for interactions and unclassified events
+- `lead:<yyyy-mm-dd>:<session_id>:<uuid>` only for the four completed outcome events defined in `ANALYTICS.md`
 - `latest:<session_id>`
 
 Default retention:
@@ -62,10 +64,10 @@ Default retention:
 
 ## Deploying changes
 
-Worker deploy:
+Worker deploy from the repository root:
 
 ```bash
-cd "/Users/gerayeremin/Documents/New project/why57/cloudflare/why57-roi-intake"
+cd cloudflare/why57-roi-intake
 npx wrangler deploy
 ```
 
@@ -80,3 +82,5 @@ npx wrangler kv key get --binding ROI_LEADS --remote --preview false "latest:<se
 - forward normalized payloads to another backend using `ROI_FORWARD_WEBHOOK_URL`
 - add GTM or ad-platform tags on top of the existing `dataLayer`
 - build an internal dashboard or reporting job on top of KV data
+
+Booking clicks stored by this integration are interaction context, not completed leads. See `ANALYTICS.md` for event semantics, GA4 configuration, and calendar completion options.

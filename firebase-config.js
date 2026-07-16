@@ -28,7 +28,6 @@ import {
   getString,
   getBoolean,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-remote-config.js';
-import { getAnalytics, logEvent } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js';
 
 // ─── Project config ────────────────────────────────────────────────────────
 // Values are injected at runtime by site-config.js (gitignored).
@@ -41,22 +40,22 @@ const FIREBASE_CONFIG = window.WHY57_FIREBASE || {};
 // Each key maps to a Firebase Remote Config parameter.
 const DEFAULT_CONFIG = {
   // Experiment 1 — Hero headline framing
-  hero_headline:        "We build software that pays for itself.",
-  hero_headline_sub:    "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond.",
+  hero_headline:        "We build software that removes real operational friction.",
+  hero_headline_sub:    "Automation, client portals, review workflows, and operations platforms scoped around a documented business process.",
 
   // Experiment 2 — Hero CTA copy
-  hero_cta_primary:     "Book a Free Call",
-  nav_cta:              "Book a Call",
+  hero_cta_primary:     "Request a Fit Call",
+  nav_cta:              "Request a Call",
 
   // Experiment 3 — Intake form position
   intake_above_fold:    false,           // boolean: show intake before hero content
 
   // Experiment 4 — Price signal near CTA
-  show_price_signal:    false,           // boolean: show "Most projects: $5k–$25k" near CTA
-  price_signal_text:    "Most projects: $5k–$25k · Fixed price, scoped upfront.",
+  show_price_signal:    false,           // disabled pending owner confirmation of pricing policy
+  price_signal_text:    "",
 
   // Experiment 5 — Social proof placement
-  social_proof_above_fold: false,        // boolean: show logo wall / stat row before hero text
+  social_proof_above_fold: false,        // boolean: show proof-process row before hero text
 
   // Experiment 6 — 57Seconds as hero use case
   hero_badge_text:      "Custom Software Development",
@@ -68,7 +67,8 @@ let _rc = null;
 
 async function initFirebase() {
   const REQUIRED = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
-  const missing  = REQUIRED.filter(k => !FIREBASE_CONFIG[k]);
+  const isPlaceholder = value => !value || /YOUR_(?:API_KEY|PROJECT|SENDER_ID|APP_ID)/.test(String(value));
+  const missing  = REQUIRED.filter(k => isPlaceholder(FIREBASE_CONFIG[k]));
   if (missing.length > 0) {
     console.warn('[why57] Firebase config incomplete — missing:', missing.join(', '),
       '\nCopy site-config.example.js → site-config.js and fill in the values.');
@@ -79,8 +79,6 @@ async function initFirebase() {
 
   try {
     const app = initializeApp(FIREBASE_CONFIG);
-    const analytics = getAnalytics(app);
-
     _rc = getRemoteConfig(app);
 
     // Apply defaults so page renders correctly before fetch completes
@@ -109,7 +107,9 @@ async function initFirebase() {
     };
 
     // Log successful RC fetch so we can track initialization rate in GA4
-    logEvent(analytics, 'rc_fetch_success', { variant_count: Object.keys(window.why57RC).length });
+    window.why57Analytics?.track('rc_fetch_success', {
+      variant_count: Object.keys(window.why57RC).length
+    });
 
   } catch (err) {
     // On failure, fall back to defaults — site still works normally

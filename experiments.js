@@ -19,25 +19,30 @@
 
 // ─── GA4 event helper (matches main.js pattern) ───────────────────────────
 function trackExperiment(experimentName, variant, extraParams = {}) {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'experiment_impression', {
-      experiment_name: experimentName,
-      variant_name:    variant,
-      ...extraParams,
-    });
-  }
+  window.why57Analytics?.track('experiment_impression', {
+    experiment_name: experimentName,
+    variant_name:    variant,
+    ...extraParams,
+  });
 }
 
 // ─── Experiment 1: Hero headline framing ──────────────────────────────────
 // Tests loss-averse reframe vs. current gain-frame headline.
-// Control:  "We build software that pays for itself."
+// Control:  "We build software that removes real operational friction."
 // Variant:  e.g. "Stop losing revenue to manual processes."
+function proofSafeCopy(value, fallback) {
+  if (!value) return fallback;
+
+  const unsupportedClaimPattern = /(pays? for itself|\bproven\b|\baverage roi\b|\bguarantee(?:d|s)?\b|\b(?:always|never|every)\b|\bafter (?:each|every)\b|\bworks? for any\b|\bday one\b|\bone call\b|\bscales? without breaking\b|\bjust results\b|\bfree\b|\bno obligation\b|\bzoom\b|\bphone\b|\b\d+\s*minutes?\b|\b\d[\d,]*(?:\.\d+)?\s*(?:\+|x|%|years?|clients?|reviews?))/i;
+  return unsupportedClaimPattern.test(value) ? fallback : value;
+}
+
 function applyExpHeroHeadline(rc) {
   const el = document.querySelector('.hero-headline');
   if (!el) return;
 
-  const control = "We build software that pays for itself.";
-  const headline = rc.hero_headline;
+  const control = "We build software that removes real operational friction.";
+  const headline = proofSafeCopy(rc.hero_headline, control);
 
   if (headline && headline !== control) {
     // Replace the text while preserving the <span class="text-orange"> structure
@@ -53,21 +58,22 @@ function applyExpHeroHeadline(rc) {
   }
 
   // Apply sub-headline variant if it differs from the control value
-  const CONTROL_SUB = "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond.";
+  const CONTROL_SUB = "Automation, client portals, review workflows, and operations platforms scoped around a documented business process.";
   const subEl = document.querySelector('.hero-sub');
-  if (subEl && rc.hero_headline_sub && rc.hero_headline_sub !== CONTROL_SUB) {
-    subEl.textContent = rc.hero_headline_sub;
+  const safeSub = proofSafeCopy(rc.hero_headline_sub, CONTROL_SUB);
+  if (subEl && safeSub !== CONTROL_SUB) {
+    subEl.textContent = safeSub;
   }
 }
 
 // ─── Experiment 2: CTA copy ───────────────────────────────────────────────
-// Tests "Book a Free Call" vs. variants like "See If You're a Fit" or "Get a Project Plan".
+// Tests owner-approved fit-call wording without asserting price, duration, or meeting format.
 // Updates nav + hero CTAs together for consistent messaging.
 function applyExpCtaCopy(rc) {
-  const control = "Book a Free Call";
-  const navControl = "Book a Call";
-  const heroCta = rc.hero_cta_primary;
-  const navCta  = rc.nav_cta;
+  const control = "Request a Fit Call";
+  const navControl = "Request a Call";
+  const heroCta = proofSafeCopy(rc.hero_cta_primary, control);
+  const navCta  = proofSafeCopy(rc.nav_cta, navControl);
 
   const isVariant = heroCta && heroCta !== control;
   const variant   = isVariant ? 'variant' : 'control';
@@ -116,48 +122,15 @@ function applyExpIntakePosition(rc) {
 }
 
 // ─── Experiment 4: Price signal ───────────────────────────────────────────
-// Tests showing "Most projects: $5k–$25k · Fixed price, scoped upfront." near CTAs.
+// Price-range testing is disabled until the owner confirms the current pricing policy.
 // Based on NNG research: pricing is the #1 most-needed info on vendor sites.
 function applyExpPriceSignal(rc) {
   // Price signal text disabled — always treat as control.
   trackExperiment('price_signal', 'control');
-  return;
-  if (!rc.show_price_signal) {
-
-  const text = rc.price_signal_text || "Most projects: $5k–$25k · Fixed price, scoped upfront.";
-
-  // Insert price signal after the hero actions
-  const heroActions = document.querySelector('.hero-actions');
-  if (heroActions && !document.getElementById('exp-price-signal')) {
-    const pill = document.createElement('p');
-    pill.id = 'exp-price-signal';
-    pill.textContent = text;
-    pill.style.cssText = [
-      'font-size: .78rem',
-      'color: rgba(237,237,239,0.45)',
-      'margin-top: 12px',
-      'letter-spacing: .01em',
-      'line-height: 1.5',
-    ].join(';');
-    heroActions.insertAdjacentElement('afterend', pill);
-  }
-
-  // Also insert near the fit section CTA if it exists
-  const fitBook = document.getElementById('fitBook');
-  if (fitBook && fitBook.parentElement && !document.getElementById('exp-price-signal-fit')) {
-    const pill2 = document.createElement('p');
-    pill2.id = 'exp-price-signal-fit';
-    pill2.textContent = text;
-    pill2.style.cssText = 'font-size:.75rem;color:rgba(237,237,239,0.4);margin-top:10px;';
-    fitBook.parentElement.insertAdjacentElement('afterend', pill2);
-  }
-
-  trackExperiment('price_signal', 'variant', { signal_text: text });
 }
 
 // ─── Experiment 5: Social proof placement ────────────────────────────────
-// Tests moving the stats row (9,000+ reviews, 10x ROI, etc.) above the hero headline.
-// Social proof above the fold builds trust before the visitor reads the pitch.
+// Tests moving the proof-process row above the hero headline.
 function applyExpSocialProofPlacement(rc) {
   if (!rc.social_proof_above_fold) {
     trackExperiment('social_proof_placement', 'control');
@@ -185,7 +158,7 @@ function applyExpSocialProofPlacement(rc) {
 }
 
 // ─── Experiment 6: 57Seconds as hero use case ────────────────────────────
-// Tests leading with the review growth use case (9,000 reviews proof) in the hero
+// Tests leading with the review workflow use case in the hero
 // vs. the current generic "custom software" positioning.
 // Specifically targets call-heavy businesses who immediately recognize the value.
 function applyExp57SecondsHero(rc) {
@@ -196,26 +169,12 @@ function applyExp57SecondsHero(rc) {
 
   // Update hero badge
   const badge = document.querySelector('.hero-badge');
-  if (badge) badge.textContent = rc.hero_badge_text || '57Seconds — Review Growth';
+  if (badge) badge.textContent = proofSafeCopy(rc.hero_badge_text, '57Seconds — Review Workflow');
 
-  // Update hero sub-headline to lead with the 57Seconds proof point
+  // Update hero sub-headline to lead with the implementation scope.
   const heroSub = document.querySelector('.hero-sub');
   if (heroSub) {
-    heroSub.innerHTML = `
-      Your best clients never leave a review.<br />
-      We fix that — automatically, after every call.<br />
-      <span style="color:rgba(237,237,239,0.5);font-size:.9em;">
-        9,000+ reviews generated. Proven across insurance, legal, and service businesses.
-      </span>
-    `;
-  }
-
-  // Reorder hero stats to surface the review stat first
-  const statsEl = document.querySelector('.hero-stats');
-  if (statsEl) {
-    const reviewStat = [...statsEl.querySelectorAll('.stat')]
-      .find(s => s.querySelector('.stat-n')?.textContent?.includes('9,000'));
-    if (reviewStat) statsEl.prepend(reviewStat);
+    heroSub.textContent = 'Configure review follow-up for eligible interactions with agent-specific requests, landing pages, and reporting.';
   }
 
   trackExperiment('hero_lead_service', 'variant', { service: '57seconds' });

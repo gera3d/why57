@@ -1,8 +1,11 @@
 name = "why57-roi-intake"
 main = "worker.js"
-compatibility_date = "2026-04-04"
+compatibility_date = "2026-07-15"
 workers_dev = true
 preview_urls = false
+
+[observability]
+enabled = true
 
 [[kv_namespaces]]
 binding = "ROI_LEADS"

@@ -1,14 +1,11 @@
 /* ─── Cursor spotlight ─────────────────────────────────── */
 function trackEvent(eventName, detail = {}) {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: eventName,
-    ...detail
-  });
-
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, detail);
+  if (window.why57Analytics?.track) {
+    window.why57Analytics.track(eventName, detail);
+    return;
   }
+
+  window.gtag?.('event', eventName, detail);
 }
 
 const spotlightEl = document.getElementById('spotlightCursor');
@@ -226,7 +223,7 @@ if (intakePlanner) {
         title: 'Start with the ROI calculator',
         copy: 'You likely have a focused automation opportunity with a strong payback story. Run the estimate first, then bring the numbers into a call so we can scope the smartest first release.',
         primaryLabel: 'Try the ROI Calculator',
-        primaryHref: 'https://roi.why57.com/?utm_source=why57&utm_medium=intake_primary&utm_campaign=main_site_referral',
+        primaryHref: 'https://roi.why57.com/',
         primaryType: 'roi',
         secondaryLabel: 'Book a Strategy Call',
         secondaryHref: 'https://calendar.app.google/93NLV73sQd1DXuUB6'
@@ -535,15 +532,6 @@ bindManualCarousel({
   nextId: 'resultsCarouselNext',
   statusId: 'resultsCarouselStatus',
   eventName: 'results_carousel_changed'
-});
-
-bindManualCarousel({
-  windowId: 'testiCarousel',
-  trackSelector: '.testi-track',
-  prevId: 'testiCarouselPrev',
-  nextId: 'testiCarouselNext',
-  statusId: 'testiCarouselStatus',
-  eventName: 'testimonial_carousel_changed'
 });
 
 /* ─── Fit toggle ─────────────────────────────────────────── */

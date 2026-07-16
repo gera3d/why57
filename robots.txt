@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /dashboard.html
-Disallow: /*?*
+
+# Let crawlers read canonical tags on tracking and referral URL variants.
+# Blocking every query string prevents canonical consolidation in Search Console.
 
 Sitemap: https://why57.com/sitemap.xml
-Sitemap: https://roi.why57.com/sitemap.xml
