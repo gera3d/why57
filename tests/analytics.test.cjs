@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
 const vm = require("node:vm");
+const { createD1 } = require("./helpers.cjs");
 
 const repositoryRoot = path.resolve(__dirname, "..");
 const analyticsSource = fs.readFileSync(path.join(repositoryRoot, "analytics.js"), "utf8");
@@ -184,6 +185,21 @@ test("calendar clicks fire one micro-conversion with CTA, page, and offer contex
   assert.equal(eventCommands[0][2].page_type, "home");
 });
 
+test("homepage prototype hero keeps an explicit qualified-review analytics hook", () => {
+  const homepage = fs.readFileSync(path.join(repositoryRoot, "index.html"), "utf8");
+  const heroLink = homepage.match(/<a[^>]+id="heroPrototypeReview"[^>]*>/)?.[0];
+
+  assert.ok(heroLink, "Expected the homepage prototype-review CTA to exist");
+  assert.match(homepage, /<title>57 \| Custom Software Development/);
+  assert.match(homepage, /meta name="description" content="57 Custom Software Development/);
+  assert.match(homepage, /Turn prototypes and broken workflows into/);
+  assert.match(homepage, /Start a Custom Software Plan/);
+  assert.match(homepage, /href="#start-here"/);
+  assert.match(heroLink, /href="ai-app-prototype-to-production\.html#send-prototype"/);
+  assert.match(heroLink, /data-cta-location="homepage_hero_prototype"/);
+  assert.match(heroLink, /data-offer="prototype_review"/);
+});
+
 test("tracked content pages use the shared entry point and contain no legacy internal ROI campaign", () => {
   for (const file of publicContentFiles()) {
     const html = fs.readFileSync(file, "utf8");
@@ -197,13 +213,31 @@ test("tracked content pages use the shared entry point and contain no legacy int
   }
 });
 
-test("the no-JS prototype thank-you path uses only the shared GA4 bootstrap", () => {
+test("the no-JS prototype thank-you path requires a server-authoritative receipt", () => {
   const html = fs.readFileSync(path.join(repositoryRoot, "prototype-review-thank-you.html"), "utf8");
 
   assert.equal((html.match(/<script src="analytics\.js"><\/script>/g) || []).length, 1);
   assert.doesNotMatch(html, /googletagmanager\.com\/gtag\/js/);
   assert.doesNotMatch(html, /gtag\(['"]config['"]/);
+  assert.doesNotMatch(html, /[?&]submission=|sessionStorage/);
+  assert.match(html, /conversion-receipt/);
+  assert.match(html, /result\.claimed !== true/);
   assert.match(html, /gtag\(['"]event['"], ['"]prototype_review_submitted['"]/);
+});
+
+test("the live prototype form keeps required lead and safety fields behind progressive disclosure", () => {
+  const html = fs.readFileSync(path.join(repositoryRoot, "ai-app-prototype-to-production.html"), "utf8");
+  const funnel = fs.readFileSync(path.join(repositoryRoot, "prototype-funnel.js"), "utf8");
+
+  assert.match(html, /name="request_id" id="prototypeRequestId"/);
+  for (const field of ["name", "email", "tool", "prototype_description", "current_users", "target_date", "blocker", "consent"]) {
+    assert.match(html, new RegExp(`name="${field}"[^>]*required`), `${field} must remain required`);
+  }
+  assert.match(html, /<details class="review-progressive" id="prototypeReviewDetails" open>/);
+  assert.match(html, /prototype-review\/form/);
+  assert.match(funnel, /result\.stored !== true \|\| result\.forwarded !== true/);
+  assert.match(funnel, /receipt\.claimed === true/);
+  assert.doesNotMatch(funnel, /prototype_review_submitted[\s\S]{0,300}sessionStorage/);
 });
 
 test("the ROI context worker stores clicks as events and completed outcomes as leads", async () => {
@@ -232,6 +266,7 @@ test("the ROI context worker stores clicks as events and completed outcomes as l
       })
     });
     const env = {
+      INTAKE_DB: createD1(),
       ROI_REPORT_RATE_LIMIT_SALT: "qa-rate-limit-salt",
       ROI_REPORT_WEBHOOK_URL: "https://example.com/report",
       ROI_LEADS: {

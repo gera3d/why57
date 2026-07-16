@@ -7,13 +7,30 @@
   const reference = document.getElementById('prototypeReviewReference');
   const submitButton = document.getElementById('prototypeSubmit');
   const startedAt = document.getElementById('prototypeFormStartedAt');
+  const requestId = document.getElementById('prototypeRequestId');
   const pageUrl = document.getElementById('prototypePageUrl');
   const referrer = document.getElementById('prototypeReferrer');
   const sessionId = document.getElementById('prototypeSessionId');
   const utmSource = document.getElementById('prototypeUtmSource');
   const utmMedium = document.getElementById('prototypeUtmMedium');
   const utmCampaign = document.getElementById('prototypeUtmCampaign');
+  const progressiveDetails = document.getElementById('prototypeReviewDetails');
+  const receiptEndpoint = `${new URL(form.action).origin}/conversion-receipt`;
   const defaultSubmitLabel = submitButton?.textContent || 'Send My Prototype';
+
+  function createRequestId() {
+    if (typeof window.crypto?.randomUUID === 'function') return window.crypto.randomUUID();
+    if (typeof window.crypto?.getRandomValues === 'function') {
+      const values = new Uint32Array(4);
+      window.crypto.getRandomValues(values);
+      return `prototype-${Array.from(values, (value) => value.toString(16).padStart(8, '0')).join('')}`;
+    }
+    return `prototype-${Date.now()}`;
+  }
+
+  function rotateRequestId() {
+    if (requestId) requestId.value = createRequestId();
+  }
 
   function getSessionId() {
     try {
@@ -34,6 +51,7 @@
   function setContextFields() {
     const params = new URLSearchParams(window.location.search);
     if (startedAt) startedAt.value = String(Date.now());
+    if (requestId && !requestId.value) rotateRequestId();
     if (pageUrl) pageUrl.value = window.location.href.slice(0, 1000);
     if (referrer) referrer.value = document.referrer.slice(0, 1000);
     if (sessionId) sessionId.value = getSessionId();
@@ -113,9 +131,30 @@
   form.addEventListener('invalid', (event) => {
     const field = event.target;
     if (!(field instanceof HTMLInputElement || field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement)) return;
+    if (progressiveDetails?.contains(field)) progressiveDetails.open = true;
     showFieldError(field, friendlyValidationMessage(field));
     showFormError('Please check the highlighted fields before sending your prototype.', false);
   }, true);
+
+  async function claimConversionReceipt(receipt) {
+    if (!/^[a-f0-9]{64}$/.test(String(receipt || ''))) {
+      throw new Error('The review service did not return a valid delivery receipt. Your answers are still here—please try again.');
+    }
+
+    const response = await fetch(receiptEndpoint, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ receipt })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok || result.event_type !== 'prototype_review_submitted') {
+      throw new Error('Delivery was confirmed, but the analytics receipt could not be validated. Please retry with the same request.');
+    }
+    return result;
+  }
 
   form.querySelectorAll('input, select, textarea').forEach((field) => {
     field.addEventListener('input', () => {
@@ -133,6 +172,7 @@
       setSubmitting(true);
 
       const payload = Object.fromEntries(new FormData(form).entries());
+      let rotateAfterError = false;
 
       try {
         const response = await fetch(form.action, {
@@ -147,7 +187,10 @@
         const result = await response.json().catch(() => ({}));
         if (!response.ok || !result.ok) {
           applyServerFieldErrors(result.fields);
-          const message = response.status === 429
+          rotateAfterError = !['delivery_state_unknown', 'request_processing'].includes(result.error);
+          const message = result.error === 'request_processing'
+            ? 'This request is already being processed. Do not submit it again; check your email in a moment.'
+            : response.status === 429
             ? 'We have received several requests from this connection. Please wait an hour and try again.'
             : response.status >= 500
               ? 'The review service is temporarily unavailable. Your answers are still here—please try again in a few minutes.'
@@ -155,9 +198,16 @@
           throw new Error(message);
         }
 
+        if (result.stored !== true || result.forwarded !== true) {
+          rotateAfterError = true;
+          throw new Error('The review service did not confirm storage and delivery. Your answers are still here—please try again.');
+        }
+
+        const receipt = await claimConversionReceipt(result.receipt);
+
         form.hidden = true;
         if (successState) successState.hidden = false;
-        if (reference && result.id) reference.textContent = `Reference ${String(result.id).slice(0, 8).toUpperCase()}`;
+        if (reference && receipt.reference) reference.textContent = `Reference ${receipt.reference}`;
 
         const analyticsDetail = {
           form_id: 'prototype_review',
@@ -165,22 +215,25 @@
           current_users: String(payload.current_users || 'unknown'),
           target_date: String(payload.target_date || 'unknown'),
           submission_transport: 'enhanced',
-          submission_id: result.id || undefined
+          submission_id: receipt.submission_id || result.id || undefined
         };
 
-        if (typeof window.trackEvent === 'function') {
-          window.trackEvent('prototype_review_submitted', analyticsDetail);
-        } else if (typeof window.gtag === 'function') {
-          window.gtag('event', 'prototype_review_submitted', analyticsDetail);
-        }
+        if (receipt.claimed === true) {
+          if (typeof window.trackEvent === 'function') {
+            window.trackEvent('prototype_review_submitted', analyticsDetail);
+          } else if (typeof window.gtag === 'function') {
+            window.gtag('event', 'prototype_review_submitted', analyticsDetail);
+          }
 
-        window.dispatchEvent(new CustomEvent('why57:prototype_review_submitted', {
-          detail: analyticsDetail
-        }));
+          window.dispatchEvent(new CustomEvent('why57:prototype_review_submitted', {
+            detail: analyticsDetail
+          }));
+        }
 
         successState?.focus();
         window.history.replaceState({}, '', `${window.location.pathname}?prototype_review=thanks#send-prototype`);
       } catch (error) {
+        if (rotateAfterError) rotateRequestId();
         showFormError(error instanceof Error ? error.message : 'We could not send your prototype. Please try again.');
       } finally {
         setSubmitting(false);
@@ -189,4 +242,7 @@
   }
 
   setContextFields();
+  if (progressiveDetails && window.matchMedia('(max-width: 640px)').matches) {
+    progressiveDetails.open = false;
+  }
 })();

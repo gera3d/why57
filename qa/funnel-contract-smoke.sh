@@ -2,19 +2,21 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PORT="${PORT:-41757}"
+PORT="${PORT:-41758}"
 BASE_URL="http://127.0.0.1:${PORT}"
-SESSION="why57-mobile-$$"
-SERVER_LOG="$ROOT_DIR/output/playwright/http-server.log"
+SESSION="why57-funnel-$$"
+SERVER_LOG="$ROOT_DIR/output/playwright/funnel-http-server.log"
 
 if [[ -n "${PWCLI:-}" ]]; then
   PLAYWRIGHT=("$PWCLI")
 elif [[ -n "${CODEX_HOME:-}" && -x "$CODEX_HOME/skills/playwright/scripts/playwright_cli.sh" ]]; then
   PLAYWRIGHT=("$CODEX_HOME/skills/playwright/scripts/playwright_cli.sh")
+elif [[ -x "/Users/gerayeremin/.codex/skills/playwright/scripts/playwright_cli.sh" ]]; then
+  PLAYWRIGHT=("/Users/gerayeremin/.codex/skills/playwright/scripts/playwright_cli.sh")
 elif command -v npx >/dev/null 2>&1; then
   PLAYWRIGHT=(npx --yes --package @playwright/cli playwright-cli)
 else
-  echo "Mobile smoke requires Node.js/npm (npx) or PWCLI pointing to playwright-cli." >&2
+  echo "Funnel smoke requires Node.js/npm (npx) or PWCLI pointing to playwright-cli." >&2
   exit 1
 fi
 
@@ -42,8 +44,7 @@ if ! curl --silent --fail "$BASE_URL/" >/dev/null; then
 fi
 
 "${PLAYWRIGHT[@]}" -s="$SESSION" open "$BASE_URL/" >/dev/null
-"${PLAYWRIGHT[@]}" -s="$SESSION" resize 390 844 >/dev/null
-PLAYWRIGHT_OUTPUT="$("${PLAYWRIGHT[@]}" -s="$SESSION" run-code --filename "$ROOT_DIR/qa/mobile-smoke.playwright.js")"
+PLAYWRIGHT_OUTPUT="$("${PLAYWRIGHT[@]}" -s="$SESSION" run-code --filename "$ROOT_DIR/qa/funnel-contract-smoke.playwright.js")"
 printf '%s\n' "$PLAYWRIGHT_OUTPUT"
 if printf '%s\n' "$PLAYWRIGHT_OUTPUT" | grep -q '^### Error'; then
   exit 1
