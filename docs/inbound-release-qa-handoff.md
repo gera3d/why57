@@ -2,6 +2,18 @@
 
 Updated July 15, 2026. This document separates code that passed QA from live work that still requires an authenticated release or account change.
 
+## Growth launch hold — July 15 live recheck
+
+The approval-ready first-wave distribution plan is in [the two-week AI-prototype launch batch](../growth/two-week-ai-prototype-launch-batch.md).
+
+Distribution remains on hold:
+
+- The public AI prototype page returns HTTP 200, but its body exactly matches the earlier growth-assets version and still sends the primary actions to the calendar instead of the integrated five-point review form.
+- The public readiness/security checklist and repair-vs.-rebuild guide both return HTTP 404.
+- No launch post or partner message has been published or sent, and no launch annotation has been added to the weekly scorecard.
+
+After the complete Production Release and live smoke test, recheck the seven approval-gated messages in the batch, obtain Gera's explicit copy/recipient approval, and only then publish or send the approved first wave.
+
 ## Decision
 
 The integrated site and Worker code are ready for release after the deployment prerequisites below are supplied. The public site and public Worker were still serving the previous release during this audit, so the new funnels cannot be counted as live conversions yet.

@@ -16,8 +16,8 @@ Every published URL should use a single primary CTA and source-specific UTMs. Do
 
 | Week | Funnel job | Core asset / angle | Primary CTA | Distribution and reuse | Measurement |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Capture existing search demand | **AI prototype vs. production product:** explain the ownership, security, reliability, and support gap without dismissing prototype value. Refresh title/meta only after reviewing actual GSC queries. | Read the production-readiness checklist | Website article or landing-page section; founder LinkedIn checklist carousel/text post; short GBP excerpt. | Search impressions, CTR by query/page, checklist clicks. |
-| 2 | Create a diagnostic entry point | **The 20-point production-readiness checklist.** Publish the lead magnet with a clear score and three-gap action plan. | Request an AI Prototype Clinic | Website resource; LinkedIn “score yours” post; agency/fractional CTO resource share after permission. | Resource views, CTA clicks, clinic starts/submits. |
+| 1 | Capture high-intent prototype demand | **AI prototype to production:** use the canonical [AI prototype-to-production page](https://why57.com/ai-app-prototype-to-production.html) to explain the ownership, security, reliability, support, and keep/repair/rebuild gap without dismissing prototype value. | Send Your Prototype for the 5-Point Review | Founder LinkedIn text post; concise Google Business Profile post; one narrow referral ask to a current collaborator. | UTM-attributed landing sessions, `prototype_review_submitted`, and secondary `calendar_booking_clicked` micro-conversions. |
+| 2 | Create a diagnostic entry point | **The 12-part readiness and security checklist:** use the canonical [readiness checklist](https://why57.com/ai-prototype-readiness-security-checklist.html), supported by the canonical [repair-vs.-rebuild guide](https://why57.com/ai-prototype-repair-rebuild-cost.html). | Start the Readiness Checklist | Founder LinkedIn checklist post; repair-vs.-rebuild follow-up; one-to-one SBDC/economic-development resource shares after message approval. | UTM-attributed resource sessions, engaged visits, `calendar_booking_clicked` micro-conversions, replies/intros, and assisted prototype-review submissions. |
 | 3 | Build decision confidence | **Keep, harden, or replace:** a decision framework for AI-generated code. Show conditions and evidence, not blanket rules. | Bring a prototype to the Clinic | Website article; founder diagram/text post; partner-ready excerpt. | Engaged sessions, Clinic CTA rate, qualified conversations. |
 | 4 | Turn proof into relevance | **How a repeatable deployment platform changes operations.** Use only approved Nuvolum case-study facts. Focus on the operating pattern, not borrowed prestige. | Read the Nuvolum case study | Website case-study excerpt; LinkedIn problem/approach/result thread; direct link only with approval. | Case-study visits, internal click-through, assisted CTA clicks. |
 | 5 | Attract operations pain | **Five signs a spreadsheet has become business-critical software.** Include permissions, versioning, error recovery, and ownership. | Estimate the workflow’s cost | Website article; LinkedIn diagnostic post; MSP referral snippet. | Organic entrances, ROI calculator clicks, referral-source sessions. |
@@ -44,13 +44,13 @@ Every published URL should use a single primary CTA and source-specific UTMs. Do
 Use lowercase snake-case values and keep the destination canonical:
 
 ```text
-?utm_source=[linkedin|partner_name|google_business_profile]
-&utm_medium=[organic_social|referral|organic_local]
-&utm_campaign=why57_12_week_editorial
+?utm_source=[linkedin|google_business_profile|founder_email|approved_partner_name]
+&utm_medium=[organic_social|organic_local|email|referral]
+&utm_campaign=[why57_ai_prototype_launch_2026q3|why57_12_week_editorial]
 &utm_content=w[01-12]_[short_asset_name]
 ```
 
-Do not add UTMs to internal website links. Record partner-specific values only after the partner approves distribution.
+Use `why57_ai_prototype_launch_2026q3` for the first two launch weeks. Direct one-to-one outreach uses `utm_source=founder_email`; put a non-personal organization or message code in `utm_content`. Use a partner name as `utm_source` only after that partner approves a separate distribution link. Do not add UTMs to internal website links or put names, email addresses, or other personal data in UTM values.
 
 ## Editorial QA gate
 
