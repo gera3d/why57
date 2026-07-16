@@ -62,10 +62,19 @@ document.addEventListener('keydown', (e) => {
 
 /* ─── Nav shadow on scroll ────────────────────────────────── */
 const navEl = document.getElementById('nav');
+const heroEl = document.getElementById('hero');
+const mobileStickyCta = document.querySelector('.mobile-sticky-cta');
+
 const onScroll = () => {
   navEl?.classList.toggle('nav--scrolled', window.scrollY > 10);
+  const heroIsPast = Boolean(heroEl && heroEl.getBoundingClientRect().bottom <= 0);
+  const showMobileSticky = window.matchMedia('(max-width: 960px)').matches && heroIsPast;
+  mobileStickyCta?.classList.toggle('is-visible', showMobileSticky);
+  mobileStickyCta?.setAttribute('aria-hidden', String(!showMobileSticky));
 };
 window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll, { passive: true });
+onScroll();
 
 /* ─── Smooth anchor scroll ────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach((a) => {

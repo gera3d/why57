@@ -184,6 +184,16 @@ test("calendar clicks fire one micro-conversion with CTA, page, and offer contex
   assert.equal(eventCommands[0][2].page_type, "home");
 });
 
+test("homepage prototype hero keeps an explicit qualified-review analytics hook", () => {
+  const homepage = fs.readFileSync(path.join(repositoryRoot, "index.html"), "utf8");
+  const heroLink = homepage.match(/<a[^>]+id="heroPrototypeReview"[^>]*>/)?.[0];
+
+  assert.ok(heroLink, "Expected the homepage prototype-review CTA to exist");
+  assert.match(heroLink, /href="ai-app-prototype-to-production\.html#send-prototype"/);
+  assert.match(heroLink, /data-cta-location="homepage_hero_prototype"/);
+  assert.match(heroLink, /data-offer="prototype_review"/);
+});
+
 test("tracked content pages use the shared entry point and contain no legacy internal ROI campaign", () => {
   for (const file of publicContentFiles()) {
     const html = fs.readFileSync(file, "utf8");
