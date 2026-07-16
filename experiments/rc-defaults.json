@@ -1,7 +1,7 @@
 {
   "parameters": {
     "hero_headline": {
-      "defaultValue": { "value": "We build software that pays for itself." },
+      "defaultValue": { "value": "We build software that removes real operational friction." },
       "description": "Hero section H1. Experiment 1: headline framing (gain vs loss-averse).",
       "valueType": "STRING"
     },
@@ -31,13 +31,13 @@
       "valueType": "BOOLEAN"
     },
     "price_signal_text": {
-      "defaultValue": { "value": "Most projects: $5k\u2013$25k \u00b7 Fixed price, scoped upfront." },
+      "defaultValue": { "value": "Fixed scope \u00b7 Written price before work starts." },
       "description": "Text shown near CTA when show_price_signal is true.",
       "valueType": "STRING"
     },
     "social_proof_above_fold": {
       "defaultValue": { "value": "false" },
-      "description": "Experiment 5: Move stats row (9k reviews, 10x ROI) above the hero headline.",
+      "description": "Experiment 5: Move the proof-process row above the hero headline.",
       "valueType": "BOOLEAN"
     },
     "hero_badge_text": {

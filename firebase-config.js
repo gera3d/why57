@@ -41,7 +41,7 @@ const FIREBASE_CONFIG = window.WHY57_FIREBASE || {};
 // Each key maps to a Firebase Remote Config parameter.
 const DEFAULT_CONFIG = {
   // Experiment 1 — Hero headline framing
-  hero_headline:        "We build software that pays for itself.",
+  hero_headline:        "We build software that removes real operational friction.",
   hero_headline_sub:    "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond.",
 
   // Experiment 2 — Hero CTA copy
@@ -52,11 +52,11 @@ const DEFAULT_CONFIG = {
   intake_above_fold:    false,           // boolean: show intake before hero content
 
   // Experiment 4 — Price signal near CTA
-  show_price_signal:    false,           // boolean: show "Most projects: $5k–$25k" near CTA
-  price_signal_text:    "Most projects: $5k–$25k · Fixed price, scoped upfront.",
+  show_price_signal:    false,           // disabled pending owner confirmation of pricing policy
+  price_signal_text:    "Fixed scope · Written price before work starts.",
 
   // Experiment 5 — Social proof placement
-  social_proof_above_fold: false,        // boolean: show logo wall / stat row before hero text
+  social_proof_above_fold: false,        // boolean: show proof-process row before hero text
 
   // Experiment 6 — 57Seconds as hero use case
   hero_badge_text:      "Custom Software Development",

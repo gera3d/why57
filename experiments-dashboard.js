@@ -41,7 +41,7 @@ const EXPERIMENT_REGISTRY = [
     primaryMetric: 'intake_completed',
     primaryMetricLabel: 'Intake Completed',
     guardrails:   ['bounce_rate', 'session_duration'],
-    control:      { label: 'Control', description: '"We build software that pays for itself."' },
+    control:      { label: 'Control', description: '"We build software that removes real operational friction."' },
     variant:      { label: 'Variant A', description: '"Stop losing revenue to manual processes."' },
     trafficSplit: 50,    // % to variant; remainder goes to control
     targetDays:   14,    // minimum days to run before reading results
@@ -109,7 +109,7 @@ const EXPERIMENT_REGISTRY = [
     status:       'draft',
     startDate:    null,
     endDate:      null,
-    hypothesis:   'Moving the stats row (9,000+ reviews, 10x ROI) above the headline builds immediate credibility before visitors read the pitch.',
+    hypothesis:   'Moving the proof-process row above the headline makes the delivery standard visible before visitors read the pitch.',
     primaryMetric: 'intake_completed',
     primaryMetricLabel: 'Intake Completed',
     guardrails:   ['bounce_rate'],
@@ -127,12 +127,12 @@ const EXPERIMENT_REGISTRY = [
     status:       'draft',
     startDate:    null,
     endDate:      null,
-    hypothesis:   'Leading with 57Seconds (9,000 reviews proof) instead of generic custom software positions the most concrete, quantifiable win first — increasing intake for call-heavy service businesses.',
+    hypothesis:   'Leading with the concrete 57Seconds workflow instead of generic custom software will increase intake for call-heavy service businesses.',
     primaryMetric: 'intake_completed',
     primaryMetricLabel: 'Intake Completed',
     guardrails:   ['bounce_rate', 'roi_calculator_clicked'],
     control:      { label: 'Control', description: 'Generic "Custom Software Development" hero (current)' },
-    variant:      { label: 'Variant A', description: '57Seconds review growth hero with 9,000+ reviews proof point' },
+    variant:      { label: 'Variant A', description: '57Seconds workflow hero with agent-specific requests, landing pages, and reporting' },
     trafficSplit: 50,
     targetDays:   21,   // high-risk / high-reward — run longer before concluding
     firebaseExpId: null,

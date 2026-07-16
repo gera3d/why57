@@ -76,8 +76,8 @@ This lets the dashboard break down conversion data by experiment + variant.
    - **Target**: Web app, 100% of users
    - **Metric**: (you'll track this via GA4 custom events)
 4. Add variants:
-   - **Baseline**: `hero_headline` = `"We build software that pays for itself."`
-   - **Variant A**: `hero_headline` = `"Stop losing revenue to manual processes."`, `hero_headline_sub` = `"Every week you wait, manual work costs you more. We fix that in 4–8 weeks."`
+   - **Baseline**: `hero_headline` = `"We build software that removes real operational friction."`
+   - **Variant A**: `hero_headline` = `"Stop losing time to manual processes."`, `hero_headline_sub` = `"Map the bottleneck, define a useful first release, and measure the change against an agreed baseline."`
 5. Set traffic split: 50% / 50%
 6. Start experiment
 

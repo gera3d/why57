@@ -1,7 +1,7 @@
 {
   "parameters": {
     "hero_headline": {
-      "defaultValue": { "value": "We build software that pays for itself." },
+      "defaultValue": { "value": "We build software that removes real operational friction." },
       "description": "Hero H1. Edit defaultValue here to roll out a winning variant to 100%.",
       "valueType": "STRING"
     },
@@ -31,7 +31,7 @@
       "valueType": "BOOLEAN"
     },
     "price_signal_text": {
-      "defaultValue": { "value": "Most projects: $5k\u2013$25k \u00b7 Fixed price, scoped upfront." },
+      "defaultValue": { "value": "Fixed scope \u00b7 Written price before work starts." },
       "description": "Price signal copy.",
       "valueType": "STRING"
     },

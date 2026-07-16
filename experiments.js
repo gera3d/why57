@@ -30,14 +30,21 @@ function trackExperiment(experimentName, variant, extraParams = {}) {
 
 // ─── Experiment 1: Hero headline framing ──────────────────────────────────
 // Tests loss-averse reframe vs. current gain-frame headline.
-// Control:  "We build software that pays for itself."
+// Control:  "We build software that removes real operational friction."
 // Variant:  e.g. "Stop losing revenue to manual processes."
+function proofSafeCopy(value, fallback) {
+  if (!value) return fallback;
+
+  const unsupportedClaimPattern = /(pays? for itself|\bproven\b|\baverage roi\b|\b\d[\d,]*(?:\.\d+)?\s*(?:\+|x|%|years?|clients?|reviews?))/i;
+  return unsupportedClaimPattern.test(value) ? fallback : value;
+}
+
 function applyExpHeroHeadline(rc) {
   const el = document.querySelector('.hero-headline');
   if (!el) return;
 
-  const control = "We build software that pays for itself.";
-  const headline = rc.hero_headline;
+  const control = "We build software that removes real operational friction.";
+  const headline = proofSafeCopy(rc.hero_headline, control);
 
   if (headline && headline !== control) {
     // Replace the text while preserving the <span class="text-orange"> structure
@@ -55,8 +62,9 @@ function applyExpHeroHeadline(rc) {
   // Apply sub-headline variant if it differs from the control value
   const CONTROL_SUB = "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond.";
   const subEl = document.querySelector('.hero-sub');
-  if (subEl && rc.hero_headline_sub && rc.hero_headline_sub !== CONTROL_SUB) {
-    subEl.textContent = rc.hero_headline_sub;
+  const safeSub = proofSafeCopy(rc.hero_headline_sub, CONTROL_SUB);
+  if (subEl && safeSub !== CONTROL_SUB) {
+    subEl.textContent = safeSub;
   }
 }
 
@@ -116,7 +124,7 @@ function applyExpIntakePosition(rc) {
 }
 
 // ─── Experiment 4: Price signal ───────────────────────────────────────────
-// Tests showing "Most projects: $5k–$25k · Fixed price, scoped upfront." near CTAs.
+// Price-range testing is disabled until the owner confirms the current pricing policy.
 // Based on NNG research: pricing is the #1 most-needed info on vendor sites.
 function applyExpPriceSignal(rc) {
   // Price signal text disabled — always treat as control.
@@ -124,8 +132,7 @@ function applyExpPriceSignal(rc) {
 }
 
 // ─── Experiment 5: Social proof placement ────────────────────────────────
-// Tests moving the stats row (9,000+ reviews, 10x ROI, etc.) above the hero headline.
-// Social proof above the fold builds trust before the visitor reads the pitch.
+// Tests moving the proof-process row above the hero headline.
 function applyExpSocialProofPlacement(rc) {
   if (!rc.social_proof_above_fold) {
     trackExperiment('social_proof_placement', 'control');
@@ -153,7 +160,7 @@ function applyExpSocialProofPlacement(rc) {
 }
 
 // ─── Experiment 6: 57Seconds as hero use case ────────────────────────────
-// Tests leading with the review growth use case (9,000 reviews proof) in the hero
+// Tests leading with the review workflow use case in the hero
 // vs. the current generic "custom software" positioning.
 // Specifically targets call-heavy businesses who immediately recognize the value.
 function applyExp57SecondsHero(rc) {
@@ -166,24 +173,16 @@ function applyExp57SecondsHero(rc) {
   const badge = document.querySelector('.hero-badge');
   if (badge) badge.textContent = rc.hero_badge_text || '57Seconds — Review Growth';
 
-  // Update hero sub-headline to lead with the 57Seconds proof point
+  // Update hero sub-headline to lead with the implementation scope.
   const heroSub = document.querySelector('.hero-sub');
   if (heroSub) {
     heroSub.innerHTML = `
       Your best clients never leave a review.<br />
       We fix that — automatically, after every call.<br />
       <span style="color:rgba(237,237,239,0.5);font-size:.9em;">
-        9,000+ reviews generated. Proven across insurance, legal, and service businesses.
+        Agent-specific requests, landing pages, and reporting in one workflow.
       </span>
     `;
-  }
-
-  // Reorder hero stats to surface the review stat first
-  const statsEl = document.querySelector('.hero-stats');
-  if (statsEl) {
-    const reviewStat = [...statsEl.querySelectorAll('.stat')]
-      .find(s => s.querySelector('.stat-n')?.textContent?.includes('9,000'));
-    if (reviewStat) statsEl.prepend(reviewStat);
   }
 
   trackExperiment('hero_lead_service', 'variant', { service: '57seconds' });
