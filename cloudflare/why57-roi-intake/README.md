@@ -1,75 +1,106 @@
-# why57 ROI Intake Worker
+# why57 Intake Worker
 
-This Worker stores ROI calculator interaction context server-side so later outcomes can be tied back to calculator output even after the browser cookie expires. A stored booking click is not a completed lead.
+This Worker accepts two kinds of first-party lead context for `why57.com`:
 
-## Live endpoint
+- ROI calculator attribution at `/`
+- AI prototype production-readiness review requests at `/prototype-review`
 
-- `https://why57-roi-intake.gera-695.workers.dev/`
+The production endpoint is `https://why57-roi-intake.gera-695.workers.dev/`.
 
-## Allowed origins
+## Prototype review flow
 
-- `https://roi.why57.com`
-- `https://why57.com`
+`ai-app-prototype-to-production.html` progressively enhances a normal HTML form:
 
-## Bindings
+- With JavaScript, the page posts JSON and shows an inline success or error state.
+- Without JavaScript, the browser posts URL-encoded form data and the Worker redirects a successful request to `prototype-review-thank-you.html`.
+- The Worker accepts requests only from `https://why57.com`, validates every field, limits the body to 48 KiB, uses a honeypot and timing trap, and can apply a hashed per-IP KV rate limit.
+- A successful submission is stored in the existing `ROI_LEADS` KV namespace before the Worker reports success.
+- A configured webhook receives the same normalized payload for CRM or inbox notification. KV remains the source of truth if that webhook is temporarily unavailable.
 
-- `ROI_LEADS`
-  - Legacy-named Cloudflare KV namespace used for persisted ROI interaction context
-- `ROI_DATA_TTL_SECONDS`
-  - Plain-text environment variable
-  - Current value: `15552000` (180 days)
-- `ROI_FORWARD_WEBHOOK_URL`
-  - Optional secret or plain-text variable for forwarding each normalized payload to another backend
-- `ROI_FORWARD_WEBHOOK_SECRET`
-  - Optional secret header value sent as `X-ROI-Webhook-Secret`
+The form sends name, email, optional company, prototype URL, prototype description, tool, current-user range, blocker, target window, consent, and first-party attribution fields. It does not intentionally store the submitter's IP address or user agent.
 
-## What gets stored
+## KV records and retention
 
-Each accepted POST is normalized and written to KV twice:
+ROI records keep their existing keys:
 
-- `event:<yyyy-mm-dd>:<session_id>:<uuid>` for clicks and other interactions
+- `event:<yyyy-mm-dd>:<session_id>:<uuid>` for interactions such as calculator and booking-button clicks
 - `lead:<yyyy-mm-dd>:<session_id>:<uuid>` only for standardized completed outcomes
 - `latest:<session_id>`
 
-The payload includes fields such as:
+Each ROI record also keeps the offer, page path, conversion stage, and available first-touch source fields. A booking-button click is an interaction, not a completed lead; the lead key is reserved for `prototype_review_submitted`, `lead_submitted`, `roi_report_requested`, and `calendar_booking_completed`.
 
-- `event_type`
-- `site_source`
-- `page_url`
-- `session_id`
-- `recommendation`
-- `readiness_score`
-- `break_even_months`
-- `project_type`
-- `utm_source`
-- `utm_medium`
-- `utm_campaign`
-- `cta_location`
-- `offer`
-- `page_path`
-- `conversion_stage`
-- first-touch source, medium, and campaign when supplied
+Prototype review records use:
 
-## Deploying updates
+- `prototype_review:<yyyy-mm-dd>:<uuid>`
+- `latest:prototype_review`
+- `rate:prototype_review:<yyyy-mm-ddThh>:<salted-ip-hash>` for the optional hourly rate limit
 
-This Worker is now deployed from this repo with Wrangler, not edited in the Cloudflare dashboard.
+Lead records expire after `ROI_DATA_TTL_SECONDS`, currently 180 days. `PROTOTYPE_REVIEW_DATA_TTL_SECONDS` can override that retention for prototype reviews. Rate-limit counters expire after one hour.
 
-From this directory:
+## Bindings and variables
+
+- `ROI_LEADS` — required KV binding for all durable submissions
+- `ROI_DATA_TTL_SECONDS` — default lead retention in seconds
+- `PROTOTYPE_REVIEW_DATA_TTL_SECONDS` — optional prototype-specific retention override
+
+The existing binding is declared in `wrangler.toml`. Do not put webhook credentials or rate-limit salts in that file.
+
+## Secrets and notification setup
+
+Set these before releasing the prototype form:
 
 ```bash
-npx wrangler deploy
+npx wrangler secret put PROTOTYPE_REVIEW_RATE_LIMIT_SALT
+npx wrangler secret put PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL
+npx wrangler secret put PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET
 ```
 
-Useful remote KV commands:
+- `PROTOTYPE_REVIEW_RATE_LIMIT_SALT` should be a long random value. Without it, submissions still validate and store, but KV rate limiting is disabled.
+- `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL` should be the real CRM, automation, or notification endpoint that will alert the team. Without it, requests are stored only in KV and must be checked there.
+- `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET` is optional if the receiving endpoint uses another authentication mechanism. When set, it is sent as `X-Prototype-Review-Webhook-Secret`.
+
+The existing ROI forwarding secrets remain `ROI_FORWARD_WEBHOOK_URL` and `ROI_FORWARD_WEBHOOK_SECRET`.
+
+## Release order
+
+The site currently points the form at the production Worker URL. Release in this order so the page never advertises a route the deployed Worker does not understand:
+
+1. Configure the prototype rate-limit salt and real notification webhook.
+2. From this directory, run `npx wrangler deploy`.
+3. Check `GET /prototype-review`. It reports whether storage, rate limiting, and forwarding are configured without revealing their values.
+4. Submit a non-sensitive test request and confirm both the KV record and notification destination.
+5. Release the static site, including the funnel page, script, thank-you page, and privacy update.
+6. Submit once with JavaScript and once with JavaScript disabled. Confirm the analytics event `prototype_review_submitted` appears only after a successful response.
+
+Do not publish the static form before the Worker update.
+
+## Local and remote checks
+
+Validate the Worker bundle without deploying:
 
 ```bash
-npx wrangler kv key get --binding ROI_LEADS --remote --preview false "latest:<session_id>"
-npx wrangler kv key delete --binding ROI_LEADS --remote --preview false "latest:<session_id>"
+npx wrangler deploy --dry-run
+```
+
+After deployment, inspect the latest prototype review without printing all stored leads:
+
+```bash
+npx wrangler kv key get "latest:prototype_review" --binding ROI_LEADS --remote --text
+```
+
+Delete a test record by its exact key after QA if it is no longer needed:
+
+```bash
+npx wrangler kv key delete "prototype_review:<yyyy-mm-dd>:<uuid>" --binding ROI_LEADS --remote
 ```
 
 ## Related files
 
-- `wrangler.toml`
 - `worker.js`
+- `wrangler.toml`
+- `../../ai-app-prototype-to-production.html`
+- `../../prototype-funnel.js`
+- `../../prototype-review-thank-you.html`
+- `../../privacy.html`
 - `../../ROI-INTEGRATION.md`
 - `../../ANALYTICS.md`
