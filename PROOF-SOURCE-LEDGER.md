@@ -1,6 +1,6 @@
 # 57 public proof-source ledger
 
-Last audited: 2026-07-15
+Last audited: 2026-07-16
 Owner: 57 site owner / Gera Yeremin
 Scope: public copy in this repository
 
@@ -21,6 +21,20 @@ Status vocabulary:
 - **Anonymized — evidence and permission required:** the public page may describe a bounded problem or implementation pattern, but must not name the client, show its marks, imply endorsement, or assert a result.
 - **Withheld — source required:** the implementation may be real, but the quantified result is not publishable yet.
 - **Owner attestation required:** operational business information must be confirmed by the owner.
+
+## Owner-directed Thread 5 proof scope
+
+The owner-supplied 57 lead-generation execution brief authorizes the exact proof points below for public use on the five anonymized case-study pages. This narrow authorization supersedes an earlier `Removed` status only for the exact fact listed; it does not authorize a client identity, logo, testimonial, broader outcome, sole-attribution claim, or numerical variation.
+
+| Public case-study URL | Owner-approved public proof point | Publication status | Remaining gate |
+| --- | --- | --- | --- |
+| `/case-studies/review-request-workflow.html` | `9,000+` verified Google reviews generated over `4 years` | Approved for anonymized public use | Original client quote and publication permission |
+| `/case-studies/website-search-operations-workflow.html` | `300+` new five-star reviews in one quarter; top-`3` rankings on `20+` keywords | Approved for anonymized public use | Original client quote and publication permission |
+| `/case-studies/branded-site-deployment-platform.html` | `200+` sites deployed in under `4 hours`; agency grew from `7` to `50` employees | Approved for anonymized public use | Original client quote and publication permission |
+| `/case-studies/professional-services-lead-attribution.html` | `30–50%` increase in qualified leads for attorney client sites | Approved for anonymized public use | Original client quote and publication permission |
+| `/case-studies/field-inspection-operations-platform.html` | A custom iPhone operations platform for insurance-industry workflows | Qualitative proof only | Approved numeric outcome and original client quote with publication permission |
+
+No client quote or original testimonial capture was supplied. The pages therefore use `Article` schema, not `Review` schema, and state the quote gate instead of fabricating testimonial copy.
 
 ## Claim ledger
 
@@ -66,9 +80,9 @@ Status vocabulary:
 
 ## Current VERIFIED / REMOVED / PENDING ledger
 
-- **VERIFIED:** the repository supports general service, process, security, ownership, and measurement guidance that does not assert a past client outcome. No named third-party endorsement is verified for publication.
-- **REMOVED:** all attributed recommendations, every distinct quote variant, all displayed star ratings, named-client outcome numbers, unsupported experience/client/ROI/price/timeline totals, named-client proof language on regional and AI pages, and the unapproved client/rating imagery listed under `VIS-*`.
-- **PENDING:** private source records and written publication permission for every client name, logo, screenshot, testimonial, scope statement, and outcome; owner attestation for any exact business contact, team, or availability details; authenticated production Remote Config review; and an owner-approved primary/backup lead responder plus response-time target.
+- **VERIFIED FOR ANONYMIZED PUBLIC USE:** the exact owner-approved Thread 5 proof points above, plus general service, process, security, ownership, and measurement guidance that does not assert another past client outcome. No named third-party endorsement is verified for publication.
+- **REMOVED:** all attributed recommendations, every distinct quote variant, all displayed star ratings, every client-outcome number beyond the narrow Thread 5 proof scope, unsupported experience/client/ROI/price/timeline totals, named-client proof language on regional and AI pages, and the unapproved client/rating imagery listed under `VIS-*`.
+- **PENDING:** an approved numeric result for the field-operations case study; private source records and written publication permission for every client name, logo, screenshot, testimonial, and broader outcome; owner attestation for any exact business contact, team, or availability details; authenticated production Remote Config review; and an owner-approved primary/backup lead responder plus response-time target.
 
 ## Evidence file naming
 
@@ -85,4 +99,4 @@ For each approved claim, record the private source location, metric definition, 
 - Confirm structured data does not repeat removed claims.
 - Confirm Remote Config cannot reintroduce stale proof copy.
 - Recheck public business identity details with the owner.
-- Review every case study with the client before restoring a quantified result.
+- Before adding a client identity, logo, or quote, retain the original source and publication permission. The narrow owner-approved Thread 5 proof points may remain anonymized.

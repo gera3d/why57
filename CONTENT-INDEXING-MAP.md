@@ -1,6 +1,6 @@
 # Why57 content and indexing map
 
-Last updated: 2026-07-15
+Last updated: 2026-07-16
 
 This map defines the intended search role of the local and AI prototype content. It favors a small set of substantive destinations over overlapping city pages.
 
@@ -15,6 +15,11 @@ This map defines the intended search role of the local and AI prototype content.
 | `/ai-app-prototype-to-production.html` | Turn a Claude or AI-built prototype into a product | Production process, readiness, risks, service fit | Gera Yeremin byline; anonymized implementation examples without client outcomes | Readiness/security checklist, repair/rebuild guide, Silicon Valley consulting, generic case-study links |
 | `/ai-prototype-readiness-security-checklist.html` | AI app production-readiness checklist | AI prototype security risks, launch evidence, review preparation | Gera Yeremin author; explicit specialist and review boundaries | AI pillar, repair/rebuild guide, Silicon Valley consulting |
 | `/ai-prototype-repair-rebuild-cost.html` | Repair vs. rebuild an AI app | Productionization cost, timeline, assessment and quoting process | Gera Yeremin byline; input-based pricing guidance without a public price or timing claim | AI pillar, readiness checklist, Silicon Valley consulting |
+| `/case-studies/review-request-workflow.html` | Review-request workflow case study | Agent-specific follow-up and reporting | Owner-approved `9,000+` verified Google reviews over `4 years`; identity and quote withheld | Homepage results, related case studies, guarded qualification path |
+| `/case-studies/website-search-operations-workflow.html` | Connected digital-operations case study | Website, search, reviews, and reporting | Owner-approved `300+` new five-star reviews in one quarter and top-`3` rankings on `20+` keywords; identity and quote withheld | Homepage results, related case studies, guarded qualification path |
+| `/case-studies/branded-site-deployment-platform.html` | Branded-site deployment case study | Modular assembly, video, configuration, and QA | Owner-approved `200+` sites under `4 hours` and growth from `7` to `50` employees; identity and quote withheld | Homepage results, related case studies, guarded qualification path |
+| `/case-studies/professional-services-lead-attribution.html` | Professional-services lead-attribution case study | Attorney sites, calls, forms, and reporting | Owner-approved `30–50%` qualified-lead increase; identities and quote withheld | Homepage results, related case studies, guarded qualification path |
+| `/case-studies/field-inspection-operations-platform.html` | Field-operations platform case study | iPhone inspection and back-office workflow | Owner-approved qualitative implementation proof; no approved numeric outcome or quote | Homepage results, related case studies, guarded qualification path |
 
 All indexable destinations must have:
 
@@ -53,13 +58,13 @@ The four consolidated pages are excluded from `sitemap.xml`, contain matching ca
 
 ## Public proof disposition after credibility cleanup
 
-No named-client proof, testimonial, rating, review count, experience total, price range, delivery range, or quantified outcome is treated as supported by this repository. The regional and AI guides retain only generic implementation patterns and links whose visible labels are anonymized. The linked case studies must keep their problem, intervention, result, and evidence-limit sections distinct, and they must not restore a client name or outcome without the source and publication permission recorded in `PROOF-SOURCE-LEDGER.md`.
+The owner has approved a narrow set of anonymized Thread 5 proof points recorded in `PROOF-SOURCE-LEDGER.md`. No named-client proof, testimonial, rating, client identity, or outcome beyond that exact list is treated as supported. The regional and AI guides retain generic implementation patterns. The linked case studies keep problem, intervention, result, and proof-status sections distinct; all five withhold client quotes, and the field-operations page explicitly records its missing numeric-proof gate.
 
 Current public dispositions:
 
-- **Verified:** general service, process, security, ownership, and measurement guidance that does not assert a past client result.
-- **Removed:** named testimonials; ratings; client and product imagery without provenance/permission; numerical client outcomes; public price/timeline/experience totals; and named-client proof language on regional and AI pages.
-- **Pending:** every named client, logo, screenshot, testimonial, outcome, and operating detail that the ledger marks as requiring private evidence or owner/client approval.
+- **Verified for anonymized public use:** the exact owner-approved Thread 5 proof points plus general service, process, security, ownership, and measurement guidance that does not assert another past client result.
+- **Removed:** named testimonials; ratings; client and product imagery without provenance/permission; numerical client outcomes outside the approved Thread 5 list; public price/timeline/experience totals; and named-client proof language on regional and AI pages.
+- **Pending:** an approved numeric proof point for the field-operations page; every client identity, logo, screenshot, testimonial, broader outcome, and operating detail that the ledger marks as requiring private evidence or owner/client approval.
 
 ## Post-release indexing QA
 
