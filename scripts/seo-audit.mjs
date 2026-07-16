@@ -21,9 +21,9 @@ const priorityHomeRoutes = [
   "/ai-app-prototype-to-production.html",
   "/bay-area-business-automation.html",
   "/silicon-valley-software-consulting.html",
-  "/case-studies/health-for-california-review-engine.html",
-  "/case-studies/nuvolum-deployment-platform.html",
-  "/case-studies/ux-owl-sonoma-attorneys.html",
+  "/case-studies/review-request-workflow.html",
+  "/case-studies/branded-site-deployment-platform.html",
+  "/case-studies/professional-services-lead-attribution.html",
 ];
 
 function fail(message) {

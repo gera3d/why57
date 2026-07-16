@@ -36,32 +36,32 @@
       "requiredFrom": ["index.html"]
     },
     {
-      "name": "Health for California case study",
-      "hrefPrefix": "case-studies/health-for-california-review-engine.html",
+      "name": "Review-request workflow case study",
+      "hrefPrefix": "case-studies/review-request-workflow.html",
       "minimumReferences": 1,
       "requiredFrom": ["index.html"]
     },
     {
-      "name": "DriveSavers case study",
-      "hrefPrefix": "case-studies/drivesavers-seo-overhaul.html",
+      "name": "Website, search, and operations case study",
+      "hrefPrefix": "case-studies/website-search-operations-workflow.html",
       "minimumReferences": 1,
       "requiredFrom": ["index.html"]
     },
     {
-      "name": "Nuvolum case study",
-      "hrefPrefix": "case-studies/nuvolum-deployment-platform.html",
+      "name": "Branded-site deployment case study",
+      "hrefPrefix": "case-studies/branded-site-deployment-platform.html",
       "minimumReferences": 1,
       "requiredFrom": ["index.html"]
     },
     {
-      "name": "Dent Experts case study",
-      "hrefPrefix": "case-studies/dent-experts-storm-ops-flow.html",
+      "name": "Field inspection operations case study",
+      "hrefPrefix": "case-studies/field-inspection-operations-platform.html",
       "minimumReferences": 1,
       "requiredFrom": ["index.html"]
     },
     {
-      "name": "UX Owl case study",
-      "hrefPrefix": "case-studies/ux-owl-sonoma-attorneys.html",
+      "name": "Professional-services attribution case study",
+      "hrefPrefix": "case-studies/professional-services-lead-attribution.html",
       "minimumReferences": 1,
       "requiredFrom": ["index.html"]
     }

@@ -33,7 +33,7 @@ function trackExperiment(experimentName, variant, extraParams = {}) {
 function proofSafeCopy(value, fallback) {
   if (!value) return fallback;
 
-  const unsupportedClaimPattern = /(pays? for itself|\bproven\b|\baverage roi\b|\b\d[\d,]*(?:\.\d+)?\s*(?:\+|x|%|years?|clients?|reviews?))/i;
+  const unsupportedClaimPattern = /(pays? for itself|\bproven\b|\baverage roi\b|\bguarantee(?:d|s)?\b|\b(?:always|never|every)\b|\bafter (?:each|every)\b|\bworks? for any\b|\bday one\b|\bone call\b|\bscales? without breaking\b|\bjust results\b|\bfree\b|\bno obligation\b|\bzoom\b|\bphone\b|\b\d+\s*minutes?\b|\b\d[\d,]*(?:\.\d+)?\s*(?:\+|x|%|years?|clients?|reviews?))/i;
   return unsupportedClaimPattern.test(value) ? fallback : value;
 }
 
@@ -58,7 +58,7 @@ function applyExpHeroHeadline(rc) {
   }
 
   // Apply sub-headline variant if it differs from the control value
-  const CONTROL_SUB = "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond.";
+  const CONTROL_SUB = "Automation, client portals, review workflows, and operations platforms scoped around a documented business process.";
   const subEl = document.querySelector('.hero-sub');
   const safeSub = proofSafeCopy(rc.hero_headline_sub, CONTROL_SUB);
   if (subEl && safeSub !== CONTROL_SUB) {
@@ -67,13 +67,13 @@ function applyExpHeroHeadline(rc) {
 }
 
 // ─── Experiment 2: CTA copy ───────────────────────────────────────────────
-// Tests "Book a Free Call" vs. variants like "See If You're a Fit" or "Get a Project Plan".
+// Tests owner-approved fit-call wording without asserting price, duration, or meeting format.
 // Updates nav + hero CTAs together for consistent messaging.
 function applyExpCtaCopy(rc) {
-  const control = "Book a Free Call";
-  const navControl = "Book a Call";
-  const heroCta = rc.hero_cta_primary;
-  const navCta  = rc.nav_cta;
+  const control = "Request a Fit Call";
+  const navControl = "Request a Call";
+  const heroCta = proofSafeCopy(rc.hero_cta_primary, control);
+  const navCta  = proofSafeCopy(rc.nav_cta, navControl);
 
   const isVariant = heroCta && heroCta !== control;
   const variant   = isVariant ? 'variant' : 'control';
@@ -169,18 +169,12 @@ function applyExp57SecondsHero(rc) {
 
   // Update hero badge
   const badge = document.querySelector('.hero-badge');
-  if (badge) badge.textContent = rc.hero_badge_text || '57Seconds — Review Growth';
+  if (badge) badge.textContent = proofSafeCopy(rc.hero_badge_text, '57Seconds — Review Workflow');
 
   // Update hero sub-headline to lead with the implementation scope.
   const heroSub = document.querySelector('.hero-sub');
   if (heroSub) {
-    heroSub.innerHTML = `
-      Your best clients never leave a review.<br />
-      We fix that — automatically, after every call.<br />
-      <span style="color:rgba(237,237,239,0.5);font-size:.9em;">
-        Agent-specific requests, landing pages, and reporting in one workflow.
-      </span>
-    `;
+    heroSub.textContent = 'Configure review follow-up for eligible interactions with agent-specific requests, landing pages, and reporting.';
   }
 
   trackExperiment('hero_lead_service', 'variant', { service: '57seconds' });

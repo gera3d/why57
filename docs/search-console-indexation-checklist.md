@@ -19,9 +19,9 @@ Search Console's page-indexing reports were last updated July 9, 2026.
 
   - `https://why57.com/bay-area-business-automation.html`
   - `https://why57.com/silicon-valley-software-consulting.html`
-  - `https://why57.com/case-studies/health-for-california-review-engine.html`
-  - `https://why57.com/case-studies/nuvolum-deployment-platform.html`
-  - `https://why57.com/case-studies/ux-owl-sonoma-attorneys.html`
+  - `https://why57.com/case-studies/review-request-workflow.html`
+  - `https://why57.com/case-studies/branded-site-deployment-platform.html`
+  - `https://why57.com/case-studies/professional-services-lead-attribution.html`
 
 - Four **Crawled - currently not indexed** examples were legacy/non-canonical URLs: `/contact/`, `/?ref=awesomeindie.com`, `/?space/`, and `/?earth/`.
 
@@ -36,6 +36,7 @@ Search Console's page-indexing reports were last updated July 9, 2026.
 - Merge the technical SEO commit together with the analytics work that removes internal campaign UTMs.
 - Run `node scripts/seo-audit.mjs` from the merged site root. The deployment workflow also runs this check automatically.
 - Deploy through the normal GitHub Pages workflow. Do not request indexing before the new sitemap, internal links, and robots file are live.
+- Create direct permanent edge redirects from the five retired pre-cleanup case-study paths to their anonymized replacement paths in the same release. Recover the exact source-to-destination mapping from the trust-cleanup commit's rename/deletion metadata; do not restore client-bearing filenames as public HTML pages.
 - Confirm `https://why57.com/robots.txt` no longer contains `Disallow: /*?*` and still excludes `/dashboard.html`.
 - Confirm every sitemap URL returns 200, has one matching canonical, and is reachable from the homepage.
 
@@ -52,6 +53,8 @@ The live site is GitHub Pages behind Cloudflare. GitHub Pages does not provide r
 | `https://www.why57.com/*` | Keep existing 301 | Same path on `https://why57.com/` |
 
 Rules should preserve paths for the HTTP and `www` host redirects, avoid redirect chains, and run before cache rules. The exact legacy paths above should redirect directly to `/`. Do not redirect every 404 to the homepage; unknown paths must keep a real 404 response to avoid soft-404 indexing.
+
+The five retired pre-cleanup case-study paths are a separate migration: each must redirect directly to its corresponding anonymized case study, not to the homepage. Confirm those mappings from the accepted trust-cleanup commit before creating the rules, then test all five paths after deployment.
 
 Expected verification after the rules are active:
 

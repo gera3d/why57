@@ -41,18 +41,18 @@ const FIREBASE_CONFIG = window.WHY57_FIREBASE || {};
 const DEFAULT_CONFIG = {
   // Experiment 1 — Hero headline framing
   hero_headline:        "We build software that removes real operational friction.",
-  hero_headline_sub:    "Automation. Client portals. Review engines. Operations platforms. Purpose-built for businesses in Sonoma County, the Bay Area, and beyond.",
+  hero_headline_sub:    "Automation, client portals, review workflows, and operations platforms scoped around a documented business process.",
 
   // Experiment 2 — Hero CTA copy
-  hero_cta_primary:     "Book a Free Call",
-  nav_cta:              "Book a Call",
+  hero_cta_primary:     "Request a Fit Call",
+  nav_cta:              "Request a Call",
 
   // Experiment 3 — Intake form position
   intake_above_fold:    false,           // boolean: show intake before hero content
 
   // Experiment 4 — Price signal near CTA
   show_price_signal:    false,           // disabled pending owner confirmation of pricing policy
-  price_signal_text:    "Fixed scope · Written price before work starts.",
+  price_signal_text:    "",
 
   // Experiment 5 — Social proof placement
   social_proof_above_fold: false,        // boolean: show proof-process row before hero text

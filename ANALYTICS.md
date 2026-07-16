@@ -41,7 +41,7 @@ An event ending in `_submitted`, `_requested`, or `_completed` must represent a 
 
 | Event | Fire only when | GA4 key event | Current status |
 | --- | --- | --- | --- |
-| `prototype_review_submitted` | A prototype-review form or API has accepted the request | Yes, after validation | Implemented; awaiting one labeled production delivery test |
+| `prototype_review_submitted` | The production intake has accepted the request and the configured delivery path has succeeded | Yes, only after delivery validation | Implemented locally; not live or operationally verified. Production destination, follow-up owner, backup, and response target are still required |
 | `lead_submitted` | A general lead form or API has accepted the lead | Not yet | No general lead form exists on this site |
 | `roi_report_requested` | The ROI report request has been accepted and delivered | Yes, after validation | Implemented in the ROI calculator; awaiting one labeled production delivery test |
 | `calendar_booking_clicked` | A visitor clicks a Google Calendar booking link | No | Implemented automatically as a micro-conversion |
@@ -91,7 +91,7 @@ The code-level linker is intentional for this static site, but the GA4 Admin set
 After each implemented completion event has appeared exactly once in Realtime or DebugView and has a matching delivery-system record:
 
 1. Open **Admin > Data display > Events**.
-2. Mark `prototype_review_submitted` and `roi_report_requested` as key events.
+2. Mark `prototype_review_submitted` and `roi_report_requested` as key events only after each event has exactly one matching production delivery record and an assigned follow-up owner.
 3. Leave `lead_submitted` and `calendar_booking_completed` unmarked until those outcomes are implemented and validated.
 4. Leave `calendar_booking_clicked` and `roi_calculator_clicked` unmarked; report them as micro-conversions or funnel steps.
 5. Confirm no real flow still uses `generate_lead`, then unmark it so legacy configuration does not imply current lead coverage.
@@ -140,7 +140,8 @@ Use one of these options when credentials and scheduler capabilities are availab
 8. Load the ROI calculator without interacting. Confirm no `calculator_started`, `calculator_completed`, or `result_bucket_viewed` event fires.
 9. Change one calculator input. Confirm one `calculator_started` and no `calculator_completed`.
 10. Use an explicit result action or intentionally change a field in all four steps. Confirm one `calculator_completed`, one current `result_bucket_viewed`, and no duplicate lifecycle event on repeated result interaction.
-11. Complete an actual ROI report request after the calculator is instrumented. Confirm exactly one `roi_report_requested` event at the success point.
+11. Complete an approved, clearly labeled prototype review after the Worker destination is configured. Confirm the request is stored, delivered to the named destination, assigned to the follow-up owner, and produces exactly one `prototype_review_submitted` event.
+12. Complete an actual ROI report request after the calculator is instrumented. Confirm delivery and exactly one `roi_report_requested` event at the success point.
 
 ### Production reporting QA
 
@@ -156,3 +157,4 @@ Use one of these options when credentials and scheduler capabilities are availab
 - Calendar integration credentials or a scheduler with a verified completion callback.
 - A GA4 Measurement Protocol API secret if booking completion is sent server-side.
 - Real internal IP ranges from the business/VPN owner.
+- A named primary and backup owner for prototype-review and ROI-report follow-up, the destination each person monitors, and a business-hours response target.

@@ -534,15 +534,6 @@ bindManualCarousel({
   eventName: 'results_carousel_changed'
 });
 
-bindManualCarousel({
-  windowId: 'testiCarousel',
-  trackSelector: '.testi-track',
-  prevId: 'testiCarouselPrev',
-  nextId: 'testiCarouselNext',
-  statusId: 'testiCarouselStatus',
-  eventName: 'testimonial_carousel_changed'
-});
-
 /* ─── Fit toggle ─────────────────────────────────────────── */
 const fitTabs = Array.from(document.querySelectorAll('.fit-tab'));
 if (fitTabs.length) {

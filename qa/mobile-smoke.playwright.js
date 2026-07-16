@@ -4,7 +4,7 @@ async (page) => {
     '/',
     '/ai-app-prototype-to-production.html',
     '/sonoma-county-software-development.html',
-    '/case-studies/health-for-california-review-engine.html'
+    '/case-studies/review-request-workflow.html'
   ];
   const results = [];
 

@@ -100,17 +100,17 @@ The link would be: [approved case-study URL]. We will not imply a new endorsemen
 
 > Thanks for the context. Based on [reason], we are not the strongest fit for this work. The next useful category of help is [specialist/type of provider], and the key question to ask is [question]. I do not want to force a software engagement where it will not help.
 
-## Approved on-site case-study link library
+## Anonymized on-site portfolio link library
 
-These URLs exist in the current site repository. Verify the live page, claim approval, and client permission before using one externally.
+These URLs exist in the current site repository and intentionally omit client identities. Verify the live page and owner-approved claim set before using one externally. Do not add a client name, logo, quotation, metric, or implied endorsement.
 
 | Case study | Best-fit conversation | URL | Claims rule |
 | --- | --- | --- | --- |
-| Health for California review engine | Automated customer follow-up, reputation workflows, operational scale | <https://why57.com/case-studies/health-for-california-review-engine.html> | Use only metrics and wording approved on the page. |
-| DriveSavers SEO overhaul | Digital experience, conversion systems, reputation growth | <https://why57.com/case-studies/drivesavers-seo-overhaul.html> | Avoid compressing several outcomes into an unsupported causal claim. |
-| Nuvolum deployment platform | Multi-site operations, platform delivery, repeatable launches | <https://why57.com/case-studies/nuvolum-deployment-platform.html> | Confirm time and volume figures remain approved. |
-| Dent Experts Storm Ops Flow | Mobile field operations and workflow software | <https://why57.com/case-studies/dent-experts-storm-ops-flow.html> | Describe delivered capabilities; do not add unapproved business outcomes. |
-| UX Owl Sonoma attorneys | Lead-generation sites and marketing measurement | <https://why57.com/case-studies/ux-owl-sonoma-attorneys.html> | Keep client and attribution language aligned with the approved page. |
+| Review-request workflow | Automated customer follow-up and reputation-workflow design | <https://why57.com/case-studies/review-request-workflow.html> | Describe the reported design only; do not add adoption, review, or business outcomes. |
+| Website, search, and operations workflow | Digital experience, measurement, and operating-process design | <https://why57.com/case-studies/website-search-operations-workflow.html> | Do not compress separate activities into an unsupported causal result. |
+| Branded-site deployment platform | Multi-site operations and repeatable launch design | <https://why57.com/case-studies/branded-site-deployment-platform.html> | Do not add time, volume, growth, runtime, or payback claims. |
+| Field inspection and operations platform | Mobile field operations and workflow-software design | <https://why57.com/case-studies/field-inspection-operations-platform.html> | Describe the portfolio record; do not claim live integrations or measured outcomes. |
+| Professional-services lead attribution | Website and marketing-measurement design | <https://why57.com/case-studies/professional-services-lead-attribution.html> | Keep the cohort anonymous and do not add lead, referral, spend, or payback outcomes. |
 
 ## Pre-send review
 
