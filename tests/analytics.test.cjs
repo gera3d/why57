@@ -197,6 +197,15 @@ test("tracked content pages use the shared entry point and contain no legacy int
   }
 });
 
+test("the no-JS prototype thank-you path uses only the shared GA4 bootstrap", () => {
+  const html = fs.readFileSync(path.join(repositoryRoot, "prototype-review-thank-you.html"), "utf8");
+
+  assert.equal((html.match(/<script src="analytics\.js"><\/script>/g) || []).length, 1);
+  assert.doesNotMatch(html, /googletagmanager\.com\/gtag\/js/);
+  assert.doesNotMatch(html, /gtag\(['"]config['"]/);
+  assert.match(html, /gtag\(['"]event['"], ['"]prototype_review_submitted['"]/);
+});
+
 test("the ROI context worker stores clicks as events and completed outcomes as leads", async () => {
   const workerModule = await import(`data:text/javascript;base64,${Buffer.from(workerSource).toString("base64")}`);
 

@@ -2,7 +2,7 @@
 
 This site uses the existing GA4 measurement ID `G-358H0FHG50` on `why57.com` and is designed to share the same web data stream with `roi.why57.com`.
 
-The repair was made against this baseline: 301 sessions in 90 days, 20 organic sessions, no key events, and roughly 50 sessions attributed to `why57 / site_nav`. Treat that as the pre-repair comparison period rather than a target.
+The repair was made against this baseline: 301 sessions in 90 days, 20 organic sessions, no reported key-event outcomes, and roughly 50 sessions attributed to `why57 / site_nav`. Treat that as the pre-repair comparison period rather than a target.
 
 ## Browser implementation
 
@@ -41,11 +41,11 @@ An event ending in `_submitted`, `_requested`, or `_completed` must represent a 
 
 | Event | Fire only when | GA4 key event | Current status |
 | --- | --- | --- | --- |
-| `prototype_review_submitted` | A prototype-review form or API has accepted the request | Yes | Contract ready; no form exists on this static site |
-| `lead_submitted` | A general lead form or API has accepted the lead | Yes | Contract ready; no general lead form exists on this static site |
-| `roi_report_requested` | The ROI report request has been accepted or the report has been generated | Yes | Must be emitted by the ROI calculator at its actual success point |
+| `prototype_review_submitted` | A prototype-review form or API has accepted the request | Yes, after validation | Implemented; awaiting one labeled production delivery test |
+| `lead_submitted` | A general lead form or API has accepted the lead | Not yet | No general lead form exists on this site |
+| `roi_report_requested` | The ROI report request has been accepted and delivered | Yes, after validation | Implemented in the ROI calculator; awaiting one labeled production delivery test |
 | `calendar_booking_clicked` | A visitor clicks a Google Calendar booking link | No | Implemented automatically as a micro-conversion |
-| `calendar_booking_completed` | The scheduler or a trusted backend confirms an appointment was created | Yes | Not observable from the current external Google Calendar link |
+| `calendar_booking_completed` | The scheduler or a trusted backend confirms an appointment was created | Not yet | Not observable from the current external Google Calendar link |
 | `roi_calculator_clicked` | A visitor clicks from the main site to the calculator | No | Implemented automatically as a micro-conversion |
 
 Required context for CTA-driven events:
@@ -88,12 +88,14 @@ The code-level linker is intentional for this static site, but the GA4 Admin set
 
 ### Key events
 
-After each real completion event has appeared at least once in Realtime or DebugView:
+After each implemented completion event has appeared exactly once in Realtime or DebugView and has a matching delivery-system record:
 
 1. Open **Admin > Data display > Events**.
-2. Mark `prototype_review_submitted`, `lead_submitted`, `roi_report_requested`, and `calendar_booking_completed` as key events.
-3. Leave `calendar_booking_clicked` and `roi_calculator_clicked` unmarked; report them as micro-conversions or funnel steps.
-4. Check for older click-based events such as `main_site_booking_clicked` before removing or archiving downstream reports that use them.
+2. Mark `prototype_review_submitted` and `roi_report_requested` as key events.
+3. Leave `lead_submitted` and `calendar_booking_completed` unmarked until those outcomes are implemented and validated.
+4. Leave `calendar_booking_clicked` and `roi_calculator_clicked` unmarked; report them as micro-conversions or funnel steps.
+5. Confirm no real flow still uses `generate_lead`, then unmark it so legacy configuration does not imply current lead coverage.
+6. Check for older click-based events such as `main_site_booking_clicked` before removing or archiving downstream reports that use them.
 
 ### Internal employee traffic
 
@@ -135,7 +137,10 @@ Use one of these options when credentials and scheduler capabilities are availab
 5. Visit a legacy URL using `utm_source=why57&utm_medium=site_nav&utm_campaign=main_site_referral`. Confirm those three parameters disappear before the page view while unrelated parameters remain.
 6. Click a calendar CTA. Confirm exactly one `calendar_booking_clicked` event with `conversion_stage=micro` plus CTA, offer, page, and first-touch fields.
 7. Confirm no `lead_submitted`, `prototype_review_submitted`, or `calendar_booking_completed` event fires from that click.
-8. Complete an actual ROI report request after the calculator is instrumented. Confirm exactly one `roi_report_requested` event at the success point.
+8. Load the ROI calculator without interacting. Confirm no `calculator_started`, `calculator_completed`, or `result_bucket_viewed` event fires.
+9. Change one calculator input. Confirm one `calculator_started` and no `calculator_completed`.
+10. Use an explicit result action or intentionally change a field in all four steps. Confirm one `calculator_completed`, one current `result_bucket_viewed`, and no duplicate lifecycle event on repeated result interaction.
+11. Complete an actual ROI report request after the calculator is instrumented. Confirm exactly one `roi_report_requested` event at the success point.
 
 ### Production reporting QA
 
