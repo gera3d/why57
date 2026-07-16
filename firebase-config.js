@@ -67,7 +67,8 @@ let _rc = null;
 
 async function initFirebase() {
   const REQUIRED = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
-  const missing  = REQUIRED.filter(k => !FIREBASE_CONFIG[k]);
+  const isPlaceholder = value => !value || /YOUR_(?:API_KEY|PROJECT|SENDER_ID|APP_ID)/.test(String(value));
+  const missing  = REQUIRED.filter(k => isPlaceholder(FIREBASE_CONFIG[k]));
   if (missing.length > 0) {
     console.warn('[why57] Firebase config incomplete — missing:', missing.join(', '),
       '\nCopy site-config.example.js → site-config.js and fill in the values.');

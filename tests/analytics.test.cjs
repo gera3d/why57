@@ -211,22 +211,43 @@ test("the ROI context worker stores clicks as events and completed outcomes as l
       body: JSON.stringify({
         event_type: eventType,
         context: { session_id: "qa-session" },
-        detail: { conversion_stage: eventType.endsWith("_clicked") ? "micro" : "complete" }
+        detail: eventType === "roi_report_requested" ? {
+          conversion_stage: "complete",
+          request_id: "qa-request",
+          email: "qa@example.com",
+          consent: true,
+          consent_version: "roi-report-v1-2026-07-15",
+          form_elapsed_ms: 2000,
+          result_summary: "QA summary"
+        } : { conversion_stage: "micro" }
       })
     });
     const env = {
+      ROI_REPORT_RATE_LIMIT_SALT: "qa-rate-limit-salt",
+      ROI_REPORT_WEBHOOK_URL: "https://example.com/report",
       ROI_LEADS: {
+        async get() {
+          return null;
+        },
         async put(...args) {
           writes.push(args);
         }
-      }
+      },
+      async fetch() {}
     };
 
-    const response = await workerModule.default.fetch(request, env);
-    assert.equal(response.status, 200);
-    return writes.map(([key]) => key).find((key) => !key.startsWith("latest:"));
+    const originalFetch = global.fetch;
+    global.fetch = async () => new Response(null, { status: 200 });
+
+    try {
+      const response = await workerModule.default.fetch(request, env);
+      assert.equal(response.status, 200);
+      return writes.map(([key]) => key).find((key) => !key.startsWith("latest:") && !key.startsWith("rate:"));
+    } finally {
+      global.fetch = originalFetch;
+    }
   }
 
   assert.match(await storedKeyFor("calendar_booking_clicked"), /^event:/);
-  assert.match(await storedKeyFor("lead_submitted"), /^lead:/);
+  assert.match(await storedKeyFor("roi_report_requested"), /^lead:/);
 });

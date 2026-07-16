@@ -42,6 +42,9 @@ Lead records expire after `ROI_DATA_TTL_SECONDS`, currently 180 days. `PROTOTYPE
 - `ROI_LEADS` — required KV binding for all durable submissions
 - `ROI_DATA_TTL_SECONDS` — default lead retention in seconds
 - `PROTOTYPE_REVIEW_DATA_TTL_SECONDS` — optional prototype-specific retention override
+- `ROI_REPORT_RATE_LIMIT_SALT` — secret used to hash an hourly report-request rate-limit key
+- `ROI_REPORT_WEBHOOK_URL` — required secret URL for report email or CRM delivery
+- `ROI_REPORT_WEBHOOK_SECRET` — optional report-specific webhook secret; falls back to `ROI_FORWARD_WEBHOOK_SECRET`
 
 The existing binding is declared in `wrangler.toml`. Do not put webhook credentials or rate-limit salts in that file.
 
@@ -53,6 +56,9 @@ Set these before releasing the prototype form:
 npx wrangler secret put PROTOTYPE_REVIEW_RATE_LIMIT_SALT
 npx wrangler secret put PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL
 npx wrangler secret put PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET
+npx wrangler secret put ROI_REPORT_RATE_LIMIT_SALT
+npx wrangler secret put ROI_REPORT_WEBHOOK_URL
+npx wrangler secret put ROI_REPORT_WEBHOOK_SECRET
 ```
 
 - `PROTOTYPE_REVIEW_RATE_LIMIT_SALT` should be a long random value. Without it, submissions still validate and store, but KV rate limiting is disabled.
@@ -60,6 +66,8 @@ npx wrangler secret put PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET
 - `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET` is optional if the receiving endpoint uses another authentication mechanism. When set, it is sent as `X-Prototype-Review-Webhook-Secret`.
 
 The existing ROI forwarding secrets remain `ROI_FORWARD_WEBHOOK_URL` and `ROI_FORWARD_WEBHOOK_SECRET`.
+
+The root intake route accepts only `calendar_booking_clicked` and `roi_report_requested`. Booking clicks are stored as micro-conversion events. Report requests are counted as completed outcomes only after server-side email, consent-version, timing, origin, storage, and webhook checks succeed. The endpoint returns a non-success status when report delivery is not configured or fails, so the calculator never displays a false success state.
 
 ## Release order
 

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "qa": "node qa/site-qa.mjs && node qa/js-syntax.mjs",
+    "qa": "node qa/site-qa.mjs && node qa/js-syntax.mjs && node --test tests/*.test.cjs",
     "qa:syntax": "node qa/js-syntax.mjs",
     "qa:external": "node qa/site-qa.mjs --external",
     "qa:mobile": "bash qa/mobile-smoke.sh",

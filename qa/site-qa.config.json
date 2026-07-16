@@ -7,7 +7,12 @@
   },
   "ignoredHtml": [
     "404.html",
-    "dashboard.html"
+    "dashboard.html",
+    "marin-county-software-development.html",
+    "napa-valley-tech-automation.html",
+    "petaluma-software-development.html",
+    "prototype-review-thank-you.html",
+    "santa-rosa-software-development.html"
   ],
   "criticalDestinations": [
     {

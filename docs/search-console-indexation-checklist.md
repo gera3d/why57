@@ -9,7 +9,7 @@ Search Console's page-indexing reports were last updated July 9, 2026.
 ### `https://why57.com/`
 
 - 10 indexed URLs and 21 not-indexed URLs.
-- `/sitemap.xml` was successful, last read July 5, and reported 15 discovered pages. The repository sitemap now contains 16 canonical pages, including `ai-app-prototype-to-production.html`.
+- `/sitemap.xml` was successful, last read July 5, and reported 15 discovered pages. The repository sitemap now contains 14 canonical pages after retiring thin local variants and adding the AI-prototype guides.
 - The stale `/sitemap_index.xml` submission has shown **Couldn't fetch** since 2022 and should be removed from Search Console.
 - The canonical-alternate example is `https://why57.com/index.html`.
 - The recorded 404 is `https://why57.com/home/`.
@@ -69,7 +69,7 @@ The first four requests should return a single 301 hop to `https://why57.com/`. 
 
 1. Open the `https://why57.com/` URL-prefix property.
 2. Remove the failed `/sitemap_index.xml` submission. It is a stale 2022 artifact and is not referenced by the site.
-3. Resubmit `/sitemap.xml`. Confirm **Success** and 16 discovered pages after Google rereads it.
+3. Resubmit `/sitemap.xml`. Confirm **Success** and 14 discovered pages after Google rereads it.
 4. Inspect and request indexing for the highest-value new page first:
 
    - `https://why57.com/ai-app-prototype-to-production.html`

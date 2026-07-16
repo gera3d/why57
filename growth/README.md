@@ -17,11 +17,11 @@ This directory contains reusable, non-deployment assets for attracting and quali
 
 The supplied planning baseline is recorded without changing its source periods:
 
-- GA4: 301 sessions over 90 days; 20 organic sessions over 90 days; zero key events.
-- Google Search Console: 9 clicks, 7,965 impressions, 0.1% CTR, and average position 9.6. The source period was not supplied and must be confirmed before week-over-week comparisons.
+- GA4: 301 sessions over the audited 90-day window. The property had `generate_lead` configured as a key event, but the new prototype-review and ROI-report conversions were not yet live key events.
+- Google Search Console, April 14 through July 13, 2026: 9 clicks, 7,965 impressions, 0.1% CTR, and average position 9.6.
 - External links: 11. The source and snapshot date were not supplied and must be confirmed.
 
-For rough weekly context only, 301 sessions over 90 days is about 23.4 sessions per seven days, and 20 organic sessions over 90 days is about 1.6 organic sessions per seven days. These are not weekly targets and should not be mixed with true weekly exports.
+For rough weekly context only, 301 sessions over 90 days is about 23.4 sessions per seven days. This is not a weekly target and should not be mixed with true weekly exports.
 
 ## Operating rules
 

@@ -170,10 +170,9 @@ for (const [relativePath, html] of pages) {
     canonicalOwners.set(expected, relativePath);
   }
 
-  const analyticsLoader = html.includes(`googletagmanager.com/gtag/js?id=${config.analyticsId}`);
-  const analyticsConfig = new RegExp(`gtag\\(\\s*['"]config['"]\\s*,\\s*['"]${config.analyticsId}['"]`).test(html);
-  if (!analyticsLoader || !analyticsConfig || !html.includes('window.dataLayer')) {
-    fail('analytics', relativePath, `Missing the ${config.analyticsId} loader, config call, or dataLayer bootstrap.`);
+  const analyticsEntrypoints = elements(html, 'script').filter((item) => /^(?:\.\.\/)?analytics\.js$/.test(item.attrs.src || ''));
+  if (analyticsEntrypoints.length !== 1) {
+    fail('analytics', relativePath, `Expected one shared analytics.js entry point; found ${analyticsEntrypoints.length}.`);
   }
 
   const ids = elements(html, '[a-z][a-z0-9:-]*')

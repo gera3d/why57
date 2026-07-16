@@ -10,6 +10,12 @@ const MAX_BODY_BYTES = 48 * 1024;
 const RATE_LIMIT_ATTEMPTS = 6;
 const RATE_LIMIT_TTL_SECONDS = 60 * 60;
 const CONSENT_TEXT_VERSION = "2026-07-15";
+const ROI_REPORT_CONSENT_VERSION = "roi-report-v1-2026-07-15";
+const MIN_REPORT_FORM_TIME_MS = 1500;
+const ALLOWED_ROI_EVENTS = new Set([
+  "calendar_booking_clicked",
+  "roi_report_requested"
+]);
 const COMPLETED_OUTCOME_EVENTS = new Set([
   "prototype_review_submitted",
   "lead_submitted",
@@ -248,35 +254,67 @@ function normalizePayload(payload = {}, request) {
   return compactObject({
     id: crypto.randomUUID(),
     received_at: now,
-    sent_at: payload?.sent_at || now,
-    event_type: payload?.event_type || "unclassified_event",
-    site_source: detail.site_source || context.site_source || null,
-    page_url: detail.page_url || null,
-    referrer: detail.referrer || null,
-    session_id: context.session_id || null,
-    recommendation: context.recommendation || null,
+    sent_at: cleanText(payload?.sent_at, 40) || now,
+    event_type: cleanText(payload?.event_type, 80) || "unclassified_event",
+    site_source: cleanText(detail.site_source || context.site_source, 120) || null,
+    page_url: cleanText(detail.page_url, 1000) || null,
+    referrer: cleanText(detail.referrer, 1000) || null,
+    session_id: cleanText(context.session_id, 120) || null,
+    recommendation: cleanText(context.recommendation, 120) || null,
     readiness_score: Number.isFinite(Number(context.readiness_score))
       ? Number(context.readiness_score)
       : null,
     break_even_months: Number.isFinite(Number(context.break_even_months))
       ? Number(context.break_even_months)
       : null,
-    project_type: context.project_type || null,
+    project_type: cleanText(context.project_type, 120) || null,
     build_estimate_mid: Number.isFinite(Number(context.build_estimate_mid))
       ? Number(context.build_estimate_mid)
       : null,
-    utm_source: context.utm_source || null,
-    utm_medium: context.utm_medium || null,
-    utm_campaign: context.utm_campaign || null,
-    cta_location: detail.cta_location || null,
-    offer: detail.offer || null,
-    page_path: detail.page_path || null,
-    conversion_stage: detail.conversion_stage || null,
-    first_touch_source: detail.first_touch?.source || null,
-    first_touch_medium: detail.first_touch?.medium || null,
-    first_touch_campaign: detail.first_touch?.utm_campaign || null,
-    origin: request.headers.get("origin") || null,
-    raw: payload
+    utm_source: cleanText(context.utm_source, 120) || null,
+    utm_medium: cleanText(context.utm_medium, 120) || null,
+    utm_campaign: cleanText(context.utm_campaign, 160) || null,
+    cta_location: cleanText(detail.cta_location, 120) || null,
+    offer: cleanText(detail.offer, 120) || null,
+    page_path: cleanText(detail.page_path || context.page_path, 500) || null,
+    conversion_stage: cleanText(detail.conversion_stage, 40) || null,
+    first_touch_source: cleanText(detail.first_touch?.source || context.first_touch_source, 120) || null,
+    first_touch_medium: cleanText(detail.first_touch?.medium || context.first_touch_medium, 120) || null,
+    first_touch_campaign: cleanText(detail.first_touch?.utm_campaign || context.first_touch_campaign, 160) || null,
+    origin: request.headers.get("origin") || null
+  });
+}
+
+function validateRoiPayload(payload, request) {
+  const eventType = cleanText(payload?.event_type, 80);
+  if (!ALLOWED_ROI_EVENTS.has(eventType)) {
+    throw new RequestError(400, "unsupported_event", "This ROI event is not supported.");
+  }
+
+  const normalized = normalizePayload(payload, request);
+  if (eventType !== "roi_report_requested") return normalized;
+
+  const detail = payload?.detail || {};
+  const email = cleanText(detail.email, 254).toLowerCase();
+  const consentVersion = cleanText(detail.consent_version, 80);
+  const formElapsedMs = Number(detail.form_elapsed_ms);
+
+  if (!isEmail(email)) throw new RequestError(422, "invalid_email", "Enter a valid email address.");
+  if (!isConsentGranted(detail.consent) || consentVersion !== ROI_REPORT_CONSENT_VERSION) {
+    throw new RequestError(422, "consent_required", "Consent is required before the report can be sent.");
+  }
+  if (!Number.isFinite(formElapsedMs) || formElapsedMs < MIN_REPORT_FORM_TIME_MS) {
+    throw new RequestError(429, "request_too_fast", "Please wait a moment before sending the report request.");
+  }
+
+  return compactObject({
+    ...normalized,
+    request_id: cleanText(detail.request_id, 120),
+    email,
+    consent: true,
+    consent_version: consentVersion,
+    result_summary: cleanText(detail.result_summary, 2000),
+    recommended_plan: cleanText(JSON.stringify(detail.recommended_plan || {}), 4000)
   });
 }
 
@@ -341,14 +379,13 @@ async function sha256Hex(value) {
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
-async function consumePrototypeRateLimit(env, request) {
+async function consumeRateLimit(env, request, prefix, salt) {
   const ip = request.headers.get("cf-connecting-ip");
-  const salt = env.PROTOTYPE_REVIEW_RATE_LIMIT_SALT;
   if (!env.ROI_LEADS || !ip || !salt) return { enabled: false, limited: false };
 
   const windowKey = new Date().toISOString().slice(0, 13);
   const hash = await sha256Hex(`${salt}:${ip}`);
-  const key = `rate:prototype_review:${windowKey}:${hash}`;
+  const key = `rate:${prefix}:${windowKey}:${hash}`;
   const currentValue = Number(await env.ROI_LEADS.get(key) || 0);
 
   if (currentValue >= RATE_LIMIT_ATTEMPTS) {
@@ -360,6 +397,14 @@ async function consumePrototypeRateLimit(env, request) {
   });
 
   return { enabled: true, limited: false };
+}
+
+function consumePrototypeRateLimit(env, request) {
+  return consumeRateLimit(env, request, "prototype_review", env.PROTOTYPE_REVIEW_RATE_LIMIT_SALT);
+}
+
+function consumeRoiReportRateLimit(env, request) {
+  return consumeRateLimit(env, request, "roi_report", env.ROI_REPORT_RATE_LIMIT_SALT);
 }
 
 async function persistLead(env, normalized) {
@@ -402,17 +447,25 @@ async function persistPrototypeReview(env, normalized) {
 }
 
 async function forwardLead(env, normalized) {
-  if (!env.ROI_FORWARD_WEBHOOK_URL) return { forwarded: false };
+  const isReport = normalized.event_type === "roi_report_requested";
+  const webhookUrl = isReport ? env.ROI_REPORT_WEBHOOK_URL : env.ROI_FORWARD_WEBHOOK_URL;
+  if (!webhookUrl) {
+    if (isReport) throw new RequestError(503, "delivery_not_configured", "Report delivery is not configured.");
+    return { forwarded: false, configured: false };
+  }
 
   const headers = {
     "Content-Type": "application/json"
   };
 
-  if (env.ROI_FORWARD_WEBHOOK_SECRET) {
-    headers["X-ROI-Webhook-Secret"] = env.ROI_FORWARD_WEBHOOK_SECRET;
+  const webhookSecret = isReport
+    ? env.ROI_REPORT_WEBHOOK_SECRET || env.ROI_FORWARD_WEBHOOK_SECRET
+    : env.ROI_FORWARD_WEBHOOK_SECRET;
+  if (webhookSecret) {
+    headers["X-ROI-Webhook-Secret"] = webhookSecret;
   }
 
-  const response = await fetch(env.ROI_FORWARD_WEBHOOK_URL, {
+  const response = await fetch(webhookUrl, {
     method: "POST",
     headers,
     body: JSON.stringify(normalized)
@@ -420,6 +473,7 @@ async function forwardLead(env, normalized) {
 
   return {
     forwarded: response.ok,
+    configured: true,
     status: response.status
   };
 }
@@ -526,11 +580,36 @@ async function handlePrototypeReview(request, env) {
 }
 
 async function handleRoiLead(request, env) {
+  if (!hasAllowedSiteContext(request)) {
+    return json({ ok: false, error: "forbidden_origin" }, {
+      status: 403,
+      origin: getAllowedCorsOrigin(request)
+    });
+  }
+
   try {
     const payload = await parseRequestPayload(request);
-    const normalized = normalizePayload(payload, request);
+    const detail = payload?.detail || {};
+    if (payload?.event_type === "roi_report_requested" && cleanText(detail.website, 200)) {
+      return json({ ok: true }, { status: 202, origin: getAllowedCorsOrigin(request) });
+    }
+
+    const normalized = validateRoiPayload(payload, request);
+    if (normalized.event_type === "roi_report_requested") {
+      if (!env.ROI_LEADS) throw new RequestError(503, "service_unavailable", "Report storage is not configured.");
+      if (!env.ROI_REPORT_WEBHOOK_URL) {
+        throw new RequestError(503, "delivery_not_configured", "Report delivery is not configured.");
+      }
+      const rateLimit = await consumeRoiReportRateLimit(env, request);
+      if (rateLimit.limited) throw new RequestError(429, "rate_limited", "Too many report requests. Please try again later.");
+    }
+
     const storage = await persistLead(env, normalized);
     const forwarding = await forwardLead(env, normalized);
+
+    if (normalized.event_type === "roi_report_requested" && !forwarding.forwarded) {
+      throw new RequestError(502, "delivery_failed", "The report could not be delivered.");
+    }
 
     return json({
       ok: true,
@@ -605,10 +684,10 @@ export default {
       return handlePrototypeReview(request, env);
     }
 
-    if (!originAllowed) {
-      return json({ ok: false, error: "forbidden_origin" }, {
-        status: 403,
-        origin: SITE_ORIGIN
+    if (url.pathname !== "/") {
+      return json({ ok: false, error: "not_found" }, {
+        status: 404,
+        origin: allowOrigin
       });
     }
 
