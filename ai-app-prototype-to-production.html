@@ -15,17 +15,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://why57.com/ai-app-prototype-to-production.html" />
-  <title>Turn Your Claude or AI-Built App Into a Real Product | 57</title>
-  <meta name="description" content="Built an app in Claude, ChatGPT, Lovable, Replit, Bolt, or v0? 57 turns your AI-built prototype into an owned web or mobile product for real users." />
-  <meta property="og:title" content="Turn Your Claude or AI-Built App Into a Real Product | 57" />
-  <meta property="og:description" content="Built an app with AI? 57 turns working prototypes into products real people can use." />
+  <title>AI Prototype to Production: Claude & AI-Built Apps | 57</title>
+  <meta name="description" content="Turn a Claude, ChatGPT, Lovable, Replit, Bolt, or v0 prototype into an owned product. See readiness, security, repair-vs-rebuild, cost, and process guidance." />
+  <meta name="author" content="Gera Yeremin" />
+  <meta property="og:title" content="AI Prototype to Production: Claude & AI-Built Apps | 57" />
+  <meta property="og:description" content="A practical path from AI-built demo to owned product, including readiness, security, repair-vs-rebuild, cost, and process guidance." />
   <meta property="og:image" content="https://why57.com/images/og-image.png" />
   <meta property="og:url" content="https://why57.com/ai-app-prototype-to-production.html" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="57 Custom Software Development" />
+  <meta property="article:published_time" content="2026-07-15" />
+  <meta property="article:modified_time" content="2026-07-15" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Turn Your Claude or AI-Built App Into a Real Product | 57" />
-  <meta name="twitter:description" content="Built an app with AI? 57 turns working prototypes into products real people can use." />
+  <meta name="twitter:title" content="AI Prototype to Production: Claude & AI-Built Apps | 57" />
+  <meta name="twitter:description" content="Readiness, security, repair-vs-rebuild, cost, and process guidance for AI-built apps." />
   <meta name="twitter:image" content="https://why57.com/images/og-image.png" />
   <link rel="icon" type="image/png" href="images/favicon_square.png" />
   <link rel="apple-touch-icon" href="images/favicon_square.png" />
@@ -33,16 +36,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="content.css?v=1" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
-        "@id": "https://why57.com/#localbusiness",
+        "@type": "Organization",
+        "@id": "https://why57.com/#organization",
         "name": "57 Custom Software Development",
-        "url": "https://why57.com",
+        "url": "https://why57.com/",
         "telephone": "+1-707-694-5624",
         "address": {
           "@type": "PostalAddress",
@@ -58,7 +62,8 @@
         "@id": "https://why57.com/#gera",
         "name": "Gera Yeremin",
         "jobTitle": "Founder & Lead Developer",
-        "worksFor": { "@id": "https://why57.com/#localbusiness" }
+        "worksFor": { "@id": "https://why57.com/#organization" },
+        "url": "https://gera.yerem.in"
       },
       {
         "@type": "Service",
@@ -66,7 +71,7 @@
         "name": "AI Prototype to Production Development",
         "serviceType": "AI-built app production and product launch development",
         "description": "57 helps turn prototypes built in Claude, ChatGPT, Lovable, Replit, Bolt, v0, and similar tools into owned web and mobile products for real users.",
-        "provider": { "@id": "https://why57.com/#localbusiness" },
+        "provider": { "@id": "https://why57.com/#organization" },
         "areaServed": [
           { "@type": "AdministrativeArea", "name": "Sonoma County" },
           { "@type": "AdministrativeArea", "name": "San Francisco Bay Area" },
@@ -78,13 +83,32 @@
         }
       },
       {
-        "@type": "WebPage",
-        "@id": "https://why57.com/ai-app-prototype-to-production.html#webpage",
-        "url": "https://why57.com/ai-app-prototype-to-production.html",
-        "name": "Turn Your Claude or AI-Built App Into a Real Product",
+        "@type": "Article",
+        "@id": "https://why57.com/ai-app-prototype-to-production.html#article",
+        "headline": "AI Prototype to Production: Turn a Claude or AI-Built App Into a Real Product",
+        "description": "A practical path from AI-built demo to an owned product, including readiness, security, repair-vs-rebuild, cost, and process guidance.",
+        "mainEntityOfPage": "https://why57.com/ai-app-prototype-to-production.html",
         "about": { "@id": "https://why57.com/ai-app-prototype-to-production.html#service" },
         "author": { "@id": "https://why57.com/#gera" },
-        "publisher": { "@id": "https://why57.com/#localbusiness" }
+        "publisher": { "@id": "https://why57.com/#organization" },
+        "datePublished": "2026-07-15",
+        "dateModified": "2026-07-15"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://why57.com/" },
+          { "@type": "ListItem", "position": 2, "name": "AI Prototype to Production", "item": "https://why57.com/ai-app-prototype-to-production.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "Can a Claude or AI-built prototype become a production product?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, when the useful product behavior is separated from the production gaps. A review should assess code and ownership, identity and authorization, data, integrations, security, testing, deployment, monitoring, recovery, and the intended first release."}},
+          {"@type": "Question", "name": "Should AI-generated code be repaired or rebuilt?", "acceptedAnswer": {"@type": "Answer", "text": "The decision should follow observed evidence. Keep or repair a sound, ownable foundation; replace a risky seam such as authentication or data access; rebuild when core security, state, deployment, testability, or ownership cannot be trusted."}},
+          {"@type": "Question", "name": "How much does it cost to productionize an AI app?", "acceptedAnswer": {"@type": "Answer", "text": "There is no universal price. 57 publicly states that many focused custom projects run from $5,000 to $25,000, but AI prototype production can fall below, within, or above that range depending on users, data, integrations, security, migration, and launch scope."}},
+          {"@type": "Question", "name": "What should I bring to an AI prototype review?", "acceptedAnswer": {"@type": "Answer", "text": "Bring a live or recorded walkthrough, repository access if appropriate, the intended first user and task, the data and third-party services involved, current ownership of code and accounts, and known launch constraints. Do not send production secrets through ordinary messages."}}
+        ]
       }
     ]
   }
@@ -256,7 +280,8 @@
       <a href="index.html" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
         <a href="#how-it-works" class="nav-link">How It Works</a>
-        <a href="#launch-ready" class="nav-link">Launch-Ready</a>
+        <a href="#production-risks" class="nav-link">Risks</a>
+        <a href="#decision-resources" class="nav-link">Guides</a>
         <a href="#why-57" class="nav-link">Why 57</a>
       </nav>
       <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="nav-cta" data-cta-location="prototype_nav">Show Us Your App</a>
@@ -276,6 +301,7 @@
             <a href="#launch-ready" class="btn-ghost">See What “Real” Means ↓</a>
           </div>
           <p class="prototype-trust"><strong>Based in Sonoma County.</strong> Work directly with the person building your product—locally across the Bay Area or remotely from anywhere.</p>
+          <div class="content-meta" style="margin-top:14px"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>Scope:</strong> product and technical guidance</span><span><strong>Reviewed:</strong> July 15, 2026</span></div>
 
           <div class="platforms" aria-label="Platforms we can start from">
             <p class="platforms-title">Bring what you built in</p>
@@ -386,6 +412,33 @@
       </div>
     </section>
 
+    <section class="section" id="production-risks">
+      <div class="container">
+        <div class="section-header fade-up"><p class="label">Production risks</p><h2 class="section-title">The expensive gaps are usually <span class="text-muted">behind the demo.</span></h2><p class="section-sub">AI-assisted code is not automatically unsafe or disposable. It does require the same evidence any production system needs, especially at access, data, integration, and operating boundaries.</p></div>
+        <div class="content-grid">
+          <article class="content-card fade-up"><span class="content-card-kicker">Identity and access</span><h3>Authentication is not authorization</h3><p>Confirm server-side role and tenant boundaries. Hiding controls in the interface does not prevent a direct request.</p></article>
+          <article class="content-card fade-up delay-1"><span class="content-card-kicker">Secrets and providers</span><h3>Keys must stay out of code and the browser</h3><p>Inventory, rotate, scope, and store credentials by environment. Know which account owns every third-party dependency.</p></article>
+          <article class="content-card fade-up delay-2"><span class="content-card-kicker">Data and privacy</span><h3>Map what the product collects and where it goes</h3><p>Identify sensitive fields, retention, deletion, logs, model exposure, backups, and who can export the data.</p></article>
+          <article class="content-card fade-up"><span class="content-card-kicker">AI authority</span><h3>Limit what model output can change</h3><p>Validate tool inputs, reduce permissions, require confirmation for consequential actions, and contain abuse and spend.</p></article>
+          <article class="content-card fade-up delay-1"><span class="content-card-kicker">Failure and recovery</span><h3>Test beyond the perfect path</h3><p>Exercise duplicate actions, interrupted requests, integration failure, bad input, account recovery, rollback, and restore.</p></article>
+          <article class="content-card fade-up delay-2"><span class="content-card-kicker">Ownership</span><h3>The business must be able to operate and change it</h3><p>Clarify repository, domain, hosting, database, vendor accounts, release access, documentation, and support responsibility.</p></article>
+        </div>
+        <div class="article-note fade-up" style="margin-top:24px"><strong>Review boundary</strong><p>A general product review can identify obvious concerns and scope next steps. It does not replace a penetration test, formal compliance audit, privacy or legal advice, accessibility certification, or other specialist assessment when those are required.</p></div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="decision-resources">
+      <div class="container">
+        <div class="section-header fade-up"><p class="label">Decision resources</p><h2 class="section-title">Go deeper before you <span class="text-muted">fund the next build.</span></h2><p class="section-sub">These guides separate readiness evidence from the repair/rebuild and budget decision.</p></div>
+        <div class="related-grid">
+          <a class="related-card fade-up" href="ai-prototype-readiness-security-checklist.html"><span>12-part checklist</span><h3>AI app production readiness and security</h3><p>Inspect ownership, environments, access, secrets, data, AI authority, dependencies, tests, monitoring, releases, and recovery.</p></a>
+          <a class="related-card fade-up delay-1" href="ai-prototype-repair-rebuild-cost.html"><span>Decision and cost guide</span><h3>Repair, replace a seam, or rebuild?</h3><p>Compare the paths against the same release and understand the users, data, integrations, migration, and risk that drive cost.</p></a>
+          <a class="related-card fade-up delay-2" href="silicon-valley-software-consulting.html"><span>Review scope</span><h3>Product delivery consulting</h3><p>See concrete assessment outputs, engagement boundaries, and how a team can continue the work.</p></a>
+        </div>
+        <div class="article-note fade-up"><strong>57's current public planning guidance</strong><p>Many focused custom projects are described on the site as <strong>$5,000–$25,000</strong> and <strong>four to eight weeks</strong>. That is not a universal prototype-production quote. A narrow pilot can be smaller; sensitive data, multiple roles, migration, payments, mobile behavior, complex integrations, or specialist requirements can expand the scope.</p></div>
+      </div>
+    </section>
+
     <section class="section" id="starting-point">
       <div class="container">
         <div class="section-header fade-up"><p class="label">Any starting point</p><h2 class="section-title">If you can show it, <span class="text-muted">we can start there.</span></h2><p class="section-sub">The platform is not the strategy. It is simply where the idea started.</p></div>
@@ -419,12 +472,29 @@
       </div>
     </section>
 
+    <section class="section section--alt" aria-labelledby="author-title">
+      <div class="container"><div class="author-card fade-up"><div class="author-mark" aria-hidden="true">GY</div><div><h2 id="author-title">Written by Gera Yeremin</h2><p>Gera is the founder and lead developer at 57. The site's documented work includes custom deployment platforms, field operations software, review automation, and production systems built around real workflows.</p><small>Last reviewed July 15, 2026 · Service and outcome claims are limited to 57's published pages and case studies.</small></div></div></div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container content-faq">
+        <div class="section-header fade-up"><p class="label">FAQs</p><h2 class="section-title">Questions after the AI-built demo.</h2></div>
+        <div class="faq-list">
+          <details class="faq-item"><summary class="faq-summary">Can a Claude or AI-built prototype become a production product? <span class="faq-icon">+</span></summary><p class="faq-answer">Yes, when the useful behavior is separated from the production gaps. Review code and ownership, identity and authorization, data, integrations, security, testing, deployment, monitoring, recovery, and the intended first release.</p></details>
+          <details class="faq-item"><summary class="faq-summary">Should AI-generated code be repaired or rebuilt? <span class="faq-icon">+</span></summary><p class="faq-answer">Follow the evidence. Keep or repair a sound, ownable foundation; replace a risky seam such as authentication or data access; rebuild when core security, state, deployment, testability, or ownership cannot be trusted.</p></details>
+          <details class="faq-item"><summary class="faq-summary">How much does it cost to productionize an AI app? <span class="faq-icon">+</span></summary><p class="faq-answer">There is no universal price. 57's public general range is $5,000–$25,000 for many focused custom projects, but prototype production can fall below, within, or above it depending on users, data, integrations, security, migration, and launch scope.</p></details>
+          <details class="faq-item"><summary class="faq-summary">How long does productionizing take? <span class="faq-icon">+</span></summary><p class="faq-answer">57 publicly describes four to eight weeks as common for focused automations or web apps. A narrow pilot may be smaller; complex data, security, migration, mobile, or integration requirements can take longer.</p></details>
+          <details class="faq-item"><summary class="faq-summary">What should I bring to a prototype review? <span class="faq-icon">+</span></summary><p class="faq-answer">A live or recorded walkthrough, repository access if appropriate, the intended first user and task, the data and third-party services involved, current ownership of code and accounts, and launch constraints. Do not send production secrets through ordinary messages.</p></details>
+        </div>
+      </div>
+    </section>
+
     <section class="section cta-section" id="contact">
-      <div class="container"><div class="cta-card fade-up"><div class="cta-orb" aria-hidden="true"></div><p class="label">You already started</p><h2 class="cta-headline">Show me <span class="text-orange">what you built.</span></h2><p class="cta-sub">Walk me through the app the same way you would show it to a friend. In one call, we can usually identify whether the next move is more validation, a focused cleanup, or a production build.</p><a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" data-cta-location="prototype_footer">Book a 30-Minute Call</a><p class="cta-note">Free · No pressure · Zoom, phone, or in person in Sonoma County</p></div><p class="platform-disclaimer">57 is an independent software development company and is not affiliated with Anthropic, OpenAI, Lovable, Replit, StackBlitz, Vercel, Cursor, or the other platforms referenced here. Brand marks are used only to identify platforms customers may use.</p></div>
+      <div class="container"><div class="cta-card fade-up"><div class="cta-orb" aria-hidden="true"></div><p class="label">You already started</p><h2 class="cta-headline">Show me <span class="text-orange">what you built.</span></h2><p class="cta-sub">Walk through the app, the intended first user, the data and integrations, and what you need to decide. The review begins by separating evidence from unknowns and ranking the next responsible step.</p><a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" data-cta-location="prototype_footer">Book a 30-Minute Fit Call</a><p class="cta-note">Free · No pressure · No production secrets required</p></div><p class="platform-disclaimer">57 is an independent software development company and is not affiliated with Anthropic, OpenAI, Lovable, Replit, StackBlitz, Vercel, Cursor, or the other platforms referenced here. Brand marks are used only to identify platforms customers may use.</p></div>
     </section>
   </main>
 
-  <footer class="footer"><div class="container footer-inner"><a href="index.html" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a><address class="footer-address"><span>57 Custom Software Development</span><span class="footer-sep">&bull;</span><a href="https://maps.google.com/?q=362+City+Center+Dr,+Rohnert+Park,+CA+94928" target="_blank" rel="noopener">362 City Center Dr, Rohnert Park, CA 94928</a><span class="footer-sep">&bull;</span><a href="tel:+17076945624">(707) 694-5624</a></address><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html#services">Services</a><a href="index.html#results">Results</a><a href="sonoma-county-software-development.html">Sonoma County</a><a href="santa-rosa-software-development.html">Santa Rosa</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><p class="footer-copy">&copy; 2026 57. All rights reserved.</p></div></footer>
+  <footer class="footer"><div class="container footer-inner"><a href="index.html" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a><address class="footer-address"><span>57 Custom Software Development</span><span class="footer-sep">&bull;</span><a href="https://maps.google.com/?q=362+City+Center+Dr,+Rohnert+Park,+CA+94928" target="_blank" rel="noopener">362 City Center Dr, Rohnert Park, CA 94928</a><span class="footer-sep">&bull;</span><a href="tel:+17076945624">(707) 694-5624</a></address><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html#services">Services</a><a href="ai-prototype-readiness-security-checklist.html">Readiness Checklist</a><a href="ai-prototype-repair-rebuild-cost.html">Repair vs. Rebuild</a><a href="sonoma-county-software-development.html">Sonoma County</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><p class="footer-copy">&copy; 2026 57. All rights reserved.</p></div></footer>
 
   <script src="main.js"></script>
 </body>
