@@ -1,10 +1,10 @@
 # Five-Point Prototype Review — offer brief
 
-**Status:** reusable internal brief; pricing, availability, and owner require approval before publishing.<br>
+**Status:** reusable internal brief; capacity, response ownership, and any public offer detail require approval before publishing.<br>
 **Primary page:** <https://why57.com/ai-app-prototype-to-production.html><br>
 **Offer job:** turn “I built something with AI; what now?” into a clear production decision and an evidence-backed next step.
 
-## Ideal participant
+## Ideal request
 
 - A founder, operator, or team has a working prototype built with an AI coding or app-building tool.
 - At least one real workflow can be demonstrated, even if the code and UX are rough.
@@ -16,65 +16,80 @@
 - A raw idea with nothing to demonstrate.
 - A request for a free implementation estimate disguised as strategy.
 - A security, compliance, or legal certification.
-- A participant who cannot share enough context to evaluate the core journey.
+- A requester who cannot share enough context to evaluate the core journey.
 
-## Promise
+## Five-point review scope
 
-By the end of the review, the participant should understand:
+The public offer reviews these five areas, in this order:
 
-1. which parts of the prototype are safe to keep;
-2. which production gaps create the most risk;
-3. the smallest responsible next release; and
-4. what evidence will prove that release is working.
+1. **Product and release scope:** whether the first user and smallest useful outcome are clear enough to ship.
+2. **Code and ownership:** what can be kept, what needs attention, and whether the business can own and change it.
+3. **Data, security, and privacy:** whether accounts, permissions, customer data, and third-party access are handled responsibly.
+4. **Reliability and operations:** what is missing for testing, backups, monitoring, recovery, and safe releases.
+5. **Launch path and next move:** whether to keep building, fix a focused set of gaps, rebuild the foundation, or validate first.
 
-Do not promise a clean bill of health, a fixed implementation price, or a launch date without technical review.
+The response should identify the clearest next move supported by the available evidence. Do not promise a clean bill of health, certification, a fixed implementation price, or a launch date.
 
 ## Participant inputs
 
-Request these before the session:
+The public form requests:
 
-- prototype URL or a short screen recording;
-- primary user and job-to-be-done;
-- tool(s) used to build it;
-- repository and deployment ownership, if known;
-- data types collected or generated;
-- required integrations;
-- current users and expected next cohort;
-- biggest concern and pending decision.
+- name, work email, and optional company;
+- the tool or mixed stack used to build it;
+- an optional prototype URL and a plain-language description of who it helps and what it does;
+- the current-user range;
+- target timing; and
+- the blocker or decision preventing the next step; and
+- consent to use the submitted information for the review and follow-up, with confirmation that no passwords, secrets, or private customer data were included.
+
+If a deeper review is appropriate, request only the additional context needed for the five points: intended first user and task, repository access when appropriate, data and third-party services, code and account ownership, and launch constraints.
 
 If credentials are needed, use an approved secure channel. Never request secrets in an intake form, calendar note, or email.
 
-## Working-session agenda
+## Review workflow
 
 | Segment | Purpose | Output |
 | --- | --- | --- |
-| Context and decision | Name the user, workflow, business stakes, and decision deadline. | One-sentence decision statement. |
-| Core-journey walkthrough | Follow the highest-value journey, including failure and success states. | Journey gaps and usability notes. |
-| Production risk scan | Review ownership, data, security, reliability, release process, monitoring, and support. | Ranked risk stack. |
-| Keep / harden / replace | Separate valuable product logic from fragile implementation. | Component decision map. |
-| Next-release plan | Choose the smallest controlled cohort, measures, and stop conditions. | 30-day action plan. |
+| Product and release scope | Name the first user, smallest useful outcome, release boundary, and exclusions. | Evidence and unknowns for the first release. |
+| Code and ownership | Identify what can be kept, what needs attention, and who controls the code and operating accounts. | Keep / fix / replace findings. |
+| Data, security, and privacy | Review accounts, permissions, customer data, third-party access, and any specialist-review boundary. | Ranked access and data risks. |
+| Reliability and operations | Review tests, backups, monitoring, recovery, deployment, and support ownership. | Ranked operating gaps. |
+| Launch path and next move | Choose the smallest responsible next move supported by the evidence. | Keep building, focused fix, foundation rebuild, or validate-first recommendation. |
 
 Use the [production-readiness checklist](production-readiness-checklist.md) as the shared scan, not as a certification.
 
-## Deliverable
+## Canonical resource paths
 
-Send a concise review summary after the session:
+| Funnel job | Canonical page | Page CTA |
+| --- | --- | --- |
+| Submit a working prototype for the five-point review | [AI prototype to production](https://why57.com/ai-app-prototype-to-production.html) | Send Your Prototype |
+| Review the 12 readiness and security parts | [AI prototype readiness and security checklist](https://why57.com/ai-prototype-readiness-security-checklist.html) | Start the Checklist |
+| Decide whether to keep, repair, replace a seam, or rebuild | [AI prototype repair-vs.-rebuild guide](https://why57.com/ai-prototype-repair-rebuild-cost.html) | Use the Decision Framework |
+
+Keep these destinations canonical. Add the approved external-campaign UTM parameters only to distribution links, never to internal site links.
+
+## Review response boundary
+
+The follow-up response should stay proportional to the material reviewed. It can include:
 
 - decision and intended user outcome;
 - top three risks, with evidence;
-- keep / harden / replace map;
+- keep / fix / replace map;
 - next release scope and explicit exclusions;
-- analytics and reliability events to verify;
-- owner, next checkpoint, and open questions;
+- evidence still needed before a broader release;
+- owner, next checkpoint, and open questions; and
 - optional implementation path, only if requested.
+
+Do not describe the response as a penetration test, formal audit, certification, complete code review, or guaranteed implementation plan unless that separate scope has been approved and completed.
 
 ## Conversion paths
 
 | Finding | Responsible next step | CTA |
 | --- | --- | --- |
 | Product signal is weak | Run a smaller user test before engineering expansion. | “Plan a controlled validation sprint.” |
-| Core logic is valuable but fragile | Harden the risky components and add release controls. | “Scope a production-hardening phase.” |
-| Prototype architecture will not support the use case | Preserve learnings and rebuild the smallest viable core. | “Map a selective rebuild.” |
+| Core logic is valuable but fragile | Fix the risky components and add release controls. | “Scope a focused production fix.” |
+| One weak seam creates disproportionate risk | Preserve the useful experience and replace that seam. | “Map a selective replacement.” |
+| The foundation will not support the use case | Preserve the learning and rebuild the smallest viable core. | “Map a foundation rebuild.” |
 | Prototype is ready for a limited cohort | Instrument, document, and run a staged launch. | “Prepare the pilot release.” |
 | Why57 is not the right provider | Make a clean recommendation without forcing a sale. | “Document the next specialist or decision.” |
 
@@ -82,17 +97,20 @@ Send a concise review summary after the session:
 
 ### Short description
 
-Built a working app with Claude, ChatGPT, Lovable, Replit, Bolt, v0, or another AI tool? The five-point prototype review examines product ownership, access and data, failure handling, release controls, and ongoing support. You leave with the highest-risk gaps and a practical next release—not a generic feature wishlist.
+Built a working app with Claude, ChatGPT, Lovable, Replit, Bolt, v0, or another AI tool? The five-point prototype review examines product and release scope, code and ownership, data and security, reliability and operations, and the launch path. Send the prototype to get the clearest next move supported by the evidence—not a generic feature wishlist.
 
 ### CTA options
 
-- **Primary:** Send Your Prototype
-- **Lower commitment:** Check Your Prototype’s Readiness
-- **Partner handoff:** Get a Production Readiness Review
+- **Primary navigation / distribution:** Send Your Prototype
+- **Review section:** Get the 5-Point Review
+- **Form submit:** Send My Prototype
+- **Checklist resource:** Start the Checklist
+- **Decision resource:** Use the Decision Framework
+- **Secondary conversation:** Request a Fit Call
 
 ### Confirmation / thank-you state
 
-> Request received. We’ll review the context you shared and reply with fit and next-step options. Please do not send passwords, API keys, or other secrets. If the five-point review is not the right format, we’ll say so.
+> Your prototype is in the review queue. We’ll look at product and release scope, code and ownership, data and security, reliability and operations, and the launch path—then reply with the clearest next move supported by the context provided.
 
 ## Measurement contract
 

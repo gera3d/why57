@@ -1,142 +1,118 @@
 ---
-title: "AI Prototype Production-Readiness Checklist"
-description: "A practical 20-point checklist for deciding whether an AI-built prototype is ready for real users—and what to fix next."
-slug: "ai-prototype-production-readiness-checklist"
+title: "AI Prototype Readiness & Security Checklist"
+description: "A 12-part evidence checklist for deciding whether an AI-built prototype is ready for a controlled pilot, public release, or specialist review."
+slug: "ai-prototype-readiness-security-checklist"
+canonical_url: "https://why57.com/ai-prototype-readiness-security-checklist.html"
 audience: "Founders, operators, and teams with a working AI-built prototype"
-primary_cta: "Start the 12-Part Readiness Checklist"
-status: "internal supporting worksheet; canonical public resource is the 12-part readiness and security checklist"
+primary_cta: "Start the Checklist"
+conversion_cta: "Send Your Prototype for the 5-Point Review"
+status: "internal supporting worksheet aligned to the canonical public resource"
 ---
 
 # Is your AI-built prototype ready for real users?
 
-Claude, ChatGPT, Lovable, Replit, Bolt, v0, and similar tools can get a useful idea on screen fast. Production is a different job: the product has to protect data, survive failure, support real users, and create evidence that it is working.
+AI tools can get useful behavior on screen quickly. Production is a different job: the product has to protect data, survive failure, support real users, and create evidence that it is working.
 
-Use this checklist before inviting customers, accepting payments, or making the prototype part of an important workflow. It takes about 15 minutes.
+Use this worksheet with the canonical [AI prototype readiness and security checklist](https://why57.com/ai-prototype-readiness-security-checklist.html). It is a readiness and scoping aid, not a penetration test, formal audit, certification, or legal advice.
 
-## How to score it
+## How to use it
 
-Give each section a score:
+For each part, record evidence, unknowns, and the next owner. A checked box without evidence is still an assumption. A critical access, data-loss, unsafe-AI, or unowned-infrastructure risk can block a broader release even when the other items look strong.
 
-- **0 — Unknown or missing:** nobody owns it, or the answer is based on hope.
-- **1 — Partly handled:** a path exists, but it is manual, fragile, or untested.
-- **2 — Ready for the next stage:** the owner, process, and evidence are clear.
+## 1. Define the first user, job, and launch boundary
 
-Write one piece of evidence beside every score. A checked box without evidence is still an assumption.
+- [ ] Name who can access the release, what they must accomplish, what data they will use, and what is explicitly outside version one.
 
-## 1. Product outcome and ownership
+**Evidence:** [one-page release brief, user roles, primary workflow, excluded scope]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] The product solves one named problem for one defined primary user.
-- [ ] A single person owns scope and can say “not yet” to new features.
-- [ ] The first-release success metric is measurable within 30 days.
-- [ ] The team knows what would cause it to pause, roll back, or retire the product.
+## 2. Establish ownership of code, accounts, domains, and data
 
-**Evidence:** [user/problem statement, owner, metric, stop condition]<br>
-**Score (0–2):** [ ]
+- [ ] Identify who controls the repository, hosting, domain, database, AI provider, email, payments, analytics, and third-party services. Avoid dependence on a contractor's personal account.
 
-## 2. Core journeys and accessibility
+**Evidence:** [owner inventory, admin list, transfer plan, license and export notes]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] The highest-value journey works from start to finish without developer help.
-- [ ] Empty, loading, validation, error, and success states are visible and understandable.
-- [ ] Keyboard navigation, labels, focus order, color contrast, and mobile layout have been checked.
-- [ ] A user can recover from a mistake without losing important work.
+## 3. Separate development, preview, and production
 
-**Evidence:** [journey recording, test notes, accessibility scan]<br>
-**Score (0–2):** [ ]
+- [ ] Keep production data and credentials out of routine experimentation. Document how configuration differs and how a release moves between environments.
 
-## 3. Architecture and ownership of the code
+**Evidence:** [environment list, deployment path, protected variables, release permissions]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] The source code, deployment accounts, domains, and key services are owned by the business.
-- [ ] Environments and configuration are documented; secrets are not committed to source control.
-- [ ] Major dependencies and generated components are identifiable and replaceable.
-- [ ] Another qualified developer can run the product from written instructions.
+## 4. Verify identity and authorization on the server
 
-**Evidence:** [repository, account inventory, runbook]<br>
-**Score (0–2):** [ ]
+- [ ] Verify who the user is and what that user may read or change. Hiding a button in the browser is not an access control.
 
-## 4. Identity, permissions, and security
+**Evidence:** [role matrix, server-side checks, tenant isolation tests, session behavior]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] Authentication is appropriate for the data and actions the product exposes.
-- [ ] Users can access only the records and actions their role requires.
-- [ ] Inputs, uploads, APIs, and admin functions are validated on the server—not only in the browser.
-- [ ] Dependency, secret, and permission reviews happen before release.
+## 5. Remove secrets from code, prompts, logs, and the browser
 
-**Evidence:** [role matrix, security review, dependency scan]<br>
-**Score (0–2):** [ ]
+- [ ] Rotate any exposed key. Use server-side secret storage, least-privilege credentials, separate keys by environment, and provider restrictions where available.
 
-## 5. Data, privacy, and AI behavior
+**Evidence:** [secret inventory, rotation record, repository scan, key restrictions]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] The team can explain what data is collected, where it goes, who can access it, and when it is deleted.
-- [ ] Sensitive data is minimized and protected in transit and at rest.
-- [ ] AI outputs have boundaries, fallbacks, and a human review path when errors matter.
-- [ ] Prompts, models, evaluations, and known failure cases are versioned or recorded.
+## 6. Map data collection, access, retention, and deletion
 
-**Evidence:** [data map, retention rule, AI evaluation set]<br>
-**Score (0–2):** [ ]
+- [ ] Identify what the product collects, why it is needed, where it travels, who can access it, how long it remains, how users can correct or delete it, and what appears in logs.
 
-## 6. Reliability and recovery
+**Evidence:** [data-flow diagram, field inventory, retention rules, deletion test]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] The product handles timeouts, duplicates, retries, and partial failures safely.
-- [ ] Backups exist for important data and a restore has been tested.
-- [ ] A failed release can be rolled back without improvisation.
-- [ ] Capacity, rate limits, and third-party outages have an explicit response.
+## 7. Validate every trust boundary
 
-**Evidence:** [failure test, backup restore, rollback notes]<br>
-**Score (0–2):** [ ]
+- [ ] Treat browser input, uploaded files, webhooks, URLs, model output, and third-party responses as untrusted. Validate on the server and encode output for its destination.
 
-## 7. Testing and release control
+**Evidence:** [validation rules, file restrictions, output encoding, webhook verification]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] Critical journeys have repeatable automated or documented tests.
-- [ ] Changes are reviewed and released from a known version.
-- [ ] Production configuration differs from local development intentionally.
-- [ ] The release checklist names the approver and the evidence required to ship.
+## 8. Control AI behavior, data exposure, and spend
 
-**Evidence:** [test report, release checklist, version tag]<br>
-**Score (0–2):** [ ]
+- [ ] Define what can enter a model, what the model may influence, when a human must review, how prompt injection or unsafe tool use is limited, and how usage or cost abuse is contained.
 
-## 8. Monitoring and support
+**Evidence:** [model data policy, tool permissions, review gates, quotas and alerts]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] Errors, availability, and the main product outcome are observable.
-- [ ] Alerts go to a person who knows what to do next.
-- [ ] Users have a clear support route and receive a useful acknowledgement.
-- [ ] The team can connect a user report to logs without exposing private data.
+## 9. Inventory dependencies and third-party failure
 
-**Evidence:** [dashboard, alert route, support workflow]<br>
-**Score (0–2):** [ ]
+- [ ] Record the packages, APIs, and services the product relies on, their licenses, support status, limits, timeouts, retry behavior, and the product experience when they fail.
 
-## 9. Commercial and legal readiness
+**Evidence:** [dependency inventory, lockfile, API limits, timeout and fallback tests]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] Pricing, billing, refunds, and cancellations match the product experience.
-- [ ] Terms, privacy language, consent, and vendor obligations have an owner.
-- [ ] Required licenses and rights exist for code, data, fonts, images, and generated content.
-- [ ] There is a plan for portability if a critical vendor changes price or terms.
+## 10. Test critical workflows and common failure paths
 
-**Evidence:** [approved policy links, vendor register, billing test]<br>
-**Score (0–2):** [ ]
+- [ ] Cover account creation, sign-in, permissions, payments if applicable, saving and editing data, duplicate actions, interrupted requests, empty states, and recovery from errors.
 
-## 10. Launch and learning loop
+**Evidence:** [acceptance cases, automated checks, exploratory notes, defect decisions]<br>
+**Unknown / next owner:** [ ]
 
-- [ ] The launch starts with a defined cohort instead of “everyone.”
-- [ ] Acquisition links carry source and campaign attribution.
-- [ ] Activation, completion, conversion, and retention events are named and tested.
-- [ ] A weekly owner reviews the evidence and decides what to keep, fix, or stop.
+## 11. Make releases observable and reversible
 
-**Evidence:** [cohort list, analytics test, weekly review owner]<br>
-**Score (0–2):** [ ]
+- [ ] Capture useful errors without leaking sensitive data. Define health signals, alerts, release ownership, rollback or forward-fix strategy, and a simple incident path.
 
-## Your result
+**Evidence:** [monitored errors, alert owner, deploy record, rollback exercise]<br>
+**Unknown / next owner:** [ ]
 
-**Total (0–20):** [ ]
+## 12. Prove backup and recovery where data matters
 
-- **0–7 — Prototype:** keep the audience small. Protect data and clarify ownership before adding features.
-- **8–14 — Controlled pilot:** choose a limited cohort, close the highest-risk gaps, and instrument the core journey.
-- **15–17 — Launch candidate:** run a release review, failure test, and rollback rehearsal before expanding access.
-- **18–20 — Ready for measured growth:** launch in stages and keep watching the outcome, reliability, and support load.
+- [ ] Do not treat an enabled backup setting as a tested restore. Define acceptable data loss and recovery time, then exercise the path in proportion to the product's consequence.
 
-A high total does not cancel a critical red flag. Authentication, permissions, data loss, unsafe AI behavior, and unowned infrastructure can block launch regardless of score.
+**Evidence:** [backup owner, retention, restore result, recovery objective]<br>
+**Unknown / next owner:** [ ]
+
+## Choose the release boundary
+
+- **Demo only:** controlled access with synthetic or disposable data; do not promise durability, privacy, availability, or account isolation.
+- **Controlled pilot:** named users, limited data, explicit limits, active observation, and a human recovery path.
+- **Public first release:** address unknown users, real operating conditions, abuse, account recovery, privacy, accessibility, monitoring, failure handling, backups where needed, and ownership.
+- **Sensitive or regulated use:** identify additional security, privacy, compliance, contractual, and operational obligations and use appropriately qualified specialists.
 
 ## The three-gap action plan
 
-Do not turn the checklist into a 40-item backlog. Pick the three gaps with the highest combination of user impact, likelihood, and difficulty of recovery.
+Pick the three gaps with the highest combination of consequence, likelihood, and difficulty of recovery.
 
 | Priority | Gap | Risk if ignored | Smallest useful fix | Owner | Evidence due |
 | --- | --- | --- | --- | --- | --- |
@@ -144,10 +120,12 @@ Do not turn the checklist into a 40-item backlog. Pick the three gaps with the h
 | 2 | [gap] | [risk] | [fix] | [owner] | [date/evidence] |
 | 3 | [gap] | [risk] | [fix] | [owner] | [date/evidence] |
 
-## Continue with the canonical resources
+## Continue with the three canonical AI resources
 
-Use the public [12-part readiness and security checklist](https://why57.com/ai-prototype-readiness-security-checklist.html) for the canonical review sequence. If you already have a working prototype and want a second set of eyes, the [five-point prototype review](https://why57.com/ai-app-prototype-to-production.html) helps identify the riskiest gaps and the smallest responsible next release.
+- [AI prototype to production and the five-point review](https://why57.com/ai-app-prototype-to-production.html)
+- [12-part AI prototype readiness and security checklist](https://why57.com/ai-prototype-readiness-security-checklist.html)
+- [AI prototype repair-vs.-rebuild decision guide](https://why57.com/ai-prototype-repair-rebuild-cost.html)
 
-**Web CTA:** [Start the 12-Part Readiness Checklist](https://why57.com/ai-prototype-readiness-security-checklist.html?utm_source=readiness_worksheet&utm_medium=lead_magnet&utm_campaign=why57_ai_prototype_launch_2026q3&utm_content=canonical_checklist)
+If the prototype is already working and the next move is unclear, **[Send Your Prototype for the 5-Point Review](https://why57.com/ai-app-prototype-to-production.html#send-prototype)**. A successful intake records `prototype_review_submitted`; a calendar-link click remains the `calendar_booking_clicked` micro-conversion and does not prove a lead or completed booking.
 
-_This checklist is a product-readiness aid, not a security, privacy, or legal certification. Use qualified specialists where the risk requires them._
+Do not put personal data, prototype content, secrets, or private business details in analytics or UTM values.
