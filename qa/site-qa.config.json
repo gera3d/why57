@@ -1,0 +1,64 @@
+{
+  "siteOrigin": "https://why57.com",
+  "analyticsId": "G-358H0FHG50",
+  "sitemapPath": "sitemap.xml",
+  "runtimeGeneratedAssets": {
+    "site-config.js": "site-config.example.js"
+  },
+  "ignoredHtml": [
+    "404.html",
+    "dashboard.html"
+  ],
+  "criticalDestinations": [
+    {
+      "name": "booking calendar",
+      "hrefPrefix": "https://calendar.app.google/93NLV73sQd1DXuUB6",
+      "minimumReferences": 1,
+      "analyticsHook": true,
+      "liveCheck": true
+    },
+    {
+      "name": "ROI calculator",
+      "hrefPrefix": "https://roi.why57.com/",
+      "minimumReferences": 1,
+      "analyticsHook": true,
+      "liveCheck": true
+    },
+    {
+      "name": "AI prototype page",
+      "hrefPrefix": "ai-app-prototype-to-production.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Health for California case study",
+      "hrefPrefix": "case-studies/health-for-california-review-engine.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "DriveSavers case study",
+      "hrefPrefix": "case-studies/drivesavers-seo-overhaul.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Nuvolum case study",
+      "hrefPrefix": "case-studies/nuvolum-deployment-platform.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Dent Experts case study",
+      "hrefPrefix": "case-studies/dent-experts-storm-ops-flow.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "UX Owl case study",
+      "hrefPrefix": "case-studies/ux-owl-sonoma-attorneys.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    }
+  ]
+}

@@ -121,38 +121,6 @@ function applyExpIntakePosition(rc) {
 function applyExpPriceSignal(rc) {
   // Price signal text disabled — always treat as control.
   trackExperiment('price_signal', 'control');
-  return;
-  if (!rc.show_price_signal) {
-
-  const text = rc.price_signal_text || "Most projects: $5k–$25k · Fixed price, scoped upfront.";
-
-  // Insert price signal after the hero actions
-  const heroActions = document.querySelector('.hero-actions');
-  if (heroActions && !document.getElementById('exp-price-signal')) {
-    const pill = document.createElement('p');
-    pill.id = 'exp-price-signal';
-    pill.textContent = text;
-    pill.style.cssText = [
-      'font-size: .78rem',
-      'color: rgba(237,237,239,0.45)',
-      'margin-top: 12px',
-      'letter-spacing: .01em',
-      'line-height: 1.5',
-    ].join(';');
-    heroActions.insertAdjacentElement('afterend', pill);
-  }
-
-  // Also insert near the fit section CTA if it exists
-  const fitBook = document.getElementById('fitBook');
-  if (fitBook && fitBook.parentElement && !document.getElementById('exp-price-signal-fit')) {
-    const pill2 = document.createElement('p');
-    pill2.id = 'exp-price-signal-fit';
-    pill2.textContent = text;
-    pill2.style.cssText = 'font-size:.75rem;color:rgba(237,237,239,0.4);margin-top:10px;';
-    fitBook.parentElement.insertAdjacentElement('afterend', pill2);
-  }
-
-  trackExperiment('price_signal', 'variant', { signal_text: text });
 }
 
 // ─── Experiment 5: Social proof placement ────────────────────────────────
