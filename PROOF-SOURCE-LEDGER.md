@@ -1,6 +1,6 @@
 # 57 public proof-source ledger
 
-Last audited: 2026-07-15
+Last audited: 2026-07-16
 Owner: 57 site owner / Gera Yeremin
 Scope: public copy in this repository
 
@@ -30,11 +30,12 @@ Status vocabulary:
 | ORG-02 | `10+` / `50+ clients served` | No CRM export, contract index, invoice index, or definition of “client.” Values conflicted in prior copy. | Removed — unverified | Export a deduplicated client list, define whether retained employers, subcontract work, and one-off engagements count, then retain a dated total. |
 | ORG-03 | `2x` / `10x average ROI` | No ROI worksheet, client cost baseline, benefit model, invoice set, or cohort definition. Values conflicted in prior copy. | Removed — unverified | Define an ROI formula and cohort; retain build cost plus client-approved benefit data for every included engagement. Do not average incomparable metrics. |
 | ORG-04 | `1,796+` / `9,000+ reviews generated` | No Google Business Profile export, platform log, dated screenshot set, or calculation tying reviews to the product. Values conflicted in prior copy. | Removed — unverified | Retain dated per-profile review exports and platform delivery logs; document whether the count is cumulative, incremental, requested, or published. |
-| ORG-05 | Typical project price `$5,000–$25,000` | No current rate card, signed proposal sample, or owner pricing policy. | Removed — unverified | Confirm the current commercial policy and effective date. Publish only as a current policy or range, not as historical fact, and add exclusions. |
+| ORG-05 | Current custom software project policy `$5,000–$25,000` fixed price | Owner-supplied `Codex Build Brief — 57 Lead Generation System`, received 2026-07-16. | Owner-attested current commercial policy | Publish only as the current policy for a defined scope, not as a historical average, guarantee, or client outcome. |
 | ORG-06 | Typical delivery time `3–6` or `4–8 weeks` | No project schedule cohort or scope definition. | Removed — unverified | Define what qualifies as a focused release and calculate a dated cohort from signed schedules and acceptance dates. |
 | ORG-07 | “Software pays for itself” | No project-specific cost/benefit record supporting a general guarantee. | Removed — unverified | Use only as a client-specific outcome after retaining the calculation, assumptions, comparison window, and approval. |
 | ORG-08 | Named integrations are “common” past work | No SOW, repository, or client-approved integration index. | Copy should describe feasibility, not historical frequency | Maintain an internal integration index or use capability copy limited to tools with supported APIs/webhooks and a discovery caveat. |
 | ORG-09 | Address, phone, hours, service area, founder/team titles, free-call duration, and in-person/remote availability | Repeated structured data, footer copy, and CTA labels only; no owner attestation record is retained in the repository. | Exact contact and availability claims removed; basic owner/team identity retained; owner attestation required before strengthening | Confirm current legal/business name, public address, phone, hours, titles, service area, meeting formats, call length, and any free/no-obligation promise before publishing. |
+| OFFER-01 | Operations Automation Audit at `$1,500–$2,500`, delivered in `10 business days`, credited toward any build | Owner-supplied `Codex Build Brief — 57 Lead Generation System`, received 2026-07-16. | Owner-attested current offer policy | Publish only as the current productized offer; re-confirm price, turnaround, and credit terms before later changes. |
 | INS-01 | Insurance-marketplace review baseline, total, `900x` growth, runtime, ROI, and competitive impact | Pre-existing portfolio copy only; no dated review export, platform log, baseline, analytics, or permission. | Removed from public copy — source and permission required | Obtain per-profile review exports, define network aggregation, retain platform logs, and secure client approval before restoring any value or attribution. |
 | INS-02 | Agent landing pages, triggered SMS requests, and spreadsheet reporting | Pre-existing implementation description only; no SOW, production capture, client acceptance record, or publication permission. | Anonymized — evidence and permission required | Retain an approved SOW or acceptance email plus redacted product/reporting captures and confirm production status before restoring an identity or logo. |
 | INS-03 | Insurance-marketplace quantitative testimonial | Earlier site copy only; no original source, author, date, or permission. | Removed — unverified | Obtain the original source, identify the speaker, confirm exact wording and relationship, and secure publication permission. |
@@ -66,8 +67,8 @@ Status vocabulary:
 
 ## Current VERIFIED / REMOVED / PENDING ledger
 
-- **VERIFIED:** the repository supports general service, process, security, ownership, and measurement guidance that does not assert a past client outcome. No named third-party endorsement is verified for publication.
-- **REMOVED:** all attributed recommendations, every distinct quote variant, all displayed star ratings, named-client outcome numbers, unsupported experience/client/ROI/price/timeline totals, named-client proof language on regional and AI pages, and the unapproved client/rating imagery listed under `VIS-*`.
+- **VERIFIED:** the repository supports general service, process, security, ownership, and measurement guidance that does not assert a past client outcome. The current fixed-price project policy and Operations Automation Audit terms are owner-attested in the 2026-07-16 build brief. No named third-party endorsement is verified for publication.
+- **REMOVED:** all attributed recommendations, every distinct quote variant, all displayed star ratings, named-client outcome numbers, unsupported experience/client/ROI/timeline totals, named-client proof language on regional and AI pages, and the unapproved client/rating imagery listed under `VIS-*`.
 - **PENDING:** private source records and written publication permission for every client name, logo, screenshot, testimonial, scope statement, and outcome; owner attestation for any exact business contact, team, or availability details; authenticated production Remote Config review; and an owner-approved primary/backup lead responder plus response-time target.
 
 ## Evidence file naming

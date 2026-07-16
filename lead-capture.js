@@ -97,8 +97,10 @@
 
         if (result.delivery_mode === 'live') {
           setStatus(form, 'Got it — check your inbox for the booking link and next step.', 'success');
+        } else if (result.delivery_mode === 'test') {
+          setStatus(form, 'Test request accepted. Email delivery was limited to the approved test inbox.', 'success');
         } else {
-          setStatus(form, 'Saved in test mode. Delivery was limited to test destinations.', 'success');
+          setStatus(form, 'Dry run accepted. No email, alert, or spreadsheet delivery was sent.', 'success');
         }
         delete form.dataset.submissionId;
         form.reset();

@@ -36,6 +36,18 @@
       "requiredFrom": ["index.html"]
     },
     {
+      "name": "Pricing page",
+      "hrefPrefix": "pricing.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html"]
+    },
+    {
+      "name": "Operations Automation Audit page",
+      "hrefPrefix": "operations-automation-audit.html",
+      "minimumReferences": 1,
+      "requiredFrom": ["index.html", "pricing.html"]
+    },
+    {
       "name": "Review-request workflow case study",
       "hrefPrefix": "case-studies/review-request-workflow.html",
       "minimumReferences": 1,
