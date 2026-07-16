@@ -4,6 +4,12 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 const DEFAULT_TTL_SECONDS = 60 * 60 * 24 * 180;
+const COMPLETED_OUTCOME_EVENTS = new Set([
+  "prototype_review_submitted",
+  "lead_submitted",
+  "roi_report_requested",
+  "calendar_booking_completed"
+]);
 
 function corsHeaders(origin = "*") {
   return {
@@ -40,7 +46,7 @@ function normalizePayload(payload = {}, request) {
     id: crypto.randomUUID(),
     received_at: now,
     sent_at: payload?.sent_at || now,
-    event_type: payload?.event_type || "generate_lead",
+    event_type: payload?.event_type || "unclassified_event",
     site_source: detail.site_source || context.site_source || null,
     page_url: detail.page_url || null,
     referrer: detail.referrer || null,
@@ -60,18 +66,25 @@ function normalizePayload(payload = {}, request) {
     utm_medium: context.utm_medium || null,
     utm_campaign: context.utm_campaign || null,
     cta_location: detail.cta_location || null,
+    offer: detail.offer || null,
+    page_path: detail.page_path || null,
+    conversion_stage: detail.conversion_stage || null,
+    first_touch_source: detail.first_touch?.source || null,
+    first_touch_medium: detail.first_touch?.medium || null,
+    first_touch_campaign: detail.first_touch?.utm_campaign || null,
     origin: request.headers.get("origin") || null,
     raw: payload
   });
 }
 
-async function persistLead(env, normalized) {
+async function persistEvent(env, normalized) {
   if (!env.ROI_LEADS) return { stored: false, reason: "missing_kv_binding" };
 
   const timestamp = Date.parse(normalized.sent_at || normalized.received_at || new Date().toISOString());
   const day = new Date(Number.isFinite(timestamp) ? timestamp : Date.now()).toISOString().slice(0, 10);
   const sessionId = normalized.session_id || "anonymous";
-  const key = `lead:${day}:${sessionId}:${normalized.id}`;
+  const recordType = COMPLETED_OUTCOME_EVENTS.has(normalized.event_type) ? "lead" : "event";
+  const key = `${recordType}:${day}:${sessionId}:${normalized.id}`;
   const latestKey = `latest:${sessionId}`;
   const expirationTtl = Number(env.ROI_DATA_TTL_SECONDS || DEFAULT_TTL_SECONDS);
   const body = JSON.stringify(normalized);
@@ -84,7 +97,7 @@ async function persistLead(env, normalized) {
   return { stored: true, key, latest_key: latestKey, expiration_ttl: expirationTtl };
 }
 
-async function forwardLead(env, normalized) {
+async function forwardEvent(env, normalized) {
   if (!env.ROI_FORWARD_WEBHOOK_URL) return { forwarded: false };
 
   const headers = {
@@ -168,8 +181,8 @@ export default {
 
     try {
       const normalized = normalizePayload(payload, request);
-      const storage = await persistLead(env, normalized);
-      const forwarding = await forwardLead(env, normalized);
+      const storage = await persistEvent(env, normalized);
+      const forwarding = await forwardEvent(env, normalized);
 
       return json({
         ok: true,

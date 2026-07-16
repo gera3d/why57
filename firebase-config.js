@@ -28,7 +28,6 @@ import {
   getString,
   getBoolean,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-remote-config.js';
-import { getAnalytics, logEvent } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js';
 
 // ─── Project config ────────────────────────────────────────────────────────
 // Values are injected at runtime by site-config.js (gitignored).
@@ -79,8 +78,6 @@ async function initFirebase() {
 
   try {
     const app = initializeApp(FIREBASE_CONFIG);
-    const analytics = getAnalytics(app);
-
     _rc = getRemoteConfig(app);
 
     // Apply defaults so page renders correctly before fetch completes
@@ -109,7 +106,9 @@ async function initFirebase() {
     };
 
     // Log successful RC fetch so we can track initialization rate in GA4
-    logEvent(analytics, 'rc_fetch_success', { variant_count: Object.keys(window.why57RC).length });
+    window.why57Analytics?.track('rc_fetch_success', {
+      variant_count: Object.keys(window.why57RC).length
+    });
 
   } catch (err) {
     // On failure, fall back to defaults — site still works normally

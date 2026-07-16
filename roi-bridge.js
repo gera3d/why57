@@ -1,7 +1,7 @@
 (() => {
   const COOKIE_NAME = "why57_roi_context";
   const BOOKING_URL = "https://calendar.app.google/93NLV73sQd1DXuUB6";
-  const LEAD_CAPTURE_ENDPOINT = "https://why57-roi-intake.gera-695.workers.dev/";
+  const ROI_CONTEXT_ENDPOINT = "https://why57-roi-intake.gera-695.workers.dev/";
   const RECOMMENDATION_LABELS = {
     stay: "Stay with SaaS for now",
     hybrid: "Hybrid approach",
@@ -14,6 +14,13 @@
     customer_portal: "a customer portal",
     reporting_dashboard: "a reporting dashboard"
   };
+  const LEGACY_INTERNAL_MEDIA = new Set([
+    "site_nav",
+    "footer_link",
+    "section_cta",
+    "mobile_sticky",
+    "intake_primary"
+  ]);
 
   function readCookie(name) {
     const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
@@ -25,7 +32,21 @@
     if (!encoded) return null;
 
     try {
-      return JSON.parse(decodeURIComponent(encoded));
+      const context = JSON.parse(decodeURIComponent(encoded));
+      const source = String(context?.utm_source || "").toLowerCase();
+      const medium = String(context?.utm_medium || "").toLowerCase();
+      const campaign = String(context?.utm_campaign || "").toLowerCase();
+      const legacyInternalAttribution = ["why57", "why57.com", "www.why57.com"].includes(source) && (
+        campaign === "main_site_referral" || LEGACY_INTERNAL_MEDIA.has(medium)
+      );
+
+      if (!legacyInternalAttribution) return context;
+
+      const sanitized = { ...context };
+      delete sanitized.utm_source;
+      delete sanitized.utm_medium;
+      delete sanitized.utm_campaign;
+      return sanitized;
     } catch (_error) {
       return null;
     }
@@ -58,26 +79,14 @@
     );
   }
 
-  function pushEvent(eventName, detail = {}) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: eventName,
-      ...detail
-    });
-
-    if (typeof window.gtag === "function") {
-      window.gtag("event", eventName, detail);
-    }
-  }
-
   function compactObject(value) {
     return Object.fromEntries(
       Object.entries(value).filter(([, item]) => item !== "" && item !== null && item !== undefined)
     );
   }
 
-  function sendLeadCapture(eventType, context, detail = {}) {
-    if (!LEAD_CAPTURE_ENDPOINT || !context) return;
+  function sendRoiContextEvent(eventType, context, detail = {}) {
+    if (!ROI_CONTEXT_ENDPOINT || !context) return;
 
     const payload = {
       event_type: eventType,
@@ -96,14 +105,14 @@
     try {
       if (navigator.sendBeacon) {
         const blob = new Blob([body], { type: "application/json" });
-        navigator.sendBeacon(LEAD_CAPTURE_ENDPOINT, blob);
+        navigator.sendBeacon(ROI_CONTEXT_ENDPOINT, blob);
         return;
       }
     } catch (_error) {
       // Fall back to fetch if sendBeacon is blocked.
     }
 
-    fetch(LEAD_CAPTURE_ENDPOINT, {
+    fetch(ROI_CONTEXT_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -129,32 +138,18 @@
     });
   }
 
-  function bindBookingTracking(context) {
-    document.querySelectorAll(`a[href="${BOOKING_URL}"]`).forEach((link) => {
-      link.addEventListener("click", () => {
-        const detail = {
-          cta_location: link.id || link.dataset.ctaLocation || "booking_link",
-          recommendation: context?.recommendation || "",
-          readiness_score: context?.readiness_score || 0,
-          break_even_months: context?.break_even_months || 0,
-          project_type: context?.project_type || "",
-          session_id: context?.session_id || ""
-        };
+  function bindAnalyticsContextForwarding(context) {
+    document.addEventListener("why57:analytics", (event) => {
+      const eventName = event.detail?.eventName;
+      const parameters = event.detail?.parameters || {};
+      if (eventName !== "calendar_booking_clicked") return;
 
-        pushEvent("main_site_booking_clicked", detail);
-        sendLeadCapture("main_site_booking_clicked", context, {
-          cta_location: detail.cta_location
-        });
-      });
-    });
-  }
-
-  function bindCalculatorTracking() {
-    document.querySelectorAll("[data-roi-link]").forEach((link) => {
-      link.addEventListener("click", () => {
-        pushEvent("roi_calculator_clicked", {
-          cta_location: link.dataset.roiLink || "main_site"
-        });
+      sendRoiContextEvent(eventName, context, {
+        cta_location: parameters.cta_location,
+        offer: parameters.offer,
+        page_path: parameters.page_path,
+        conversion_stage: "micro",
+        first_touch: window.why57Analytics?.firstTouch
       });
     });
   }
@@ -191,7 +186,7 @@
   const context = parseContext();
   if (context) {
     window.__why57RoiContext = context;
-    pushEvent("roi_context_loaded", {
+    window.why57Analytics?.track("roi_context_loaded", {
       session_id: context.session_id,
       recommendation: context.recommendation,
       readiness_score: context.readiness_score,
@@ -202,6 +197,5 @@
 
   renderContext(context);
   annotateBookingLinks(context);
-  bindBookingTracking(context);
-  bindCalculatorTracking();
+  bindAnalyticsContextForwarding(context);
 })();

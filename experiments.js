@@ -19,13 +19,11 @@
 
 // ─── GA4 event helper (matches main.js pattern) ───────────────────────────
 function trackExperiment(experimentName, variant, extraParams = {}) {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'experiment_impression', {
-      experiment_name: experimentName,
-      variant_name:    variant,
-      ...extraParams,
-    });
-  }
+  window.why57Analytics?.track('experiment_impression', {
+    experiment_name: experimentName,
+    variant_name:    variant,
+    ...extraParams,
+  });
 }
 
 // ─── Experiment 1: Hero headline framing ──────────────────────────────────

@@ -1,6 +1,6 @@
 # why57 ROI Intake Worker
 
-This Worker stores ROI calculator lead context server-side so booked calls can be tied back to calculator output even after the browser cookie expires.
+This Worker stores ROI calculator interaction context server-side so later outcomes can be tied back to calculator output even after the browser cookie expires. A stored booking click is not a completed lead.
 
 ## Live endpoint
 
@@ -14,7 +14,7 @@ This Worker stores ROI calculator lead context server-side so booked calls can b
 ## Bindings
 
 - `ROI_LEADS`
-  - Cloudflare KV namespace used for persisted lead context
+  - Legacy-named Cloudflare KV namespace used for persisted ROI interaction context
 - `ROI_DATA_TTL_SECONDS`
   - Plain-text environment variable
   - Current value: `15552000` (180 days)
@@ -27,7 +27,8 @@ This Worker stores ROI calculator lead context server-side so booked calls can b
 
 Each accepted POST is normalized and written to KV twice:
 
-- `lead:<yyyy-mm-dd>:<session_id>:<uuid>`
+- `event:<yyyy-mm-dd>:<session_id>:<uuid>` for clicks and other interactions
+- `lead:<yyyy-mm-dd>:<session_id>:<uuid>` only for standardized completed outcomes
 - `latest:<session_id>`
 
 The payload includes fields such as:
@@ -44,6 +45,10 @@ The payload includes fields such as:
 - `utm_medium`
 - `utm_campaign`
 - `cta_location`
+- `offer`
+- `page_path`
+- `conversion_stage`
+- first-touch source, medium, and campaign when supplied
 
 ## Deploying updates
 
@@ -64,6 +69,7 @@ npx wrangler kv key delete --binding ROI_LEADS --remote --preview false "latest:
 
 ## Related files
 
-- [wrangler.toml](/Users/gerayeremin/Documents/New%20project/why57/cloudflare/why57-roi-intake/wrangler.toml)
-- [worker.js](/Users/gerayeremin/Documents/New%20project/why57/cloudflare/why57-roi-intake/worker.js)
-- [ROI-INTEGRATION.md](/Users/gerayeremin/Documents/New%20project/why57/ROI-INTEGRATION.md)
+- `wrangler.toml`
+- `worker.js`
+- `../../ROI-INTEGRATION.md`
+- `../../ANALYTICS.md`
