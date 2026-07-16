@@ -536,15 +536,19 @@ async function handlePrototypeReview(request, env) {
       return prototypeSuccessResponse(request, crypto.randomUUID(), false);
     }
 
+    const normalized = validatePrototypePayload(payload, request);
+    if (!env.PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL) {
+      throw new RequestError(503, "delivery_not_configured", "Prototype review delivery is not configured.");
+    }
+
     const rateLimit = await consumePrototypeRateLimit(env, request);
     if (rateLimit.limited) {
       throw new RequestError(429, "rate_limited", "Too many prototype review requests. Please try again later.");
     }
 
-    const normalized = validatePrototypePayload(payload, request);
     const storage = await persistPrototypeReview(env, normalized);
 
-    let forwarding = { forwarded: false, configured: false };
+    let forwarding;
     try {
       forwarding = await forwardPrototypeReview(env, normalized);
     } catch (error) {
@@ -553,6 +557,11 @@ async function handlePrototypeReview(request, env) {
         submission_id: normalized.id,
         error: error instanceof Error ? error.message : "unknown_error"
       }));
+      throw new RequestError(502, "delivery_failed", "The prototype review request could not be delivered.");
+    }
+
+    if (!forwarding.forwarded) {
+      throw new RequestError(502, "delivery_failed", "The prototype review request could not be delivered.");
     }
 
     console.log(JSON.stringify({

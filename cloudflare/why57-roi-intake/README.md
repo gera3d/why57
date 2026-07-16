@@ -14,8 +14,8 @@ The production endpoint is `https://why57-roi-intake.gera-695.workers.dev/`.
 - With JavaScript, the page posts JSON and shows an inline success or error state.
 - Without JavaScript, the browser posts URL-encoded form data and the Worker redirects a successful request to `prototype-review-thank-you.html`.
 - The Worker accepts requests only from `https://why57.com`, validates every field, limits the body to 48 KiB, uses a honeypot and timing trap, and can apply a hashed per-IP KV rate limit.
-- A successful submission is stored in the existing `ROI_LEADS` KV namespace before the Worker reports success.
-- A configured webhook receives the same normalized payload for CRM or inbox notification. KV remains the source of truth if that webhook is temporarily unavailable.
+- A successful submission is stored in the existing `ROI_LEADS` KV namespace and accepted by the configured delivery webhook before the Worker reports success.
+- The webhook receives the same normalized payload for CRM or inbox notification. If delivery fails after storage, KV remains the source of truth, but the form receives a non-success response instead of claiming the request arrived.
 
 The form sends name, email, optional company, prototype URL, prototype description, tool, current-user range, blocker, target window, consent, and first-party attribution fields. It does not intentionally store the submitter's IP address or user agent.
 
@@ -62,7 +62,7 @@ npx wrangler secret put ROI_REPORT_WEBHOOK_SECRET
 ```
 
 - `PROTOTYPE_REVIEW_RATE_LIMIT_SALT` should be a long random value. Without it, submissions still validate and store, but KV rate limiting is disabled.
-- `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL` should be the real CRM, automation, or notification endpoint that will alert the team. Without it, requests are stored only in KV and must be checked there.
+- `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL` must be the real CRM, automation, or notification endpoint that will alert the team. Without it, the Worker returns `delivery_not_configured` and does not claim or store a successful submission.
 - `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET` is optional if the receiving endpoint uses another authentication mechanism. When set, it is sent as `X-Prototype-Review-Webhook-Secret`.
 
 The existing ROI forwarding secrets remain `ROI_FORWARD_WEBHOOK_URL` and `ROI_FORWARD_WEBHOOK_SECRET`.
