@@ -1,6 +1,6 @@
 # Why57 content and indexing map
 
-Last updated: 2026-07-15
+Last updated: 2026-07-16
 
 This map defines the intended search role of the local and AI prototype content. It favors a small set of substantive destinations over overlapping city pages.
 
@@ -15,6 +15,8 @@ This map defines the intended search role of the local and AI prototype content.
 | `/ai-app-prototype-to-production.html` | Turn a Claude or AI-built prototype into a product | Production process, readiness, risks, service fit | Gera Yeremin byline; anonymized implementation examples without client outcomes | Readiness/security checklist, repair/rebuild guide, Silicon Valley consulting, generic case-study links |
 | `/ai-prototype-readiness-security-checklist.html` | AI app production-readiness checklist | AI prototype security risks, launch evidence, review preparation | Gera Yeremin author; explicit specialist and review boundaries | AI pillar, repair/rebuild guide, Silicon Valley consulting |
 | `/ai-prototype-repair-rebuild-cost.html` | Repair vs. rebuild an AI app | Productionization cost, timeline, assessment and quoting process | Gera Yeremin byline; input-based pricing guidance without a public price or timing claim | AI pillar, readiness checklist, Silicon Valley consulting |
+| `/pricing.html` | Custom software pricing | Fixed-price scope tiers, pricing inputs, audit-first path | Owner-attested current `$5,000–$25,000` fixed-price policy | Operations Automation Audit, homepage, ROI calculator |
+| `/operations-automation-audit.html` | Operations Automation Audit | Workflow mapping, automation opportunity, implementation scope | Owner-attested `$1,500–$2,500`, `10 business days`, build-credit offer | Pricing page, homepage, booking path |
 
 All indexable destinations must have:
 
@@ -53,12 +55,12 @@ The four consolidated pages are excluded from `sitemap.xml`, contain matching ca
 
 ## Public proof disposition after credibility cleanup
 
-No named-client proof, testimonial, rating, review count, experience total, price range, delivery range, or quantified outcome is treated as supported by this repository. The regional and AI guides retain only generic implementation patterns and links whose visible labels are anonymized. The linked case studies must keep their problem, intervention, result, and evidence-limit sections distinct, and they must not restore a client name or outcome without the source and publication permission recorded in `PROOF-SOURCE-LEDGER.md`.
+No named-client proof, testimonial, rating, review count, experience total, generic delivery range, or quantified client outcome is treated as supported by this repository. The current project price policy and Operations Automation Audit terms are limited to the owner-attested offer definitions in the 2026-07-16 build brief. The regional and AI guides retain only generic implementation patterns and links whose visible labels are anonymized. The linked case studies must keep their problem, intervention, result, and evidence-limit sections distinct, and they must not restore a client name or outcome without the source and publication permission recorded in `PROOF-SOURCE-LEDGER.md`.
 
 Current public dispositions:
 
 - **Verified:** general service, process, security, ownership, and measurement guidance that does not assert a past client result.
-- **Removed:** named testimonials; ratings; client and product imagery without provenance/permission; numerical client outcomes; public price/timeline/experience totals; and named-client proof language on regional and AI pages.
+- **Removed:** named testimonials; ratings; client and product imagery without provenance/permission; numerical client outcomes; unsupported timeline/experience totals; and named-client proof language on regional and AI pages.
 - **Pending:** every named client, logo, screenshot, testimonial, outcome, and operating detail that the ledger marks as requiring private evidence or owner/client approval.
 
 ## Post-release indexing QA
