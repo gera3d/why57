@@ -3,8 +3,8 @@ title: "AI Prototype Production-Readiness Checklist"
 description: "A practical 20-point checklist for deciding whether an AI-built prototype is ready for real users—and what to fix next."
 slug: "ai-prototype-production-readiness-checklist"
 audience: "Founders, operators, and teams with a working AI-built prototype"
-primary_cta: "Request an AI Prototype Clinic"
-status: "web-ready draft"
+primary_cta: "Start the 12-Part Readiness Checklist"
+status: "internal supporting worksheet; canonical public resource is the 12-part readiness and security checklist"
 ---
 
 # Is your AI-built prototype ready for real users?
@@ -144,10 +144,10 @@ Do not turn the checklist into a 40-item backlog. Pick the three gaps with the h
 | 2 | [gap] | [risk] | [fix] | [owner] | [date/evidence] |
 | 3 | [gap] | [risk] | [fix] | [owner] | [date/evidence] |
 
-## Want a second set of eyes?
+## Continue with the canonical resources
 
-An **AI Prototype Clinic** is a focused working session to review the prototype, surface the riskiest production gaps, and map a practical next release. Bring the prototype, repository access if appropriate, and the workflow you want real users to complete.
+Use the public [12-part readiness and security checklist](https://why57.com/ai-prototype-readiness-security-checklist.html) for the canonical review sequence. If you already have a working prototype and want a second set of eyes, the [five-point prototype review](https://why57.com/ai-app-prototype-to-production.html) helps identify the riskiest gaps and the smallest responsible next release.
 
-**Web CTA:** [Request an AI Prototype Clinic](https://why57.com/ai-app-prototype-to-production.html?utm_source=readiness_checklist&utm_medium=lead_magnet&utm_campaign=ai_prototype_clinic)
+**Web CTA:** [Start the 12-Part Readiness Checklist](https://why57.com/ai-prototype-readiness-security-checklist.html?utm_source=readiness_worksheet&utm_medium=lead_magnet&utm_campaign=why57_ai_prototype_launch_2026q3&utm_content=canonical_checklist)
 
 _This checklist is a product-readiness aid, not a security, privacy, or legal certification. Use qualified specialists where the risk requires them._

@@ -21,7 +21,7 @@ The live check on July 15 found:
 | <https://why57.com/ai-prototype-readiness-security-checklist.html> | Start the 12-part readiness/security checklist; prototype-review calendar links are micro-conversions. | HTTP 404. | Hold. Do not distribute. |
 | <https://why57.com/ai-prototype-repair-rebuild-cost.html> | Use the repair/replace/rebuild decision framework; prototype-review calendar links are micro-conversions. | HTTP 404. | Hold. Do not distribute. |
 
-The first two weeks now use only those three canonical URLs and the CTA that actually belongs to each integrated page. The outdated `AI Prototype Clinic` language is not used in this batch.
+The first two weeks now use only those three canonical URLs and the CTA that belongs to each integrated page. Retired offer and event terminology is not used in this batch.
 
 ## Release and approval gate
 
@@ -77,7 +77,7 @@ The dates assume the release gate passes by July 17. All external rows remain `a
 **Profile:** <https://www.linkedin.com/in/gerayeremin>  
 **Final link:** <https://why57.com/ai-app-prototype-to-production.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=why57_ai_prototype_launch_2026q3&utm_content=w1_prototype_gap>
 
-> You can build a working app with Claude, ChatGPT, Lovable, Replit, Bolt, v0, or Cursor in a weekend.
+> AI tools can help get a working app on screen quickly.
 >
 > That proves the idea can exist. It does not prove the product can survive real users.
 >

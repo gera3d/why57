@@ -7,7 +7,7 @@ This directory contains reusable, non-deployment assets for attracting and quali
 | Asset | Use |
 | --- | --- |
 | [Production readiness checklist](production-readiness-checklist.md) | Lead magnet that can be published as Markdown, converted to HTML, or used during discovery. |
-| [AI Prototype Clinic brief](ai-prototype-clinic-brief.md) | Internal offer definition, intake, agenda, outputs, CTA copy, and measurement plan. |
+| [Five-Point Prototype Review brief](ai-prototype-review-brief.md) | Internal offer definition, intake, agenda, outputs, CTA copy, and measurement plan. |
 | [Partner and referral outreach templates](partner-referral-outreach-templates.md) | Draft-only outreach for agencies, MSPs, fractional CTOs, chambers, and past clients, plus approved case-study URLs. |
 | [12-week editorial and distribution calendar](12-week-editorial-distribution-calendar.md) | Evergreen 12-week publishing cadence tied to funnel stages and measurable calls to action. |
 | [Weekly funnel scorecard](weekly-funnel-scorecard.md) | Metric definitions, baseline, review ritual, and diagnosis rules. |

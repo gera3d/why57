@@ -1,4 +1,4 @@
-# AI Prototype Clinic — offer brief
+# Five-Point Prototype Review — offer brief
 
 **Status:** reusable internal brief; pricing, availability, and owner require approval before publishing.<br>
 **Primary page:** <https://why57.com/ai-app-prototype-to-production.html><br>
@@ -20,7 +20,7 @@
 
 ## Promise
 
-By the end of the clinic, the participant should understand:
+By the end of the review, the participant should understand:
 
 1. which parts of the prototype are safe to keep;
 2. which production gaps create the most risk;
@@ -58,7 +58,7 @@ Use the [production-readiness checklist](production-readiness-checklist.md) as t
 
 ## Deliverable
 
-Send a concise clinic summary after the session:
+Send a concise review summary after the session:
 
 - decision and intended user outcome;
 - top three risks, with evidence;
@@ -82,35 +82,34 @@ Send a concise clinic summary after the session:
 
 ### Short description
 
-Built a working app with Claude, ChatGPT, Lovable, Replit, Bolt, v0, or another AI tool? The AI Prototype Clinic is a focused review of the product, code ownership, data, security, reliability, and launch path. You leave with the highest-risk gaps and a practical next release—not a generic feature wishlist.
+Built a working app with Claude, ChatGPT, Lovable, Replit, Bolt, v0, or another AI tool? The five-point prototype review examines product ownership, access and data, failure handling, release controls, and ongoing support. You leave with the highest-risk gaps and a practical next release—not a generic feature wishlist.
 
 ### CTA options
 
-- **Primary:** Request an AI Prototype Clinic
+- **Primary:** Send Your Prototype
 - **Lower commitment:** Check Your Prototype’s Readiness
 - **Partner handoff:** Get a Production Readiness Review
 
 ### Confirmation / thank-you state
 
-> Request received. We’ll review the context you shared and reply with fit and next-step options. Please do not send passwords, API keys, or other secrets. If the clinic is not the right format, we’ll say so.
+> Request received. We’ll review the context you shared and reply with fit and next-step options. Please do not send passwords, API keys, or other secrets. If the five-point review is not the right format, we’ll say so.
 
 ## Measurement contract
 
 Use a consistent path from source to outcome:
 
-| Stage | Event | Required properties |
+| Stage | Signal | Required properties |
 | --- | --- | --- |
-| CTA | `prototype_clinic_cta_clicked` | `cta_location`, `source_asset`, `page_path` |
-| Intake | `prototype_clinic_request_started` | `source_asset`, `prototype_platform` |
-| Submit | `prototype_clinic_request_submitted` | `source_asset`, `fit_signal` |
-| Booking | `prototype_clinic_booked` | `source_asset`, `meeting_type` |
+| Landing | UTM-attributed session | `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` |
+| Submit | `prototype_review_submitted` | success only after intake storage and delivery both succeed; no personal data in analytics |
+| Booking click | `calendar_booking_clicked` | micro-conversion only; never report as a completed booking or lead |
 | Outcome | CRM/status field, not a public analytics event | qualified, not-fit, proposal, won, lost |
 
 Never send names, email addresses, prototype content, or sensitive business data to analytics. Verify each event in the analytics debugger before treating it as live.
 
 ## Publishing checklist
 
-- [ ] Owner, capacity, response time, and pricing are approved.
+- [ ] Owner, capacity, response time, and any pricing language are approved.
 - [ ] Intake fields and secure credential guidance are approved.
 - [ ] Confirmation state and fallback contact route are tested.
 - [ ] CTA links have source-specific UTMs.

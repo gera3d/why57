@@ -37,5 +37,6 @@ node_modules/
 
 # Local QA artifacts
 .playwright-cli/
+.wrangler/
 output/playwright/*
 !output/playwright/.gitkeep
