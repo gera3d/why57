@@ -159,6 +159,11 @@ if (intakePlanner) {
   const intakePainTag = document.getElementById('intakePainTag');
   const intakeTeamTag = document.getElementById('intakeTeamTag');
   const intakeGoalTag = document.getElementById('intakeGoalTag');
+  const intakeLeadPain = document.getElementById('intakeLeadPain');
+  const intakeLeadTeam = document.getElementById('intakeLeadTeam');
+  const intakeLeadGoal = document.getElementById('intakeLeadGoal');
+  const intakeLeadInterest = document.getElementById('intakeLeadInterest');
+  const intakeLeadRecommendation = document.getElementById('intakeLeadRecommendation');
 
   const intakeLabels = {
     pain: {
@@ -268,6 +273,11 @@ if (intakePlanner) {
       intakePainTag.textContent = intakeLabels.pain[intakeState.pain];
       intakeTeamTag.textContent = intakeLabels.team[intakeState.team];
       intakeGoalTag.textContent = intakeLabels.goal[intakeState.goal];
+      if (intakeLeadPain) intakeLeadPain.value = intakeState.pain;
+      if (intakeLeadTeam) intakeLeadTeam.value = intakeState.team;
+      if (intakeLeadGoal) intakeLeadGoal.value = intakeState.goal;
+      if (intakeLeadInterest) intakeLeadInterest.value = intakeLabels.goal[intakeState.goal];
+      if (intakeLeadRecommendation) intakeLeadRecommendation.value = recommendation.primaryType;
 
       intakePrimaryLink.textContent = recommendation.primaryLabel;
       intakePrimaryLink.href = recommendation.primaryHref;
@@ -363,6 +373,11 @@ if (intakePlanner) {
     intakeState.pain = null;
     intakeState.team = null;
     intakeState.goal = null;
+    if (intakeLeadPain) intakeLeadPain.value = '';
+    if (intakeLeadTeam) intakeLeadTeam.value = '';
+    if (intakeLeadGoal) intakeLeadGoal.value = '';
+    if (intakeLeadInterest) intakeLeadInterest.value = '';
+    if (intakeLeadRecommendation) intakeLeadRecommendation.value = '';
     intakePlanner.querySelectorAll('.intake-option').forEach((option) => {
       option.classList.remove('is-selected');
     });

@@ -199,6 +199,29 @@ input:focus-visible{
   border:1px solid rgba(255,255,255,0.08);font-size:.75rem;color:var(--text);
 }
 .intake-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;}
+.lead-capture-form{
+  position:relative;margin:22px 0 8px;padding:20px;border-radius:16px;
+  border:1px solid rgba(var(--glow),0.22);background:rgba(var(--glow),0.055);
+}
+.lead-capture-heading{display:flex;flex-direction:column;gap:4px;margin-bottom:14px;}
+.lead-capture-heading strong{font-size:.92rem;color:var(--text);}
+.lead-capture-heading span{font-size:.78rem;color:var(--muted);line-height:1.55;}
+.lead-capture-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.lead-capture-grid label{display:flex;flex-direction:column;gap:7px;font-size:.72rem;color:var(--muted);}
+.lead-capture-grid label:last-child{grid-column:1/-1;}
+.lead-capture-grid em{font-style:normal;color:var(--dim);}
+.lead-capture-grid input,
+.lead-capture-grid textarea{
+  width:100%;padding:11px 12px;border:1px solid var(--border);border-radius:10px;
+  background:rgba(0,0,0,0.28);color:var(--text);font:inherit;resize:vertical;
+}
+.lead-capture-grid input:focus,
+.lead-capture-grid textarea:focus{outline:2px solid rgba(var(--glow),0.35);border-color:rgba(var(--glow),0.55);}
+.lead-capture-submit{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;}
+.lead-capture-submit p{margin:0;max-width:44ch;font-size:.76rem;line-height:1.5;}
+.lead-capture-submit p[data-state="success"]{color:#9ee6b0;}
+.lead-capture-submit p[data-state="error"]{color:#ffb0a6;}
+.lead-capture-trap{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important;}
 .intake-controls{display:flex;justify-content:space-between;gap:12px;margin-top:20px;}
 .intake-back,
 .intake-reset{
@@ -1174,6 +1197,8 @@ input:focus-visible{
   .intake-option strong{font-size:.9rem;}
   .intake-option span{font-size:.78rem;}
   .intake-actions{flex-direction:column;}
+  .lead-capture-grid{grid-template-columns:1fr;}
+  .lead-capture-grid label:last-child{grid-column:auto;}
   .intake-actions .btn-primary,
   .intake-actions .btn-ghost{
     width:100%;

@@ -1,114 +1,91 @@
-# why57 Intake Worker
+# why57 intake Workers
 
-This Worker accepts two kinds of first-party lead context for `why57.com`:
+This directory contains two deliberately separate Worker paths. Keep them separate until the identified lead pipeline has passed live staging QA and the existing production routes have been ported or otherwise preserved.
 
-- ROI calculator attribution at `/`
-- AI prototype production-readiness review requests at `/prototype-review`
+## Existing production Worker
 
-The production endpoint is `https://why57-roi-intake.gera-695.workers.dev/`.
+`worker.js` and `wrangler.toml` are the current production implementation at `https://why57-roi-intake.gera-695.workers.dev/`.
 
-## Prototype review flow
+It supports:
 
-`ai-app-prototype-to-production.html` progressively enhances a normal HTML form:
+- ROI calculator events at `POST /`;
+- ROI report requests at `POST /`;
+- AI prototype production-readiness requests at `POST /prototype-review`;
+- the current KV contracts, validation, rate limiting, consent checks, and forwarding behavior for those routes.
 
-- With JavaScript, the page posts JSON and shows an inline success or error state.
-- Without JavaScript, the browser posts URL-encoded form data and the Worker redirects a successful request to `prototype-review-thank-you.html`.
-- The Worker accepts requests only from `https://why57.com`, validates every field, limits the body to 48 KiB, uses a honeypot and timing trap, and can apply a hashed per-IP KV rate limit.
-- A successful submission is stored in the existing `ROI_LEADS` KV namespace and accepted by the configured delivery webhook before the Worker reports success.
-- The webhook receives the same normalized payload for CRM or inbox notification. If delivery fails after storage, KV remains the source of truth, but the form receives a non-success response instead of claiming the request arrived.
-
-The form sends name, email, optional company, prototype URL, prototype description, tool, current-user range, blocker, target window, consent, and first-party attribution fields. It does not intentionally store the submitter's IP address or user agent.
-
-## KV records and retention
-
-ROI records keep their existing keys:
-
-- `event:<yyyy-mm-dd>:<session_id>:<uuid>` for interactions such as calculator and booking-button clicks
-- `lead:<yyyy-mm-dd>:<session_id>:<uuid>` only for standardized completed outcomes
-- `latest:<session_id>`
-
-Each ROI record also keeps the offer, page path, conversion stage, and available first-touch source fields. A booking-button click is an interaction, not a completed lead; the lead key is reserved for `prototype_review_submitted`, `lead_submitted`, `roi_report_requested`, and `calendar_booking_completed`.
-
-Prototype review records use:
-
-- `prototype_review:<yyyy-mm-dd>:<uuid>`
-- `latest:prototype_review`
-- `rate:prototype_review:<yyyy-mm-ddThh>:<salted-ip-hash>` for the optional hourly rate limit
-
-Lead records expire after `ROI_DATA_TTL_SECONDS`, currently 180 days. `PROTOTYPE_REVIEW_DATA_TTL_SECONDS` can override that retention for prototype reviews. Rate-limit counters expire after one hour.
-
-## Bindings and variables
-
-- `ROI_LEADS` — required KV binding for all durable submissions
-- `ROI_DATA_TTL_SECONDS` — default lead retention in seconds
-- `PROTOTYPE_REVIEW_DATA_TTL_SECONDS` — optional prototype-specific retention override
-- `ROI_REPORT_RATE_LIMIT_SALT` — secret used to hash an hourly report-request rate-limit key
-- `ROI_REPORT_WEBHOOK_URL` — required secret URL for report email or CRM delivery
-- `ROI_REPORT_WEBHOOK_SECRET` — optional report-specific webhook secret; falls back to `ROI_FORWARD_WEBHOOK_SECRET`
-
-The existing binding is declared in `wrangler.toml`. Do not put webhook credentials or rate-limit salts in that file.
-
-## Secrets and notification setup
-
-Set these before releasing the prototype form:
-
-```bash
-npx wrangler secret put PROTOTYPE_REVIEW_RATE_LIMIT_SALT
-npx wrangler secret put PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL
-npx wrangler secret put PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET
-npx wrangler secret put ROI_REPORT_RATE_LIMIT_SALT
-npx wrangler secret put ROI_REPORT_WEBHOOK_URL
-npx wrangler secret put ROI_REPORT_WEBHOOK_SECRET
-```
-
-- `PROTOTYPE_REVIEW_RATE_LIMIT_SALT` should be a long random value. Without it, submissions still validate and store, but KV rate limiting is disabled.
-- `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_URL` must be the real CRM, automation, or notification endpoint that will alert the team. Without it, the Worker returns `delivery_not_configured` and does not claim or store a successful submission.
-- `PROTOTYPE_REVIEW_FORWARD_WEBHOOK_SECRET` is optional if the receiving endpoint uses another authentication mechanism. When set, it is sent as `X-Prototype-Review-Webhook-Secret`.
-
-The existing ROI forwarding secrets remain `ROI_FORWARD_WEBHOOK_URL` and `ROI_FORWARD_WEBHOOK_SECRET`.
-
-The root intake route accepts only `calendar_booking_clicked` and `roi_report_requested`. Booking clicks are stored as micro-conversion events. Report requests are counted as completed outcomes only after server-side email, consent-version, timing, origin, storage, and webhook checks succeed. The endpoint returns a non-success status when report delivery is not configured or fails, so the calculator never displays a false success state.
-
-## Release order
-
-The site currently points the form at the production Worker URL. Release in this order so the page never advertises a route the deployed Worker does not understand:
-
-1. Configure the prototype rate-limit salt and real notification webhook.
-2. From this directory, run `npx wrangler deploy`.
-3. Check `GET /prototype-review`. It reports whether storage, rate limiting, and forwarding are configured without revealing their values.
-4. Submit a non-sensitive test request and confirm both the KV record and notification destination.
-5. Release the static site, including the funnel page, script, thank-you page, and privacy update.
-6. Submit once with JavaScript and once with JavaScript disabled. Confirm the analytics event `prototype_review_submitted` appears only after a successful response.
-
-Do not publish the static form before the Worker update.
-
-## Local and remote checks
-
-Validate the Worker bundle without deploying:
+Do not delete or replace this Worker while those public flows depend on it. Validate its bundle without deploying:
 
 ```bash
 npx wrangler deploy --dry-run
 ```
 
-After deployment, inspect the latest prototype review without printing all stored leads:
+Production secrets and variables for this Worker remain documented in `wrangler.toml`, `ROI-INTEGRATION.md`, and the related source comments. Never store their values in this repository.
+
+## Identified lead-delivery Worker
+
+`src/index.ts` and `wrangler.lead-intake.jsonc` implement the new Thread 1 pipeline at `POST /v1/leads`. The top-level Worker name is intentionally `why57-lead-intake-v2`, so a mistaken top-level deploy cannot overwrite the existing production Worker.
+
+The flow:
+
+1. Validate origin and a bounded JSON body.
+2. Normalize contact, source, UTM, quiz, and ROI context.
+3. Persist the accepted lead in KV before returning `202 Accepted`.
+4. Dispatch background delivery through `ctx.waitUntil()`:
+   - personalized auto-response through Resend;
+   - founder alert through a Slack incoming webhook;
+   - lead row through the signed Google Apps Script receiver in `integrations/google-apps-script.gs`.
+5. Store channel outcomes at `delivery:<lead_id>`.
+
+### Safety modes
+
+- `dry-run` is the default. It records delivery outcomes without contacting external services.
+- `test` only emails recipients in `TEST_EMAIL_ALLOWLIST` and requires `X-Why57-Test-Token` for identified submissions.
+- `live` enables normal delivery and must not be selected until staging has passed and the user has approved production activation.
+
+The browser forms are also disabled on production by default and enable only on the local QA ports.
+
+### Required secrets
+
+- `RESEND_API_KEY`
+- `FROM_EMAIL`
+- `FOUNDER_REPLY_TO`
+- `SLACK_WEBHOOK_URL`
+- `LEAD_LOG_WEBHOOK_URL`
+- `LEAD_LOG_WEBHOOK_SECRET`
+- `STAGING_SUBMISSION_TOKEN`
+- `TEST_EMAIL_ALLOWLIST`
+
+Use `.dev.vars` locally and Cloudflare encrypted secrets for deployed environments. `.dev.vars.example` contains placeholders only.
+
+### Commands
 
 ```bash
-npx wrangler kv key get "latest:prototype_review" --binding ROI_LEADS --remote --text
+pnpm install
+pnpm run cf-typegen
+pnpm run check
+pnpm test
 ```
 
-Delete a test record by its exact key after QA if it is no longer needed:
+Start the new Worker locally:
 
 ```bash
-npx wrangler kv key delete "prototype_review:<yyyy-mm-dd>:<uuid>" --binding ROI_LEADS --remote
+pnpm exec wrangler dev --config wrangler.lead-intake.jsonc --local --port 8787 --env-file .dev.vars.example
 ```
 
-## Related files
+Validate or deploy only the isolated staging environment:
 
-- `worker.js`
-- `wrangler.toml`
-- `../../ai-app-prototype-to-production.html`
-- `../../prototype-funnel.js`
-- `../../prototype-review-thank-you.html`
-- `../../privacy.html`
-- `../../ROI-INTEGRATION.md`
-- `../../ANALYTICS.md`
+```bash
+pnpm exec wrangler deploy --config wrangler.lead-intake.jsonc --dry-run --env staging --secrets-file .dev.vars.example
+pnpm exec wrangler deploy --config wrangler.lead-intake.jsonc --env staging
+```
+
+The staging environment retains the existing `why57-roi-intake-staging` name and its dedicated KV namespace. Never run a production deploy as part of normal QA.
+
+## Google Sheets receiver
+
+Configure these Apps Script properties before deploying `integrations/google-apps-script.gs` as a web app:
+
+- `LEAD_SPREADSHEET_ID`
+- `LEAD_WEBHOOK_SECRET`
+
+`LEAD_WEBHOOK_SECRET` must match the encrypted Worker secret of the same name.

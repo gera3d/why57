@@ -1,0 +1,68 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "why57-lead-intake-v2",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "kv_namespaces": [
+    {
+      "binding": "ROI_LEADS",
+      "id": "4e6f67ba8a5a41b5911d72bd48c023af"
+    }
+  ],
+  "vars": {
+    "ROI_DATA_TTL_SECONDS": "15552000",
+    "DELIVERY_MODE": "dry-run",
+    "BOOKING_URL": "https://calendar.app.google/93NLV73sQd1DXuUB6",
+    "ALLOWED_ORIGINS": "https://why57.com,https://roi.why57.com,http://localhost:8000,http://127.0.0.1:8000,http://localhost:8001,http://127.0.0.1:8001"
+  },
+  "secrets": {
+    "required": [
+      "RESEND_API_KEY",
+      "FROM_EMAIL",
+      "FOUNDER_REPLY_TO",
+      "SLACK_WEBHOOK_URL",
+      "LEAD_LOG_WEBHOOK_URL",
+      "LEAD_LOG_WEBHOOK_SECRET",
+      "STAGING_SUBMISSION_TOKEN",
+      "TEST_EMAIL_ALLOWLIST"
+    ]
+  },
+  "env": {
+    "staging": {
+      "name": "why57-roi-intake-staging",
+      "workers_dev": true,
+      "preview_urls": false,
+      "kv_namespaces": [
+        {
+          "binding": "ROI_LEADS",
+          "id": "6874b632f0e148538867fde0501f4ee2"
+        }
+      ],
+      "vars": {
+        "ROI_DATA_TTL_SECONDS": "604800",
+        "DELIVERY_MODE": "test",
+        "BOOKING_URL": "https://calendar.app.google/93NLV73sQd1DXuUB6",
+        "ALLOWED_ORIGINS": "https://why57.com,https://roi.why57.com,http://localhost:8000,http://127.0.0.1:8000,http://localhost:8001,http://127.0.0.1:8001"
+      },
+      "secrets": {
+        "required": [
+          "RESEND_API_KEY",
+          "FROM_EMAIL",
+          "FOUNDER_REPLY_TO",
+          "SLACK_WEBHOOK_URL",
+          "LEAD_LOG_WEBHOOK_URL",
+          "LEAD_LOG_WEBHOOK_SECRET",
+          "STAGING_SUBMISSION_TOKEN",
+          "TEST_EMAIL_ALLOWLIST"
+        ]
+      }
+    }
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}
