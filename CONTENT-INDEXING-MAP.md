@@ -1,6 +1,6 @@
 # Why57 content and indexing map
 
-Last updated: 2026-07-17
+Last updated: 2026-07-18
 
 This map defines the intended search role of the local and AI prototype content. It favors a small set of substantive destinations over overlapping city pages.
 
@@ -15,7 +15,7 @@ This map defines the intended search role of the local and AI prototype content.
 | `/ai-app-prototype-to-production.html` | Turn a Claude or AI-built prototype into a product | Production process, readiness, risks, service fit | Gera Yeremin byline; anonymized implementation examples without client outcomes | Readiness/security checklist, repair/rebuild guide, Silicon Valley consulting, generic case-study links |
 | `/ai-prototype-readiness-security-checklist.html` | AI app production-readiness checklist | AI prototype security risks, launch evidence, review preparation | Gera Yeremin author; explicit specialist and review boundaries | AI pillar, repair/rebuild guide, Silicon Valley consulting |
 | `/ai-prototype-repair-rebuild-cost.html` | Repair vs. rebuild an AI app | Productionization cost, timeline, assessment and quoting process | Gera Yeremin byline; input-based pricing guidance without a public price or timing claim | AI pillar, readiness checklist, Silicon Valley consulting |
-| `/government-capabilities.html` | YRC STRATEGIES government software capabilities | Website modernization, public content, document libraries, workflow tools, dashboards, integrations, QA | Current SAM activation, California entity record, dated capability statement, and current general-liability certificate retained outside the public repository | Homepage service bridge and navigation; capability statement; home services; AI guide; privacy; terms |
+| `/government-capabilities.html` | YRC STRATEGIES government software capabilities | Website modernization, public content, document libraries, workflow tools, dashboards, integrations, QA | Current SAM activation, California SB certification, Cal eProcure bidder registration, California entity record, dated capability statement, and current general-liability certificate retained outside the public repository | Homepage service bridge and navigation; capability statement; home services; AI guide; privacy; terms |
 
 All indexable destinations must have:
 
