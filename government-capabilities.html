@@ -135,7 +135,8 @@
     }
     .gov-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 15px rgba(var(--glow),.65);}
     .gov-title{max-width:720px;margin:0 0 23px;font-size:clamp(2.9rem,5.8vw,5.45rem);font-weight:800;line-height:.99;letter-spacing:-.065em;}
-    .gov-title span{color:var(--gov-blue);}
+    .gov-title .gov-title-primary{color:inherit;white-space:nowrap;}
+    .gov-title .gov-title-accent{color:var(--gov-blue);}
     .gov-lede{max-width:650px;margin-bottom:29px;color:rgba(237,237,239,.69);font-size:1.06rem;line-height:1.78;}
     .gov-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px;}
     .gov-actions .btn-primary{background:var(--orange);box-shadow:0 2px 15px rgba(var(--glow),.25);}
@@ -328,7 +329,7 @@
       <div class="container gov-hero-grid">
         <div class="fade-up">
           <div class="gov-eyebrow">Government software modernization</div>
-          <h1 class="gov-title" id="government-page-title">Clearer public information. <span>Better staff workflows.</span></h1>
+          <h1 class="gov-title" id="government-page-title"><span class="gov-title-primary">Clearer public</span> information. <span class="gov-title-accent">Better staff workflows.</span></h1>
           <p class="gov-lede">57 delivers public websites, document libraries, forms, dashboards, and workflow tools.</p>
           <div class="gov-actions">
             <a href="downloads/YRC_STRATEGIES_Government_Capability_Statement_2026-07-16.pdf" class="btn-primary btn-lg" download>Download capability statement</a>
