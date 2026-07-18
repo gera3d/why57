@@ -176,7 +176,7 @@
     .gov-section-sub{max-width:690px;color:var(--muted);font-size:1rem;line-height:1.78;}
 
     .capability-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:46px;}
-    .capability-card{position:relative;min-height:250px;padding:28px;border:1px solid var(--border);border-radius:17px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));overflow:hidden;transition:transform .25s,border-color .25s;}
+    .capability-card{position:relative;min-height:218px;padding:28px;border:1px solid var(--border);border-radius:17px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));overflow:hidden;transition:transform .25s,border-color .25s;}
     .capability-card:hover{transform:translateY(-4px);border-color:rgba(var(--glow),.42);}
     .capability-number{display:grid;place-items:center;width:32px;height:32px;margin-bottom:42px;border:1px solid rgba(var(--glow),.38);border-radius:9px;background:rgba(var(--glow),.1);color:var(--amber);font-family:var(--mono);font-size:.66rem;}
     .capability-card h3{margin-bottom:11px;font-size:1.2rem;letter-spacing:-.025em;}
@@ -187,13 +187,13 @@
     .work-disclaimer{padding:18px 19px;border-left:2px solid var(--orange);background:rgba(var(--glow),.045);color:rgba(237,237,239,.68);font-size:.84rem;line-height:1.7;}
     .work-disclaimer strong{display:block;margin-bottom:4px;color:var(--amber);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;}
     .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px;}
-    .work-card{min-height:260px;padding:24px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.025);}
-    .work-type{display:inline-flex;margin-bottom:47px;color:var(--gov-blue);font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;}
+    .work-card{min-height:224px;padding:24px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.025);}
+    .work-type{display:inline-flex;margin-bottom:34px;color:var(--gov-blue);font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;}
     .work-card h3{margin-bottom:10px;font-size:1.08rem;line-height:1.25;letter-spacing:-.02em;}
     .work-card p{color:var(--muted);font-size:.84rem;line-height:1.7;}
 
     .process-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:46px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.018);overflow:hidden;}
-    .process-step{position:relative;min-height:245px;padding:28px;border-right:1px solid var(--border);}
+    .process-step{position:relative;min-height:220px;padding:28px;border-right:1px solid var(--border);}
     .process-step:last-child{border-right:0;}
     .process-step b{display:inline-flex;margin-bottom:54px;color:var(--amber);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;}
     .process-step h3{margin-bottom:10px;font-size:1.16rem;letter-spacing:-.02em;}
@@ -237,6 +237,10 @@
 
     .government-page .footer-address span:first-child{color:var(--text);font-weight:650;}
     .gov-footer-identity{display:block;margin-top:4px;color:var(--dim);font-size:.68rem;}
+    .government-page .footer{padding:46px 0 38px;}
+    .government-page .footer-inner{gap:16px;}
+    .government-page .footer-address{display:grid;gap:5px;line-height:1.55;}
+    .government-page .footer-nav{gap:12px 22px;}
 
     @media(max-width:960px){
       .government-page .nav-logo::after{display:none;}
@@ -284,6 +288,13 @@
       .gov-contact-card{padding:32px 21px;}
       .gov-contact-grid{gap:32px;}
       .contact-action{align-items:flex-start;}
+      .government-page .footer{padding:36px 0 32px;}
+      .government-page .footer-inner{gap:16px;}
+      .government-page .footer-logo-img{height:28px;opacity:.84;}
+      .government-page .footer-address{display:grid;gap:5px;font-size:.76rem;line-height:1.45;}
+      .government-page .footer-nav{display:grid;grid-template-columns:repeat(2,max-content);justify-content:center;gap:12px 22px;}
+      .government-page .footer-nav a{font-size:.75rem;}
+      .government-page .footer-copy{margin-top:2px;font-size:.68rem;}
     }
 
     @media(prefers-reduced-motion:reduce){
@@ -318,12 +329,12 @@
         <div class="fade-up">
           <div class="gov-eyebrow">Government software modernization</div>
           <h1 class="gov-title" id="government-page-title">Clearer public information. <span>Better staff workflows.</span></h1>
-          <p class="gov-lede">57 scopes and delivers public websites, document libraries, forms, dashboards, and workflow tools for agencies and prime contractors with a defined modernization need. Each release is bounded by users, data, access, dependencies, and acceptance conditions.</p>
+          <p class="gov-lede">57 delivers public websites, document libraries, forms, dashboards, and workflow tools.</p>
           <div class="gov-actions">
             <a href="downloads/YRC_STRATEGIES_Government_Capability_Statement_2026-07-16.pdf" class="btn-primary btn-lg" download>Download capability statement</a>
             <a href="mailto:gera@why57.com?subject=Government%20procurement%20inquiry" class="btn-ghost">Email procurement contact</a>
           </div>
-          <p class="gov-hero-note"><a href="#procurement">View verified identifiers, insurance, and contracting details ↓</a><br />The one-page capability statement is issued under the contracting entity, YRC STRATEGIES.</p>
+          <p class="gov-hero-note"><a href="#procurement">View verified identifiers, insurance, and contracting details ↓</a><br />Capability statement issued under YRC STRATEGIES.</p>
         </div>
 
         <aside class="procurement-card fade-up delay-1" aria-label="Verified procurement identity">
@@ -367,10 +378,10 @@
 
     <div class="gov-trust-strip" aria-label="Buyer decision summary">
       <div class="container gov-trust-grid">
-        <div class="gov-trust-item"><strong>Best-fit need</strong><span>A defined public-information or staff-workflow problem with intended users and an owner.</span></div>
-        <div class="gov-trust-item"><strong>First engagement</strong><span>An assessment and roadmap, or a bounded implementation with explicit acceptance conditions.</span></div>
-        <div class="gov-trust-item"><strong>Buyer receives</strong><span>Documented scope, tested deliverables, training, and operational handoff as contracted.</span></div>
-        <div class="gov-trust-item"><strong>Contracting path</strong><span>Active SAM registration, current identifiers, capability statement, and procurement contact.</span></div>
+        <div class="gov-trust-item"><strong>Best-fit need</strong><span>Defined public or staff need.</span></div>
+        <div class="gov-trust-item"><strong>First engagement</strong><span>Assessment or bounded implementation.</span></div>
+        <div class="gov-trust-item"><strong>Buyer receives</strong><span>Tested delivery, training, and handoff.</span></div>
+        <div class="gov-trust-item"><strong>Contracting path</strong><span>SAM active; details below.</span></div>
       </div>
     </div>
 
@@ -378,33 +389,29 @@
       <div class="container">
         <div class="fade-up">
           <p class="gov-label">What can be scoped</p>
-          <h2 class="gov-section-title" id="capabilities-title">Services tied to a defined public or staff outcome.</h2>
-          <p class="gov-section-sub">A responsible scope identifies the users, starting problem, system boundary, dependencies, and acceptance test. Data handling, hosting, integrations, and feasibility are confirmed before commitments are made.</p>
+          <h2 class="gov-section-title" id="capabilities-title">Services for a defined outcome.</h2>
+          <p class="gov-section-sub">Scope, feasibility, and acceptance conditions are confirmed before commitment.</p>
         </div>
         <div class="capability-grid">
           <article class="capability-card fade-up">
             <span class="capability-number">01</span>
             <h3>Website and CMS modernization</h3>
-            <p>Information architecture, content models, migration planning, staff-editable templates, and release QA for an agreed public web scope.</p>
-            <small>Scope may include · inventory · migration plan · templates · release QA</small>
+            <p>Information architecture, migration planning, staff-editable templates, and release QA.</p>
           </article>
           <article class="capability-card fade-up delay-1">
             <span class="capability-number">02</span>
             <h3>Document libraries and public content</h3>
-            <p>Content inventory, taxonomy, metadata, navigation, and ownership patterns for reports, agendas, minutes, policies, forms, and other public records.</p>
-            <small>Scope may include · inventory · metadata · navigation · ownership</small>
+            <p>Inventory, metadata, navigation, and ownership for public records and forms.</p>
           </article>
           <article class="capability-card fade-up">
             <span class="capability-number">03</span>
             <h3>Workflow, forms and dashboards</h3>
-            <p>Structured intake, review and status workflows, dashboards, portals, and bounded automation for repetitive manual handoffs.</p>
-            <small>Scope may include · forms · status views · reporting · handoff rules</small>
+            <p>Forms, status workflows, dashboards, portals, and bounded automation.</p>
           </article>
           <article class="capability-card fade-up delay-1">
             <span class="capability-number">04</span>
             <h3>QA, UX and integration support</h3>
-            <p>Mobile and web usability review, accessibility-oriented risk review, delivery QA, and API or data-handoff assessment where supported access is confirmed.</p>
-            <small>Scope may include · findings · test plan · release QA · integration assessment</small>
+            <p>Usability and delivery QA, plus supported API and data-handoff assessment.</p>
           </article>
         </div>
       </div>
@@ -415,28 +422,28 @@
         <div class="work-intro">
           <div class="fade-up">
             <p class="gov-label">Transferable commercial experience</p>
-            <h2 class="gov-section-title" id="work-title">Relevant work patterns, with the evidence limits stated.</h2>
+            <h2 class="gov-section-title" id="work-title">Relevant commercial experience.</h2>
           </div>
           <div class="work-disclaimer fade-up delay-1">
             <strong>Important boundary</strong>
-            These examples show transferable commercial experience. They are not government past performance, agency references, or proof of an award. Named client details require retained evidence and publication permission.
+            These examples are transferable commercial experience—not government past performance, agency references, or proof of an award. Named clients require retained evidence and permission.
           </div>
         </div>
         <div class="work-grid">
           <article class="work-card fade-up">
             <span class="work-type">Public-facing web delivery</span>
             <h3>Maintainable websites and content</h3>
-            <p>Commercial website strategy, design, and implementation focused on clear messaging, stakeholder alignment, and maintainable content.</p>
+            <p>Website planning, design, and delivery with stakeholder-aligned content.</p>
           </article>
           <article class="work-card fade-up delay-1">
             <span class="work-type">Operational field workflow</span>
             <h3>Structured field operations</h3>
-            <p>A commercial custom iPhone and workflow platform supporting inspections, photo capture, structured records, status tracking, and management visibility.</p>
+            <p>iPhone and workflow platform for structured inspections and status tracking.</p>
           </article>
           <article class="work-card fade-up delay-2">
             <span class="work-type">Automation and reporting</span>
             <h3>Connected public and staff activity</h3>
-            <p>Commercial landing-page, review or notification, reporting, and management-visibility workflows connecting public-facing activity to staff operations.</p>
+            <p>Landing pages, notifications, reporting, and management visibility.</p>
           </article>
         </div>
       </div>
@@ -446,24 +453,24 @@
       <div class="container">
         <div class="fade-up">
           <p class="gov-label">Low-risk buying path</p>
-          <h2 class="gov-section-title" id="process-title">Move from requirement to operable release with the unknowns visible.</h2>
-          <p class="gov-section-sub">Before commitment, the written scope should make the outcome, responsibilities, dependencies, data and hosting boundary, acceptance conditions, and handoff visible.</p>
+          <h2 class="gov-section-title" id="process-title">A clear path from requirement to release.</h2>
+          <p class="gov-section-sub">Scope makes outcome, responsibilities, dependencies, and handoff visible.</p>
         </div>
         <div class="process-grid">
           <article class="process-step fade-up">
-            <b>01 / CONFIRM FIT</b>
-            <h3>Map the requirement and operating context</h3>
-            <p>Confirm intended users, required outcome, current workflow, content, access, data, dependencies, clauses, and risks.</p>
+            <b>01 / FIT</b>
+            <h3>Map the requirement</h3>
+            <p>Confirm users, outcome, workflow, constraints, and risks.</p>
           </article>
           <article class="process-step fade-up delay-1">
-            <b>02 / DEFINE COMMITMENT</b>
-            <h3>Make the scope buyer-readable</h3>
-            <p>Return a roadmap or bounded delivery scope with assumptions, responsibilities, deliverables, schedule inputs, and acceptance conditions.</p>
+            <b>02 / SCOPE</b>
+            <h3>Define the commitment</h3>
+            <p>Set deliverables, responsibilities, schedule inputs, and acceptance conditions.</p>
           </article>
           <article class="process-step fade-up delay-2">
             <b>03 / DELIVER</b>
-            <h3>Deliver against acceptance</h3>
-            <p>Build, test, document, train, and hand off against the agreed deliverables and project boundary.</p>
+            <h3>Build, test, and hand off</h3>
+            <p>Deliver the agreed release, documentation, training, and handoff.</p>
           </article>
         </div>
       </div>
@@ -474,7 +481,7 @@
         <div class="snapshot-copy fade-up">
           <p class="gov-label">Procurement snapshot</p>
           <h2 class="gov-section-title" id="procurement-title">Current facts a buyer can verify.</h2>
-          <p class="gov-section-sub">This page does not claim a set-aside certification, contract vehicle, government award, agency past performance, or security authorization. Registration is not approval, endorsement, or a guarantee of award.</p>
+          <p class="gov-section-sub">No set-aside certification, contract vehicle, government award, agency past performance, or security authorization is claimed here. SAM registration is not an endorsement or award.</p>
           <div class="snapshot-guardrail">
             <strong>Contracting note</strong>
             Government contracts, insurance certificates, and invoices use YRC STRATEGIES, the legal entity associated with this capability profile.
@@ -523,15 +530,15 @@
           <div class="fade-up">
             <p class="gov-label">Security and data boundary</p>
             <h2 class="gov-section-title" id="security-title">Confirm the security boundary before accepting scope.</h2>
-            <p class="gov-section-sub">Provide the applicable clauses, intended data types, hosting constraints, access model, and integration requirements. Fit is confirmed before a proposal commits to the work.</p>
+            <p class="gov-section-sub">Share applicable clauses, data types, hosting, access, and integration constraints. Fit is confirmed before proposal.</p>
             <p class="security-limit"><strong>Not represented on this page:</strong> CMMC certification, NIST SP 800-171 implementation, an SPRS score, FedRAMP authorization, FISMA compliance, an authority to operate, facility or personnel clearances, or any similar security status.</p>
           </div>
           <div class="fade-up delay-1">
             <ul class="security-list">
-              <li>Identify whether the work involves public data, ordinary business information, FCI, CUI, or another regulated data type.</li>
-              <li>Define identity, permissions, logging, backup, recovery, incident, subcontractor, and data-disposal responsibilities.</li>
-              <li>Confirm hosting, third-party services, supported APIs, access limits, and ownership before committing to an integration.</li>
-              <li>Document acceptance, release, training, operational ownership, and post-release support in the applicable contract documents.</li>
+              <li>Identify whether the work involves public data, business information, FCI, CUI, or another regulated type.</li>
+              <li>Define identity, access, logging, backup, incident, subcontractor, and data-disposal responsibilities.</li>
+              <li>Confirm hosting, third-party services, supported APIs, access limits, and ownership.</li>
+              <li>Document acceptance, training, operational ownership, and support.</li>
             </ul>
             <p class="security-limit"><strong>Submission boundary:</strong> Do not send controlled information, credentials, access tokens, production data, or sensitive records through this website or ordinary email.</p>
           </div>
@@ -545,8 +552,8 @@
           <div class="gov-contact-grid">
             <div>
               <p class="gov-label">Procurement contact</p>
-              <h2 id="contact-title">Send the requirement. Keep sensitive data out of email.</h2>
-              <p>For market research, sources sought, subcontracting discussions, or a defined software need, include the opportunity number, agency or prime, intended users, required outcome, response date, anticipated data type, hosting constraints, and known integration dependencies. Do not attach controlled information, credentials, tokens, production data, or sensitive records.</p>
+              <h2 id="contact-title">Start with the requirement.</h2>
+              <p>Include the opportunity number, buyer, outcome, response date, data type, hosting, and integrations. Do not send controlled information or sensitive records.</p>
             </div>
             <div class="contact-actions">
               <a class="contact-action" href="mailto:gera@why57.com?subject=Government%20procurement%20inquiry">
@@ -560,7 +567,7 @@
               </a>
             </div>
           </div>
-          <p class="gov-contact-note">Last reviewed July 17, 2026. This public page supplements the capability statement and official procurement profiles; it does not replace them.</p>
+          <p class="gov-contact-note">Last reviewed July 17, 2026.</p>
         </div>
       </div>
     </section>
@@ -575,7 +582,6 @@
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="/#services">Services</a>
-        <a href="ai-app-prototype-to-production.html">AI Prototype Guide</a>
         <a href="downloads/YRC_STRATEGIES_Government_Capability_Statement_2026-07-16.pdf" download>Capability Statement</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
