@@ -19,6 +19,7 @@ let localAssetCount = 0;
 
 const priorityHomeRoutes = [
   "/ai-app-prototype-to-production.html",
+  "/government-capabilities.html",
   "/bay-area-business-automation.html",
   "/silicon-valley-software-consulting.html",
   "/case-studies/review-request-workflow.html",

@@ -1,6 +1,6 @@
 # Why57 content and indexing map
 
-Last updated: 2026-07-15
+Last updated: 2026-07-17
 
 This map defines the intended search role of the local and AI prototype content. It favors a small set of substantive destinations over overlapping city pages.
 
@@ -15,6 +15,7 @@ This map defines the intended search role of the local and AI prototype content.
 | `/ai-app-prototype-to-production.html` | Turn a Claude or AI-built prototype into a product | Production process, readiness, risks, service fit | Gera Yeremin byline; anonymized implementation examples without client outcomes | Readiness/security checklist, repair/rebuild guide, Silicon Valley consulting, generic case-study links |
 | `/ai-prototype-readiness-security-checklist.html` | AI app production-readiness checklist | AI prototype security risks, launch evidence, review preparation | Gera Yeremin author; explicit specialist and review boundaries | AI pillar, repair/rebuild guide, Silicon Valley consulting |
 | `/ai-prototype-repair-rebuild-cost.html` | Repair vs. rebuild an AI app | Productionization cost, timeline, assessment and quoting process | Gera Yeremin byline; input-based pricing guidance without a public price or timing claim | AI pillar, readiness checklist, Silicon Valley consulting |
+| `/government-capabilities.html` | YRC STRATEGIES government software capabilities | Website modernization, public content, document libraries, workflow tools, dashboards, integrations, QA | Current SAM activation, California entity record, dated capability statement, and current general-liability certificate retained outside the public repository | Homepage service bridge and navigation; capability statement; home services; AI guide; privacy; terms |
 
 All indexable destinations must have:
 
@@ -50,6 +51,12 @@ The four consolidated pages are excluded from `sitemap.xml`, contain matching ca
 - **Pillar:** explains the complete move from prototype to owned product and routes readers to the right decision resource.
 - **Readiness/security checklist:** answers “what must be verified before launch?” with artifacts, common risks, release levels, and specialist boundaries.
 - **Repair/rebuild/cost guide:** answers “what should we keep, what will this process involve, and what drives the quote?” without claiming a universal price.
+
+### Government capability destination
+
+- **Government capabilities:** names YRC STRATEGIES as the contracting entity, publishes verified identifiers and service categories, separates commercial work samples from government past performance, and links the dated one-page capability statement.
+- The page does not describe 57 or WHY57 as a filed trade name, certification, government customer, contract vehicle, reseller status, or cybersecurity compliance status.
+- SAM, SBA Small Business Search, Cal eProcure, and local bid portals remain separate procurement records; this page does not replace or override them.
 
 ## Public proof disposition after credibility cleanup
 

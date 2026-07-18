@@ -3,6 +3,7 @@ async (page) => {
   const paths = [
     '/',
     '/ai-app-prototype-to-production.html',
+    '/government-capabilities.html',
     '/sonoma-county-software-development.html',
     '/case-studies/review-request-workflow.html'
   ];
