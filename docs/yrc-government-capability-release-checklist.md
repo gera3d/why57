@@ -23,13 +23,13 @@ Evidence register: `docs/yrc-government-procurement-evidence-register-2026-07-18
 - Cal eProcure sourcing-bidder registration: **BID0132231**, confirmed July 15, 2026
 - Public procurement contact: Georgiy Yeremin, Principal / Project Lead; `gera@why57.com`; `(707) 694-5624`
 - Commercial general liability: $1,000,000 each occurrence / $2,000,000 aggregate; current through July 14, 2027
-- Capability statement: `downloads/YRC_STRATEGIES_Capability_Statement_2026-07-18.pdf`
+- Capability statement: `downloads/YRC_STRATEGIES_Capability_Statement_2026-07-17.pdf` (owner-issued version reconfirmed July 19, 2026)
 
 ## Source packet retained outside the public repository
 
 1. SAM.gov registration-activation notice dated July 15, 2026.
 2. California Secretary of State entity evidence submitted for CAGE validation on June 30, 2026.
-3. `YRC_STRATEGIES_Capability_Statement_2026-07-18.pdf`.
+3. `YRC_STRATEGIES_Capability_Statement_2026-07-17.pdf` (owner-issued version reconfirmed July 19, 2026).
 4. California Small Business certification approval notice dated July 18, 2026, and Cal eProcure sourcing-bidder registration confirmation dated July 15, 2026.
 5. Hiscox general-liability certificate and coverage summary dated July 14, 2026.
 6. Norcal APEX initial-consultation follow-up dated July 17, 2026.
