@@ -220,13 +220,14 @@
     .snapshot-row dd small{display:block;margin-top:4px;color:var(--dim);font-size:.68rem;font-weight:400;line-height:1.55;}
     .snapshot-row a{color:var(--amber);text-decoration:underline;text-decoration-color:rgba(var(--glow),.38);text-underline-offset:3px;}
 
-    .security-panel{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:64px;padding:40px;border:1px solid rgba(255,255,255,.11);border-radius:22px;background:linear-gradient(145deg,rgba(var(--glow),.1),rgba(8,9,15,.92) 48%);overflow:hidden;}
+    .security-panel{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:48px;padding:40px;border:1px solid rgba(255,255,255,.11);border-radius:22px;background:linear-gradient(145deg,rgba(var(--glow),.1),rgba(8,9,15,.92) 48%);overflow:hidden;}
     .security-panel::after{content:"";position:absolute;right:-140px;bottom:-180px;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle,rgba(var(--glow),.14),transparent 67%);pointer-events:none;}
-    .security-list{position:relative;z-index:1;display:grid;gap:11px;}
+    .security-list{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px;}
     .security-list li{list-style:none;display:grid;grid-template-columns:22px 1fr;gap:11px;color:rgba(237,237,239,.67);font-size:.84rem;line-height:1.55;}
     .security-list li::before{content:"✓";display:grid;place-items:center;width:20px;height:20px;border:1px solid rgba(var(--glow),.32);border-radius:6px;background:rgba(var(--glow),.08);color:var(--amber);font-family:var(--mono);font-size:.67rem;}
-    .security-limit{position:relative;z-index:1;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.09);color:rgba(237,237,239,.6);font-size:.74rem;line-height:1.65;}
-    .security-limit strong{color:rgba(237,237,239,.72);}
+    .security-footnotes{position:relative;z-index:1;grid-column:1 / -1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 32px;margin-top:-8px;padding-top:21px;border-top:1px solid rgba(255,255,255,.09);}
+    .security-note{margin:0;color:rgba(237,237,239,.57);font-size:.72rem;line-height:1.6;}
+    .security-note strong{color:rgba(237,237,239,.72);}
 
     .gov-contact{position:relative;padding:104px 0;}
     .gov-contact-card{position:relative;padding:52px;border:1px solid rgba(255,255,255,.12);border-radius:24px;background:linear-gradient(140deg,rgba(var(--glow),.16),rgba(224,76,40,.07) 55%,rgba(255,255,255,.025));overflow:hidden;}
@@ -265,6 +266,7 @@
       .process-step::after{content:"↓";top:auto;right:auto;left:calc(50% - 13px);bottom:-13px;}
       .snapshot-copy{position:static;}
       .security-panel{padding:32px;}
+      .security-list,.security-footnotes{grid-template-columns:1fr;}
     }
 
     @media(max-width:640px){
@@ -536,18 +538,18 @@
         <div class="security-panel">
           <div class="fade-up">
             <p class="gov-label">Security and data boundary</p>
-            <h2 class="gov-section-title" id="security-title">Confirm the security boundary before accepting scope.</h2>
-            <p class="gov-section-sub">Share applicable clauses, data types, hosting, access, and integration constraints. Fit is confirmed before proposal.</p>
-            <p class="security-limit"><strong>Not represented on this page:</strong> CMMC certification, NIST SP 800-171 implementation, an SPRS score, FedRAMP authorization, FISMA compliance, an authority to operate, facility or personnel clearances, or any similar security status.</p>
+            <h2 class="gov-section-title" id="security-title">Set the security and data boundary before scope.</h2>
+            <p class="gov-section-sub">Share applicable clauses, data types, hosting, access, and integration constraints. Fit and ownership are confirmed before proposal.</p>
           </div>
           <div class="fade-up delay-1">
             <ul class="security-list">
-              <li>Identify whether the work involves public data, business information, FCI, CUI, or another regulated type.</li>
-              <li>Define identity, access, logging, backup, incident, subcontractor, and data-disposal responsibilities.</li>
-              <li>Confirm hosting, third-party services, supported APIs, access limits, and ownership.</li>
-              <li>Document acceptance, training, operational ownership, and support.</li>
+              <li>Classify the work: public data, business information, FCI, CUI, or another regulated type.</li>
+              <li>Define the required controls and ownership: hosting, access, logging, incident response, subcontractors, integrations, and handoff.</li>
             </ul>
-            <p class="security-limit"><strong>Submission boundary:</strong> Do not send controlled information, credentials, access tokens, production data, or sensitive records through this website or ordinary email.</p>
+          </div>
+          <div class="security-footnotes fade-up delay-2">
+            <p class="security-note"><strong>Security representation:</strong> No CMMC, FedRAMP, clearance, or other formal security status is represented here. The applicable solicitation requirement is reviewed before proposal.</p>
+            <p class="security-note"><strong>Submission boundary:</strong> Do not send controlled information, credentials, access tokens, production data, or sensitive records through this website or ordinary email.</p>
           </div>
         </div>
       </div>
