@@ -591,6 +591,13 @@ input:focus-visible{
   opacity:.9;
 }
 .cs-brand-logo--wide{max-height:68px;}
+.cs-brand-logo--drivesavers{
+  width:min(172px,64%);
+  max-height:172px;
+  margin-bottom:16px;
+  filter:none;
+  opacity:1;
+}
 .cs-wordmark{
   margin-bottom:22px;
   color:var(--text);
