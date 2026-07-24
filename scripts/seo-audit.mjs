@@ -22,9 +22,11 @@ const priorityHomeRoutes = [
   "/government-capabilities.html",
   "/bay-area-business-automation.html",
   "/silicon-valley-software-consulting.html",
-  "/case-studies/review-request-workflow.html",
-  "/case-studies/branded-site-deployment-platform.html",
-  "/case-studies/professional-services-lead-attribution.html",
+  "/case-studies/health-for-california-review-engine.html",
+  "/case-studies/drivesavers-seo-overhaul.html",
+  "/case-studies/nuvolum-deployment-platform.html",
+  "/case-studies/dent-experts-storm-ops-flow.html",
+  "/case-studies/ux-owl-sonoma-attorneys.html",
 ];
 
 function fail(message) {

@@ -1,6 +1,6 @@
 # Why57 content and indexing map
 
-Last updated: 2026-07-18
+Last updated: 2026-07-23
 
 This map defines the intended search role of the local and AI prototype content. It favors a small set of substantive destinations over overlapping city pages.
 
@@ -8,11 +8,11 @@ This map defines the intended search role of the local and AI prototype content.
 
 | URL | Primary intent | Supporting intent | Evidence / author signal | Main internal links |
 | --- | --- | --- | --- | --- |
-| `/` | Custom software company / service overview | Automation, portals, reviews, integrations, ROI | Service descriptions and links to evidence-limited, anonymized case studies | All three regional hubs, all three AI guides, case studies |
-| `/sonoma-county-software-development.html` | Sonoma County custom software development | Workflow automation, portals, integrations, AI prototype production | Gera Yeremin byline; anonymized implementation links with explicit evidence limits | Generic case-study links, AI pillar, readiness checklist, Bay Area hub |
-| `/bay-area-business-automation.html` | Bay Area business automation | Multi-location operations, integrations, client portals, build-vs-buy | Gera Yeremin byline; anonymized workflow example with explicit evidence limits | Generic case-study links, AI pillar, repair/rebuild guide, Sonoma and Silicon Valley hubs |
-| `/silicon-valley-software-consulting.html` | Product-delivery software consulting | Prototype review, due diligence, delivery recovery, fractional technical help | Gera Yeremin byline; anonymized platform example with explicit evidence limits | AI pillar, readiness checklist, repair/rebuild guide, generic case-study link |
-| `/ai-app-prototype-to-production.html` | Turn a Claude or AI-built prototype into a product | Production process, readiness, risks, service fit | Gera Yeremin byline; anonymized implementation examples without client outcomes | Readiness/security checklist, repair/rebuild guide, Silicon Valley consulting, generic case-study links |
+| `/` | Custom software company / service overview | Automation, portals, reviews, integrations, ROI | Named client and venture case-study links authorized by the site owner; quantitative proof is maintained in the restoration control record | All three regional hubs, all three AI guides, five case studies |
+| `/sonoma-county-software-development.html` | Sonoma County custom software development | Workflow automation, portals, integrations, AI prototype production | Gera Yeremin byline; implementation links that route to named case studies | Case studies, AI pillar, readiness checklist, Bay Area hub |
+| `/bay-area-business-automation.html` | Bay Area business automation | Multi-location operations, integrations, client portals, build-vs-buy | Gera Yeremin byline; named case studies carry the relevant client-work detail | Case studies, AI pillar, repair/rebuild guide, Sonoma and Silicon Valley hubs |
+| `/silicon-valley-software-consulting.html` | Product-delivery software consulting | Prototype review, due diligence, delivery recovery, fractional technical help | Gera Yeremin byline; named case-study links for platform and product work | AI pillar, readiness checklist, repair/rebuild guide, case-study links |
+| `/ai-app-prototype-to-production.html` | Turn a Claude or AI-built prototype into a product | Production process, readiness, risks, service fit | Gera Yeremin byline; named case studies provide supporting implementation context | Readiness/security checklist, repair/rebuild guide, Silicon Valley consulting, case-study links |
 | `/ai-prototype-readiness-security-checklist.html` | AI app production-readiness checklist | AI prototype security risks, launch evidence, review preparation | Gera Yeremin author; explicit specialist and review boundaries | AI pillar, repair/rebuild guide, Silicon Valley consulting |
 | `/ai-prototype-repair-rebuild-cost.html` | Repair vs. rebuild an AI app | Productionization cost, timeline, assessment and quoting process | Gera Yeremin byline; input-based pricing guidance without a public price or timing claim | AI pillar, readiness checklist, Silicon Valley consulting |
 | `/government-capabilities.html` | YRC STRATEGIES government software capabilities | Website modernization, public content, document libraries, workflow tools, dashboards, integrations, QA | Current SAM activation, California SB certification, Cal eProcure bidder registration, California entity record, dated capability statement, and current general-liability certificate retained outside the public repository | Homepage service bridge and navigation; capability statement; home services; AI guide; privacy; terms |
@@ -58,15 +58,15 @@ The four consolidated pages are excluded from `sitemap.xml`, contain matching ca
 - The page does not describe 57 or WHY57 as a filed trade name, certification, government customer, contract vehicle, reseller status, or cybersecurity compliance status.
 - SAM, SBA Small Business Search, Cal eProcure, and local bid portals remain separate procurement records; this page does not replace or override them.
 
-## Public proof disposition after credibility cleanup
+## Public proof disposition after branded case-study restoration
 
-No named-client proof, testimonial, rating, review count, experience total, price range, delivery range, or quantified outcome is treated as supported by this repository. The regional and AI guides retain only generic implementation patterns and links whose visible labels are anonymized. The linked case studies must keep their problem, intervention, result, and evidence-limit sections distinct, and they must not restore a client name or outcome without the source and publication permission recorded in `PROOF-SOURCE-LEDGER.md`.
+The site owner has attested that Health for California, DriveSavers, Nuvolum, Dent Experts / Storm Ops Flow, and UX Owl may be named and used as case studies. The homepage now routes to five named pages rather than anonymous summaries. The restoration control record keeps the source, metric, visual, and quote follow-up visible for the production release.
 
 Current public dispositions:
 
-- **Verified:** general service, process, security, ownership, and measurement guidance that does not assert a past client result.
-- **Removed:** named testimonials; ratings; client and product imagery without provenance/permission; numerical client outcomes; public price/timeline/experience totals; and named-client proof language on regional and AI pages.
-- **Pending:** every named client, logo, screenshot, testimonial, outcome, and operating detail that the ledger marks as requiring private evidence or owner/client approval.
+- **Authorized for this branch:** client and venture names, selected marks or wordmarks, case-study relationships, the specified implementation narratives, and the three attributed client perspectives.
+- **Requires retained source before production release:** the underlying exports, captures, and original quote records identified in `docs/branded-case-study-restoration-control.md` and `PROOF-SOURCE-LEDGER.md`.
+- **Still excluded:** unverified general experience, client-count, ROI, price, timeline, rating, or government-past-performance claims that sit outside the five approved case studies.
 
 ## Post-release indexing QA
 

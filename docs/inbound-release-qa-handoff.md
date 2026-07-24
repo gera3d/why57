@@ -1,6 +1,6 @@
 # Inbound release QA handoff
 
-Updated July 15, 2026. This document separates code that passed QA from live work that still requires an authenticated release or account change.
+Updated July 23, 2026. This document separates code that passed QA from live work that still requires an authenticated release or account change.
 
 ## Growth launch hold — July 15 live recheck
 
@@ -18,7 +18,7 @@ After the complete Production Release and live smoke test, recheck the seven app
 
 The integrated site and Worker code are ready for release after the deployment prerequisites below are supplied. The public site and public Worker were still serving the previous release during this audit, so the new funnels cannot be counted as live conversions yet.
 
-The conservative credibility cleanup is isolated on `codex/why57-trust-cleanup` and is not approved for deployment until the pinned QA task accepts its commit. Public client names, marks, testimonials, outcome figures, unverified exact business contact/availability details, and provenance-free mockups were removed or anonymized. No replacement proof was invented.
+The earlier conservative credibility cleanup remains historical context. The current `codex/branded-case-studies` branch restores five named client and venture case studies under the site owner's July 23 permission attestation. The restoration control record identifies the private source materials that still need to be retained before a public release.
 
 ## Verified locally
 
@@ -26,8 +26,8 @@ The conservative credibility cleanup is isolated on `codex/why57-trust-cleanup` 
 - Four representative mobile pages render at 390 × 844 without horizontal overflow.
 - Prototype-review validation, inline success feedback, and the thank-you page were exercised in a real browser.
 - The Worker dry run succeeds with the configured KV binding and observability enabled.
-- Unsupported pricing, timelines, experience claims, client outcome numbers, testimonials, client marks, and exact contact/availability claims were removed or replaced with bounded evidence language.
-- Each case study separates the recorded problem, described intervention, bounded result, and evidence limit. The client identity and production/business outcomes remain withheld pending source records and written publication permission.
+- Unsupported general pricing, timelines, experience claims, client outcomes outside the approved five stories, ratings, and exact contact/availability claims remain excluded.
+- Five named case studies are locally complete: Health for California, DriveSavers, Nuvolum, Dent Experts / Storm Ops Flow, and UX Owl. Each has its own canonical route, implementation narrative, client perspective where approved, and source-retention requirements in the restoration control record.
 - The main site and ROI calculator use the same first-touch attribution cookie and no longer overwrite acquisition with internal campaign parameters.
 - `calendar_booking_clicked` is a micro-conversion. It is not reported as a lead or a completed booking.
 
@@ -42,15 +42,15 @@ The conservative credibility cleanup is isolated on `codex/why57-trust-cleanup` 
 ## Required release order
 
 1. **Configure and deploy the Worker first.** Confirm the production KV binding, allowed origins, prototype-review notification destination, ROI-report delivery webhook, and rate-limit salts. A report request must not return success unless delivery succeeds.
-2. **Deploy the main site.** Confirm the new prototype pages, analytics script, sitemap, robots file, retired-page handling, form endpoint, and direct permanent redirects from the five retired named case-study paths to their anonymized replacements are public.
+2. **Deploy the main site.** Confirm the new prototype pages, analytics script, sitemap, robots file, retired-page handling, form endpoint, and direct permanent redirects from the five retired anonymous case-study paths to their named replacements are public.
 3. **Deploy the ROI calculator changes.** Confirm clean cross-subdomain attribution, one `calendar_booking_clicked` event per click, and one `roi_report_requested` event after a successful report request.
 4. **Run live smoke tests.** Submit one clearly labeled test prototype review and one test ROI report, verify storage and delivery, then exclude or annotate the test traffic.
 5. **Configure GA4 outcomes.** Make successful `prototype_review_submitted`, `lead_submitted`, and `roi_report_requested` events key events after DebugView confirms one event per real submission. Do not mark `calendar_booking_clicked` as a primary conversion. Add `calendar_booking_completed` only when a trusted scheduling-provider completion signal exists.
-6. **Refresh Search Console.** Remove the failed `/sitemap_index.xml`, resubmit `/sitemap.xml`, confirm 14 discovered canonical pages after the new release is read, and request indexing for the AI-prototype page plus the priority commercial pages.
+6. **Refresh Search Console.** Remove the failed `/sitemap_index.xml`, resubmit `/sitemap.xml`, confirm 15 discovered canonical pages after the new release is read, and request indexing for the AI-prototype page plus the five named case studies.
 
 ## Owner verification still required
 
-- No client name, logo, screenshot, outcome, or testimonial is approved by evidence retained in this repository. Restore an item only after its source and written publication permission are recorded in `PROOF-SOURCE-LEDGER.md`.
+- The site owner has attested that the five named clients and ventures, selected marks or wordmarks, outcome copy, and client perspectives in this branch are permitted. Retain the original exports, product captures, and quote records listed in `docs/branded-case-study-restoration-control.md` before the public release.
 - Confirm the real lead-delivery destination and name a primary responder, backup responder, and business-hours response target. These values remain pending because no owner-approved assignment or target is retained in the repository; do not infer them from a team title.
 - Review authenticated production Remote Config and delete any stale claim-bearing variants before enabling experiments. The local site rejects common unsupported numeric, guarantee, free-call, duration, and meeting-format wording, but that does not prove the production template is clean.
 - Confirm whether the calendar provider can supply a signed webhook or redirect that proves a completed booking.
