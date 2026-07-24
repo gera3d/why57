@@ -2,6 +2,8 @@
 
 This is the post-merge operating checklist for the two public properties. The repository changes can correct canonical signals, crawl paths, sitemap coverage, and robots behavior. HTTP redirects and Search Console actions require Cloudflare/Search Console access and are intentionally not performed by this branch.
 
+The July 15 baseline below retains the old anonymous filenames because that is what Search Console reported at the time. The current branch replaces them with named case-study destinations; use the redirect mapping in `branded-case-study-restoration-control.md` when the release is approved.
+
 ## Baseline captured July 15, 2026
 
 Search Console's page-indexing reports were last updated July 9, 2026.
@@ -9,7 +11,7 @@ Search Console's page-indexing reports were last updated July 9, 2026.
 ### `https://why57.com/`
 
 - 10 indexed URLs and 21 not-indexed URLs.
-- `/sitemap.xml` was successful, last read July 5, and reported 15 discovered pages. The repository sitemap now contains 14 canonical pages after retiring thin local variants and adding the AI-prototype guides.
+- `/sitemap.xml` was successful, last read July 5, and reported 15 discovered pages. The repository sitemap now contains 15 canonical pages, including the five named case studies.
 - The stale `/sitemap_index.xml` submission has shown **Couldn't fetch** since 2022 and should be removed from Search Console.
 - The canonical-alternate example is `https://why57.com/index.html`.
 - The recorded 404 is `https://why57.com/home/`.
@@ -36,7 +38,7 @@ Search Console's page-indexing reports were last updated July 9, 2026.
 - Merge the technical SEO commit together with the analytics work that removes internal campaign UTMs.
 - Run `node scripts/seo-audit.mjs` from the merged site root. The deployment workflow also runs this check automatically.
 - Deploy through the normal GitHub Pages workflow. Do not request indexing before the new sitemap, internal links, and robots file are live.
-- Create direct permanent edge redirects from the five retired pre-cleanup case-study paths to their anonymized replacement paths in the same release. Recover the exact source-to-destination mapping from the trust-cleanup commit's rename/deletion metadata; do not restore client-bearing filenames as public HTML pages.
+- Create direct permanent edge redirects from each retired anonymous case-study path to its corresponding named destination in the same release. The exact mapping is retained in `branded-case-study-restoration-control.md`.
 - Confirm `https://why57.com/robots.txt` no longer contains `Disallow: /*?*` and still excludes `/dashboard.html`.
 - Confirm every sitemap URL returns 200, has one matching canonical, and is reachable from the homepage.
 
@@ -54,7 +56,15 @@ The live site is GitHub Pages behind Cloudflare. GitHub Pages does not provide r
 
 Rules should preserve paths for the HTTP and `www` host redirects, avoid redirect chains, and run before cache rules. The exact legacy paths above should redirect directly to `/`. Do not redirect every 404 to the homepage; unknown paths must keep a real 404 response to avoid soft-404 indexing.
 
-The five retired pre-cleanup case-study paths are a separate migration: each must redirect directly to its corresponding anonymized case study, not to the homepage. Confirm those mappings from the accepted trust-cleanup commit before creating the rules, then test all five paths after deployment.
+The five retired anonymous case-study paths are a separate migration: each must redirect directly to its corresponding named case study, not to the homepage. Test all five mappings after deployment.
+
+| Retired anonymous URL | Named destination |
+| --- | --- |
+| `/case-studies/review-request-workflow.html` | `/case-studies/health-for-california-review-engine.html` |
+| `/case-studies/website-search-operations-workflow.html` | `/case-studies/drivesavers-seo-overhaul.html` |
+| `/case-studies/branded-site-deployment-platform.html` | `/case-studies/nuvolum-deployment-platform.html` |
+| `/case-studies/field-inspection-operations-platform.html` | `/case-studies/dent-experts-storm-ops-flow.html` |
+| `/case-studies/professional-services-lead-attribution.html` | `/case-studies/ux-owl-sonoma-attorneys.html` |
 
 Expected verification after the rules are active:
 
@@ -72,12 +82,12 @@ The first four requests should return a single 301 hop to `https://why57.com/`. 
 
 1. Open the `https://why57.com/` URL-prefix property.
 2. Remove the failed `/sitemap_index.xml` submission. It is a stale 2022 artifact and is not referenced by the site.
-3. Resubmit `/sitemap.xml`. Confirm **Success** and 14 discovered pages after Google rereads it.
+3. Resubmit `/sitemap.xml`. Confirm **Success** and 15 discovered pages after Google rereads it.
 4. Inspect and request indexing for the highest-value new page first:
 
    - `https://why57.com/ai-app-prototype-to-production.html`
 
-5. Inspect the five previously discovered commercial pages listed in the baseline. Use **Test live URL**, confirm the declared and selected canonical match, then request indexing.
+5. Inspect the five named case-study destinations. Use **Test live URL**, confirm the declared and selected canonical match, then request indexing. Confirm the retired anonymous paths return one direct 301 to their mapped destination first.
 6. Inspect `/index.html`, `/home/`, and `/contact/` after the Cloudflare rules are live. Each should report a direct permanent redirect to `/`.
 7. Start validation for the old robots, 404, and 5xx issue groups only after the live tests match the intended behavior.
 8. Review **Crawled - currently not indexed** after the next crawl. Parameter variants should consolidate to the clean canonical; do not request indexing for them.

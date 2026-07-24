@@ -534,15 +534,6 @@ function bindManualCarousel({
   updateCarousel();
 }
 
-bindManualCarousel({
-  windowId: 'resultsCarousel',
-  trackSelector: '.results-carousel-track',
-  prevId: 'resultsCarouselPrev',
-  nextId: 'resultsCarouselNext',
-  statusId: 'resultsCarouselStatus',
-  eventName: 'results_carousel_changed'
-});
-
 /* ─── Fit toggle ─────────────────────────────────────────── */
 const fitTabs = Array.from(document.querySelectorAll('.fit-tab'));
 if (fitTabs.length) {

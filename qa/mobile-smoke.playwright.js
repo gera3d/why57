@@ -5,7 +5,7 @@ async (page) => {
     '/ai-app-prototype-to-production.html',
     '/government-capabilities.html',
     '/sonoma-county-software-development.html',
-    '/case-studies/review-request-workflow.html'
+    '/case-studies/health-for-california-review-engine.html'
   ];
   const results = [];
 

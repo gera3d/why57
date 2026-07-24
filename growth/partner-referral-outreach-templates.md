@@ -100,17 +100,17 @@ The link would be: [approved case-study URL]. We will not imply a new endorsemen
 
 > Thanks for the context. Based on [reason], we are not the strongest fit for this work. The next useful category of help is [specialist/type of provider], and the key question to ask is [question]. I do not want to force a software engagement where it will not help.
 
-## Anonymized on-site portfolio link library
+## Branded on-site portfolio link library
 
 These URLs exist in the current site repository and intentionally omit client identities. Verify the live page and owner-approved claim set before using one externally. Do not add a client name, logo, quotation, metric, or implied endorsement.
 
 | Case study | Best-fit conversation | URL | Claims rule |
 | --- | --- | --- | --- |
-| Review-request workflow | Automated customer follow-up and reputation-workflow design | <https://why57.com/case-studies/review-request-workflow.html> | Describe the reported design only; do not add adoption, review, or business outcomes. |
-| Website, search, and operations workflow | Digital experience, measurement, and operating-process design | <https://why57.com/case-studies/website-search-operations-workflow.html> | Do not compress separate activities into an unsupported causal result. |
-| Branded-site deployment platform | Multi-site operations and repeatable launch design | <https://why57.com/case-studies/branded-site-deployment-platform.html> | Do not add time, volume, growth, runtime, or payback claims. |
-| Field inspection and operations platform | Mobile field operations and workflow-software design | <https://why57.com/case-studies/field-inspection-operations-platform.html> | Describe the portfolio record; do not claim live integrations or measured outcomes. |
-| Professional-services lead attribution | Website and marketing-measurement design | <https://why57.com/case-studies/professional-services-lead-attribution.html> | Keep the cohort anonymous and do not add lead, referral, spend, or payback outcomes. |
+| Health for California review engine | Automated customer follow-up and reputation-workflow design | <https://why57.com/case-studies/health-for-california-review-engine.html> | Use the approved case-study language; do not extend the stated outcome beyond its source record. |
+| DriveSavers SEO overhaul | Digital experience, measurement, and operating-process design | <https://why57.com/case-studies/drivesavers-seo-overhaul.html> | Keep website, search, review, and productivity claims within the approved case-study language. |
+| Nuvolum deployment platform | Multi-site operations and repeatable launch design | <https://why57.com/case-studies/nuvolum-deployment-platform.html> | Do not add time, volume, growth, runtime, or payback claims beyond the case study. |
+| Dent Experts Storm Ops Flow | Mobile field operations and workflow-software design | <https://why57.com/case-studies/dent-experts-storm-ops-flow.html> | Use the product-concept label and avoid unapproved integration or performance claims. |
+| UX Owl legal marketing | Website and marketing-measurement design | <https://why57.com/case-studies/ux-owl-sonoma-attorneys.html> | Keep the lead-lift and attribution claims within the approved case-study language. |
 
 ## Pre-send review
 
