@@ -6,10 +6,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://why57.com/case-studies/nuvolum-deployment-platform.html" />
-  <title>Nuvolum: 200+ Sites in Under 4 Hours | 57</title>
-  <meta name="description" content="How 57 built Nuvolum a modular deployment platform for branded dental websites, video, configuration, and launch QA." />
-  <meta property="og:title" content="Nuvolum: 200+ Sites in Under 4 Hours | 57" />
-  <meta property="og:description" content="A deployment platform that turned custom-site launch work into a repeatable operating system." />
+  <title>Nuvolum Deployment Platform: 200+ Custom Sites | 57</title>
+  <meta name="description" content="How Nuvolum moved repeatable technical deployment from weeks of coordination to under four hours while keeping brand, content, and video custom." />
+  <meta property="og:title" content="Nuvolum: 200+ Custom Sites, Under 4-Hour Deployment | 57" />
+  <meta property="og:description" content="Reusable infrastructure removed the launch bottleneck without turning premium creative work into a generic template." />
   <meta property="og:image" content="https://why57.com/images/og-case-studies.png" />
   <meta property="og:url" content="https://why57.com/case-studies/nuvolum-deployment-platform.html" />
   <meta property="og:type" content="article" />
@@ -19,306 +19,361 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css?v=5" />
-
+  <link rel="stylesheet" href="../style.css?v=8" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": "Organization",
         "@id": "https://why57.com/#localbusiness",
         "name": "57 Custom Software Development",
         "url": "https://why57.com"
       },
       {
         "@type": "Article",
-        "headline": "Nuvolum: Branded-Site Deployment Platform",
-        "description": "A modular deployment platform for branded-site configuration, video, and launch quality assurance.",
+        "@id": "https://why57.com/case-studies/nuvolum-deployment-platform.html#article",
+        "url": "https://why57.com/case-studies/nuvolum-deployment-platform.html",
+        "headline": "Nuvolum: 200+ Custom Sites Through a Repeatable Deployment Platform",
+        "description": "A case study about separating custom creative work from repeatable technical deployment, configuration, video handling, and launch QA.",
+        "image": "https://why57.com/images/og-case-studies.png",
+        "inLanguage": "en",
+        "dateModified": "2026-07-30",
+        "mainEntityOfPage": "https://why57.com/case-studies/nuvolum-deployment-platform.html",
         "author": {"@type": "Person", "name": "Gera Yeremin"},
         "publisher": {"@id": "https://why57.com/#localbusiness"},
-        "url": "https://why57.com/case-studies/nuvolum-deployment-platform.html"
+        "about": {"@type": "Organization", "name": "Nuvolum"}
       }
     ]
   }
   </script>
-
-  <style>
-    .cs-metrics { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 0; }
-    .cs-metrics .hero-stats { justify-content: center; gap: 3rem; flex-wrap: wrap; }
-    .cs-story { max-width: 780px; margin: 0 auto; }
-    .cs-story p { font-size: 1.08rem; color: #ccc; line-height: 1.85; margin-bottom: 1.25rem; }
-    .cs-story h3 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
-    .cs-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .cs-related-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.75rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; display: block; }
-    .cs-related-card:hover { border-color: var(--orange); transform: translateY(-3px); }
-    .cs-related-card h3 { font-size: 1.1rem; margin: 0.5rem 0; }
-    .cs-related-card p { font-size: 0.9rem; color: var(--dim); margin: 0; }
-    .cs-related-card .read-link { color: var(--orange); font-size: 0.85rem; margin-top: 1rem; display: inline-block; }
-    .result-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
-    .result-row-item { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem 1.5rem; }
-    .result-row-item .metric-n { font-size: 2.2rem; font-weight: 800; color: var(--orange); display: block; }
-    .result-row-item .metric-l { font-size: 0.8rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
-    .result-row-item p { font-size: 0.9rem; color: #bbb; margin-top: 0.4rem; }
-
-    /* ── Case Study Hero Override ── */
-    .cs-hero-visual { display: flex; justify-content: flex-end; align-items: center; position: relative; padding-right: 2rem; }
-    .cs-glass-card {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 28px;
-      padding: 4rem 3rem;
-      text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-      backdrop-filter: blur(24px) saturate(180%);
-      transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    @media (max-width: 960px) {
-      .cs-glass-card { transform: none; padding: 3rem 2rem; margin-top:2rem;}
-      .cs-hero-visual { padding-right: 0;}
-    }
-    .cs-glass-card:hover { transform: perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-8px); }
-    .cs-glass-card::before {
-      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle at center, rgba(var(--glow), 0.15) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cs-glass-num {
-      font-size: clamp(4rem, 6vw, 6rem); font-weight: 800;
-      line-height: 1; letter-spacing: -0.04em;
-      background: linear-gradient(135deg, #fff 0%, var(--orange) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 0.5rem; filter: drop-shadow(0 4px 12px rgba(var(--glow), 0.3));
-    }
-    .cs-glass-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dim); font-weight: 700; margin-top: 1rem; }
-    .cs-glass-sub { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500; margin-top: 0.5rem; }
-  </style>
 </head>
 <body>
-
   <div class="noise" aria-hidden="true"></div>
   <div class="spotlight-cursor" id="spotlightCursor" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="57 home">
-        <img src="../images/57_wht_notext.png" alt="57" class="nav-logo-img" />
-      </a>
-      <a href="/#results" class="nav-link" style="font-size:0.9rem; color:var(--dim);">← All Case Studies</a>
-      <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="nav-cta" id="navBook">Book a Call</a>
-      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="/" class="nav-logo" aria-label="57 home"><img src="../images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
+      <nav class="nav-links" id="navLinks" aria-label="Case study navigation">
+        <a href="/#results" class="nav-link">Case Studies</a>
+        <a href="#approach" class="nav-link">Approach</a>
+        <a href="#results" class="nav-link">Results</a>
+        <a href="#fit" class="nav-link">Fit</a>
+      </nav>
+      <a href="#fit-call" class="nav-cta" id="navBook">Request a Fit Call</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <section class="hero" id="hero">
-    <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
-    
-    <div class="hero-content">
-      <div class="hero-badge fade-up">Case Study &middot; Nuvolum &middot; Dental Marketing</div>
-      <h1 class="hero-headline fade-up delay-1">
-        Weeks to hours. <span class="text-orange">Custom work, without the launch bottleneck.</span>
-      </h1>
-      <p class="hero-sub fade-up delay-2">
-        Nuvolum’s premium dental sites were deliberately custom. The challenge was building a delivery system that could preserve that quality while making every new launch faster and more repeatable.
-      </p>
-      <div class="hero-actions fade-up delay-3">
-        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="heroBook">Build a Delivery Platform</a>
-        <a href="/" class="btn-ghost">&larr; Back to 57</a>
-      </div>
-    </div>
-
-    <div class="cs-hero-visual fade-up delay-4">
-      <div class="cs-glass-card">
-        <div class="cs-wordmark">NUVOLUM</div>
-        <div class="cs-glass-num">200+</div>
-        <div class="cs-glass-label" style="margin-bottom: 2rem;">Custom sites launched</div>
-        <div class="cs-glass-num" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">&lt;4 hrs</div>
-        <div class="cs-glass-label" style="margin-top: 0.5rem;">Per deployment</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cs-metrics">
-    <div class="container">
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-n">200+</span><span class="stat-l">Custom sites launched</span></div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat"><span class="stat-n">&lt;4 hrs</span><span class="stat-l">Per deployment</span></div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat"><span class="stat-n">7 → 50</span><span class="stat-l">Company growth in four years</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section class="section" id="challenge">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">The Problem</p>
-        <h2 class="section-title fade-up delay-1">Custom client sites. <span class="text-muted">A coordination-heavy fulfillment process.</span></h2>
-
-        <p>Nuvolum was producing high-end websites for dental and oral-surgery practices. Every engagement had its own personality, specialty, location, original video, and content strategy. That customization was the point—and it was also what made the delivery process hard to scale.</p>
-
-        <p>Every new site meant a chain of design handoffs, content assembly, WordPress configuration, video handling, domain setup, analytics, forms, and QA. The quality bar was right; the production system underneath it could not keep carrying that much repetitive work by hand.</p>
-
-        <p>The opportunity was to standardize the repeatable parts without turning a premium, custom product into a template factory.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" id="solution">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">What We Built</p>
-        <h2 class="section-title fade-up delay-1">A deployment platform — <span class="text-muted">not a shortcut.</span></h2>
-
-        <p>57 built a deployment platform around reusable architecture, automated configuration, video handling, and launch QA. It gave the team a faster path through the work that repeated while leaving the creative choices that made each site feel unique in human hands.</p>
-
-        <h3>Modular Site Architecture</h3>
-        <p>A configurable component system supported different practice sizes, specialties, locations, and brand directions without rebuilding the same technical foundation from scratch.</p>
-
-        <h3>4K Video Integration Engine</h3>
-        <p>The workflow handled custom 4K video through encoding, compression, responsive delivery, and placement so a media-heavy site did not become a new production exception every time.</p>
-
-        <h3>Automated Configuration & QA</h3>
-        <p>Domains, analytics, forms, SEO defaults, and mobile QA moved into a repeatable checklist with clear exception handling, which let the team focus attention where it was actually needed.</p>
-
-        <ul class="feature-list">
-          <li>Modular component system for site-specific branding</li>
-          <li>Video encoding, compression, and responsive-delivery workflow</li>
-          <li>Repeatable domain, analytics, and form configuration</li>
-          <li>Mobile and performance QA checklist with exception flagging</li>
-          <li>CMS setup and training-material workflow for new client launches</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="results">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">The Result</p>
-        <h2 class="section-title fade-up delay-1">Repeated launch work became <span class="text-muted">a documented system.</span></h2>
-
-        <p>The deployment ceiling stopped being the limit. Nuvolum launched more than 200 custom sites through the system, reducing a new deployment from weeks of coordination to under four hours while preserving the video, content, and brand work that justified a premium engagement.</p>
-
-        <div class="result-row">
-          <div class="result-row-item fade-up">
-            <span class="metric-n">200+</span>
-            <span class="metric-l">Custom sites launched</span>
-            <p>A repeatable operating system built for a high-volume custom product.</p>
-          </div>
-          <div class="result-row-item fade-up delay-1">
-            <span class="metric-n">&lt;4 hrs</span>
-            <span class="metric-l">Per deployment</span>
-            <p>Site configuration and launch work went from weeks to a single afternoon.</p>
-          </div>
-          <div class="result-row-item fade-up delay-2">
-            <span class="metric-n">7 → 50</span>
-            <span class="metric-l">Agency growth context</span>
-            <p>A platform built to support growth without treating every new site as a fresh technical build.</p>
-          </div>
-        </div>
-
-        <div class="proof-note">
-          <h3>The strategic takeaway</h3>
-          <p>When a service is genuinely custom, scale does not come from removing the craft. It comes from building the system that keeps the craft from getting buried under repetitive setup work.</p>
+  <main>
+    <section class="hero case-hero" id="hero">
+      <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-badge fade-up">Delivery-platform engagement · Nuvolum · Dental marketing</div>
+        <h1 class="hero-headline fade-up delay-1">
+          More than 200 custom sites—<span class="text-orange">without rebuilding the launch process every time.</span>
+        </h1>
+        <p class="hero-sub fade-up delay-2">
+          Nuvolum’s clients were paying for custom work. The problem was everything around that work kept getting rebuilt too. We separated the technical pieces that could repeat from the creative decisions that should not. The repeatable deployment stage dropped to under four hours, and the system went on to support more than 200 custom sites.
+        </p>
+        <div class="hero-actions fade-up delay-3">
+          <a href="#fit-call" class="btn-primary" id="heroBook">Request a Delivery-System Fit Call</a>
+          <a href="#approach" class="btn-ghost">See What Was Standardized ↓</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" id="fit">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">Could This Work for You?</p>
-        <h2 class="section-title fade-up delay-1">A strong fit when <span class="text-muted">custom delivery is limiting your capacity.</span></h2>
-        <p class="cs-fit-intro fade-up delay-2">This is for agencies and service businesses that sell tailored work but rebuild the same technical and operational setup for every launch. The goal is not a template factory; it is reusable infrastructure that protects the craft clients are paying for.</p>
-        <div class="cs-capability-grid fade-up delay-3">
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Product architecture</h3>
-            <p>Identify the components that can be configured without flattening the work into a generic template.</p>
-          </article>
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Delivery automation</h3>
-            <p>Systematize repeatable setup—from assets and forms to domains and video—while keeping exceptions visible.</p>
-          </article>
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>QA + handoff</h3>
-            <p>Create a launch process, exception rules, and team handoff that make quality repeatable as volume grows.</p>
-          </article>
+      <div class="cs-hero-visual fade-up delay-4">
+        <div class="cs-glass-card">
+          <div class="cs-wordmark">NUVOLUM</div>
+          <span class="cs-glass-num" data-static-number>200+</span>
+          <span class="cs-glass-label">Custom sites launched through the system</span>
+          <span class="cs-glass-num cs-glass-num--compact" data-static-number>&lt;4 hours</span>
+          <span class="cs-glass-sub">Reported repeatable technical deployment time; custom creative production excluded</span>
         </div>
-        <a class="btn-primary cs-fit-cta" href="https://calendly.com/yrc-strategies/intro-call" target="_blank" rel="noopener">Map your delivery bottleneck <span>→</span></a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="related">
-    <div class="container">
-      <p class="label fade-up">Continue Reading</p>
-      <h2 class="section-title fade-up delay-1">More work <span class="text-muted">like this.</span></h2>
-      <div class="cs-related-grid">
-        <a href="drivesavers-seo-overhaul.html" class="cs-related-card fade-up">
-          <p class="label">Case Study · DriveSavers</p>
-          <h3>Connected website, search, review, and operations</h3>
-          <p>How a recognizable service brand turned fragmented digital work into one accountable program.</p>
-          <span class="read-link">Read the case study →</span>
-        </a>
-        <a href="ux-owl-sonoma-attorneys.html" class="cs-related-card fade-up delay-1">
-          <p class="label">Case Study · UX Owl</p>
-          <h3>Lead attribution for Sonoma County attorneys</h3>
-          <p>A co-founded venture that brought campaigns, calls, and conversion reporting into the same picture.</p>
-          <span class="read-link">Read the case study →</span>
-        </a>
+    <section class="case-proof-strip" aria-label="Nuvolum proof summary">
+      <div class="container">
+        <div class="case-proof-grid">
+          <div class="case-proof-item"><strong>200+ launches</strong><span>Custom client sites shipped through the deployment system</span></div>
+          <div class="case-proof-item"><strong>Under 4 hours</strong><span>Reported repeatable technical deployment and configuration stage</span></div>
+          <div class="case-proof-item"><strong>Creative stayed custom</strong><span>Brand, content, and video decisions remained project-specific</span></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section cta-section" id="contact">
-    <div class="container">
-      <div class="cta-card fade-up">
-        <div class="cta-orb" aria-hidden="true"></div>
-        <p class="label">Let's Talk</p>
-        <h2 class="cta-headline">Is a manual process<br /><span class="text-orange">capping your growth?</span></h2>
-        <p class="cta-sub">Bring a current launch checklist and one recent example. We'll separate the repeatable work from the judgment calls and define the baseline before estimating impact.</p>
-        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" id="ctaBook">Request a Fit Call</a>
-        <p class="cta-note">Meeting format and availability are confirmed when scheduled.</p>
+    <section class="section" id="context">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-context-grid">
+            <article class="case-context-card">
+              <span>What was happening</span>
+              <h2>Every site needed to feel like the client</h2>
+              <p>Each practice had its own specialty, market, brand, content, locations, and original video. The visible work could not be stamped out from one generic template.</p>
+            </article>
+            <article class="case-context-card">
+              <span>What had to change</span>
+              <h2>Ship faster without flattening the product</h2>
+              <p>Nuvolum needed more delivery capacity, but not at the cost of the custom work clients were actually paying for.</p>
+            </article>
+            <article class="case-context-card">
+              <span>When this matters</span>
+              <h2>Your custom work is valuable; the setup around it is capping growth</h2>
+              <p>This is the pattern to look for: the final product changes, but the same technical preparation, QA, and handoff work keeps coming back.</p>
+            </article>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="section section--alt" id="before">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">Here’s the Bottleneck</p>
+            <h2 class="section-title">The craft was valuable. <span class="text-muted">The repeated setup around it was not.</span></h2>
+          </div>
+          <div class="case-split">
+            <div class="case-copy">
+              <p>Every launch brought back the same chain of work: configure WordPress, place video, connect domains, set analytics, verify forms, check mobile behavior, resolve exceptions, and hand the site over. The client-facing work changed. Most of the technical coordination did not.</p>
+              <h3>Why that became a real problem</h3>
+              <p>As volume grew, skilled people spent more time recreating launch conditions and less time on the judgment clients were paying for. Hiring more people could absorb some volume, but it would keep the same expensive process alive.</p>
+              <h3>The real decision</h3>
+              <p>The question was not “custom or standardized?” It was which decisions genuinely required human judgment and which technical steps should become reusable infrastructure.</p>
+            </div>
+            <aside class="case-side-card" aria-label="Nuvolum alternatives">
+              <p class="label">The obvious alternatives</p>
+              <h3>Each one solved only half the problem.</h3>
+              <ul>
+                <li>Templates could speed delivery but weaken premium differentiation.</li>
+                <li>More staff could absorb volume but keep the broken launch process intact.</li>
+                <li>Continuing project by project protected custom work while preserving the capacity ceiling.</li>
+              </ul>
+            </aside>
+          </div>
+          <div class="case-insight">
+            <span>The real diagnosis</span>
+            <p>The custom work was not the bottleneck. Rebuilding the same launch conditions by hand was.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-section-head">
+            <p class="label">What We Changed</p>
+            <h2 class="section-title">Standardize the invisible work. <span class="text-muted">Keep the visible work custom.</span></h2>
+            <p>The key decision was drawing the right line. Anything clients valued as custom stayed custom. Anything the team kept rebuilding became part of the platform.</p>
+          </div>
+          <div class="case-decision-grid">
+            <article class="case-decision-card">
+              <span>Decision 01</span>
+              <h3>Build the foundation once</h3>
+              <p>Reusable architecture supported different practices, specialties, locations, and content structures without restarting from zero.</p>
+              <small class="case-value-line">The practical value: less repeated assembly and more capacity for strategy, creative work, and the exceptions that actually mattered.</small>
+            </article>
+            <article class="case-decision-card">
+              <span>Decision 02</span>
+              <h3>Give custom media a repeatable path</h3>
+              <p>Encoding, compression, responsive delivery, and placement gave custom 4K video a defined path instead of making it a new exception on every site.</p>
+              <small class="case-value-line">The practical value: fewer launch surprises while premium video stayed practical at higher volume.</small>
+            </article>
+            <article class="case-decision-card">
+              <span>Decision 03</span>
+              <h3>Spend human attention on exceptions</h3>
+              <p>Domains, analytics, forms, SEO defaults, mobile checks, and handoff followed a documented path while unusual cases stayed visible.</p>
+              <small class="case-value-line">The practical value: faster release without pretending every project was identical.</small>
+            </article>
+          </div>
+          <div class="case-objection">
+            <strong>You may be thinking: “Standardization will make the work generic.”</strong>
+            <p>It will if you standardize the wrong things. We standardized the repeated technical infrastructure. Brand direction, content, video, and market decisions stayed custom—the part buyers could actually see and value.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="implementation">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">How It Worked</p>
+            <h2 class="section-title">A launch stopped being <span class="text-muted">a brand-new technical project.</span></h2>
+          </div>
+          <div class="case-mechanism" aria-label="Nuvolum deployment workflow">
+            <div class="case-mechanism-step"><b>01</b><strong>Project inputs</strong><span>Brand, content, locations, specialty, and video enter the workflow.</span></div>
+            <div class="case-mechanism-step"><b>02</b><strong>Configuration</strong><span>Reusable architecture is set for the specific engagement.</span></div>
+            <div class="case-mechanism-step"><b>03</b><strong>Media handling</strong><span>Video and assets follow the defined delivery path.</span></div>
+            <div class="case-mechanism-step"><b>04</b><strong>Launch QA</strong><span>Forms, analytics, mobile, performance, and exceptions are checked.</span></div>
+            <div class="case-mechanism-step"><b>05</b><strong>Handoff</strong><span>The configured site and operating materials move to the team.</span></div>
+          </div>
+          <p>That changed the unit of work. A new engagement started as a configuration and creative project with a known launch path—not another technical build from scratch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">What Changed</p>
+            <h2 class="section-title">The launch process stopped being <span class="text-muted">the ceiling on custom delivery.</span></h2>
+            <p>More than 200 custom client sites moved through the system. The reported repeatable technical deployment stage fell to under four hours. The important part is what did not change: the creative work that justified the premium engagement stayed tailored.</p>
+          </div>
+          <figure class="case-data-visual" data-visual="capacity-facets">
+            <div class="case-data-visual-head">
+              <div>
+                <span class="case-data-visual-kicker">Two different measures</span>
+                <h3>More volume, with a tighter technical launch window</h3>
+              </div>
+              <p>Launch count and deployment time are shown separately because they measure different things.</p>
+            </div>
+            <div class="case-facet-grid" role="group" aria-label="Nuvolum reported launch volume and technical deployment timing">
+              <div class="case-facet">
+                <div class="case-facet-label"><span>Custom sites launched</span><strong>200+</strong></div>
+                <div class="case-scale" aria-hidden="true"><i class="case-scale-fill"></i><i class="case-scale-marker"></i></div>
+                <div class="case-scale-ticks" aria-hidden="true"><span>0</span><span>100</span><span>200+</span></div>
+              </div>
+              <div class="case-facet">
+                <div class="case-facet-label"><span>Repeatable technical deployment</span><strong>&lt;4 hours</strong></div>
+                <div class="case-scale case-scale--ceiling" aria-hidden="true"><i class="case-scale-fill"></i><i class="case-scale-marker"></i></div>
+                <div class="case-scale-ticks" aria-hidden="true"><span>0</span><span>2</span><span>4-hour ceiling</span></div>
+              </div>
+            </div>
+            <figcaption>The timing measure covers repeatable technical deployment and configuration. It does not include original brand strategy, content creation, custom video production, approvals, or every exception.</figcaption>
+          </figure>
+          <div class="case-results-grid">
+            <article class="case-result-card">
+              <span>What shipped</span>
+              <strong>200+ custom sites</strong>
+              <p>Reported launch volume through the reusable deployment workflow.</p>
+            </article>
+            <article class="case-result-card">
+              <span>What got faster</span>
+              <strong>Under 4 hours</strong>
+              <p>Reported timing for the repeatable technical deployment and configuration stage.</p>
+            </article>
+            <article class="case-result-card">
+              <span>What the business owned</span>
+              <strong>Reusable delivery asset</strong>
+              <p>The launch system became infrastructure the organization could use across client work.</p>
+            </article>
+          </div>
+          <p class="case-evidence-note"><strong>What the timing does—and does not—cover:</strong> “under four hours” refers to the repeatable technical deployment and configuration stage. It does not include original strategy, content, video production, approvals, or every exception. The company’s broader growth from 7 to 50 people is context, not a result we are claiming this platform caused by itself.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="takeaway">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-takeaway">
+            <span>57</span>
+            <div>
+              <h2>The practical lesson</h2>
+              <p>Custom delivery can scale, but only if you stop treating every repeated setup step like custom work. Protect the judgment clients pay for. Systematize the rest.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-section-head">
+            <p class="label">Does This Sound Familiar?</p>
+            <h2 class="section-title">This is worth looking at when <span class="text-muted">custom delivery is valuable but repeated setup is limiting capacity.</span></h2>
+          </div>
+          <div class="case-fit-grid">
+            <article class="case-fit-panel">
+              <span>Likely fit</span>
+              <h3>You can separate repeated delivery work from the judgment clients pay for.</h3>
+              <ul>
+                <li>You sell tailored sites, reports, campaigns, documents, or configured products.</li>
+                <li>Each delivery repeats setup, QA, deployment, or handoff work.</li>
+                <li>Your team has enough recent projects to identify a stable pattern and meaningful exceptions.</li>
+                <li>Delay means adding staff or slowing sales while the same bottleneck remains.</li>
+              </ul>
+              <p class="case-artifact"><strong>Bring to the first call:</strong> the current launch checklist, one recent project folder, the tools involved, and the exceptions that consumed the most attention.</p>
+            </article>
+            <article class="case-fit-panel case-fit-panel--muted">
+              <span>Probably not yet</span>
+              <h3>There is no stable delivery pattern to systematize.</h3>
+              <ul>
+                <li>Every project is genuinely different at the workflow level, not only the creative level.</li>
+                <li>You want a template library more than an operating platform.</li>
+                <li>The current process has not been observed closely enough to define repeatable inputs and acceptance criteria.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="related">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <p class="label">Related Decisions</p>
+          <h2 class="section-title">More examples of <span class="text-muted">turning repeated work into owned infrastructure.</span></h2>
+          <div class="cs-related-grid">
+            <a href="dent-experts-storm-ops-flow.html" class="cs-related-card">
+              <p class="label">Case Study · Dent Experts</p>
+              <h3>Center field work on an operator-owned record</h3>
+              <p>A mobile and operations system connected inspection evidence to office decisions.</p>
+              <span class="read-link">Read the case study →</span>
+            </a>
+            <a href="../bay-area-business-automation.html" class="cs-related-card">
+              <p class="label">Buying Guide · Automation</p>
+              <h3>Find the repeated workflow worth fixing first</h3>
+              <p>Compare configuration, integration, and custom development around one defined outcome.</p>
+              <span class="read-link">Review the automation guide →</span>
+            </a>
+            <a href="../ai-app-prototype-to-production.html" class="cs-related-card">
+              <p class="label">Product Guide · AI Prototype</p>
+              <h3>Move a working demo toward dependable delivery</h3>
+              <p>Assess ownership, data, release, reliability, and the smallest responsible next version.</p>
+              <span class="read-link">Review the prototype guide →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section" id="fit-call">
+      <div class="container">
+        <div class="cta-card fade-up">
+          <div class="cta-orb" aria-hidden="true"></div>
+          <p class="label">Delivery-System Fit Call</p>
+          <h2 class="cta-headline">Bring the launch checklist.<br /><span class="text-orange">We’ll separate craft from repetition.</span></h2>
+          <p class="cta-sub">We’ll walk through one recent delivery, separate the repeated configuration and QA work from the judgment that must stay custom, and decide whether the next move is a small internal tool, a reusable platform, or simply cleaning up the process.</p>
+          <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" id="ctaBook" data-cta-location="nuvolum_case_fit_call">Request a Fit Call</a>
+          <p class="cta-note">No speed or capacity estimate is made until the current workflow, exceptions, and measurement boundary are defined.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <a href="/" class="footer-logo" aria-label="57">
-        <img src="../images/57_wht_notext.png" alt="57" class="footer-logo-img" />
-      </a>
-      <div class="footer-address">
-        <span>57 Custom Software Development</span>
-      </div>
+      <a href="/" class="footer-logo" aria-label="57 home"><img src="../images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a>
+      <div class="footer-address"><span>57 Custom Software Development</span></div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="/">Home</a>
-        <a href="../sonoma-county-software-development.html">Sonoma</a>
-        <a href="../bay-area-business-automation.html">Bay Area</a>
+        <a href="../#services">Services</a>
         <a href="../ai-app-prototype-to-production.html">AI Prototype Guide</a>
-        <a href="../ai-prototype-readiness-security-checklist.html">Readiness Checklist</a>
-        <a href="../silicon-valley-software-consulting.html">Silicon Valley</a>
-        <a href="../#results">Case Studies</a>
+        <a href="../sonoma-county-software-development.html">Sonoma County</a>
+        <a href="../bay-area-business-automation.html">Bay Area</a>
         <a href="../privacy.html">Privacy</a>
         <a href="../terms.html">Terms</a>
       </nav>
       <p class="footer-copy">&copy; 2026 57. All rights reserved.</p>
     </div>
   </footer>
-
   <script src="../main.js"></script>
 </body>
 </html>

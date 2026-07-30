@@ -6,10 +6,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://why57.com/case-studies/dent-experts-storm-ops-flow.html" />
-  <title>Dent Experts: Custom iPhone App + Storm Ops Flow | 57</title>
-  <meta name="description" content="How 57 built Dent Experts a custom iPhone app and Storm Ops Flow system for field inspections, claim records, and operations visibility." />
-  <meta property="og:title" content="Dent Experts: Custom iPhone App + Storm Ops Flow | 57" />
-  <meta property="og:description" content="A custom field-to-office system for Dent Experts and Storm Ops Flow." />
+  <title>Dent Experts Field Operations App + Storm Ops Flow | 57</title>
+  <meta name="description" content="How Dent Experts connected field inspections, photos, job records, assignments, and office visibility in an operator-centered iPhone and operations system." />
+  <meta property="og:title" content="Dent Experts: An Operator-Centered Field Operations System | 57" />
+  <meta property="og:description" content="A custom iPhone field experience and shared job record kept inspection evidence, handoffs, and office decisions connected." />
   <meta property="og:image" content="https://why57.com/images/og-case-studies.png" />
   <meta property="og:url" content="https://why57.com/case-studies/dent-experts-storm-ops-flow.html" />
   <meta property="og:type" content="article" />
@@ -19,311 +19,379 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css?v=5" />
-
+  <link rel="stylesheet" href="../style.css?v=8" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": "Organization",
         "@id": "https://why57.com/#localbusiness",
         "name": "57 Custom Software Development",
         "url": "https://why57.com"
       },
       {
         "@type": "Article",
-        "headline": "Dent Experts: Custom iPhone App + Storm Ops Flow",
-        "description": "A custom field-to-office system for Dent Experts, combining an iPhone app, claim records, and operations visibility.",
+        "@id": "https://why57.com/case-studies/dent-experts-storm-ops-flow.html#article",
+        "url": "https://why57.com/case-studies/dent-experts-storm-ops-flow.html",
+        "headline": "Dent Experts: An Operator-Centered Field Operations System",
+        "description": "A case study about a custom iPhone field experience, shared job record, external claim handoffs, and management visibility for Dent Experts and Storm Ops Flow.",
+        "image": "https://why57.com/images/og-case-studies.png",
+        "inLanguage": "en",
+        "dateModified": "2026-07-30",
+        "mainEntityOfPage": "https://why57.com/case-studies/dent-experts-storm-ops-flow.html",
         "author": {"@type": "Person", "name": "Gera Yeremin"},
         "publisher": {"@id": "https://why57.com/#localbusiness"},
-        "url": "https://why57.com/case-studies/dent-experts-storm-ops-flow.html"
+        "about": [
+          {"@type": "Organization", "name": "Dent Experts"},
+          {"@type": "SoftwareApplication", "name": "Storm Ops Flow", "applicationCategory": "BusinessApplication"}
+        ]
       }
     ]
   }
   </script>
-
-  <style>
-    .cs-metrics { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 0; }
-    .cs-metrics .hero-stats { justify-content: center; gap: 3rem; flex-wrap: wrap; }
-    .cs-story { max-width: 780px; margin: 0 auto; }
-    .cs-story p { font-size: 1.08rem; color: #ccc; line-height: 1.85; margin-bottom: 1.25rem; }
-    .cs-story h3 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
-    .cs-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .cs-related-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.75rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; display: block; }
-    .cs-related-card:hover { border-color: var(--orange); transform: translateY(-3px); }
-    .cs-related-card h3 { font-size: 1.1rem; margin: 0.5rem 0; }
-    .cs-related-card p { font-size: 0.9rem; color: var(--dim); margin: 0; }
-    .cs-related-card .read-link { color: var(--orange); font-size: 0.85rem; margin-top: 1rem; display: inline-block; }
-    .result-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
-    .result-row-item { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem 1.5rem; }
-    .result-row-item .metric-n { font-size: 2.2rem; font-weight: 800; color: var(--orange); display: block; }
-    .result-row-item .metric-l { font-size: 0.8rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
-    .result-row-item p { font-size: 0.9rem; color: #bbb; margin-top: 0.4rem; }
-
-    /* ── Case Study Hero Override ── */
-    .cs-hero-visual { display: flex; justify-content: flex-end; align-items: center; position: relative; padding-right: 2rem; }
-    .cs-glass-card {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 28px;
-      padding: 2rem 2rem 2.5rem;
-      text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-      backdrop-filter: blur(24px) saturate(180%);
-      transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow: hidden;
-    }
-    @media (max-width: 960px) {
-      .cs-glass-card { transform: none; padding: 1.5rem 1.5rem 2rem; margin-top:2rem;}
-      .cs-hero-visual { padding-right: 0;}
-    }
-    .cs-glass-card:hover { transform: perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-8px); }
-    .cs-glass-card::before {
-      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle at center, rgba(var(--glow), 0.15) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cs-glass-num {
-      font-size: clamp(4rem, 6vw, 6rem); font-weight: 800;
-      line-height: 1; letter-spacing: -0.04em;
-      background: linear-gradient(135deg, #fff 0%, var(--orange) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 0.5rem; filter: drop-shadow(0 4px 12px rgba(var(--glow), 0.3));
-    }
-    .cs-glass-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dim); font-weight: 700; margin-top: 1rem; }
-    .cs-glass-sub { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500; margin-top: 0.5rem; }
-
-  </style>
 </head>
 <body>
-
   <div class="noise" aria-hidden="true"></div>
   <div class="spotlight-cursor" id="spotlightCursor" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="57 home">
-        <img src="../images/57_wht_notext.png" alt="57" class="nav-logo-img" />
-      </a>
-      <a href="/#results" class="nav-link" style="font-size:0.9rem; color:var(--dim);">← All Case Studies</a>
-      <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="nav-cta" id="navBook">Book a Call</a>
-      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="/" class="nav-logo" aria-label="57 home"><img src="../images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
+      <nav class="nav-links" id="navLinks" aria-label="Case study navigation">
+        <a href="/#results" class="nav-link">Case Studies</a>
+        <a href="#approach" class="nav-link">Approach</a>
+        <a href="#results" class="nav-link">Results</a>
+        <a href="#fit" class="nav-link">Fit</a>
+      </nav>
+      <a href="#fit-call" class="nav-cta" id="navBook">Request a Fit Call</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <section class="hero" id="hero">
-    <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
-
-    <div class="hero-content">
-      <div class="hero-badge fade-up">Case Study &middot; Dent Experts &middot; Storm Ops Flow</div>
-      <h1 class="hero-headline fade-up delay-1">
-        The operator’s app. <span class="text-orange">Not another carrier workflow.</span>
-      </h1>
-      <p class="hero-sub fade-up delay-2">
-        Dent Experts needed a system built around the field team: inspections, photos, claim records, handoffs, and the office visibility needed to run a storm operation without losing context.
-      </p>
-      <div class="hero-actions fade-up delay-3">
-        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="heroBook">Map a Field Operations App</a>
-        <a href="/" class="btn-ghost">&larr; Back to 57</a>
-      </div>
-    </div>
-
-    <div class="cs-hero-visual fade-up delay-4">
-      <div class="cs-glass-card">
-        <img src="../images/storm_ops_flow_logo.png" alt="Storm Ops Flow" class="cs-brand-logo cs-brand-logo--wide" />
-        <img src="../images/dent_experts_iphone.png" alt="Storm Ops Flow product interface" class="cs-product-shot" />
-        <span class="cs-glass-sub">Product concept UI · custom iPhone app and connected operations system</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="cs-metrics">
-    <div class="container">
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-n">iPhone</span><span class="stat-l">Native field app</span></div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat"><span class="stat-n">Connected</span><span class="stat-l">Claim records</span></div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat"><span class="stat-n">Storm Ops Flow</span><span class="stat-l">End-to-end operations</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section class="section" id="challenge">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">The Problem</p>
-        <h2 class="section-title fade-up delay-1">Running a PDR operation <span class="text-muted">across disconnected handoffs.</span></h2>
-
-        <p>Dent Experts operates a paintless dent repair (PDR) business where field crews, adjusters, office staff, customers, and insurance systems can all touch the same job. The usual tools are optimized for the carrier. Dent Experts needed a system optimized for the people doing the actual inspection, documentation, and repair work.</p>
-
-        <p>Field context was vulnerable at every handoff: a vehicle, photos, severity, claim details, next action, and who owned it next. When the record lived across separate tools, the team had to reconstruct the job instead of moving it forward.</p>
-
-        <p>The brief was a shared field-to-office operating system that kept the operator’s workflow at the center while working alongside the insurance process.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" id="solution">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">What We Built</p>
-        <h2 class="section-title fade-up delay-1">An iPhone field app <span class="text-muted">and shared operations record.</span></h2>
-
-        <p>57 built the Storm Ops Flow system: a custom iPhone app for the field, a shared operations record behind it, and a management layer that made jobs, documentation, and handoffs visible across the business.</p>
-
-        <h3>The iPhone App</h3>
-        <p>The app puts an active job queue, vehicle inspection, photo capture, severity, and claim context in the technician’s hand—where the work is actually happening.</p>
-
-        <h3>Operations Workflow</h3>
-        <p>Storm identification, dispatch, inspection, documentation, claim submission, scheduling, and repair sign-off all work from the same operating record instead of being reconstructed at every new stage.</p>
-
-
-        <h3>Insurance Platform Integration</h3>
-        <p>The system was designed to keep an operator-controlled record central while making room for the insurance-platform and claim-data handoffs that the work requires.</p>
-
-        <h3>Management Dashboard</h3>
-        <p>Management gets a clear view across crews, claim status, photos, documentation, assignments, and pipeline stage—without needing a separate conversation to discover the state of every job.</p>
-
-        <ul class="feature-list">
-          <li>Native iPhone field-inspection app</li>
-          <li>Photo-capture workflow connected to claim records</li>
-          <li>Staged operations workflow from dispatch through repair sign-off</li>
-          <li>Claim-data integration points built around an operator-owned record</li>
-          <li>Management view for pipeline, assignments, and claim status</li>
-          <li>Multi-crew operations support for storm work</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="results">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">The Result</p>
-        <h2 class="section-title fade-up delay-1">A field-to-office system <span class="text-muted">designed around the operator.</span></h2>
-
-        <p>Storm Ops Flow gave Dent Experts a platform shaped around how its operators actually work: one field app, one shared job record, and one operating view from inspection through repair. The team’s assessment was direct: the system rivals the major insurance platforms they use every day—because it is built for the operator instead of the carrier.</p>
-
-        <div class="result-row">
-          <div class="result-row-item fade-up">
-            <span class="metric-n">iPhone</span>
-            <span class="metric-l">Native field app</span>
-            <p>Job queue, vehicle inspection, and on-site photo capture where work happens.</p>
-          </div>
-          <div class="result-row-item fade-up delay-1">
-            <span class="metric-n">Shared</span>
-            <span class="metric-l">Operations record</span>
-            <p>Field data and back-office context stay connected to the same job.</p>
-          </div>
-          <div class="result-row-item fade-up delay-2">
-            <span class="metric-n">End-to-end</span>
-            <span class="metric-l">Storm operations</span>
-            <p>Inspection, documentation, claim, scheduling, and repair stages work from one system.</p>
-          </div>
-        </div>
-
-        <div class="proof-note">
-          <h3>Client perspective</h3>
-          <p>“He built a complete Apple application and custom system that rivals the major insurance platforms we use daily.” — Dent Experts</p>
+  <main>
+    <section class="hero case-hero" id="hero">
+      <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-badge fade-up">Client engagement · Dent Experts · Storm Ops Flow</div>
+        <h1 class="hero-headline fade-up delay-1">
+          Field inspection to office decision—<span class="text-orange">one operator-owned record.</span>
+        </h1>
+        <p class="hero-sub fade-up delay-2">
+          Dent Experts did not just need another field app. The real problem was that photos, vehicle and claim details, assignments, and office decisions kept getting separated as the job moved. We built the iPhone experience and shared system around the operator’s record—not around the carrier’s version of the claim.
+        </p>
+        <div class="hero-actions fade-up delay-3">
+          <a href="#fit-call" class="btn-primary" id="heroBook">Request a Field-Workflow Fit Call</a>
+          <a href="#approach" class="btn-ghost">See the Shared-Record Model ↓</a>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="cs-hero-visual fade-up delay-4">
+        <figure class="cs-glass-card cs-glass-card--product">
+          <img src="../images/storm_ops_flow_logo.png" alt="Storm Ops Flow logo" class="cs-brand-logo cs-brand-logo--wide" />
+          <img src="../images/dent_experts_iphone.png" alt="Concept UI showing the Storm Ops Flow iPhone field workflow" class="cs-product-shot" />
+          <figcaption class="cs-glass-sub">Product concept UI · representative iPhone field experience, not a production screenshot</figcaption>
+        </figure>
+      </div>
+    </section>
 
-  <section class="section section--alt" id="fit">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">Could This Work for You?</p>
-        <h2 class="section-title fade-up delay-1">A strong fit when <span class="text-muted">field work gets rebuilt at every handoff.</span></h2>
-        <p class="cs-fit-intro fade-up delay-2">This is for operations where field and office teams touch the same job but do not share a trusted record. Start with one job from dispatch to closeout; we map the evidence, handoffs, mobile moments, and existing systems that need to stay connected before proposing a build.</p>
-        <div class="cs-capability-grid fade-up delay-3">
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Field-first product design</h3>
-            <p>Design the mobile experience around the conditions, decisions, and evidence collection that happen on site.</p>
-          </article>
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Workflow + evidence</h3>
-            <p>Connect photos, inspections, job status, and sign-off so the same job is not reconstructed by every team.</p>
-          </article>
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Integrations + operations views</h3>
-            <p>Keep the operator-owned record central while connecting the outside systems and management visibility the work needs.</p>
-          </article>
+    <section class="case-proof-strip" aria-label="Dent Experts proof summary">
+      <div class="container">
+        <div class="case-proof-grid">
+          <div class="case-proof-item"><strong>Custom iPhone app</strong><span>Field queue, inspection context, and evidence capture where work happens</span></div>
+          <div class="case-proof-item"><strong>Shared job record</strong><span>Field and office teams work from connected context instead of separate fragments</span></div>
+          <div class="case-proof-item"><strong>Field-to-office coverage</strong><span>Dispatch, inspection, documentation, claim handoff, scheduling, and sign-off</span></div>
         </div>
-        <a class="btn-primary cs-fit-cta" href="https://calendly.com/yrc-strategies/intro-call" target="_blank" rel="noopener">Map your field workflow <span>→</span></a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="related">
-    <div class="container">
-      <p class="label fade-up">Continue Reading</p>
-      <h2 class="section-title fade-up delay-1">More work <span class="text-muted">like this.</span></h2>
-      <div class="cs-related-grid">
-        <a href="nuvolum-deployment-platform.html" class="cs-related-card fade-up">
-          <p class="label">Case Study · Nuvolum</p>
-          <h3>Repeatable branded-site deployment</h3>
-          <p>A custom platform for configuration, custom video, and launch QA at scale.</p>
-          <span class="read-link">Read the case study →</span>
-        </a>
-        <a href="health-for-california-review-engine.html" class="cs-related-card fade-up delay-1">
-          <p class="label">Case Study · Health for California</p>
-          <h3>A review engine built around individual agents</h3>
-          <p>How 57Seconds made follow-up personal and manageable across a large agent network.</p>
-          <span class="read-link">Read the case study →</span>
-        </a>
+    <section class="section" id="context">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-context-grid">
+            <article class="case-context-card">
+              <span>What was happening</span>
+              <h2>Storm work moves the same job across field, office, and insurance processes</h2>
+              <p>Technicians, adjusters, office staff, customers, assignments, vehicles, and evidence can all affect the next decision.</p>
+            </article>
+            <article class="case-context-card">
+              <span>What had to change</span>
+              <h2>Move the job forward without rebuilding the story</h2>
+              <p>The team needed one operator-owned record keeping evidence, ownership, and the next decision visible from dispatch through repair.</p>
+            </article>
+            <article class="case-context-card">
+              <span>When this matters</span>
+              <h2>Your field tool captures data, but the office still rebuilds the job</h2>
+              <p>This is the pattern to look for: one job moves through several people and systems, but no record survives the whole trip.</p>
+            </article>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section cta-section" id="contact">
-    <div class="container">
-      <div class="cta-card fade-up">
-        <div class="cta-orb" aria-hidden="true"></div>
-        <p class="label">Let's Talk</p>
-        <h2 class="cta-headline">Need a custom iPhone app<br /><span class="text-orange">built for your operation?</span></h2>
-        <p class="cta-sub">Bring one current inspection or claim workflow. We'll map the field-to-office handoffs, identify the evidence baseline, and define the smallest useful product slice.</p>
-        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" id="ctaBook">Request a Fit Call</a>
-        <p class="cta-note">Meeting format and availability are confirmed when scheduled.</p>
+    <section class="section section--alt" id="before">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">Here’s the Problem</p>
+            <h2 class="section-title">Every handoff risked <span class="text-muted">turning a live job back into a search for context.</span></h2>
+          </div>
+          <div class="case-split">
+            <div class="case-copy">
+              <p>The technician had the vehicle, photos, severity, and what actually happened on site. The office had claim status, scheduling, and customer communication. The insurance platform had the carrier’s record. Every time those pieces separated, somebody had to reconstruct the job before making the next decision.</p>
+              <h3>What that looked like day to day</h3>
+              <p>Photos lived apart from assignments. Status moved through messages. Office staff had to ask what happened in the field. The same vehicle or claim context was reinterpreted at dispatch, inspection, submission, scheduling, and sign-off.</p>
+              <h3>Why “use the industry platform” was not enough</h3>
+              <p>Carrier-centered software is designed to maintain the carrier’s claim record. Dent Experts needed a working record organized around its crews, evidence, job ownership, and field-to-office decisions while still accommodating the required insurance process.</p>
+            </div>
+            <aside class="case-side-card" aria-label="Dent Experts alternatives">
+              <p class="label">The obvious alternatives</p>
+              <h3>Each tool held part of the job. None owned the operator’s whole workflow.</h3>
+              <ul>
+                <li>Carrier software centered the external claim process.</li>
+                <li>Messaging carried updates but did not create a dependable operating record.</li>
+                <li>Spreadsheets could list status while leaving photos and field evidence elsewhere.</li>
+                <li>A stand-alone inspection app could digitize capture without connecting office decisions.</li>
+              </ul>
+            </aside>
+          </div>
+          <div class="case-insight">
+            <span>The real diagnosis</span>
+            <p>The field app was only one screen in the problem. The actual product was an operator-owned record that stayed useful from inspection through office action.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-section-head">
+            <p class="label">What We Changed</p>
+            <h2 class="section-title">Put the job—not the software—<span class="text-muted">at the center.</span></h2>
+            <p>We treated the mobile experience, shared record, outside handoffs, and management view as one product because the job had to survive all of them.</p>
+          </div>
+          <div class="case-decision-grid">
+            <article class="case-decision-card">
+              <span>Decision 01</span>
+              <h3>Start where the evidence is created</h3>
+              <p>The iPhone experience centered the job queue, vehicle inspection, photo capture, severity, and relevant claim context where the work occurred.</p>
+              <small class="case-value-line">The practical value: the office received job context, not a loose collection of photos and updates.</small>
+            </article>
+            <article class="case-decision-card">
+              <span>Decision 02</span>
+              <h3>Give every role the same working record</h3>
+              <p>Dispatch, inspection, documentation, claim handoff, scheduling, and repair sign-off referenced the same operator-controlled record.</p>
+              <small class="case-value-line">The practical value: each person could move the same job forward instead of rebuilding it.</small>
+            </article>
+            <article class="case-decision-card">
+              <span>Decision 03</span>
+              <h3>Keep outside systems at the boundary</h3>
+              <p>The product allowed for insurance-platform and claim-data handoffs while keeping the operator’s job, evidence, assignments, and management view central.</p>
+              <small class="case-value-line">The practical value: the team could participate in the required claim process without giving up its own end-to-end view.</small>
+            </article>
+          </div>
+          <div class="case-objection">
+            <strong>You may be thinking: “Shouldn’t the industry platform already handle this?”</strong>
+            <p>It may handle the carrier’s record perfectly well. The gap appears when your field evidence, assignments, stages, and management decisions still live somewhere else. The custom system handled that operator layer. It was not trying to replace the entire insurance ecosystem.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="implementation">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">How It Worked</p>
+            <h2 class="section-title">Three teams and systems. <span class="text-muted">One working record in the middle.</span></h2>
+          </div>
+          <div class="case-data-visual" data-visual="shared-record-map">
+            <div class="case-data-visual-head">
+              <div>
+                <span class="case-data-visual-kicker">Shared-record model</span>
+                <h3>The job context stayed in the middle</h3>
+              </div>
+              <p>Field evidence and office decisions stayed connected while required claim handoffs remained visible.</p>
+            </div>
+            <div class="case-system-map" role="group" aria-label="Field team information flows into a shared operator-owned job record, which supports office and management decisions. Required information also moves across a defined boundary to carrier and claim systems.">
+              <div class="case-map-node">
+                <span>Field team</span>
+                <strong>Inspect and document</strong>
+                <small>Vehicle details, severity, photos, notes, and on-site context</small>
+              </div>
+              <div class="case-map-arrow" aria-hidden="true">→</div>
+              <div class="case-map-node case-map-node--core">
+                <span>Operator-owned center</span>
+                <strong>Shared job record</strong>
+                <small>Owner, stage, evidence, assignments, scheduling, and the next required action</small>
+              </div>
+              <div class="case-map-arrow" aria-hidden="true">→</div>
+              <div class="case-map-node">
+                <span>Office + management</span>
+                <strong>Coordinate and advance</strong>
+                <small>Claim handoff, scheduling, customer communication, repair, and sign-off</small>
+              </div>
+            </div>
+            <div class="case-map-boundary" role="note" aria-label="Required claim information could move to carrier and claim systems without making the carrier record the center of Dent Experts' workflow.">
+              <span class="case-map-boundary-link" aria-hidden="true">↔</span>
+              <span class="case-map-boundary-copy">
+                <small>External system boundary</small>
+                <strong>Carrier + claim systems</strong>
+                <span>Required information handoff—not the center of Dent Experts’ workflow.</span>
+              </span>
+            </div>
+          </div>
+          <p>That shared record changed state as the job moved from dispatch to inspection, documentation, coordination, repair, and sign-off. The office did not need a separate conversation just to discover what was happening.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="voice">
+      <div class="container">
+        <figure class="case-quote">
+          <blockquote>“He built a complete Apple application and custom system that rivals the major insurance platforms we use daily.”</blockquote>
+          <figcaption>Dent Experts · attributed client opinion</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="results">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">What Changed</p>
+            <h2 class="section-title">Dent Experts gained <span class="text-muted">a system built around its own work.</span></h2>
+            <p>This case is about an operating result, not a made-up efficiency percentage: a custom field experience, one shared job record, and a management view covering the core field-to-office workflow.</p>
+          </div>
+          <div class="case-results-grid">
+            <article class="case-result-card">
+              <span>What changed in the field</span>
+              <strong>iPhone workflow</strong>
+              <p>Active work, vehicle inspection, photos, and job context became available where the evidence was created.</p>
+            </article>
+            <article class="case-result-card">
+              <span>What connected the handoff</span>
+              <strong>Shared job record</strong>
+              <p>Field evidence and office context stayed attached to the same operator-controlled job.</p>
+            </article>
+            <article class="case-result-card">
+              <span>What management could see</span>
+              <strong>Cross-stage visibility</strong>
+              <p>Crews, assignments, documentation, claim status, and pipeline stage could be viewed together.</p>
+            </article>
+          </div>
+          <p class="case-evidence-note"><strong>What we are not claiming:</strong> there is no quantified time saving, “zero re-entry,” national-scale claim, or named live insurance integration here. The comparison to major platforms is the client’s opinion, not a formal benchmark. The phone image is concept UI, not a production screenshot.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="takeaway">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-takeaway">
+            <span>57</span>
+            <div>
+              <h2>The practical lesson</h2>
+              <p>A mobile form can capture data. It cannot, by itself, run an operation. The value came from giving the field, office, management, and outside handoffs one job record to work around.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="fit">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-section-head">
+            <p class="label">Does This Sound Familiar?</p>
+            <h2 class="section-title">This is worth looking at when <span class="text-muted">field work gets rebuilt at every office handoff.</span></h2>
+          </div>
+          <div class="case-fit-grid">
+            <article class="case-fit-panel">
+              <span>Likely fit</span>
+              <h3>Several roles touch the same job, but no system owns the operator’s complete record.</h3>
+              <ul>
+                <li>Evidence is created in the field and acted on by office or management teams.</li>
+                <li>Photos, status, assignments, approvals, and external-system references live apart.</li>
+                <li>Technicians need a mobile experience designed for actual field conditions.</li>
+                <li>Delay means continued status chasing and avoidable reconstruction as volume grows.</li>
+              </ul>
+              <p class="case-artifact"><strong>Bring to the first call:</strong> one representative job or claim, the field forms and photos it produces, the people who touch it, and a list of every system it enters before closeout.</p>
+            </article>
+            <article class="case-fit-panel case-fit-panel--muted">
+              <span>Probably not yet</span>
+              <h3>The existing platform already covers the complete operator workflow.</h3>
+              <ul>
+                <li>Field and office teams already share one trusted record with usable mobile capture.</li>
+                <li>You only need a small form or report that the current platform can configure safely.</li>
+                <li>No one can define the job states, owners, evidence, and exception paths.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="related">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <p class="label">Related Decisions</p>
+          <h2 class="section-title">More work organized around <span class="text-muted">the real operating constraint.</span></h2>
+          <div class="cs-related-grid">
+            <a href="nuvolum-deployment-platform.html" class="cs-related-card">
+              <p class="label">Case Study · Nuvolum</p>
+              <h3>Protect custom work while systematizing repeated delivery</h3>
+              <p>A deployment platform separated client-specific craft from technical setup and QA.</p>
+              <span class="read-link">Read the case study →</span>
+            </a>
+            <a href="../sonoma-county-software-development.html" class="cs-related-card">
+              <p class="label">Regional Guide · Sonoma County</p>
+              <h3>Map an operational workflow before naming the software</h3>
+              <p>See the fit, process, and scope questions for custom operational systems.</p>
+              <span class="read-link">Review the Sonoma guide →</span>
+            </a>
+            <a href="../ai-app-prototype-to-production.html" class="cs-related-card">
+              <p class="label">Product Guide · AI Prototype</p>
+              <h3>Assess an existing app before expanding the build</h3>
+              <p>Review ownership, data, reliability, release, and the smallest responsible next version.</p>
+              <span class="read-link">Review the prototype guide →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section" id="fit-call">
+      <div class="container">
+        <div class="cta-card fade-up">
+          <div class="cta-orb" aria-hidden="true"></div>
+          <p class="label">Field-Workflow Fit Call</p>
+          <h2 class="cta-headline">Bring one real job.<br /><span class="text-orange">We’ll map every evidence handoff.</span></h2>
+          <p class="cta-sub">We’ll walk one real job from the field through the office and every outside-system handoff. Then we’ll decide what the smallest useful product would be—or whether the tools you already have should simply be configured better.</p>
+          <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" id="ctaBook" data-cta-location="dent_experts_case_fit_call">Request a Fit Call</a>
+          <p class="cta-note">No integration, efficiency, or deployment claim is made before the actual systems and workflow evidence are reviewed.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <a href="/" class="footer-logo" aria-label="57">
-        <img src="../images/57_wht_notext.png" alt="57" class="footer-logo-img" />
-      </a>
-      <div class="footer-address">
-        <span>57 Custom Software Development</span>
-      </div>
+      <a href="/" class="footer-logo" aria-label="57 home"><img src="../images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a>
+      <div class="footer-address"><span>57 Custom Software Development</span></div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="/">Home</a>
-        <a href="../sonoma-county-software-development.html">Sonoma</a>
-        <a href="../bay-area-business-automation.html">Bay Area</a>
+        <a href="../#services">Services</a>
         <a href="../ai-app-prototype-to-production.html">AI Prototype Guide</a>
-        <a href="../ai-prototype-readiness-security-checklist.html">Readiness Checklist</a>
-        <a href="../silicon-valley-software-consulting.html">Silicon Valley</a>
-        <a href="../#results">Case Studies</a>
+        <a href="../sonoma-county-software-development.html">Sonoma County</a>
+        <a href="../bay-area-business-automation.html">Bay Area</a>
         <a href="../privacy.html">Privacy</a>
         <a href="../terms.html">Terms</a>
       </nav>
       <p class="footer-copy">&copy; 2026 57. All rights reserved.</p>
     </div>
   </footer>
-
   <script src="../main.js"></script>
 </body>
 </html>

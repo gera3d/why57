@@ -2,335 +2,374 @@
 <html lang="en">
 <head>
   <script src="../analytics.js"></script>
-  <!-- Google Search Console -->
   <meta name="google-site-verification" content="v073Hcz6x9XmdFQC8zUWDQzkyrlE8lEa2Neb3Tkoaos" />
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://why57.com/case-studies/ux-owl-sonoma-attorneys.html" />
-  <title>UX Owl: Lead Attribution for Sonoma County Attorneys | 57</title>
-  <meta name="description" content="How UX Owl, a venture co-founded by Gera, built lead-generating attorney sites, campaigns, and reporting for Sonoma County firms." />
-
-  <meta property="og:title" content="UX Owl: Lead Attribution for Sonoma County Attorneys | 57" />
-  <meta property="og:description" content="A co-founded venture story about lead-generating attorney sites and measurable marketing." />
+  <title>UX Owl Attorney Lead Attribution Case Study | 57</title>
+  <meta name="description" content="How UX Owl, a venture co-founded by Gera, connected practice positioning, campaigns, calls, forms, and reporting for measurable attorney lead generation." />
+  <meta property="og:title" content="UX Owl: From Brochure Sites to Measurable Lead Systems | 57" />
+  <meta property="og:description" content="A co-founded venture connected professional-services positioning, contact paths, campaign activity, and owner-ready attribution." />
   <meta property="og:image" content="https://why57.com/images/og-case-studies.png" />
   <meta property="og:url" content="https://why57.com/case-studies/ux-owl-sonoma-attorneys.html" />
   <meta property="og:type" content="article" />
   <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="icon" type="image/png" href="../images/favicon_square.png" />
   <link rel="apple-touch-icon" href="../images/favicon_square.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css?v=5" />
-
+  <link rel="stylesheet" href="../style.css?v=8" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": "Organization",
         "@id": "https://why57.com/#localbusiness",
         "name": "57 Custom Software Development",
         "url": "https://why57.com"
       },
       {
         "@type": "Article",
-        "headline": "UX Owl: Lead Attribution for Sonoma County Attorneys",
-        "description": "A co-founded venture story about lead-generating attorney sites, campaigns, and reporting.",
+        "@id": "https://why57.com/case-studies/ux-owl-sonoma-attorneys.html#article",
+        "url": "https://why57.com/case-studies/ux-owl-sonoma-attorneys.html",
+        "headline": "UX Owl: From Brochure Sites to Measurable Lead Systems",
+        "description": "A co-founded venture case study about connecting professional-services positioning, campaigns, calls, forms, and reporting around qualified conversations.",
+        "image": "https://why57.com/images/og-case-studies.png",
+        "inLanguage": "en",
+        "dateModified": "2026-07-30",
+        "mainEntityOfPage": "https://why57.com/case-studies/ux-owl-sonoma-attorneys.html",
         "author": {"@type": "Person", "name": "Gera Yeremin"},
         "publisher": {"@id": "https://why57.com/#localbusiness"},
-        "url": "https://why57.com/case-studies/ux-owl-sonoma-attorneys.html"
+        "about": {"@type": "Organization", "name": "UX Owl"}
       }
     ]
   }
   </script>
-
-  <style>
-    .cs-metrics { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.5rem 0; }
-    .cs-metrics .hero-stats { justify-content: center; gap: 3rem; flex-wrap: wrap; }
-    .cs-story { max-width: 780px; margin: 0 auto; }
-    .cs-story p { font-size: 1.08rem; color: #ccc; line-height: 1.85; margin-bottom: 1.25rem; }
-    .cs-story h3 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
-    .cs-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .cs-related-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.75rem; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; display: block; }
-    .cs-related-card:hover { border-color: var(--orange); transform: translateY(-3px); }
-    .cs-related-card .label { margin-bottom: 0.5rem; }
-    .cs-related-card h3 { font-size: 1.1rem; margin: 0.5rem 0; }
-    .cs-related-card p { font-size: 0.9rem; color: var(--dim); margin: 0; }
-    .cs-related-card .read-link { color: var(--orange); font-size: 0.85rem; margin-top: 1rem; display: inline-block; }
-    .result-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
-    .result-row-item { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem 1.5rem; }
-    .result-row-item .metric-n { font-size: 2.2rem; font-weight: 800; color: var(--orange); display: block; }
-    .result-row-item .metric-l { font-size: 0.8rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
-    .result-row-item p { font-size: 0.9rem; color: #bbb; margin-top: 0.4rem; }
-
-    /* ── Case Study Hero Override ── */
-    .cs-hero-visual { display: flex; justify-content: flex-end; align-items: center; position: relative; padding-right: 2rem; }
-    .cs-glass-card {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 28px;
-      padding: 4rem 3rem;
-      text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-      backdrop-filter: blur(24px) saturate(180%);
-      transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    @media (max-width: 960px) {
-      .cs-glass-card { transform: none; padding: 3rem 2rem; margin-top:2rem;}
-      .cs-hero-visual { padding-right: 0;}
-    }
-    .cs-glass-card:hover { transform: perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-8px); }
-    .cs-glass-card::before {
-      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle at center, rgba(var(--glow), 0.15) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .cs-glass-num {
-      font-size: clamp(4rem, 6vw, 6rem); font-weight: 800;
-      line-height: 1; letter-spacing: -0.04em;
-      background: linear-gradient(135deg, #fff 0%, var(--orange) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 0.5rem; filter: drop-shadow(0 4px 12px rgba(var(--glow), 0.3));
-    }
-    .cs-glass-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dim); font-weight: 700; margin-top: 1rem; }
-    .cs-glass-sub { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 500; margin-top: 0.5rem; }
-  </style>
 </head>
 <body>
-
   <div class="noise" aria-hidden="true"></div>
   <div class="spotlight-cursor" id="spotlightCursor" aria-hidden="true"></div>
 
-  <!-- NAV — simplified for case study focus -->
   <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="57 home">
-        <img src="../images/57_wht_notext.png" alt="57" class="nav-logo-img" />
-      </a>
-      <a href="/#results" class="nav-link" style="font-size:0.9rem; color:var(--dim);">← All Case Studies</a>
-      <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="nav-cta" id="navBook">Book a Call</a>
-      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="/" class="nav-logo" aria-label="57 home"><img src="../images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
+      <nav class="nav-links" id="navLinks" aria-label="Case study navigation">
+        <a href="/#results" class="nav-link">Case Studies</a>
+        <a href="#approach" class="nav-link">Approach</a>
+        <a href="#results" class="nav-link">Results</a>
+        <a href="#fit" class="nav-link">Fit</a>
+      </nav>
+      <a href="#fit-call" class="nav-cta" id="navBook">Request a Fit Call</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <section class="hero" id="hero">
-    <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
-    
-    <div class="hero-content">
-      <div class="hero-badge fade-up">Co-Founded Venture &middot; UX Owl &middot; Sonoma County</div>
-      <h1 class="hero-headline fade-up delay-1">
-        From brochure sites to <span class="text-orange">measurable lead systems.</span>
-      </h1>
-      <p class="hero-sub fade-up delay-2">
-        UX Owl was a venture Gera co-founded to give Sonoma County attorneys a better answer to the question every firm eventually asks: which marketing is actually creating qualified inquiries?
-      </p>
-      <div class="hero-actions fade-up delay-3">
-        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary" id="heroBook">Build a Measurable Lead System</a>
-        <a href="/" class="btn-ghost">&larr; Back to 57</a>
-      </div>
-    </div>
-
-    <div class="cs-hero-visual fade-up delay-4">
-      <div class="cs-glass-card">
-        <div class="cs-wordmark">UX OWL</div>
-        <div class="cs-glass-num">30–50%</div>
-        <div class="cs-glass-label">More qualified leads</div>
-        <span class="cs-glass-sub">Across the attorney campaigns we measured</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- METRICS BAND -->
-  <div class="cs-metrics">
-    <div class="container">
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-n">30–50%</span><span class="stat-l">Qualified-lead lift</span></div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat"><span class="stat-n">Weekly</span><span class="stat-l">Conversion insight</span></div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat"><span class="stat-n">Calls + forms</span><span class="stat-l">Source attribution</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- THE BEFORE -->
-  <section class="section" id="challenge">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">The Problem</p>
-        <h2 class="section-title fade-up delay-1">Professional websites. <span class="text-muted">Limited measurement.</span></h2>
-
-        <p>Many of the attorneys UX Owl worked with had professional-looking websites that functioned as digital business cards. They existed, they had a contact form, but they did not make it clear why a local prospect should choose that firm—and they did not show which marketing was creating calls.</p>
-
-        <p>Without analytics, call tracking, or usable attribution, marketing decisions were being made on gut feel. Firms were spending money without a clean view of what a new client actually did before calling.</p>
-
-        <p>The real constraint was not a lack of activity. It was a lack of a usable line from campaign to page to inquiry to client conversation.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE BUILD -->
-  <section class="section section--alt" id="solution">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">What We Built</p>
-        <h2 class="section-title fade-up delay-1">Practice-specific pages <span class="text-muted">and measurement dashboards.</span></h2>
-
-        <p>UX Owl combined practice-specific positioning, campaign outreach, and measurement into a local lead-generation system. The point was not to give a firm more reports; it was to give the owner a useful view of what was creating conversations.</p>
-
-        <h3>Website Rebuild</h3>
-        <p>We replaced generic brochure sites with practice-specific pages designed around real local searches, real client anxieties, and a clear next step.</p>
-
-        <h3>LinkedIn Campaigns</h3>
-        <p>LinkedIn campaigns turned existing networks—former colleagues, referral partners, and past contacts—into a more intentional source of visibility and referrals.</p>
-
-        <h3>Custom Reporting Dashboards</h3>
-        <p>Custom dashboards combined analytics, search, calls, and form activity so firms could see which pages and channels were earning attention and which were simply consuming budget.</p>
-
-        <ul class="feature-list">
-          <li>Practice-area landing-page pattern for Sonoma County local search</li>
-          <li>Google Business Profile and review-workflow planning</li>
-          <li>LinkedIn outreach campaigns for referrals and professional networks</li>
-          <li>Reporting dashboards for calls, forms, and channel attribution</li>
-          <li>Search Console and GA4 reporting workflow</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE RESULTS -->
-  <section class="section" id="results">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">The Result</p>
-        <h2 class="section-title fade-up delay-1">Marketing spend that <span class="text-muted">finally made sense.</span></h2>
-
-        <p>Across the attorney campaigns we measured, qualified leads rose 30–50%. More important, the firms gained a working feedback loop: clear practice positioning, a credible path to contact, and reporting that connected calls and forms to the source that created them.</p>
-
-        <div class="result-row">
-          <div class="result-row-item fade-up">
-            <span class="metric-n">30–50%</span>
-            <span class="metric-l">Qualified-lead lift</span>
-            <p>More prospects who matched the firm’s actual practice focus.</p>
-          </div>
-          <div class="result-row-item fade-up delay-1">
-            <span class="metric-n">Weekly</span>
-            <span class="metric-l">Actionable insight</span>
-            <p>A reporting rhythm that made it easier to improve the next campaign.</p>
-          </div>
-          <div class="result-row-item fade-up delay-2">
-            <span class="metric-n">Clearer</span>
-            <span class="metric-l">Calls + forms attribution</span>
-            <p>Owners could see the path from campaign and page to inquiry.</p>
-          </div>
-        </div>
-
-        <div class="proof-note">
-          <h3>What UX Owl proved</h3>
-          <p>Small professional firms do not need an enormous marketing stack. They need a sharp point of view, a credible lead journey, and reporting that lets an owner act on what the market is telling them.</p>
+  <main>
+    <section class="hero case-hero" id="hero">
+      <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-badge fade-up">Co-founded venture · UX Owl · Sonoma County attorneys</div>
+        <h1 class="hero-headline fade-up delay-1">
+          From brochure sites and gut feel to <span class="text-orange">a measurable qualified-lead system.</span>
+        </h1>
+        <p class="hero-sub fade-up delay-2">
+          UX Owl was a venture I co-founded around one practical question: which marketing is creating the right conversations? We connected practice-specific positioning, campaigns, calls, forms, and intake quality so the owner could see what was worth improving, scaling, or stopping. Across the attorney campaigns measured, qualified leads were reported to rise 30–50%.
+        </p>
+        <div class="hero-actions fade-up delay-3">
+          <a href="#fit-call" class="btn-primary" id="heroBook">Request a Lead-System Fit Call</a>
+          <a href="#approach" class="btn-ghost">See the Decision Loop ↓</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" id="fit">
-    <div class="container">
-      <div class="cs-story">
-        <p class="label fade-up">Could This Work for You?</p>
-        <h2 class="section-title fade-up delay-1">A strong fit when <span class="text-muted">you are spending on marketing without a clear feedback loop.</span></h2>
-        <p class="cs-fit-intro fade-up delay-2">This is for professional services firms that have marketing activity and inquiries but cannot confidently connect source, page, call, and qualified lead. The goal is a usable feedback loop: one that helps an owner decide what to improve, scale, or stop—not more dashboards.</p>
-        <div class="cs-capability-grid fade-up delay-3">
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Positioning + conversion pages</h3>
-            <p>Turn real client anxieties and practice expertise into pages that make a credible next step obvious.</p>
-          </article>
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Campaign + referral workflows</h3>
-            <p>Design the outreach and follow-up paths that turn existing networks into intentional demand.</p>
-          </article>
-          <article class="cs-capability-card">
-            <span>What 57 brings</span>
-            <h3>Attribution + decisions</h3>
-            <p>Connect calls, forms, search, and campaigns to the reporting an owner can actually use.</p>
-          </article>
+      <div class="cs-hero-visual fade-up delay-4">
+        <div class="cs-glass-card">
+          <div class="cs-wordmark">UX OWL</div>
+          <span class="cs-glass-num" data-static-number>30–50%</span>
+          <span class="cs-glass-label">Reported qualified-lead lift</span>
+          <span class="cs-glass-sub">Across the attorney campaigns measured; a historical venture result, not a forecast</span>
         </div>
-        <a class="btn-primary cs-fit-cta" href="https://calendly.com/yrc-strategies/intro-call" target="_blank" rel="noopener">Map your lead journey <span>→</span></a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- RELATED CASE STUDIES -->
-  <section class="section" id="related">
-    <div class="container">
-      <p class="label fade-up">Continue Reading</p>
-      <h2 class="section-title fade-up delay-1">More work <span class="text-muted">like this.</span></h2>
-      <div class="cs-related-grid">
-        <a href="health-for-california-review-engine.html" class="cs-related-card fade-up">
-          <p class="label">Case Study · Health for California</p>
-          <h3>From 10 reviews to 9,000+</h3>
-          <p>The agent-level review workflow that became the foundation for 57Seconds.</p>
-          <span class="read-link">Read the case study →</span>
-        </a>
-        <a href="../sonoma-county-software-development.html" class="cs-related-card fade-up delay-1">
-          <p class="label">Regional Hub · Sonoma County</p>
-          <h3>Custom software for Sonoma County businesses</h3>
-          <p>See the full range of what we build for AgTech, professional services, and scaling businesses across Santa Rosa, Petaluma, and the North Bay.</p>
-          <span class="read-link">See what we build →</span>
-        </a>
+    <section class="case-proof-strip" aria-label="UX Owl proof summary">
+      <div class="container">
+        <div class="case-proof-grid">
+          <div class="case-proof-item"><strong>30–50% reported lift</strong><span>Qualified-lead range across the attorney campaigns measured</span></div>
+          <div class="case-proof-item"><strong>Calls + forms</strong><span>Contact activity connected to source and page context</span></div>
+          <div class="case-proof-item"><strong>Co-founded venture</strong><span>Presented as a product and operating record, not an outside 57 client endorsement</span></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="section cta-section" id="contact">
-    <div class="container">
-      <div class="cta-card fade-up">
-        <div class="cta-orb" aria-hidden="true"></div>
-        <p class="label">Let's Talk</p>
-        <h2 class="cta-headline">Need to know what<br /><span class="text-orange">actually creates inquiries?</span></h2>
-        <p class="cta-sub">Bring your current analytics, call-tracking setup, and one recent campaign. We'll identify the measurement gap and agree on a baseline before proposing changes.</p>
-        <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" id="ctaBook">Request a Fit Call</a>
-        <p class="cta-note">Meeting format and availability are confirmed when scheduled.</p>
+    <section class="section" id="context">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-context-grid">
+            <article class="case-context-card">
+              <span>What was happening</span>
+              <h2>Expert firms were hiding behind generic websites</h2>
+              <p>Many attorney sites looked credible at a glance but did not help a prospect understand fit—or help the owner see what produced a qualified call.</p>
+            </article>
+            <article class="case-context-card">
+              <span>What had to change</span>
+              <h2>Give the owner a line from campaign to conversation</h2>
+              <p>The goal was not more marketing activity. It was enough connected evidence to decide what to improve, scale, or stop.</p>
+            </article>
+            <article class="case-context-card">
+              <span>When this matters</span>
+              <h2>You get inquiries but cannot explain which work created the right ones</h2>
+              <p>This is the pattern to look for: the site, campaigns, calls, forms, and intake decisions all exist, but the owner still has to guess what is working.</p>
+            </article>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+    <section class="section section--alt" id="before">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">Here’s the Problem</p>
+            <h2 class="section-title">The firm could see activity. <span class="text-muted">It could not see the path to a qualified conversation.</span></h2>
+          </div>
+          <div class="case-split">
+            <div class="case-copy">
+              <p>A brochure site could show credentials and a contact form while still forcing the prospect to figure out whether the firm handled their problem. Campaigns and directories could generate clicks, but the owner still had to guess which source, page, call, or form produced a matter worth pursuing.</p>
+              <h3>Why that guesswork mattered</h3>
+              <p>A firm could keep funding a channel because it produced traffic, stop a useful campaign because its calls were not connected, or judge a page by volume instead of the quality of the inquiries it created.</p>
+              <h3>Why another dashboard was not the answer</h3>
+              <p>More reporting would not help if positioning, contact paths, tracking, and intake qualification remained disconnected. The owner needed a decision loop, not a larger pile of channel metrics.</p>
+            </div>
+            <aside class="case-side-card" aria-label="UX Owl alternatives">
+              <p class="label">The obvious alternatives</p>
+              <h3>Each familiar purchase could add activity and still leave the owner guessing.</h3>
+              <ul>
+                <li>A generic redesign could improve appearance without clarifying practice fit.</li>
+                <li>More campaigns could increase traffic while source-to-inquiry tracking stayed weak.</li>
+                <li>Directory spend could continue without a comparable view of qualified conversations.</li>
+                <li>Channel dashboards could report clicks without connecting them to intake quality.</li>
+              </ul>
+            </aside>
+          </div>
+          <div class="case-insight">
+            <span>The real diagnosis</span>
+            <p>The firms did not need more activity or another dashboard. They needed a usable line from campaign to page to inquiry to qualified conversation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-section-head">
+            <p class="label">What We Changed</p>
+            <h2 class="section-title">Make the message, contact path, and measurement <span class="text-muted">tell the same story.</span></h2>
+            <p>We kept the system intentionally practical. It only needed to be sophisticated enough to help the owner make the next real decision.</p>
+          </div>
+          <div class="case-decision-grid">
+            <article class="case-decision-card">
+              <span>Decision 01</span>
+              <h3>Start with practice fit and real client anxiety</h3>
+              <p>Practice-specific positioning and local landing pages made it easier for a prospect to recognize the problem, the firm’s relevance, and a credible next step.</p>
+              <small class="case-value-line">The practical value: better self-selection, so inquiry volume became more relevant to the firm’s actual practice.</small>
+            </article>
+            <article class="case-decision-card">
+              <span>Decision 02</span>
+              <h3>Give outreach a specific path back</h3>
+              <p>LinkedIn and professional-network campaigns gave former colleagues, referral partners, and existing contacts an intentional path back to the firm’s practice focus.</p>
+              <small class="case-value-line">The practical value: professional visibility had a clearer path to an attributable conversation.</small>
+            </article>
+            <article class="case-decision-card">
+              <span>Decision 03</span>
+              <h3>Report around decisions, not vanity metrics</h3>
+              <p>Custom reporting connected source and contact activity closely enough to compare what was earning the right inquiries and what was only consuming attention or budget.</p>
+              <small class="case-value-line">The practical value: the owner could improve, scale, or stop work with more confidence.</small>
+            </article>
+          </div>
+          <div class="case-objection">
+            <strong>You may be thinking: “A small firm does not need a sophisticated marketing stack.”</strong>
+            <p>I agree. That is why this stayed focused. The firm needed clear positioning, credible contact paths, calls and forms tied to source context, and one reporting view the owner could actually use—not an enterprise stack.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="implementation">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">How It Worked</p>
+            <h2 class="section-title">The report began with the buyer’s path—<span class="text-muted">not with the channel dashboard.</span></h2>
+          </div>
+          <div class="case-mechanism" aria-label="UX Owl lead attribution workflow">
+            <div class="case-mechanism-step"><b>01</b><strong>Practice intent</strong><span>A prospect or referral partner starts with a specific legal need.</span></div>
+            <div class="case-mechanism-step"><b>02</b><strong>Campaign or search</strong><span>The source establishes the initial context for the visit.</span></div>
+            <div class="case-mechanism-step"><b>03</b><strong>Practice page</strong><span>Positioning helps the visitor recognize fit and the next step.</span></div>
+            <div class="case-mechanism-step"><b>04</b><strong>Call or form</strong><span>The contact action retains available source and page context.</span></div>
+            <div class="case-mechanism-step"><b>05</b><strong>Owner decision</strong><span>Inquiry quality informs what to improve, scale, or stop.</span></div>
+          </div>
+          <p>This was not perfect attribution, and it did not need to be. It created enough connection between the campaign, page, and inquiry for the owner to make a better decision than traffic totals or gut feel allowed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-section-head">
+            <p class="label">What Changed</p>
+            <h2 class="section-title">Marketing became <span class="text-muted">a feedback loop the owner could use.</span></h2>
+            <p>Across the attorney campaigns measured, qualified leads were reported to rise 30–50%. The bigger operating win was that positioning, campaigns, calls, forms, and intake quality finally described the same buyer journey.</p>
+          </div>
+          <figure class="case-data-visual" data-visual="lift-range">
+            <div class="case-data-visual-head">
+              <div>
+                <span class="case-data-visual-kicker">Reported qualified-lead lift</span>
+                <h3>The measured campaigns landed in a 30–50% range</h3>
+              </div>
+              <p>Historical reported range · not a forecast</p>
+            </div>
+            <div class="case-range-plot" role="img" aria-label="A range plot from zero to sixty percent, highlighting the reported qualified-lead increase from thirty to fifty percent across the attorney campaigns measured.">
+              <div class="case-range-axis" aria-hidden="true">
+                <span class="case-range-band"></span>
+                <strong class="case-range-value case-range-value--low">30%</strong>
+                <strong class="case-range-value case-range-value--high">50%</strong>
+              </div>
+              <div class="case-range-ticks" aria-hidden="true"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%</span><span>50%</span><span>60%</span></div>
+            </div>
+            <figcaption>The highlighted band is the reported historical range across the attorney campaigns measured. It is not a promise for every firm, campaign, or market.</figcaption>
+          </figure>
+          <div class="case-results-grid">
+            <article class="case-result-card">
+              <span>What was reported</span>
+              <strong>30–50% lift</strong>
+              <p>Reported increase in qualified leads across the attorney campaigns measured.</p>
+            </article>
+            <article class="case-result-card">
+              <span>What became visible</span>
+              <strong>Source-to-contact view</strong>
+              <p>Calls and forms could be reviewed with available campaign and page context.</p>
+            </article>
+            <article class="case-result-card">
+              <span>What the owner could decide</span>
+              <strong>Owner-ready decisions</strong>
+              <p>The reporting rhythm supported choices about what to improve, scale, or stop.</p>
+            </article>
+          </div>
+          <p class="case-evidence-note"><strong>What this range does—and does not—say:</strong> 30–50% is a reported historical range across the attorney campaigns measured. It is not a promise for every firm or market. The underlying cohort, periods, baseline, and definition of “qualified lead” still need to stay with the private source record before we strengthen the claim.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="takeaway">
+      <div class="container">
+        <div class="case-story">
+          <div class="case-takeaway">
+            <span>57</span>
+            <div>
+              <h2>The practical lesson</h2>
+              <p>A professional firm does not need every marketing tool. It needs enough connected evidence to know whether the right people are finding, trusting, and contacting the practice—and what to do next.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <div class="case-section-head">
+            <p class="label">Does This Sound Familiar?</p>
+            <h2 class="section-title">This is worth looking at when <span class="text-muted">marketing exists but the qualified-lead feedback loop does not.</span></h2>
+          </div>
+          <div class="case-fit-grid">
+            <article class="case-fit-panel">
+              <span>Likely fit</span>
+              <h3>Your firm receives inquiries but cannot connect source, page, contact, and qualification.</h3>
+              <ul>
+                <li>You are an owner-led legal, consulting, financial, or other professional-services firm.</li>
+                <li>Your site is credible but generic across practice areas or buyer situations.</li>
+                <li>Campaign, search, call, form, and intake data live in separate reports.</li>
+                <li>Delay means continuing to fund activity without knowing what creates the right conversations.</li>
+              </ul>
+              <p class="case-artifact"><strong>Bring to the first call:</strong> current analytics, call-tracking setup, one recent campaign, the landing page it used, and the inquiry or intake record that followed.</p>
+            </article>
+            <article class="case-fit-panel case-fit-panel--muted">
+              <span>Probably not yet</span>
+              <h3>The firm has not defined what a qualified inquiry means.</h3>
+              <ul>
+                <li>You want more traffic before clarifying practice fit and contact handling.</li>
+                <li>No one can review intake quality or make decisions from the reporting.</li>
+                <li>You need a one-time brochure site with no campaign or measurement requirement.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="related">
+      <div class="container">
+        <div class="case-story case-story--wide">
+          <p class="label">Related Decisions</p>
+          <h2 class="section-title">More work connecting <span class="text-muted">customer journeys to operating decisions.</span></h2>
+          <div class="cs-related-grid">
+            <a href="drivesavers-seo-overhaul.html" class="cs-related-card">
+              <p class="label">Case Study · DriveSavers</p>
+              <h3>Connect search, website, reputation, and marketing execution</h3>
+              <p>A high-trust service brought channel activity into one connected program with clear ownership.</p>
+              <span class="read-link">Read the case study →</span>
+            </a>
+            <a href="health-for-california-review-engine.html" class="cs-related-card">
+              <p class="label">Case Study · Health for California</p>
+              <h3>Capture the service moment after the conversation</h3>
+              <p>An agent-attributed workflow made reputation follow-up repeatable and visible.</p>
+              <span class="read-link">Read the case study →</span>
+            </a>
+            <a href="../sonoma-county-software-development.html" class="cs-related-card">
+              <p class="label">Regional Guide · Sonoma County</p>
+              <h3>Review intake, attribution, portals, and practice workflows</h3>
+              <p>See where custom software fits professional-services operations in Sonoma County.</p>
+              <span class="read-link">Review the Sonoma guide →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section" id="fit-call">
+      <div class="container">
+        <div class="cta-card fade-up">
+          <div class="cta-orb" aria-hidden="true"></div>
+          <p class="label">Lead-System Fit Call</p>
+          <h2 class="cta-headline">Bring one recent campaign.<br /><span class="text-orange">We’ll trace it to the conversation.</span></h2>
+          <p class="cta-sub">We’ll trace the message, source, page, call or form, qualification step, and reporting gap. Then we’ll decide whether the next move is tracking repair, conversion work, a focused operating tool, or no additional build.</p>
+          <a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" id="ctaBook" data-cta-location="ux_owl_case_fit_call">Request a Fit Call</a>
+          <p class="cta-note">No lead-lift estimate is made before “qualified lead,” the baseline, and the available attribution evidence are defined.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="footer">
     <div class="container footer-inner">
-      <a href="/" class="footer-logo" aria-label="57">
-        <img src="../images/57_wht_notext.png" alt="57" class="footer-logo-img" />
-      </a>
-      <div class="footer-address">
-        <span>57 Custom Software Development</span>
-      </div>
+      <a href="/" class="footer-logo" aria-label="57 home"><img src="../images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a>
+      <div class="footer-address"><span>57 Custom Software Development</span></div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="/">Home</a>
-        <a href="../sonoma-county-software-development.html">Sonoma</a>
-        <a href="../bay-area-business-automation.html">Bay Area</a>
+        <a href="../#services">Services</a>
         <a href="../ai-app-prototype-to-production.html">AI Prototype Guide</a>
-        <a href="../ai-prototype-readiness-security-checklist.html">Readiness Checklist</a>
-        <a href="../silicon-valley-software-consulting.html">Silicon Valley</a>
-        <a href="../#results">Case Studies</a>
+        <a href="../sonoma-county-software-development.html">Sonoma County</a>
+        <a href="../bay-area-business-automation.html">Bay Area</a>
         <a href="../privacy.html">Privacy</a>
         <a href="../terms.html">Terms</a>
       </nav>
       <p class="footer-copy">&copy; 2026 57. All rights reserved.</p>
     </div>
   </footer>
-
   <script src="../main.js"></script>
 </body>
 </html>
