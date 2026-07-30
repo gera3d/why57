@@ -95,7 +95,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
 });
 
 /* ─── Stat counter animation ──────────────────────────────── */
-const statNums = document.querySelectorAll('.stat-n, .big-num, .result-row-item .metric-n, .cs-glass-num');
+const statNums = document.querySelectorAll('.stat-n, .big-num, .result-row-item .metric-n, .cs-glass-num:not([data-static-number])');
 const countIO  = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
