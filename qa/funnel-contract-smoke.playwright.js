@@ -33,6 +33,39 @@ async (page) => {
     await target.locator('#prototypeConsent').check();
   };
 
+  const assertPrototypeCta = async ({ path, selector, location }) => {
+    const target = await context.newPage();
+    await target.goto(`${origin}${path}`, { waitUntil: 'domcontentloaded' });
+    await target.locator(selector).evaluate((link) => {
+      link.addEventListener('click', (event) => event.preventDefault(), { once: true });
+    });
+    await target.locator(selector).click();
+
+    const events = await target.evaluate(() => window.dataLayer
+      .filter((command) => command[0] === 'event')
+      .map((command) => ({ name: command[1], detail: command[2] })));
+    const ctaEvents = events.filter((event) => event.name === 'prototype_review_cta_clicked');
+    if (ctaEvents.length !== 1) throw new Error(`${location} collected ${ctaEvents.length} prototype CTA events`);
+    if (ctaEvents[0].detail.cta_location !== location || ctaEvents[0].detail.conversion_stage !== 'intent') {
+      throw new Error(`${location} did not preserve the intent-event contract`);
+    }
+    if (events.some((event) => event.name === 'prototype_review_submitted')) {
+      throw new Error(`${location} CTA click collected a completion event`);
+    }
+    await target.close();
+  };
+
+  await assertPrototypeCta({
+    path: '/',
+    selector: '#heroPrototypeReview',
+    location: 'homepage_hero_prototype'
+  });
+  await assertPrototypeCta({
+    path: '/ai-app-prototype-to-production.html',
+    selector: '[data-cta-location="prototype_hero"]',
+    location: 'prototype_hero'
+  });
+
   const runEnhancedCase = async ({ mode, expectedCount }) => {
     const target = await context.newPage();
     let receiptClaims = 0;
@@ -183,5 +216,5 @@ async (page) => {
   }
   await mobile.close();
 
-  return 'Prototype funnel smoke passed: enhanced success exactly once; delivery failure and honeypot fail closed; forged receipt rejected; no-JS receipt exactly once; 390x844 progressive form contract preserved.';
+  return 'Prototype funnel smoke passed: dedicated CTA intent events exactly once; enhanced success exactly once; delivery failure and honeypot fail closed; forged receipt rejected; no-JS receipt exactly once; 390x844 progressive form contract preserved.';
 }

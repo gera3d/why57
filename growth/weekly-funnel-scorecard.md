@@ -32,8 +32,8 @@ Record the property, date range, filters, and timezone with the first export. Wh
 | Sessions | GA4 sessions for `why57.com`; state whether ROI subdomain traffic is included. | GA4 | Same property, hostname filter, timezone, and seven-day window each week. |
 | Organic sessions | Sessions whose session default channel group is Organic Search. | GA4 | Do not substitute first-user channel. |
 | GSC clicks / impressions / CTR / position | Search performance for the canonical site property. | Search Console | Export query and page detail; compare like date ranges and search types. |
-| Primary CTA clicks | Clicks on the week’s declared CTA, deduplicated by event design. | GA4 event | Verify event once in debug view before counting it. |
-| Lead starts | Intentional first interaction with the prototype-review or another real lead flow. | GA4 event | No personal data in event properties. |
+| Primary CTA clicks | `prototype_review_cta_clicked` on the declared First-Release Decision CTA. | GA4 event | Keep it unmarked as a key event; verify one event per click in DebugView before counting it. |
+| Lead starts | Intentional first interaction with the prototype-review or another real lead flow. | GA4 event | Use `form_start` only when filtered to the verified in-scope `form_id`; otherwise enter `—`. No personal data in event properties. |
 | Leads submitted | Successful accepted submissions, not button clicks. | Form/CRM plus GA4 | Reconcile analytics to the destination system. |
 | Qualified leads | Submitted leads matching the approved fit criteria. | CRM/manual register | Owner and reason required. |
 | Calls booked | Completed booking confirmation for an in-scope call. | Calendar/CRM | Deduplicate reschedules and cancellations. |

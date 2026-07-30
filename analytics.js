@@ -14,6 +14,9 @@
     "mobile_sticky",
     "intake_primary"
   ]);
+  const EXPLICIT_LINK_EVENTS = new Set([
+    "prototype_review_cta_clicked"
+  ]);
   const CAMPAIGN_PARAMETERS = [
     "utm_source",
     "utm_medium",
@@ -263,6 +266,15 @@
 
       const destination = safeUrl(link.href);
       if (!destination) return;
+
+      const explicitEvent = link.dataset.analyticsEvent;
+      if (EXPLICIT_LINK_EVENTS.has(explicitEvent)) {
+        track(explicitEvent, {
+          ...ctaContext(link, destination),
+          conversion_stage: "intent"
+        });
+        return;
+      }
 
       if (destination.hostname === "calendar.app.google") {
         track("calendar_booking_clicked", {

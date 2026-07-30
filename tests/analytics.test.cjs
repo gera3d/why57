@@ -185,6 +185,34 @@ test("calendar clicks fire one micro-conversion with CTA, page, and offer contex
   assert.equal(eventCommands[0][2].page_type, "home");
 });
 
+test("explicit prototype-review CTAs fire one intent event and no completion", () => {
+  const runtime = createRuntime();
+  runtime.documentListeners.get("DOMContentLoaded")();
+
+  const link = {
+    dataset: {
+      analyticsEvent: "prototype_review_cta_clicked",
+      ctaLocation: "homepage_hero_prototype",
+      offer: "prototype_review"
+    },
+    href: "https://why57.com/ai-app-prototype-to-production.html#send-prototype",
+    id: "heroPrototypeReview",
+    textContent: "Get the 5-Point Prototype Review",
+    closest(selector) {
+      return selector === "a[href]" ? this : null;
+    }
+  };
+  runtime.documentListeners.get("click")({ target: link });
+
+  const eventCommands = runtime.window.dataLayer.filter((command) => command[0] === "event");
+  assert.equal(eventCommands.length, 1);
+  assert.equal(eventCommands[0][1], "prototype_review_cta_clicked");
+  assert.equal(eventCommands[0][2].conversion_stage, "intent");
+  assert.equal(eventCommands[0][2].cta_location, "homepage_hero_prototype");
+  assert.equal(eventCommands[0][2].offer, "prototype_review");
+  assert.equal(eventCommands.some((command) => command[1] === "prototype_review_submitted"), false);
+});
+
 test("homepage prototype hero keeps an explicit qualified-review analytics hook", () => {
   const homepage = fs.readFileSync(path.join(repositoryRoot, "index.html"), "utf8");
   const heroLink = homepage.match(/<a[^>]+id="heroPrototypeReview"[^>]*>/)?.[0];
@@ -196,8 +224,17 @@ test("homepage prototype hero keeps an explicit qualified-review analytics hook"
   assert.match(homepage, /Start a Custom Software Plan/);
   assert.match(homepage, /href="#start-here"/);
   assert.match(heroLink, /href="ai-app-prototype-to-production\.html#send-prototype"/);
+  assert.match(heroLink, /data-analytics-event="prototype_review_cta_clicked"/);
   assert.match(heroLink, /data-cta-location="homepage_hero_prototype"/);
   assert.match(heroLink, /data-offer="prototype_review"/);
+});
+
+test("prototype-review form CTAs use the dedicated non-conversion event", () => {
+  const prototypePage = fs.readFileSync(path.join(repositoryRoot, "ai-app-prototype-to-production.html"), "utf8");
+  const eventHooks = prototypePage.match(/data-analytics-event="prototype_review_cta_clicked"/g) || [];
+
+  assert.equal(eventHooks.length, 3);
+  assert.doesNotMatch(prototypePage, /data-analytics-event="prototype_review_submitted"/);
 });
 
 test("tracked content pages use the shared entry point and contain no legacy internal ROI campaign", () => {
