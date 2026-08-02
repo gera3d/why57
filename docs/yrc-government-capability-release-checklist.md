@@ -2,9 +2,11 @@
 
 Prepared: 2026-07-18
 
+Updated: 2026-08-02
+
 Page: `/government-capabilities.html`
 
-Status: built locally; not published
+Status: public page live; August 1 capability-statement update prepared for release
 
 Evidence register: `docs/yrc-government-procurement-evidence-register-2026-07-18.md`
 
@@ -23,13 +25,13 @@ Evidence register: `docs/yrc-government-procurement-evidence-register-2026-07-18
 - Cal eProcure sourcing-bidder registration: **BID0132231**, confirmed July 15, 2026
 - Public procurement contact: Georgiy Yeremin, Principal / Project Lead; `gera@why57.com`; `(707) 694-5624`
 - Commercial general liability: $1,000,000 each occurrence / $2,000,000 aggregate; current through July 14, 2027
-- Capability statement: `downloads/YRC_STRATEGIES_Capability_Statement_2026-07-17.pdf` (owner-issued version reconfirmed July 19, 2026)
+- Capability statement: `downloads/YRC_STRATEGIES_Capability_Statement_2026-08-01.pdf` (owner-issued version provided for public release August 2, 2026)
 
 ## Source packet retained outside the public repository
 
 1. SAM.gov registration-activation notice dated July 15, 2026.
 2. California Secretary of State entity evidence submitted for CAGE validation on June 30, 2026.
-3. `YRC_STRATEGIES_Capability_Statement_2026-07-17.pdf` (owner-issued version reconfirmed July 19, 2026).
+3. `YRC_STRATEGIES_Capability_Statement_2026-08-01.pdf` (owner-issued version provided for public release August 2, 2026).
 4. California Small Business certification approval notice dated July 18, 2026, and Cal eProcure sourcing-bidder registration confirmation dated July 15, 2026.
 5. Hiscox general-liability certificate and coverage summary dated July 14, 2026.
 6. Norcal APEX initial-consultation follow-up dated July 17, 2026.
@@ -38,7 +40,7 @@ Do not commit tax identifiers, policy numbers, private account screenshots, cred
 
 ## Claims intentionally omitted
 
-- Microbusiness, DVBE, or other certification beyond the verified State of California Small Business certification
+- DVBE or other certification beyond the State of California Small Business (Micro) certification shown in the current owner-issued capability statement
 - SBA Small Business Search profile completion
 - PSC or UNSPSC codes
 - Government clients, contracts, awards, references, CPARS, or agency past performance
@@ -62,3 +64,11 @@ Do not commit tax identifiers, policy numbers, private account screenshots, cred
 ## Post-filing update
 
 After the fictitious-business-name filing is effective, add the exact filed name and jurisdiction only where supported. Then reconcile the SAM DBA field, SBA Small Business Search, Cal eProcure, insurance, proposals, invoices, privacy, terms, page copy, structured data, and capability statement. Do not create a second SAM entity for the trade name.
+
+## August 1 capability-statement update
+
+- Source file: owner-provided Gmail attachment `YRC_STRATEGIES_Capability_Statement_Liz_White_Readability_Aligned_2026-08-01.pdf`.
+- Public download name: `downloads/YRC_STRATEGIES_Capability_Statement_2026-08-01.pdf`.
+- SHA-256: `046e82ad8d0ecfa7cfd23c62f2ab93771aaa528d88fcc58a009ace186a521e76`.
+- QA: one-page US Letter PDF; text extraction and rendered visual review completed with no clipping, overlap, or unreadable sections.
+- Scope: update the five capability-statement links and the government-page sitemap date; do not change the surrounding procurement claims in this release.
