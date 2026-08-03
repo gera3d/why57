@@ -7,6 +7,7 @@ const repositoryRoot = path.resolve(__dirname, '..');
 const homepage = fs.readFileSync(path.join(repositoryRoot, 'index.html'), 'utf8');
 const cookbook = fs.readFileSync(path.join(repositoryRoot, 'ai-execution-cookbook.html'), 'utf8');
 const cookbookLoadout = fs.readFileSync(path.join(repositoryRoot, 'cookbook-loadout.js'), 'utf8');
+const sharedStyles = fs.readFileSync(path.join(repositoryRoot, 'style.css'), 'utf8');
 const fullLoadoutManifest = fs.readFileSync(path.join(repositoryRoot, 'skills', 'ai-executive-loadout', 'SKILL.md'), 'utf8');
 
 test('CookBook landing page presents guided execution skills and outcome-led starting routes', () => {
@@ -27,6 +28,8 @@ test('CookBook landing page presents guided execution skills and outcome-led sta
   assert.match(cookbook, /id="aiExecutiveRouteSkill"/);
   assert.match(cookbook, /Each recipe gives you the human guide/);
   assert.match(cookbook, /Each skill gives your AI reusable instructions for one job/);
+  assert.match(cookbook, /class="cookbook-page cb-page"/);
+  assert.match(cookbook, /style\.css\?v=8/);
   assert.match(cookbook, /id="aiExecutiveRouteInput"/);
   assert.match(cookbook, /id="aiExecutiveInstall"/);
   assert.match(cookbook, /og:image" content="https:\/\/why57\.com\/images\/ai-executive-os-social-card\.png/);
@@ -37,6 +40,13 @@ test('CookBook landing page presents guided execution skills and outcome-led sta
   assert.match(cookbook, /cookbook-loadout\.js\?v=2/);
   assert.equal(fs.existsSync(path.join(repositoryRoot, 'skills', 'ai-executive-loadout', 'SKILL.md')), true);
   assert.equal(fs.existsSync(path.join(repositoryRoot, 'images', 'ai-executive-os-social-card.png')), true);
+});
+
+test('CookBook business-job selector ships its scoped visual treatment', () => {
+  assert.match(sharedStyles, /\.cookbook-page \.executive-routes\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\);gap:10px;\}/);
+  assert.match(sharedStyles, /\.cookbook-page \.executive-route\{display:grid;align-content:start;gap:9px;min-height:191px;/);
+  assert.match(sharedStyles, /\.cookbook-page \.executive-route\.is-active\{border-color:rgba\(224,76,40,.68\);/);
+  assert.match(sharedStyles, /\.cookbook-page \.executive-card--install\{display:grid;grid-template-columns:minmax\(0,.9fr\) minmax\(360px,1.1fr\);/);
 });
 
 test('CookBook controls copy a direct manifest URL and guided starting instructions without deleting skills', () => {
