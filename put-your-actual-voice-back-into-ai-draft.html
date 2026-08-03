@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow" />
   <link rel="canonical" href="https://why57.com/put-your-actual-voice-back-into-ai.html" />
   <title>Put Your Actual Voice Back Into AI | The AI Executive CookBook | 57</title>
-  <meta name="description" content="A practical AI Executive CookBook recipe for turning selected transcripts and strong writing samples into a reviewable Voice Kit without handing over your inbox or judgment." />
+  <meta name="description" content="A practical AI Executive CookBook recipe for using one real writing sample and a current job to get a grounded draft, inspect the pattern notes, and improve the next version." />
   <meta name="author" content="Gera Yeremin" />
   <link rel="icon" type="image/png" href="images/favicon_square.png" />
   <link rel="apple-touch-icon" href="images/favicon_square.png" />
@@ -76,6 +76,12 @@
     .skill-value-grid div{padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:rgba(8,8,14,.44)}
     .skill-value-grid small{display:block;margin-bottom:5px;font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;color:var(--dim)}
     .skill-value-grid b{display:block;font-size:.69rem;line-height:1.45;color:var(--text)}
+    .use-case-grid,.evidence-model-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:25px 0 0}
+    .use-case-card,.evidence-model-card{padding:20px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.025)}
+    .use-case-card small,.evidence-model-card small{display:block;margin-bottom:10px;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+    .use-case-card h3,.evidence-model-card h3{margin:0 0 8px;font-size:1rem;line-height:1.22;color:var(--text)}
+    .use-case-card p,.evidence-model-card p{margin:0!important;font-size:.79rem!important;line-height:1.63!important;color:var(--muted)!important}
+    .evidence-model-card .evidence-limit{margin:14px 0 0!important;padding:10px 11px;font-size:.71rem!important}
     .recipe-kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:17px}
     .context-map{margin:32px 0 12px;padding:clamp(20px,4vw,34px);border:1px solid rgba(var(--glow),.33);border-radius:22px;background:radial-gradient(circle at 80% 15%,rgba(var(--glow),.13),transparent 34%),rgba(255,255,255,.025)}
     .context-map h3{margin:0 0 9px;font-size:1.18rem}
@@ -134,12 +140,12 @@
     .source-note{margin-top:18px;font-size:.75rem;line-height:1.65;color:var(--dim)}
     .cookbook-page .article-copy h2{scroll-margin-top:126px}
     @media(max-width:1180px){.context-flow{grid-template-columns:1fr;gap:10px}.flow-arrow{width:2px;height:22px;margin:0 auto}.flow-arrow::after{right:-4px;top:auto;bottom:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--orange);border-bottom:0}}
-    @media(max-width:980px){.ingredient-grid,.compare-grid,.taste-grid,.evidence-stats,.prompt-source-grid,.prompt-boundary-list{grid-template-columns:1fr}}
+    @media(max-width:980px){.ingredient-grid,.compare-grid,.taste-grid,.evidence-stats,.prompt-source-grid,.prompt-boundary-list,.use-case-grid,.evidence-model-grid{grid-template-columns:1fr}}
     @media(max-width:680px){.recipe-glance div{grid-template-columns:1fr;gap:5px}.content-hero-card{padding:22px}.cookbook-page .section{padding:72px 0}.skill-download{display:block}.skill-download .btn-ghost{width:100%;justify-content:center;margin-top:13px}.recipe-step{grid-template-columns:34px 1fr;gap:12px;padding:17px}.boundary-panel{grid-template-columns:1fr}.boundary-mark{display:none}.prompt-stage{display:block;min-height:auto;padding:92px 0}.prompt-reader-body{padding:15px}.prompt-reader-code{padding:15px;font-size:.7rem}.prompt-reader-actions .btn-primary{width:100%;justify-content:center}}
   </style>
 </head>
 <body class="content-page cookbook-page">
-  <div class="draft-banner">The AI Executive CookBook · Full recipe and install guide</div>
+  <div class="draft-banner">The AI Executive CookBook · Voice Kit skill breakdown + install</div>
   <div class="noise" aria-hidden="true"></div>
   <div class="spotlight-cursor" id="spotlightCursor" aria-hidden="true"></div>
 
@@ -147,8 +153,8 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
-        <a href="#recipe" class="nav-link">Recipe</a>
-        <a href="#taste-test" class="nav-link">Taste test</a>
+        <a href="#use-cases" class="nav-link">Use cases</a>
+        <a href="#execution-model" class="nav-link">How it works</a>
         <a href="#sources" class="nav-link">Sources</a>
       </nav>
       <button type="button" class="nav-cta nav-copy-prompt" data-copy-voice-kit-prompt>Copy prompt</button>
@@ -160,40 +166,41 @@
     <section class="content-hero">
       <div class="container content-hero-grid">
         <div>
-          <div class="hero-badge">AI Executive CookBook · Recipe 1</div>
+          <div class="hero-badge">AI Executive CookBook · Skill 1</div>
           <h1 class="content-title">Put your actual <em>voice</em> back into AI.</h1>
-          <p class="content-lede">Turn a few public links or one good email into writing rules you can approve. Save the method once. Then load only the brief and samples the job needs.</p>
+          <p class="content-lede">A clean draft is not the same thing as a draft that sounds like you. Give this one real sample—a talk, post, email, or even a paragraph—and a current writing job. Voice Kit drafts immediately, shows the evidence behind its choices, and gives you a simple way to make the next version better.</p>
           <div class="content-actions">
             <button type="button" class="btn-primary btn-lg" data-copy-voice-kit-prompt aria-describedby="prompt-copy-note">Copy the prompt</button>
-            <a href="#sources" class="btn-ghost">Read the sources</a>
+            <a href="#execution-model" class="btn-ghost">See how it works</a>
           </div>
           <p id="prompt-copy-note" class="hero-prompt-note">Paste this into the AI agent you already use.</p>
           <div class="skill-download" id="ready-made-skill">
             <div class="skill-download-copy"><small>Already use skills?</small><p>This is the ready-made method, not a preset voice. Give your AI this direct file.</p><a class="skill-download-url" href="https://why57.com/skills/voice-kit/SKILL.md" target="_blank" rel="noopener" data-voice-kit-skill-link>why57.com/skills/voice-kit/SKILL.md</a></div>
             <button type="button" class="btn-ghost" data-copy-voice-kit-install>Copy install instruction</button>
           </div>
+          <p class="hero-prompt-note">This recipe changes as real use turns up real failures. <a href="https://why57.com/skills/voice-kit/CHANGELOG.md" target="_blank" rel="noopener">See what's changed and why</a>.</p>
           <span class="copy-status" id="voiceKitCopyStatus" aria-live="polite"></span>
-          <div class="content-meta"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>For:</strong> founders and operators</span><span><strong>Reviewed:</strong> August 2, 2026</span></div>
+          <div class="content-meta"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>For:</strong> founders and operators</span><span><strong>Reviewed:</strong> August 3, 2026</span></div>
         </div>
-        <aside class="content-hero-card" aria-label="Recipe at a glance">
-          <p class="content-hero-card-label">Recipe at a glance</p>
+        <aside class="content-hero-card" aria-label="Voice Kit skill at a glance">
+          <p class="content-hero-card-label">Skill at a glance</p>
           <dl class="recipe-glance">
             <div><dt>Daily job</dt><dd>Draft the emails, posts, and explanations you keep rewriting from scratch.</dd></div>
-            <div><dt>Ingredients</dt><dd>YouTube transcripts, published posts, or one longer email. Add a current brief.</dd></div>
-            <div><dt>Effort boundary</dt><dd>Start with one source path and one brief. Add a second sample only to check an uncertain pattern.</dd></div>
-            <div><dt>Output</dt><dd>An <strong>Author Writing Sheet</strong> you approve, a Voice Kit, and two drafts to compare.</dd></div>
-            <div><dt>Handoff</dt><dd>You approve the rules, verify facts, and decide whether the draft represents you.</dd></div>
+            <div><dt>Ingredients</dt><dd>One real sample to start, pasted, linked, or grabbed directly by your agent if it has a connected browser ("go look at my blog"), plus your current request. Relaxed, unscripted material works best.</dd></div>
+            <div><dt>Effort boundary</dt><dd>Drafts immediately from what you share. No interview before the first draft.</dd></div>
+            <div><dt>Output</dt><dd>A first draft, plus short pattern notes tied to the sample so you can correct anything off.</dd></div>
+            <div><dt>Handoff</dt><dd>You verify facts and decide whether the draft sounds like you.</dd></div>
           </dl>
-          <p class="content-hero-note">A Voice Kit is writing rules. You approve the draft.</p>
+          <p class="content-hero-note">A Voice Kit drafts first. You correct what's off.</p>
           <div class="skill-value-card">
             <small>Why make it a skill</small>
             <strong>Keep the method. Load the job.</strong>
-            <p>A skill holds the approved rules. Each draft uses a current brief and only the samples that match the job.<sup><a href="#source-11">11</a></sup><sup><a href="#source-12">12</a></sup></p>
+            <p>A skill keeps the repeatable method: use real source material, draft from the current job, show the pattern notes, then improve from your feedback.<sup><a href="#source-11">11</a></sup></p>
             <div class="skill-value-grid" aria-label="The reusable part and task-specific part of a Voice Kit">
-              <div><small>Reuse</small><b>Approved writing rules</b></div>
-              <div><small>Load for this job</small><b>1 brief + up to 3 samples</b></div>
+              <div><small>Reuse</small><b>The grounded drafting method</b></div>
+              <div><small>Load for this job</small><b>One current request + real sample</b></div>
             </div>
-            <p>That keeps the workflow consistent and limits tokens spent on irrelevant context. It does not promise one fixed saving on every platform.</p>
+            <p>That keeps the workflow consistent without pretending one sample proves every rule or one platform behaves the same as another.</p>
           </div>
         </aside>
       </div>
@@ -201,196 +208,145 @@
 
     <section class="prompt-stage" id="voice-kit-prompt" aria-labelledby="prompt-title">
       <div class="container prompt-stage-inner">
-        <div class="prompt-stage-head"><p class="label">First step</p><h2 id="prompt-title">Build the writing sheet before the draft.</h2></div>
+        <div class="prompt-stage-head"><p class="label">First step</p><h2 id="prompt-title">Give it one sample. Get a draft.</h2></div>
         <article class="prompt-reader">
           <div class="prompt-reader-body">
-            <p class="prompt-reader-intro">The agent must link each writing rule to your samples, then ask you to approve it.</p>
-            <div class="prompt-source-menu" aria-label="Three easy ways to start your Voice Kit">
-              <strong>Choose one starting point</strong>
+            <p class="prompt-reader-intro">The agent drafts from whatever you share first, then shows you the real patterns it used so you can correct anything off, no interview required before it writes anything.</p>
+            <div class="prompt-source-menu" aria-label="Sources you can combine to start your Voice Kit">
+              <strong>Share one to start, relaxed and unscripted beats rehearsed</strong>
               <div class="prompt-source-grid">
-                <div class="prompt-source-path"><b>1. YouTube videos</b><span>Use 1-3 public links to show how you reason out loud.</span></div>
-                <div class="prompt-source-path"><b>2. Published posts</b><span>Use 3-5 posts to show how you write in public.</span></div>
-                <div class="prompt-source-path"><b>3. One real email</b><span>Use one longer email to show direct writing. Remove names and sensitive details.</span></div>
+                <div class="prompt-source-path"><b>1. Paste or link it</b><span>A YouTube link, a post, an email, a transcript. Names and sensitive details get redacted automatically.</span></div>
+                <div class="prompt-source-path"><b>2. A real conversation</b><span>A call recording or voice memo transcript. Usually the single most valuable source, since nobody performs in it.</span></div>
+                <div class="prompt-source-path"><b>3. "Just go look"</b><span>If your agent has a connected browser, tell it where: your YouTube channel, your blog, your LinkedIn. It reads the page directly, nothing private, nothing beyond what you named.</span></div>
               </div>
             </div>
-            <pre class="prompt-reader-code"><code id="voiceKitPromptText"># Build my evidence-backed Voice Kit
+            <pre class="prompt-reader-code"><code id="voiceKitPromptText"># Voice Kit: make AI draft like me, not like AI
 
-Build a reusable skill that drafts [emails / posts / explanations] in my voice. Do not draft until I approve the writing sheet.
+Give me a draft in my actual voice from whatever real samples I share, a YouTube link, a doc, a pasted email, even one paragraph. Don't run an interview before drafting.
 
-Start by asking exactly this:
-"Pick one starting source:
-A. 1-3 public YouTube links where I explain or teach.
-B. 3-5 posts or articles I wrote.
-C. One longer email I wrote.
-Pick one."
+The one idea that matters: a voice kit built only from abstracted rules ("be direct," "avoid jargon") produces AI-sounding output, because a model given a rule like that invents new phrasing that satisfies the rule instead of recalling my actual words. The fix: keep my real sample text on hand, and check anything punchy-sounding against it before using it.
 
-For YouTube, get the public transcript. If you cannot, ask me to paste it. For posts, read only the links I give you. For an email, tell me to remove names and sensitive details. Ask for a second sample only when you need to check an uncertain pattern.
+How to work:
+1. Take whatever I give you, immediately. One sample is enough to start. If more would sharpen it, mention that once after the first draft, not before.
+2. Draft from my current request right away if it already states the audience, channel, and topic. Only ask a direct question when something you actually need for the draft is missing.
 
-Treat speech and writing differently. Speech shows how I reason. Posts and emails show how I write for a channel. Label every sample with its audience, job, channel, date, and purpose.
+Two ways I can give you a sample, either is fine:
+- I paste or link it: a YouTube URL, a blog post, a pasted email, a transcript.
+- I say "just go look": if you have a connected browser already signed into my own accounts, navigate to a page I name, my YouTube channel, my blog, my LinkedIn, and read it directly. Only visit pages I name as my own. Don't wander to unrelated pages or follow outbound links looking for more, and don't sign into anything new. Stay off my inbox, DMs, drafts, and account settings even if the session could reach them, "look at my blog" means the blog.
+3. Pull a short list of real, observable patterns from my sample (an actual verbal tic, a real intensifier, a real structural move), and show it next to the draft, not as a form I have to approve before you're allowed to write.
+4. State your confidence in one line if it's based on a single sample. Don't block on it, and don't guess at patterns you don't have evidence for.
 
-Create an Author Writing Sheet. Every rule must have:
-- the observed pattern;
-- the source label and a short supporting excerpt;
-- the channel where it applies;
-- confidence: repeated, one-off, or uncertain; and
-- the instruction for a draft.
+Before showing me a draft, check it against my real sample:
+- If a sentence sounds notably punchy, clever, or quotable and doesn't resemble real phrasing in my sample, it's probably invented, not my voice. Cut it and say the plain version instead, even if that reads as less polished.
+- Also cut, unless my sample shows I actually use them: generic openers/closers ("I hope you're well," "Looking forward to hearing from you"), fake contrast ("This isn't X, it's Y"), empty intensifiers ("game-changing," "seamless," "transformative"), corporate filler ("leverage," "unlock," "streamline"), em dashes, and formulaic three-item lists the source doesn't use.
 
-Cover: opening move, argument order, sentence length, vocabulary, examples, directness, certainty, questions, endings, and what sounds unlike me. Do not use vague labels such as "professional" or "human." If samples conflict, mark the rule as channel-specific or uncertain.
+For LinkedIn, X, or other short-form/social posts specifically:
+- Max two short sentences per block or slide, one idea per block.
+- If a product or my own work is part of the story, the shape is: a real detail, then the evidence, then what was learned, then what now works, then a confident, low-pressure ask. A mistake can be one detail inside that arc, never the framing of the whole piece.
+- If there's an accompanying carousel or visual, match its beats to the caption 1:1.
 
-Show me the sheet first. I will mark each rule: keep, change, or remove. Then build "My Voice Kit" with:
-- the approved Author Writing Sheet;
-- channel-specific rules;
-- a rule for selecting up to 3 relevant samples for each new task;
-- a drafting prompt that cites the rules it used; and
-- a review form: more like me, less like me, keep, remove, or never use again.
+What you don't do: read my full inbox, drive, or archive, use anyone else's writing as my sample, or send, publish, submit, spend money, or change an account. Automatically redact any other person's name or sensitive detail you find in a sample before using it in a pattern list or draft, don't ask me to pre-redact first. I review and take every consequential action myself.
 
-After I approve the sheet, ask for one current brief:
-- reader or audience;
-- desired action;
-- verified facts;
-- limits or claims to avoid; and
-- channel.
+If I give direct feedback ("I don't write like that"), that always overrides an inferred pattern. Log it with the date and my own words.
 
-Do not infer missing facts.
-
-Test the kit on one current brief. Make a baseline draft and a Voice-Kit draft. State the rules that changed the second draft. Score both from 1-5 for recognizability, reasoning, channel fit, accuracy, editing burden, and privacy. Flag missing facts and what I must verify. Revise the kit from my feedback.
-
-## AI WRITING RED-FLAG PASS
-Before you show a draft, flag and rewrite these patterns unless my approved samples show I use them:
-- generic openers or closers: "I hope you're well," "I wanted to reach out," or "Looking forward to hearing from you";
-- fake contrast: "This isn't X. It's Y.";
-- fake reader dialogue or rhetorical bait: "You may be thinking..." or "The question is...";
-- empty intensifiers: "game-changing," "powerful," "seamless," or "transformative";
-- corporate filler: "leverage," "unlock," "streamline," or "optimize" without a concrete action;
-- formulaic three-item lists, "Key takeaways," or headings the source author does not use;
-- an em dash, polished signoff, or level of certainty that the Author Writing Sheet does not support.
-
-For each red flag, name the sentence, the flag, and the rewrite. Use the approved writing sheet for the rewrite. Do not replace one template phrase with another.
-
-## HARD BOUNDARIES
-- Do not ask for my inbox, drive, full archive, passwords, or private messages.
-- Do not use other people's writing as my samples.
-- Do not copy sample sentences, invent facts, or claim an exact voice clone.
-- Do not blend conflicting channels into one rule.
-- Do not use every sample for every task.
-- Do not use stale samples that no longer represent my offer or writing.
-- Do not send, publish, submit, spend money, or change an account.
-
-Save the skill for my review if this platform supports skills. Otherwise give me a clean document I can save.
-
-Start with A, B, or C.</code></pre>
+Start by drafting from whatever I just shared, right now.</code></pre>
             <div class="prompt-reader-actions"><button type="button" class="btn-primary" data-copy-voice-kit-prompt>Copy this prompt</button><small>Use only examples you own or are authorized to use.</small></div>
-            <div class="prompt-boundaries"><strong>AI writing red flags</strong><ul class="prompt-boundary-list"><li>Generic openers, closers, and polished signoffs.</li><li>Fake contrast and rhetorical bait.</li><li>"Leverage," "unlock," and other empty corporate filler.</li><li>Formulaic headings and three-item lists.</li><li>Unwarranted certainty or invented outcomes.</li><li>Em dashes or punctuation the source author does not use.</li></ul></div>
+            <div class="prompt-boundaries"><strong>AI writing red flags</strong><ul class="prompt-boundary-list"><li>Generic openers, closers, and polished signoffs.</li><li>Fake contrast and rhetorical bait.</li><li>"Leverage," "unlock," and other empty corporate filler.</li><li>Formulaic headings and three-item lists.</li><li>Unwarranted certainty or invented outcomes.</li><li>Em dashes or punctuation the source author does not use.</li><li>A punchy idiom that sounds right but appears nowhere in the real Corpus.</li></ul></div>
           </div>
         </article>
       </div>
     </section>
 
-    <div class="jump-bar"><div class="container jump-inner"><span>On this page</span><a href="#problem">The problem</a><a href="#context-efficiency">Why a skill</a><a href="#ingredients">Ingredients</a><a href="#recipe">The recipe</a><a href="#taste-test">Taste test</a><a href="#sources">Sources</a></div></div>
+    <div class="jump-bar"><div class="container jump-inner"><span>On this page</span><a href="#use-cases">Use cases</a><a href="#execution-model">How it works</a><a href="#evidence">Why this is credible</a><a href="#recipe">The recipe</a><a href="#taste-test">Taste test</a><a href="#sources">Sources</a></div></div>
 
-    <section class="section" id="problem">
+    <section class="section" id="use-cases">
       <div class="container answer-block">
-        <div><p class="label">The problem</p><h2 class="section-title">A clean draft can still be unusable.</h2></div>
+        <div><p class="label">What it is useful for</p><h2 class="section-title">Use it where the words actually matter.</h2></div>
         <div class="answer-copy">
-          <p>An AI can write a clean email you would never send. The grammar works. The reasoning, certainty, or tone does not.</p>
-          <p>"Write in my voice" gives the model a label. A few good examples show it how you think.</p>
-          <p class="answer-callout">Use a small, labelled set from the job you need to do. Keep the judgment.</p>
+          <p>Voice Kit is for the work that needs to sound like you, not like a competent default. It gives your AI a real reference, a current job, and a way to show its work before the draft represents you.</p>
+          <div class="use-case-grid" aria-label="Voice Kit use cases">
+            <article class="use-case-card"><small>Outbound email</small><h3>Start with a message you would actually send.</h3><p>Bring one real email or transcript and the person you are writing to. Get a draft with the source-based choices visible, so you can fix the logic or tone before it goes anywhere.</p></article>
+            <article class="use-case-card"><small>Post or carousel</small><h3>Keep the writing and visual beats together.</h3><p>Bring a post, talk, or rough story. Get short blocks that follow the source's actual rhythm, with a caption and visual beats that match in the same order.</p></article>
+            <article class="use-case-card"><small>Client explanation</small><h3>Make a clear point without sounding borrowed.</h3><p>Bring a strong explanation and the facts for this job. Get a draft that keeps the owner's style separate from the claims that still need verification.</p></article>
+          </div>
+          <div class="field-test"><strong>The failure this is designed to avoid.</strong><p>Abstract instructions such as “be direct” or “avoid jargon” can still produce a clean draft you would never say. In testing, short quoted fragments and abstracted rules led to a made-up punctuation habit and an idiom the writer had never used. Keeping a real sample available made both misses easy to spot and remove.</p></div>
         </div>
       </div>
     </section>
 
     <section class="section section--alt" aria-labelledby="context-map-title">
       <div class="container article-shell">
-        <aside class="article-toc"><strong>Recipe logic</strong><nav><a href="#context-efficiency">Why a skill</a><a href="#published-data">Published data</a><a href="#ingredients">Ingredients</a><a href="#prep">Prep</a><a href="#recipe">Steps</a><a href="#taste-test">Taste test</a><a href="#authority">Authority</a></nav></aside>
+        <aside class="article-toc"><strong>Skill breakdown</strong><nav><a href="#execution-model">What it does</a><a href="#evidence">Why it is credible</a><a href="#context-efficiency">Why make it a skill</a><a href="#ingredients">What to bring</a><a href="#recipe">Steps</a><a href="#taste-test">Taste test</a><a href="#authority">Control point</a></nav></aside>
         <article class="article-copy">
-          <h2 id="context-efficiency">A skill holds the method. Relevant context keeps it lean.</h2>
-          <p>A prompt can solve one assignment. A skill keeps the repeatable method: approved rules, the red-flag pass, the review format, and the boundary around what AI may do. The brief and selected samples change with each job.</p>
+          <h2 id="execution-model">What the skill actually does.</h2>
+          <p>Voice Kit does not manufacture a personality from a label. It reads a real source you chose, uses that evidence to make a first draft for the job in front of it, then gives you visible pattern notes to correct. Your correction becomes the useful part of the method for the next draft.</p>
 
-          <div class="evidence-panel" role="group" aria-labelledby="context-efficiency-title">
-            <p class="recipe-kicker">Published research example · Context compression</p>
-            <h3 id="context-efficiency-title">Selecting context can cut cost and time. That is separate from making a skill.</h3>
-            <p>A 2023 study of long documents and conversations reduced context cost by 50% and inference time by 32% while maintaining comparable performance in its tests.<sup><a href="#source-12">12</a></sup></p>
-            <div class="evidence-stats">
-              <div class="evidence-stat"><b>50%</b><span>Context-cost reduction in the study</span></div>
-              <div class="evidence-stat"><b>32%</b><span>Inference-time reduction in the study</span></div>
-              <div class="evidence-stat"><b>3</b><span>Maximum relevant samples this Voice Kit selects per draft</span></div>
-            </div>
-            <p class="evidence-limit"><strong>Limit:</strong> The study tested context compression, not this Voice Kit or every AI provider. Do not promise a 50% token saving. Your actual use depends on the platform, the skill, and the material you load.</p>
-          </div>
-
-          <p>OpenAI defines a skill as a reusable bundle with a <code>SKILL.md</code> manifest. That is what you keep: the approved method. It does not promise a fixed token saving on every task.<sup><a href="#source-11">11</a></sup></p>
-
-          <h2 id="published-data">Selected context has been tested with real user histories.</h2>
-          <p>LaMP gives a model a current task plus selected items from a person's history. That is the workflow here: one job, relevant context, review.<sup><a href="#source-4">4</a></sup></p>
-
-          <div class="evidence-panel" role="group" aria-labelledby="lamp-evidence-title">
-            <p class="recipe-kicker">Published research example · Real benchmark data</p>
-            <h3 id="lamp-evidence-title">LaMP tested personalization on 7 tasks with historical user profiles.</h3>
-            <p>Four generation tasks included <strong>email subjects</strong> and <strong>tweet paraphrases</strong>. The method retrieved relevant profile items for each task.</p>
-            <div class="evidence-stats">
-              <div class="evidence-stat"><b>7</b><span>Personalized tasks in the published benchmark</span></div>
-              <div class="evidence-stat"><b>+12.2%</b><span>Reported relative average improvement with profile retrieval in its zero-shot setting</span></div>
-              <div class="evidence-stat"><b>+23.5%</b><span>Reported relative average improvement after fine-tuning with the method</span></div>
-            </div>
-            <p class="evidence-limit"><strong>Limit:</strong> These are benchmark metrics, not reply rates, sales results, or proof that an email sounds right. Select context. Then test the draft.</p>
-          </div>
-
-          <div class="field-test"><strong>Run your own test.</strong><p>Draft one unsent assignment with the brief alone, then with the Voice Kit. Score both below. Keep rules that reduce edits without creating privacy or accuracy failures.</p></div>
-
-          <h2 id="ingredients">Use only relevant context.</h2>
-          <p>A few examples can steer a task. Relevant context constrains the answer to useful material.<sup><a href="#source-1">1</a></sup> For each draft, select samples that match the job instead of loading the full collection.<sup><a href="#source-9">9</a></sup></p>
-
-          <div class="context-map" role="img" aria-label="Approved samples become an owner-reviewed Author Writing Sheet and Voice Kit. The Voice Kit plus a current brief create an AI draft, which receives human fact and voice review before use.">
-            <p class="recipe-kicker">Visual 1 · Context map</p>
-            <h3 id="context-map-title">Each source has a job.</h3>
-            <p>Speaking, writing, and the assignment each add different context.</p>
+          <div class="context-map" role="img" aria-label="A real sample and current writing job create a grounded draft and pattern notes. The owner corrects what is off before deciding whether to use it. Feedback improves the next draft.">
+            <p class="recipe-kicker">Visual 1 · Execution model</p>
+            <h3 id="context-map-title">Real source. Current job. Visible judgment.</h3>
+            <p>This is the execution value: the AI has a specific reference and a specific job, while you can see and change the choices it makes.</p>
             <div class="context-flow">
-              <div class="flow-node flow-node--voice"><small>Approved samples</small><b>Speaking + writing</b><span>Transcript excerpts and strong writing from the right channel.</span></div>
+              <div class="flow-node flow-node--voice"><small>You bring</small><b>One real sample</b><span>A talk, post, email, transcript, or named public page you are allowed to use.</span></div>
               <div class="flow-arrow" aria-hidden="true"></div>
-              <div class="flow-node flow-node--kit"><small>Owner-reviewed rules</small><b>Writing Sheet + Voice Kit</b><span>How I open, reason, qualify, explain, and what I avoid.</span></div>
+              <div class="flow-node"><small>You name</small><b>The current writing job</b><span>The reader, channel, facts, and point you need to make.</span></div>
               <div class="flow-arrow" aria-hidden="true"></div>
-              <div class="flow-node"><small>One writing job</small><b>Current brief</b><span>Reader, action, facts, limits, and channel.</span></div>
+              <div class="flow-node flow-node--kit"><small>The skill returns</small><b>Draft + pattern notes</b><span>A draft grounded in the sample, with the observed choices beside it.</span></div>
               <div class="flow-arrow" aria-hidden="true"></div>
-              <div class="flow-node flow-node--output"><small>Owner approval</small><b>Draft + review</b><span>Compare, fact-check, edit, and decide whether to use it.</span></div>
+              <div class="flow-node flow-node--output"><small>You improve it</small><b>Feedback + review</b><span>Correct what is off, verify facts, then use, revise, or discard the result.</span></div>
             </div>
-            <div class="boundary-panel"><div class="boundary-mark" aria-hidden="true">×</div><div><small>Keep out</small><p>Other people's messages, sensitive data, stale samples, credentials, and anything you cannot use.</p></div></div>
+            <div class="boundary-panel"><div class="boundary-mark" aria-hidden="true">×</div><div><small>One clear boundary</small><p>Use material you own or are allowed to use. The AI can prepare and draft; you verify facts and decide what, if anything, gets sent or published.</p></div></div>
           </div>
           <p class="visual-caption">Illustrative workflow. This diagram shows a method, not a measured result.</p>
 
-          <div class="ingredient-grid">
-            <article class="ingredient-card"><span>Ingredient 1</span><h3>Approved speech</h3><p>Use excerpts where you explain, decide, or teach.</p></article>
-            <article class="ingredient-card"><span>Ingredient 2</span><h3>Approved writing</h3><p>Use emails, posts, or articles that did the same job.</p></article>
-            <article class="ingredient-card"><span>Ingredient 3</span><h3>Current brief</h3><p>Name the reader, action, facts, limits, and channel.</p></article>
-            <article class="ingredient-card"><span>Ingredient 4</span><h3>Avoid list</h3><p>List phrases, claims, certainty, or habits you do not want.</p></article>
+          <h2 id="evidence">Why this approach is worth trying.</h2>
+          <p>The research below supports the pieces of this method. It does not prove this exact skill will create a specific business outcome, save a fixed amount of time, or make every draft sound right on the first pass.</p>
+          <div class="evidence-model-grid" aria-label="Research supporting the Voice Kit method">
+            <article class="evidence-model-card"><small>Relevant context</small><h3>Personal history can improve task-specific generation.</h3><p>LaMP tested retrieval from a person's history across seven personalized tasks, including email-subject generation and tweet paraphrasing. That supports selecting a real source that fits the current job instead of relying on a generic “sound like me” request.<sup><a href="#source-4">4</a></sup></p><p class="evidence-limit"><strong>It does not prove:</strong> reply rates, sales results, or that your first email is ready to send.</p></article>
+            <article class="evidence-model-card"><small>Real source text</small><h3>Style is hard to imitate from a thin summary.</h3><p>A large evaluation found models handled structured email better than nuanced blogs and forums when trying to imitate everyday authors. That supports keeping the real sample available and treating a single draft as something to inspect, not as an authority.<sup><a href="#source-8">8</a></sup></p><p class="evidence-limit"><strong>It does not prove:</strong> that one sample captures every part of a person's voice.</p></article>
+            <article class="evidence-model-card"><small>Owner feedback</small><h3>Explicit preferences and refinement have a role.</h3><p>Research on personalized writing agents supports checking inferred preferences across samples and refining them over time. That is why direct feedback overrides an inferred pattern in this skill.<sup><a href="#source-10">10</a></sup></p><p class="evidence-limit"><strong>It does not prove:</strong> that the AI should act without your review.</p></article>
           </div>
 
-          <h2 id="prep">Prepare the samples.</h2>
-          <p>Style has observable patterns, including word choice and sentence structure.<sup><a href="#source-2">2</a></sup> Name the patterns you see.</p>
-          <div class="article-note"><strong>Build a sheet before a draft.</strong><p>A 2025 story-generation study used a human-validated Author Writing Sheet. Across 3,600 stories from 112 authors, it beat a non-personalized baseline 78% of the time on past-style capture. Story data is not business-email data. The useful method is explicit traits, rules, and human validation.<sup><a href="#source-7">7</a></sup></p></div>
+          <h2 id="context-efficiency">Why make this a skill instead of saving one prompt?</h2>
+          <p>A prompt can solve one assignment. A skill keeps the repeatable method: read real source text, draft first, show the pattern notes, run the red-flag pass, and improve from your feedback. The current job and source are what change each time.<sup><a href="#source-11">11</a></sup></p>
+          <div class="article-note"><strong>Keep the context bounded.</strong><p>Select the material that fits the task instead of dumping an archive into every prompt. Research on context compression supports the general efficiency case, but it did not test this Voice Kit or promise a fixed cost saving on every platform.<sup><a href="#source-12">12</a></sup></p></div>
+
+          <h2 id="ingredients">What to bring.</h2>
+          <p>One real sample starts the work. More material is optional—use it when the first draft tells you the current sample is too formal, too old, or simply not representative of the job.<sup><a href="#source-1">1</a></sup><sup><a href="#source-9">9</a></sup></p>
+
+          <div class="ingredient-grid">
+            <article class="ingredient-card"><span>Ingredient 1</span><h3>One real sample</h3><p>A talk, post, email, transcript, paragraph, or named public page that is actually yours to use.</p></article>
+            <article class="ingredient-card"><span>Ingredient 2</span><h3>One current job</h3><p>The reader, channel, facts, and point you need to make—usually already present in your request.</p></article>
+            <article class="ingredient-card"><span>Ingredient 3</span><h3>Optional stronger examples</h3><p>Add another relaxed conversation or a better channel match only after the first result shows you it would help.</p></article>
+            <article class="ingredient-card"><span>Ingredient 4</span><h3>Your direct correction</h3><p>“I don't write like that” is more useful than a vague score. It replaces an inferred rule.</p></article>
+          </div>
+
+          <h2 id="prep">How it reads the sample.</h2>
+          <p>Writing style has observable patterns, including word choice and sentence structure.<sup><a href="#source-2">2</a></sup> The skill names only the patterns it can point to in the source: a repeated phrase, a sentence-length habit, a real opener, a qualification move, or an actual way of making a point.</p>
+          <div class="article-note"><strong>Show the pattern notes with the draft.</strong><p>A 2025 story-generation study supports making implicit style traits explicit and checking them with human feedback. Its story data does not make a claim about business email. The useful part here is visibility: you can correct a bad pattern after seeing a usable first draft, rather than approving a long theory of your voice before the work starts.<sup><a href="#source-7">7</a></sup></p></div>
           <p>One sample starts the kit. It does not prove every rule. In a 40,000-generation evaluation spanning more than 400 authors, models handled structured email better than nuanced blogs and forums.<sup><a href="#source-8">8</a></sup></p>
           <p>Check each rule across samples and revise it from feedback. A 2025 email-writing study found iterative refinement plus cross-sample verification improved its writing-agent quality over its comparison method.<sup><a href="#source-10">10</a></sup></p>
           <ul class="exclude-list">
             <li><strong>Skip third-party messages.</strong> They are not your voice samples.</li>
-            <li><strong>Redact sensitive details.</strong> Keep only what the job needs.</li>
+            <li><strong>Sensitive details get redacted automatically.</strong> Other people's names and private details are stripped before use, you don't have to pre-clean samples yourself.</li>
             <li><strong>Skip stale samples.</strong> They may reflect an old offer or tone.</li>
             <li><strong>Skip copied writing.</strong> You do not own it.</li>
           </ul>
 
-          <h2 id="recipe">The recipe</h2>
+          <h2 id="recipe">The skill, step by step.</h2>
           <div class="recipe-steps">
-            <article class="recipe-step"><div><h3>Pick one writing job.</h3><p>Choose a task you can repeat and judge.</p></div></article>
-            <article class="recipe-step"><div><h3>Label the samples.</h3><p>Note the audience, job, channel, date, purpose, and pattern each sample shows.</p></div></article>
-            <article class="recipe-step"><div><h3>Build the Voice Kit.</h3><p>Capture openings, reasoning order, certainty, examples, endings, and avoid rules.</p></div></article>
-            <article class="recipe-step"><div><h3>Draft one assignment.</h3><p>Give the agent the kit, brief, and facts. Flag gaps and assumptions.</p></div></article>
-            <article class="recipe-step"><div><h3>Compare the drafts.</h3><p>Score a brief-only draft and a Voice-Kit draft. Remove rules that create more editing.</p></div></article>
+            <article class="recipe-step"><div><h3>Ask for the actual draft.</h3><p>Name the writing job. If the request already has the reader, channel, topic, and facts, the skill should start there instead of making you complete an intake form.</p></div></article>
+            <article class="recipe-step"><div><h3>Share one real sample, or let it look.</h3><p>Paste a link or doc, or if your agent has a connected browser, say “check my YouTube channel” or “look at my blog.” One sample is enough to start.</p></div></article>
+            <article class="recipe-step"><div><h3>Get the first draft and its pattern notes.</h3><p>The skill drafts from what you gave it, then shows the real patterns it used beside the draft. It does not make you approve a writing sheet before it writes anything.</p></div></article>
+            <article class="recipe-step"><div><h3>Correct what is off.</h3><p>Fix a wrong pattern in plain language. Add a stronger or additional sample only if you want a more complete kit for the next job.</p></div></article>
+            <article class="recipe-step"><div><h3>Run a side-by-side test when the work matters.</h3><p>For a repeat assignment, compare a normal AI draft with the Voice Kit draft. Keep the method only when it reduces meaningful editing without creating accuracy or privacy failures.</p></div></article>
           </div>
 
           <div class="prompt-box"><strong>Drafting rule</strong><p>Use the Voice Kit. Preserve facts. Flag gaps. Run the red-flag pass. Name what I must verify. Do not send.</p></div>
 
           <div class="compare-card" role="group" aria-labelledby="comparison-title">
             <p class="recipe-kicker">Visual 2 · Synthetic comparison</p>
-            <h3 id="comparison-title">Same brief. Different context.</h3>
-            <p>Better context changes the logic, tone, and boundaries.</p>
+            <h3 id="comparison-title">One way to judge the method on real work.</h3>
+            <p>Use the same brief. Inspect whether the relevant source changes the reasoning, tone, and review points in a useful way.</p>
             <p class="compare-brief"><strong>Synthetic brief:</strong> Write a short reconnect email. Do not claim a project, result, or urgency.</p>
             <div class="compare-grid">
               <article class="compare-draft"><small>Generic draft</small><p>"Hi [Name], I hope you're doing well. I wanted to reach out because I've been helping businesses streamline their operations with AI and automation. I'd love to connect and explore how we might work together."</p><ul><li>Generic opener</li><li>Invents a broad value claim</li><li>No reason this person received this message</li></ul></article>
@@ -399,7 +355,7 @@ Start with A, B, or C.</code></pre>
           </div>
           <p class="visual-caption">Synthetic example. It does not show a response-rate or performance result.</p>
 
-          <h2 id="taste-test">Run the taste test before the draft represents you.</h2>
+          <h2 id="taste-test">Review it before the draft represents you.</h2>
           <p>Define the task, record the source, and review the output.<sup><a href="#source-3">3</a></sup></p>
           <p>Profile-informed scoring outperformed a zero-shot GPT-4 reviewer in one story-generation study.<sup><a href="#source-5">5</a></sup> Score the preferences you can name.</p>
           <div class="taste-grid">
@@ -412,21 +368,21 @@ Start with A, B, or C.</code></pre>
           </div>
           <div class="article-note"><strong>Stop condition</strong><p>Discard drafts with unverified claims, sensitive details, false familiarity, or the wrong audience fit.</p></div>
 
-          <h2 id="authority">Set the authority line.</h2>
+          <h2 id="authority">Keep one clear control point.</h2>
           <div class="table-scroll"><table class="decision-table"><thead><tr><th>AI may do</th><th>The owner must do</th></tr></thead><tbody>
-            <tr><td>Analyze approved examples.</td><td>Select and authorize sources.</td></tr>
-            <tr><td>Propose Voice Kit rules.</td><td>Choose the rules to keep.</td></tr>
+            <tr><td>Analyze shared examples.</td><td>Choose material you own or are allowed to use.</td></tr>
+            <tr><td>Show observed patterns beside a draft.</td><td>Correct, keep, or reject those patterns.</td></tr>
             <tr><td>Draft and flag review points.</td><td>Verify facts, promises, and audience fit.</td></tr>
             <tr><td>Suggest revisions.</td><td>Edit, approve, send, publish, or discard.</td></tr>
           </tbody></table></div>
 
-          <h2 id="start">Run one test.</h2>
-          <p>Choose one task you have done three times. Build the kit. Test it on one unsent assignment. Keep rules that reduce editing.</p>
+          <h2 id="start">Run one useful test.</h2>
+          <p>Start with the writing job in front of you. If it becomes repeat work, test the method against a normal draft and keep only the parts that reduce editing.</p>
         </article>
       </div>
     </section>
 
-    <section class="section cta-section"><div class="container"><div class="review-cta"><p class="label">Map one AI workflow</p><h2>Bring one task. Build one recipe.</h2><p>Start with one approved source and one job.</p><a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" data-cta-location="cookbook_voice_footer">Map your AI workflow</a><small>Do not send sensitive data, credentials, or a full inbox.</small></div></div></section>
+    <section class="section cta-section"><div class="container"><div class="review-cta"><p class="label">Map one AI workflow</p><h2>Bring one task. Build one recipe.</h2><p>Start with one real sample and one job that matters this week.</p><a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" data-cta-location="cookbook_voice_footer">Map your AI workflow</a><small>Use material you own or are authorized to use. Keep credentials and unrelated private data out of the task.</small></div></div></section>
 
     <section class="section section--alt" id="sources">
       <div class="container article-shell">
@@ -434,6 +390,7 @@ Start with A, B, or C.</code></pre>
         <article class="article-copy">
           <p class="label">Research record</p>
           <h2>Sources, examples, and test notes</h2>
+          <p>This record separates the evidence for each part of the method from the claims this page does not make. The sources support relevant context, observable style patterns, refinement, and human review. They do not guarantee an outcome for your business or this exact skill.</p>
           <ol class="sources-list">
             <li id="source-1"><a href="https://developers.openai.com/api/docs/guides/prompt-engineering" target="_blank" rel="noopener">Prompt engineering</a>. Supports the use of a handful of examples and relevant task-specific context to steer a model toward a defined task. <strong>Source type:</strong> official documentation. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-2"><a href="https://aclanthology.org/2024.personalize-1.8/" target="_blank" rel="noopener">Personalized Text Generation with Fine-Grained Linguistic Control</a>. Supports the research framing that writing style can be treated as multiple linguistic attributes. Its evidence is controlled text generation, not business-email performance. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
@@ -448,7 +405,7 @@ Start with A, B, or C.</code></pre>
             <li id="source-11"><a href="https://developers.openai.com/api/docs/guides/tools-skills" target="_blank" rel="noopener">OpenAI: Skills</a>. Supports using a skill as a reusable bundle with a <code>SKILL.md</code> manifest for codified processes and conventions. It does not establish a fixed per-task token or billing reduction. <strong>Source type:</strong> official documentation. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-12"><a href="https://arxiv.org/abs/2310.06201" target="_blank" rel="noopener">Compressing Context to Enhance Inference Efficiency of Large Language Models</a>. Supports the bounded context-efficiency example: its Selective Context experiments reported a 50% reduction in context cost and a 32% reduction in inference time while preserving comparable downstream performance. It tests compression of long context, not this Voice Kit or every AI provider. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
           </ol>
-          <p class="source-note">Last reviewed: 2026-08-02. This is a practical workflow guide, not legal, privacy, security, or compliance advice. Use only data you are authorized to use, and set a review boundary that matches the consequence of the task.</p>
+          <p class="source-note">Last reviewed: 2026-08-03. This is a human-readable breakdown of the current Voice Kit skill, not a guarantee of output quality or a substitute for your judgment. Use material you are authorized to use, and review consequential claims before use.</p>
         </article>
       </div>
     </section>
@@ -461,7 +418,7 @@ Start with A, B, or C.</code></pre>
       const promptText = document.getElementById('voiceKitPromptText');
       const voiceKitPrompt = promptText.textContent.trim();
       const voiceKitSkillUrl = 'https://why57.com/skills/voice-kit/SKILL.md';
-      const voiceKitInstallInstruction = `Download the Voice Kit skill from ${voiceKitSkillUrl}. Save it as skills/voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work, then use it to build my Voice Kit from approved samples. If this environment does not support skills, follow the file as reusable project instructions for this work.`;
+      const voiceKitInstallInstruction = `Download the Voice Kit skill from ${voiceKitSkillUrl}. Save it as skills/voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work, then use it for drafts from real samples I provide or authorize. Draft first, show the observed patterns alongside the draft, and let my direct feedback override inferred patterns. If this environment does not support skills, follow the file as reusable project instructions for this work.`;
 
       const status = document.getElementById('voiceKitCopyStatus');
       const trackVoiceKitEvent = (eventName, detail = {}) => {
