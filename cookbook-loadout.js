@@ -5,7 +5,7 @@
   if (!copyButton) return;
 
   const voiceKitUrl = 'https://why57.com/skills/voice-kit/SKILL.md';
-  const installInstruction = `Download the Voice Kit skill from ${voiceKitUrl}. Save it as skills/voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work. Use it only with samples I selected or am authorized to use. Build the Voice Kit for my review; do not send, publish, or change an account.`;
+  const installInstruction = `Download the Voice Kit skill from ${voiceKitUrl}. Save it as skills/voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work. Use it with real samples I selected or am authorized to use. Start by drafting the current request, show the observed patterns alongside the draft, and let my direct feedback override inferred patterns. Do not send, publish, or change an account.`;
 
   const copyText = async (value) => {
     if (navigator.clipboard?.writeText) {
@@ -31,7 +31,7 @@
       if (status) status.textContent = 'Install instruction copied. Paste it into an AI that supports skills when you are ready.';
       window.why57Analytics?.track('voice_kit_install_instruction_copied', { location: 'cookbook_launch' });
     } catch (_error) {
-      if (status) status.textContent = 'Copy did not work here. Read the Voice Kit guide and copy the install instruction there.';
+      if (status) status.textContent = 'Copy did not work here. Open the Voice Kit skill breakdown and copy the install instruction there.';
     }
   });
 })();
