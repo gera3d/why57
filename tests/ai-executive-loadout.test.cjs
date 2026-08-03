@@ -18,63 +18,50 @@ const packageSources = {
   'relationship-reconnect-package': ['relationship-map', 'outreach-planner', 'voice-kit']
 };
 
-test('CookBook puts the full install first, then gives visitors real skill packages', () => {
-  assert.doesNotMatch(homepage, /id="packages"/);
-  assert.match(cookbook, /id="install"/);
-  assert.match(cookbook, /id="packages"/);
-  assert.match(cookbook, /id="aiExecutiveLoadoutUrl"/);
-  assert.match(cookbook, /Copy full install link/);
-  assert.match(cookbook, /https:\/\/why57\.com\/skills\/ai-executive-loadout\/SKILL\.md/);
-  assert.match(cookbook, /href="#recipes"[^>]+id="aiExecutiveLoadoutSource"/);
-  assert.match(cookbook, /data-package="demand"/);
-  assert.match(cookbook, /data-package="customer"/);
-  assert.match(cookbook, /data-package="relationships"/);
-  assert.match(cookbook, /id="aiExecutivePackageUrl"/);
-  assert.match(cookbook, /id="aiExecutivePackageSource"/);
-  assert.match(cookbook, /Turn a live market problem into a credible contribution/);
-  assert.match(cookbook, /Turn real relationship evidence into a careful next move/);
-  assert.match(cookbook, /Signal to Conversation/);
-  assert.match(cookbook, /Open package breakdown &amp; install/);
-  assert.match(cookbook, /The AI Executive CookBook/);
-  assert.match(cookbook, /Give your AI a job/);
-  assert.match(cookbook, /Keep the decision/);
-  assert.match(cookbook, /You do not need the full library first/);
+test('CookBook launches Voice Kit honestly and reserves the rest for later releases', () => {
+  assert.doesNotMatch(homepage, /id="voice-kit"/);
+  assert.match(cookbook, /id="voice-kit"/);
+  assert.match(cookbook, /Start with one AI skill that/);
+  assert.match(cookbook, /Voice Kit is the only ready-to-install module today/);
+  assert.match(cookbook, /id="voiceKitInstallCopy"/);
+  assert.match(cookbook, /Read the Voice Kit guide/);
+  assert.match(cookbook, /put-your-actual-voice-back-into-ai-draft\.html/);
+  assert.match(cookbook, /Copy install instruction/);
+  assert.match(cookbook, /id="coming-soon"/);
+  assert.match(cookbook, /Proof Library/);
+  assert.match(cookbook, /Secure Setup/);
+  assert.match(cookbook, /Coming next/);
+  assert.match(cookbook, /Not a waitlist for a vague “AI platform/);
+  assert.match(cookbook, /class="cb-section cb-legacy-catalog" id="recipes"[^>]+hidden/);
+  for (const skill of ['Relationship Map', 'Feedback Prioritization', 'Content Pattern Map', 'Signal to Conversation', 'Call Decision System', 'Outreach Planner', 'AI Skill Stack', 'Daily AI Workflow', 'Browser Harness Benchmark']) {
+    assert.match(cookbook, new RegExp(skill));
+  }
   assert.match(cookbook, /class="cookbook-page cb-page"/);
   assert.match(cookbook, /style\.css\?v=8/);
-  assert.match(cookbook, /cookbook-executive\.css\?v=2/);
-  assert.match(cookbook, /cookbook-loadout\.js\?v=5/);
-  assert.match(cookbook, /id="aiExecutivePackageFlow"/);
-  assert.match(cookbook, /It does not run all of them or change anything outside your AI/);
+  assert.match(cookbook, /cookbook-executive\.css\?v=3/);
+  assert.match(cookbook, /cookbook-loadout\.js\?v=6/);
   assert.match(cookbook, /og:image" content="https:\/\/why57\.com\/images\/ai-executive-os-social-card\.png/);
   assert.match(cookbook, /twitter:card" content="summary_large_image/);
-  assert.match(cookbook, /10<\/span> detailed recipes/);
-  assert.doesNotMatch(cookbook, /data-route=/);
-  assert.doesNotMatch(cookbook, /id="aiExecutiveRoutePrompt"/);
-  assert.doesNotMatch(cookbook, /href="skills\/ai-executive-loadout\/SKILL\.md"[^>]+id="aiExecutiveLoadoutSource"/);
-  assert.equal(fs.existsSync(path.join(repositoryRoot, 'skills', 'ai-executive-loadout', 'SKILL.md')), true);
+  assert.equal(fs.existsSync(path.join(repositoryRoot, 'skills', 'voice-kit', 'SKILL.md')), true);
   assert.equal(fs.existsSync(path.join(repositoryRoot, 'images', 'ai-executive-os-social-card.png')), true);
 });
 
-test('CookBook package UI has page-scoped install and flow styles', () => {
-  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-full-install\{/);
-  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.executive-routes\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\);gap:10px;\}/);
-  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.executive-route\{display:grid;align-content:start;gap:9px;min-height:191px;/);
-  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.executive-route\.is-active\{border-color:rgba\(224,76,40,.68\);/);
-  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.executive-package-flow\{display:grid;/);
-  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.executive-result-facts div\{display:grid;grid-template-columns:82px minmax\(0,1fr\);/);
+test('CookBook launch UI keeps the live skill and coming-soon release list visually separate', () => {
+  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-live-install\{/);
+  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-launch-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\);/);
+  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-launch-card--live\{border-color:rgba\(255,121,64,.5\);/);
+  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-roadmap-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\);/);
+  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-status--coming\{color:#c8a59b;/);
 });
 
-test('CookBook controls copy direct full and package installer links', () => {
-  assert.match(cookbookLoadout, /const allSkillsUrl = 'https:\/\/why57\.com\/skills\/ai-executive-loadout\/SKILL\.md'/);
-  assert.match(cookbookLoadout, /installUrl: 'https:\/\/why57\.com\/skills\/demand-conversation-package\/SKILL\.md'/);
-  assert.match(cookbookLoadout, /installUrl: 'https:\/\/why57\.com\/skills\/customer-decision-package\/SKILL\.md'/);
-  assert.match(cookbookLoadout, /installUrl: 'https:\/\/why57\.com\/skills\/relationship-reconnect-package\/SKILL\.md'/);
-  assert.match(cookbookLoadout, /ai_executive_all_skills_url_copied/);
-  assert.match(cookbookLoadout, /ai_executive_package_url_copied/);
-  assert.match(cookbookLoadout, /ai_executive_package_selected/);
-  assert.match(cookbook, /Copy package install link/);
-  assert.match(cookbookLoadout, /install only these skills/);
-  assert.doesNotMatch(cookbookLoadout, /ai_executive_route_prompt_copied/);
+test('CookBook only copies a Voice Kit install instruction from the public launch page', () => {
+  assert.match(cookbookLoadout, /const voiceKitUrl = 'https:\/\/why57\.com\/skills\/voice-kit\/SKILL\.md'/);
+  assert.match(cookbookLoadout, /getElementById\('voiceKitInstallCopy'\)/);
+  assert.match(cookbookLoadout, /Use it only with samples I selected or am authorized to use/);
+  assert.match(cookbookLoadout, /do not send, publish, or change an account/);
+  assert.match(cookbookLoadout, /voice_kit_install_instruction_copied/);
+  assert.doesNotMatch(cookbookLoadout, /aiExecutivePackageUrl/);
+  assert.doesNotMatch(cookbookLoadout, /ai_executive_all_skills_url_copied/);
 });
 
 test('full loadout manifest names every skill source and protects unrelated skills', () => {
