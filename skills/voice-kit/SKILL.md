@@ -41,9 +41,26 @@ Short-form fails in two extra ways beyond word choice: dense paragraph blocks, a
 - If a product or the owner's own work is part of the story, the shape is: a real detail, then the evidence, then what was learned, then what now works, then a confident, low-pressure ask. A mistake can be one detail inside that arc; it should never be the framing of the whole piece.
 - If there's an accompanying carousel or visual, match its beats to the caption 1:1, in the same order.
 
-## Getting better over time (offer this, don't gate on it)
+## Keep samples and corrections in the owner's own Corpus file, separate from this skill
 
-Direct feedback from the owner ("I don't write like that") always overrides an inferred pattern; log it with the date and their own words. More samples, especially relaxed/unscripted ones, sharpen the kit further (a real conversation beats a rehearsed talk for actual word choice). Offer to add more sources after delivering something useful, not before.
+This skill is the logic: how to pull patterns, how to draft, how to check a draft. It is not the data. The real samples (whatever was pasted, linked, or browsed) and the dated log of the owner's direct corrections belong in a separate file the owner keeps for themselves, for example `voice-corpus.md` alongside wherever they keep this kit. Call it the Corpus file.
+
+- **Don't paste large samples or a running corrections log into this SKILL.md.** This file is shared logic; the Corpus file is one owner's private data. Keeping them apart is what lets the same skill work for any installer, each owner grows their own Corpus file, the skill itself never changes to hold anyone's personal text.
+- If no Corpus file exists yet for this owner, create one on first use: a short header noting it holds real samples plus a corrections log, then the first sample underneath.
+- Before drafting anything short-form or high-stakes, read the Corpus file directly rather than working from memory of it.
+- Every correction or confirmation from the owner gets appended to the Corpus file's corrections log, dated, in their own words, with what it established, not folded into this skill's instructions.
+
+## Calibration Mode (say "let's calibrate" to run this)
+
+An on-demand, repeatable way to deepen accuracy, rather than only improving by accident when a mistake surfaces later.
+
+1. **Ask for a new sample, either register.** "Got something new to add? Either works: something you'd say out loud, or something you'd write." Talking and writing are separate registers, tracked separately, since word choice and rhythm differ between them. If nothing new, use the existing Corpus file.
+2. **Draft a quick test** targeting whatever's currently thinnest (fewest samples, or a channel/register not covered yet).
+3. **Ask directly:** "Does this sound like you? If not, what's off, specifically?" Don't accept a vague reaction, push for the concrete thing that's wrong, word choice, sentence structure, punctuation, framing, or something else.
+4. **Append the correction to the Corpus file immediately**, dated, verbatim, with what it establishes. If it changes a rule this skill should apply generally (not just for this owner), that's still fine to note, but the raw evidence, the exact words, stays in the Corpus file, never copied into this shared SKILL.md.
+5. **Offer another round right away.** This is a tightening loop, not a one-time setup.
+
+Direct feedback from the owner ("I don't write like that") always overrides an inferred pattern. More samples, especially relaxed/unscripted ones, sharpen the kit further (a real conversation beats a rehearsed talk for actual word choice). Offer Calibration Mode after delivering something useful, not before.
 
 ## What this skill doesn't do
 

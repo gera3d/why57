@@ -4,6 +4,16 @@ Every real change to `SKILL.md`, in order, with why it was made and what it actu
 
 ---
 
+## 2026-08-03 — v6: Calibration Mode, and samples/corrections moved to the owner's own Corpus file
+
+**What changed:** Added a "Calibration Mode" section: an on-demand, repeatable loop (ask for a new sample in either register, draft a quick test, ask directly what's off, log the correction, offer another round) instead of only improving reactively when a mistake happens to surface. Alongside it, added an explicit rule that real samples and the dated corrections log belong in the owner's own separate Corpus file, never pasted into this shared SKILL.md.
+
+**Why:** Built and tested first on a personal, single-owner version of this same kit. That version had drifted into embedding a full verbatim sample and a growing corrections table directly inside the skill file itself, which meant the skill's instructions and one person's private data were the same file. The owner explicitly asked that answers to calibration questions be stored outside the skill, with the skill only responsible for asking the questions, and asked that this work for anyone who installs it, not just for them.
+
+**What it improved:** Two things. First, it gives this kit an active way to get more accurate over time (Calibration Mode) instead of waiting for feedback to happen by chance. Second, it keeps this shared skill file free of any one owner's personal text, each installer grows their own Corpus file, so the skill stays generic and reusable rather than accumulating one person's private samples inside a file meant for everyone.
+
+---
+
 ## 2026-08-03 — v5: Added "let the assistant look" as a second intake path
 
 **What changed:** Alongside pasting or linking a sample, the owner can now say "just go look" and let the assistant browse to a page it names directly (the owner's own YouTube channel, blog, LinkedIn), using a browser session that's already signed in. Scoped tightly: only pages the owner names as their own, no wandering to other links, no signing into anything new, and explicitly off-limits even with a signed-in session: inbox, DMs, drafts, account settings.
