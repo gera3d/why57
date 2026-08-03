@@ -27,12 +27,14 @@ test('CookBook launches Voice Kit honestly and reserves the rest for later relea
   assert.match(cookbook, /Read the Voice Kit guide/);
   assert.match(cookbook, /put-your-actual-voice-back-into-ai-draft\.html/);
   assert.match(cookbook, /Copy install instruction/);
+  assert.match(cookbook, /Author Writing Sheet/);
+  assert.match(cookbook, /approved Voice Kit/);
   assert.match(cookbook, /id="coming-soon"/);
   assert.match(cookbook, /Proof Library/);
   assert.match(cookbook, /Secure Setup/);
   assert.match(cookbook, /Coming next/);
-  assert.match(cookbook, /Not a waitlist for a vague “AI platform/);
-  assert.match(cookbook, /class="cb-section cb-legacy-catalog" id="recipes"[^>]+hidden/);
+  assert.match(cookbook, /Each one stays here until it has a clear job, a human guide, and a real install path/);
+  assert.doesNotMatch(cookbook, /cb-legacy-catalog|10 detailed recipes|11 installable skills|Not a waitlist for a vague “AI platform/);
   for (const skill of ['Relationship Map', 'Feedback Prioritization', 'Content Pattern Map', 'Signal to Conversation', 'Call Decision System', 'Outreach Planner', 'AI Skill Stack', 'Daily AI Workflow', 'Browser Harness Benchmark']) {
     assert.match(cookbook, new RegExp(skill));
   }
@@ -44,6 +46,16 @@ test('CookBook launches Voice Kit honestly and reserves the rest for later relea
   assert.match(cookbook, /twitter:card" content="summary_large_image/);
   assert.equal(fs.existsSync(path.join(repositoryRoot, 'skills', 'voice-kit', 'SKILL.md')), true);
   assert.equal(fs.existsSync(path.join(repositoryRoot, 'images', 'ai-executive-os-social-card.png')), true);
+});
+
+test('CookBook navigation reaches only current visible sections', () => {
+  const ids = new Set([...cookbook.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
+  const anchors = [...cookbook.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1]);
+
+  for (const target of anchors) {
+    assert.equal(ids.has(target), true, `Missing CookBook anchor target: #${target}`);
+  }
+  assert.doesNotMatch(cookbook, /href="#(?:start-here|customer-work|operating-system|browser-work)"/);
 });
 
 test('CookBook launch UI keeps the live skill and coming-soon release list visually separate', () => {
