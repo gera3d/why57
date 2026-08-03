@@ -9,7 +9,7 @@ const cookbook = fs.readFileSync(path.join(repositoryRoot, 'ai-execution-cookboo
 const cookbookLoadout = fs.readFileSync(path.join(repositoryRoot, 'cookbook-loadout.js'), 'utf8');
 const fullLoadoutManifest = fs.readFileSync(path.join(repositoryRoot, 'skills', 'ai-executive-loadout', 'SKILL.md'), 'utf8');
 
-test('CookBook landing page offers the complete AI Executive suite and outcome-led starting routes', () => {
+test('CookBook landing page presents guided execution skills and outcome-led starting routes', () => {
   assert.doesNotMatch(homepage, /id="ai-executive"/);
   assert.match(cookbook, /id="ai-executive"/);
   assert.match(cookbook, /id="aiExecutiveLoadoutUrl"/);
@@ -20,9 +20,13 @@ test('CookBook landing page offers the complete AI Executive suite and outcome-l
   assert.match(cookbook, /data-route="operations"/);
   assert.match(cookbook, /id="aiExecutiveRoutePrompt"/);
   assert.match(cookbook, /Turn social insight into qualified conversations/);
-  assert.match(cookbook, /AI Executive OS/);
-  assert.match(cookbook, /Pick the business result you need/);
-  assert.match(cookbook, /id="aiExecutiveRouteMethod"/);
+  assert.match(cookbook, /The AI Executive CookBook/);
+  assert.match(cookbook, /Give your AI a job/);
+  assert.match(cookbook, /Keep the decision/);
+  assert.match(cookbook, /Configure your AI for the work that needs to move/);
+  assert.match(cookbook, /id="aiExecutiveRouteSkill"/);
+  assert.match(cookbook, /Each recipe gives you the human guide/);
+  assert.match(cookbook, /Each skill gives your AI reusable instructions for one job/);
   assert.match(cookbook, /id="aiExecutiveRouteInput"/);
   assert.match(cookbook, /id="aiExecutiveInstall"/);
   assert.match(cookbook, /og:image" content="https:\/\/why57\.com\/images\/ai-executive-os-social-card\.png/);
@@ -30,16 +34,18 @@ test('CookBook landing page offers the complete AI Executive suite and outcome-l
   assert.match(cookbook, /10<\/span> detailed recipes/);
   assert.doesNotMatch(cookbook, /id="aiExecutiveFocusPrompt"/);
   assert.match(cookbook, /href="#recipes"/);
-  assert.match(cookbook, /cookbook-loadout\.js/);
+  assert.match(cookbook, /cookbook-loadout\.js\?v=2/);
   assert.equal(fs.existsSync(path.join(repositoryRoot, 'skills', 'ai-executive-loadout', 'SKILL.md')), true);
   assert.equal(fs.existsSync(path.join(repositoryRoot, 'images', 'ai-executive-os-social-card.png')), true);
 });
 
-test('AI Executive controls copy a direct manifest URL and outcome-led starting instructions without deleting skills', () => {
+test('CookBook controls copy a direct manifest URL and guided starting instructions without deleting skills', () => {
   assert.match(cookbookLoadout, /const allSkillsUrl = 'https:\/\/why57\.com\/skills\/ai-executive-loadout\/SKILL\.md'/);
   assert.match(cookbookLoadout, /ai_executive_all_skills_url_copied/);
   assert.match(cookbookLoadout, /actionLabel: 'Copy the demand prompt'/);
-  assert.match(cookbookLoadout, /Keep only the module needed for the current step active; leave the rest installed and idle/);
+  assert.match(cookbookLoadout, /Keep only the skill needed for the current step active; leave the rest installed and idle/);
+  assert.match(cookbookLoadout, /Set up a guided execution workstream in the AI environment I already use\. I am leading it/);
+  assert.match(cookbookLoadout, /Keep the context tight so you do not waste tokens on unrelated skills or records/);
   assert.match(cookbookLoadout, /ai_executive_route_prompt_copied/);
   assert.match(cookbookLoadout, /Do not scrape broadly, connect accounts, read DMs, auto-like, auto-comment, auto-DM, publish/);
 });
@@ -50,6 +56,7 @@ test('full loadout manifest names every skill source and protects unrelated skil
   }
   assert.match(fullLoadoutManifest, /Do not delete, move, rename, or overwrite unrelated skills/);
   assert.match(fullLoadoutManifest, /Do not run the installed skills now/);
+  assert.match(fullLoadoutManifest, /This is a user-led setup for an existing AI harness/);
 });
 
 test('Signal to Conversation works from a bounded social source set and preserves owner approval', () => {
