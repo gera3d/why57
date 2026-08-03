@@ -1,4 +1,4 @@
 interface:
-  display_name: "AI Executive OS Installer"
-  short_description: "Install the complete AI Executive OS module library"
-  default_prompt: "Install the complete AI Executive OS library from https://why57.com/skills/ai-executive-loadout/SKILL.md without changing unrelated skills."
+  display_name: "AI Executive CookBook Installer"
+  short_description: "Install the complete AI Executive CookBook skill library"
+  default_prompt: "Install the complete AI Executive CookBook from https://why57.com/skills/ai-executive-loadout/SKILL.md without changing unrelated skills."

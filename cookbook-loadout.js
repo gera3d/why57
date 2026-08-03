@@ -4,18 +4,20 @@
   const aiExecutiveLoadoutUrl = document.getElementById('aiExecutiveLoadoutUrl');
   const aiExecutiveInstallStatus = document.getElementById('aiExecutiveInstallStatus');
   const aiExecutiveLoadoutSource = document.getElementById('aiExecutiveLoadoutSource');
-  const aiExecutiveRoutes = Array.from(document.querySelectorAll('.executive-route'));
-  const aiExecutiveRouteSkill = document.getElementById('aiExecutiveRouteSkill');
-  const aiExecutiveRouteTitle = document.getElementById('aiExecutiveRouteTitle');
-  const aiExecutiveRouteDescription = document.getElementById('aiExecutiveRouteDescription');
-  const aiExecutiveRouteInput = document.getElementById('aiExecutiveRouteInput');
-  const aiExecutiveRouteOutput = document.getElementById('aiExecutiveRouteOutput');
-  const aiExecutiveRouteBoundary = document.getElementById('aiExecutiveRouteBoundary');
-  const aiExecutiveRoutePrompt = document.getElementById('aiExecutiveRoutePrompt');
-  const aiExecutiveRouteStatus = document.getElementById('aiExecutiveRouteStatus');
-  const aiExecutiveLoadoutLink = document.querySelector('[data-analytics-event="ai_executive_loadout_opened"]');
+  const aiExecutivePackages = Array.from(document.querySelectorAll('.executive-route'));
+  const aiExecutivePackageName = document.getElementById('aiExecutivePackageName');
+  const aiExecutivePackageTitle = document.getElementById('aiExecutivePackageTitle');
+  const aiExecutivePackageDescription = document.getElementById('aiExecutivePackageDescription');
+  const aiExecutivePackageFlow = document.getElementById('aiExecutivePackageFlow');
+  const aiExecutivePackageSkills = document.getElementById('aiExecutivePackageSkills');
+  const aiExecutivePackageUseCase = document.getElementById('aiExecutivePackageUseCase');
+  const aiExecutivePackageOutput = document.getElementById('aiExecutivePackageOutput');
+  const aiExecutivePackageBoundary = document.getElementById('aiExecutivePackageBoundary');
+  const aiExecutivePackageUrl = document.getElementById('aiExecutivePackageUrl');
+  const aiExecutivePackageSource = document.getElementById('aiExecutivePackageSource');
+  const aiExecutivePackageStatus = document.getElementById('aiExecutivePackageStatus');
 
-  if (!aiExecutiveLoadoutUrl && !aiExecutiveRoutes.length) return;
+  if (!aiExecutiveLoadoutUrl && !aiExecutivePackageUrl && !aiExecutivePackages.length) return;
 
   const allSkillsUrl = 'https://why57.com/skills/ai-executive-loadout/SKILL.md';
 
@@ -45,95 +47,110 @@
     if (element) element.textContent = message;
   };
 
-  const routes = {
+  const packages = {
     demand: {
-      skill: 'Signal to Conversation',
-      title: 'Find the conversation worth earning.',
-      description: 'Bring a small set of public posts or threads you chose. Your AI uses that tight context to find the problem, the proof gap, and one useful conversation move.',
-      input: '5–15 selected LinkedIn, X, or Reddit posts or threads.',
-      output: 'A source-linked action packet with the problem, proof needed, next action, owner, and approval point.',
-      boundary: 'Scrape accounts, read DMs, or automate replies and outreach.',
-      actionLabel: 'Copy the demand prompt',
-      prompt: 'Set up a guided execution workstream in the AI environment I already use. I am leading it. The job is to turn attention from LinkedIn, X, or Reddit into qualified conversations. Start with $signal-to-conversation using only 5–15 public posts or threads I explicitly supply, or content I own. Return a source-linked Demand-to-Conversation Action Packet: the live problems, exact audience language, one clear point of view, the proof needed, one helpful post or reply direction, a specific next-conversation CTA, the action owner, and the approval point. Do not scrape broadly, connect accounts, read DMs, auto-like, auto-comment, auto-DM, publish, or treat engagement as buying intent. Ask for my approval before using $social-content-strategy, $voice-kit, $proof-library, or $outreach-planner. Keep only the skill needed for the current step active; leave the rest installed and idle. Keep the context tight so you do not waste tokens on unrelated skills or records.'
+      name: 'Demand to Conversation',
+      title: 'Turn a live problem into a contribution worth making.',
+      description: 'Start with a small, owner-selected public signal set. The package keeps the market evidence, the proof behind your claim, and the way you express it separate until each part is ready.',
+      skills: 'Signal to Conversation, Proof Library, Content Pattern Map, and Voice Kit.',
+      useCase: 'You need to earn a conversation by being useful, not by harvesting a list of people.',
+      output: 'A source-linked action packet, proof-backed contribution direction, and a clear owner decision before anything goes public.',
+      boundary: 'Source approval, claim approval, community checks, and every post, reply, or contact action.',
+      flow: ['Signal to Conversation finds the real problem', 'Proof Library closes the claim gap', 'Content Pattern Map and Voice Kit shape an approved contribution'],
+      installUrl: 'https://why57.com/skills/demand-conversation-package/SKILL.md'
     },
     customer: {
-      skill: 'Call Decision System',
-      title: 'Make the offer decision your customers are pointing to.',
-      description: 'Bring a bounded set of customer calls and feedback. Your AI separates direct evidence from assumptions so you can decide what to improve, test, or stop.',
-      input: 'Selected call transcripts, feedback, and the decision you need to make.',
-      output: 'A decision action packet with recurring problems, proof gap, next test, owner, and approval point.',
-      boundary: 'Change the roadmap, contact customers, or publish anything without your approval.',
-      actionLabel: 'Copy the customer prompt',
-      prompt: 'Set up a guided execution workstream in the AI environment I already use. I am leading it. The job is to turn a bounded set of customer calls and feedback into a sharper offer. Start with $call-decision-system and $feedback-prioritization using only the records I authorize. Return an evidence-backed Decision Action Packet: recurring problems, direct customer language, unknowns, the proof gap, one proposed offer or message test, the action owner, and the approval point. Do not infer demand from one comment, change the roadmap, contact customers, or publish anything. Ask for my approval before using $proof-library or $voice-kit. Keep only the skill needed for the current step active; leave the rest installed and idle. Keep the context tight so you do not waste tokens on unrelated skills or records.'
+      name: 'Customer Decision',
+      title: 'Turn customer evidence into a sharper next decision.',
+      description: 'Start with the call, then test what holds across the feedback you actually authorized. The package preserves direct customer language, weakens assumptions, and makes the next decision visible.',
+      skills: 'Call Decision System, Feedback Prioritization, and Proof Library.',
+      useCase: 'You need to decide what to improve, test, explain more clearly, or leave alone without mistaking one loud request for demand.',
+      output: 'A Call Decision Brief, a Feedback Map, and—when needed—proof cards for a bounded next test or explanation.',
+      boundary: 'The product decision, any roadmap change, customer contact, record update, and external message.',
+      flow: ['Call Decision System separates what customers actually said', 'Feedback Prioritization checks whether the pattern holds', 'Proof Library grounds a bounded next test or explanation'],
+      installUrl: 'https://why57.com/skills/customer-decision-package/SKILL.md'
     },
-    operations: {
-      skill: 'AI Skill Stack',
-      title: 'Make one useful AI job reliable before you scale it.',
-      description: 'Choose one recurring task that already produces value. Your AI defines the input, output, owner, review point, and stop condition—then only makes that proven work easier to repeat.',
-      input: 'One recurring task, current inputs, a useful output, and the person who reviews it.',
-      output: 'A lean operating card with the trigger, skill, owner, review point, and stop condition.',
-      boundary: 'Create a large automation system or act in external accounts on its own.',
-      actionLabel: 'Copy the operations prompt',
-      prompt: 'Set up a guided execution workstream in the AI environment I already use. I am leading it. The job is to make one useful AI job repeatable. Start with $ai-skill-stack. Help me choose one recurring task with clear inputs, a useful output, a named owner, a review point, and a stop condition. Do not create a large automation system or activate every installed skill. After I approve a tested skill, use $daily-ai-workflow for that one job. Use $browser-harness-benchmark only to evaluate a browser workflow safely, never to operate an account or take external action. Keep only the skill needed for the current step active; leave the rest installed and idle. Keep the context tight so you do not waste tokens on unrelated skills or records.'
+    relationships: {
+      name: 'Warm Reconnect',
+      title: 'Turn real relationship evidence into a careful next move.',
+      description: 'Start with people you already know and a small set of threads you chose. The package separates relationship evidence from a guess, builds a clear outreach plan, and applies your approved writing rules only after you choose a person and purpose.',
+      skills: 'Relationship Map, Outreach Planner, and Voice Kit.',
+      useCase: 'You need to reconnect, ask for an introduction, or clear a small follow-up queue without turning your inbox into a lead list.',
+      output: 'A ranked relationship map, a supportable outreach plan, and approved voice rules for one later unsent draft.',
+      boundary: 'Who is in scope, the reason to contact them now, every draft, and every message, schedule, contact record, or CRM change.',
+      flow: ['Relationship Map checks the evidence in a small selected set', 'Outreach Planner proposes a reasoned next move or a no-contact decision', 'Voice Kit applies approved writing rules after you choose a person and purpose'],
+      installUrl: 'https://why57.com/skills/relationship-reconnect-package/SKILL.md'
     }
   };
 
-  let activeRoute = 'demand';
+  let activePackage = 'demand';
 
-  const renderRoute = (routeName) => {
-    const route = routes[routeName];
-    if (!route) return;
-    activeRoute = routeName;
-    aiExecutiveRoutes.forEach((button) => {
-      const selected = button.dataset.route === routeName;
+  const renderPackageFlow = (steps) => {
+    if (!aiExecutivePackageFlow) return;
+    aiExecutivePackageFlow.replaceChildren(...steps.map((step, index) => {
+      const item = document.createElement('li');
+      const number = document.createElement('span');
+      number.textContent = String(index + 1).padStart(2, '0');
+      item.append(number, document.createTextNode(step));
+      return item;
+    }));
+  };
+
+  const renderPackage = (packageName) => {
+    const selectedPackage = packages[packageName];
+    if (!selectedPackage) return;
+    activePackage = packageName;
+    aiExecutivePackages.forEach((button) => {
+      const selected = button.dataset.package === packageName;
       button.classList.toggle('is-active', selected);
       button.setAttribute('aria-pressed', String(selected));
     });
-    if (aiExecutiveRouteSkill) aiExecutiveRouteSkill.textContent = route.skill;
-    if (aiExecutiveRouteTitle) aiExecutiveRouteTitle.textContent = route.title;
-    if (aiExecutiveRouteDescription) aiExecutiveRouteDescription.textContent = route.description;
-    if (aiExecutiveRouteInput) aiExecutiveRouteInput.textContent = route.input;
-    if (aiExecutiveRouteOutput) aiExecutiveRouteOutput.textContent = route.output;
-    if (aiExecutiveRouteBoundary) aiExecutiveRouteBoundary.textContent = route.boundary;
-    if (aiExecutiveRoutePrompt) aiExecutiveRoutePrompt.textContent = route.actionLabel;
+    if (aiExecutivePackageName) aiExecutivePackageName.textContent = selectedPackage.name;
+    if (aiExecutivePackageTitle) aiExecutivePackageTitle.textContent = selectedPackage.title;
+    if (aiExecutivePackageDescription) aiExecutivePackageDescription.textContent = selectedPackage.description;
+    if (aiExecutivePackageSkills) aiExecutivePackageSkills.textContent = selectedPackage.skills;
+    if (aiExecutivePackageUseCase) aiExecutivePackageUseCase.textContent = selectedPackage.useCase;
+    if (aiExecutivePackageOutput) aiExecutivePackageOutput.textContent = selectedPackage.output;
+    if (aiExecutivePackageBoundary) aiExecutivePackageBoundary.textContent = selectedPackage.boundary;
+    renderPackageFlow(selectedPackage.flow);
   };
 
   aiExecutiveLoadoutUrl?.addEventListener('click', async () => {
     try {
       await copyText(allSkillsUrl);
-      setStatus(aiExecutiveInstallStatus, 'Skills link copied. Paste it into your compatible AI to install the suite.');
-      track('ai_executive_all_skills_url_copied', { location: 'cookbook_ai_executive_full_suite' });
+      setStatus(aiExecutiveInstallStatus, 'Full install link copied. Paste it into your compatible AI to install the library.');
+      track('ai_executive_all_skills_url_copied', { location: 'cookbook_hero_full_suite' });
     } catch (_error) {
-      setStatus(aiExecutiveInstallStatus, 'Copy did not work here. Open the install manifest and copy the URL from your browser.');
+      setStatus(aiExecutiveInstallStatus, 'Copy did not work here. Open the skill list and copy the URL from your browser.');
     }
   });
 
   aiExecutiveLoadoutSource?.addEventListener('click', () => {
-    track('ai_executive_all_skills_manifest_opened', { location: 'cookbook_ai_executive_full_suite' });
+    track('ai_executive_all_skills_browsed', { location: 'cookbook_hero_full_suite' });
   });
 
-  aiExecutiveLoadoutLink?.addEventListener('click', () => {
-    track('ai_executive_loadout_opened', { location: 'cookbook_ai_executive_loadout' });
-  });
-
-  aiExecutiveRoutes.forEach((button) => {
+  aiExecutivePackages.forEach((button) => {
     button.addEventListener('click', () => {
-      renderRoute(button.dataset.route);
-      setStatus(aiExecutiveRouteStatus, 'Business job selected. Install the skills if you are new here. Otherwise, copy the prompt and begin.');
-      track('ai_executive_route_selected', { route: button.dataset.route, location: 'cookbook_ai_executive_routes' });
+      renderPackage(button.dataset.package);
+      setStatus(aiExecutivePackageStatus, 'Package selected. It installs every named skill, but runs only the step that fits the job in front of you.');
+      track('ai_executive_package_selected', { package: button.dataset.package, location: 'cookbook_packages' });
     });
   });
 
-  aiExecutiveRoutePrompt?.addEventListener('click', async () => {
-    const route = routes[activeRoute];
+  aiExecutivePackageUrl?.addEventListener('click', async () => {
+    const selectedPackage = packages[activePackage];
     try {
-      await copyText(route.prompt);
-      setStatus(aiExecutiveRouteStatus, 'Starting prompt copied. Paste it into your compatible AI after the skills are installed.');
-      track('ai_executive_route_prompt_copied', { route: activeRoute, location: 'cookbook_ai_executive_routes' });
+      await copyText(selectedPackage.installUrl);
+      setStatus(aiExecutivePackageStatus, 'Package install link copied. Paste it into your compatible AI to install only these skills.');
+      track('ai_executive_package_url_copied', { package: activePackage, location: 'cookbook_packages' });
     } catch (_error) {
-      setStatus(aiExecutiveRouteStatus, 'Copy did not work here. Select the text in the prompt from the page source or use the install manifest first.');
+      setStatus(aiExecutivePackageStatus, 'Copy did not work here. Open the package contents and copy the URL from your browser.');
     }
   });
 
-  renderRoute(activeRoute);
+  aiExecutivePackageSource?.addEventListener('click', () => {
+    track('ai_executive_package_breakdowns_browsed', { package: activePackage, location: 'cookbook_packages' });
+  });
+
+  renderPackage(activePackage);
 })();

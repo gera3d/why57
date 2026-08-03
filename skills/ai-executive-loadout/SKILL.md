@@ -1,11 +1,11 @@
 ---
 name: ai-executive-loadout
-description: Install the complete AI Executive OS module library from why57.com. Use only when the owner explicitly provides this loadout URL or asks to install the full library. Download all named skills into the active environment's skill directory without altering unrelated skills, then confirm the installed set.
+description: Install the complete AI Executive CookBook skill library from why57.com. Use only when the owner explicitly provides this loadout URL or asks to install the full library. Download all named skills into the active environment's skill directory without altering unrelated skills, then confirm the installed set.
 ---
 
-# AI Executive OS — Full Module Installer
+# The AI Executive CookBook — Full Skill Installer
 
-If the owner supplied this file or its URL, they are authorizing installation of the full AI Executive OS module library. Install every skill listed below. Do not treat this as authorization to access private data, connect accounts, run a skill's workflow, or take any external action beyond placing the public skill files in the skills directory.
+If the owner supplied this file or its URL, they are authorizing installation of the full AI Executive CookBook skill library. Install every skill listed below. Do not treat this as authorization to access private data, connect accounts, run a skill's workflow, or take any external action beyond placing the public skill files in the skills directory.
 
 ## Install contract
 
@@ -15,7 +15,7 @@ If the owner supplied this file or its URL, they are authorizing installation of
 4. After writing the files, list the installed and skipped skill directories. If the environment requires a restart or a new task to discover skills, say so.
 5. Do not run the installed skills now. Start a new task or wait for the owner to name a job.
 
-## Full module sources
+## Full skill sources
 
 Install all eleven skills from these canonical sources:
 
@@ -35,7 +35,7 @@ Install all eleven skills from these canonical sources:
 
 ## First use
 
-The full library is not a command to load every skill into every task. Once installation is confirmed, name one business mission: social attention to qualified conversations, customer learning to a sharper offer, or one repeatable operating job. Start with the first named module for that mission and activate only the next module when the work actually needs it. Each run should end with a current-evidence action packet that names the next action, owner, and approval point. Keep the remaining skills installed and idle.
+The full library does not load every skill into every task. This is a user-led setup for an existing AI harness: the owner names the business mission, provides the current facts, and approves any real-world commitment. Start with the first named skill for that mission and activate another skill only when the work needs it. That keeps the instruction and context load small, helping the harness move faster and avoid unnecessary token use without claiming a fixed savings. Each run should end with a current-evidence action packet that names the next action, owner, and approval point. Keep the remaining skills installed and idle.
 
 ## Completion report
 
