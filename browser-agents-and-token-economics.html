@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="analytics.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://why57.com/browser-agents-and-token-economics.html" />
+  <title>Measure Context Cost & Test the Browser | Part 3 | 57</title>
+  <meta name="description" content="Part 3 of the Agentic Automation Guide. Measure the context cost of a reusable workflow, then test browser tools against a safe task card—not a brand ranking." />
+  <meta name="author" content="Gera Yeremin" />
+  <meta property="og:title" content="Measure Context Cost & Test the Browser | Agentic Automation Part 3" />
+  <meta property="og:description" content="Measure context cost with your own inputs, then score browser tools on a safe task card with explicit stop conditions and human review." />
+  <meta property="og:image" content="https://why57.com/images/ai-executive-os-social-card.png" />
+  <meta property="og:url" content="https://why57.com/browser-agents-and-token-economics.html" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" type="image/png" href="images/favicon_square.png" />
+  <link rel="apple-touch-icon" href="images/favicon_square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="content.css?v=1" />
+  <style>
+    .prototype-page{--page-indigo:#e04c28;--page-cyan:#ff7940;--page-peach:#ffc1ae;}
+    .prototype-page .nav-logo{margin-right:6px;}
+    .prototype-page .nav-links{gap:24px;}
+    .prototype-page .nav-cta{color:var(--amber);}
+    .prototype-page main{overflow:hidden;}
+    .prototype-hero{position:relative;padding:120px 0 60px;isolation:isolate;}
+    .prototype-hero::before{content:"";position:absolute;z-index:-1;inset:-120px 0 auto;height:500px;background:radial-gradient(circle at 78% 30%,rgba(224,76,40,.12),transparent 29%),radial-gradient(circle at 20% 15%,rgba(224,76,40,.1),transparent 32%);pointer-events:none;}
+    .prototype-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1.01;letter-spacing:-.05em;max-width:800px;margin:0 0 22px;}
+    .prototype-title em{font-style:normal;color:var(--page-indigo);}
+    .article-content { max-width: 720px; margin: 0 auto; font-size: 1.1rem; line-height: 1.75; color: var(--text); padding-bottom: 60px; }
+    .article-content p { margin-bottom: 24px; color: var(--muted); }
+    .article-content h2 { font-size: 2rem; letter-spacing: -0.03em; margin: 48px 0 24px; color: white; }
+    .article-content h3 { font-size: 1.5rem; margin: 36px 0 16px; color: white; }
+    .article-content img { width: 100%; border-radius: 12px; margin: 32px 0; border: 1px solid rgba(255,255,255,0.1); }
+    table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
+    th, td { padding: 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--muted); }
+    th { color: white; font-weight: 600; border-bottom: 2px solid rgba(255,255,255,0.2); }
+    .nav-pagination { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); }
+    .nav-pagination a { color: var(--amber); font-weight: 600; text-decoration: none; }
+    .nav-pagination a:hover { color: var(--orange); }
+    .ranking-list { list-style: none; padding: 0; }
+    .ranking-list li { margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; }
+    .ranking-list h3 { margin-top: 0; color: var(--amber); }
+    .source-notes { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .source-notes h2 { margin-top: 0; }
+    .source-notes li, .source-notes p { font-size: .96rem; line-height: 1.7; }
+  </style>
+</head>
+<body class="prototype-page">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="agentic-automation-series.html" class="nav-link">Series Hub</a>
+        <a href="/#services" class="nav-link">Services</a>
+      </nav>
+      <a href="https://roi.why57.com/" class="nav-cta" data-cta-location="browser_agents_nav_roi">Calculate Automation ROI</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="prototype-hero">
+      <div class="container fade-up">
+        <div class="hero-badge">Part 3 of 3</div>
+        <h1 class="prototype-title">Measure Context Cost & <em>Test the Browser.</em></h1>
+        <div class="content-meta" style="margin-top:24px"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>Series:</strong> Agentic Automation</span></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container fade-up delay-1">
+        <div class="article-content">
+          <p>Why turn a useful workflow into a reusable skill instead of pasting the whole transcript every time? There can be a real cost and review benefit—but only if you measure your own task rather than repeat somebody else’s token math.</p>
+
+          <p><strong>Start by separating reusable instructions from current task data.</strong></p>
+
+          <h2>The Token Economics of AI</h2>
+          <p>A long source may be necessary once to understand the work. Reusing it blindly can add irrelevant context and make errors harder to spot. A compact workflow card should hold the stable method, while each run receives only the current facts it needs.</p>
+          <p>The numbers below are an <strong>illustrative calculation</strong>, not a vendor benchmark or a promise about cost, speed, or accuracy. Replace them with your measured input lengths, model pricing, and task results.</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Workflow Type</th>
+                <th>One-time setup</th>
+                <th>Context per run</th>
+                <th>Illustrative total, 50 runs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Repeat full context</strong></td>
+                <td>0</td>
+                <td>13,000</td>
+                <td><strong style="color:white;">650,000 Tokens</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Reusable workflow card</strong></td>
+                <td>12,000</td>
+                <td>1,700</td>
+                <td><strong style="color:var(--page-cyan);">97,000 Tokens</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>In this synthetic example, the compact workflow uses about <strong>85% fewer input tokens</strong> across 50 runs: 650,000 versus 97,000. Your result will change with transcript length, current task data, model behavior, and how much review the job needs. Token reduction alone is not proof that the workflow is correct.</p>
+
+          <h2>Choose a harness by the task, not the brand</h2>
+          <p>I am not publishing a universal ranking here. Browser capability changes quickly, and a useful comparison needs the same allowed domains, account state, task, completion check, and recovery rule for every candidate.</p>
+
+          <ul class="ranking-list">
+            <li>
+              <h3>1. Start with a safe task card</h3>
+              <p>Use a low-risk, reversible task: collect a public page field, prepare a draft without sending it, or compare a displayed value against an approved source. Name the allowed site, starting state, completion check, and stop condition.</p>
+            </li>
+            <li>
+              <h3>2. Score observed behavior</h3>
+              <p>Record whether it completed the task, used only permitted information, recognized uncertainty, recovered from a harmless failure, and produced evidence a person could verify. Repeat the same task card before drawing a conclusion.</p>
+            </li>
+            <li>
+              <h3>3. Keep the owner at the consequential step</h3>
+              <p>Do not use the evaluation to grant broader authority. The owner still reviews before sending, publishing, purchasing, submitting, changing settings, or representing the business.</p>
+            </li>
+          </ul>
+
+          <p><strong>The practical move is smaller:</strong> capture the method, test one safe browser step, record the evidence, and expand only when the owner can verify the result.</p>
+
+          <section class="source-notes" aria-label="Sources, examples, and test notes">
+            <h2>Sources, examples, and test notes</h2>
+            <ol>
+              <li><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener">OpenAI, A practical guide to building agents</a> — supports assessing tool risk, adding guardrails, and using human intervention for high-risk actions. Source type: official documentation. Checked: 2026-08-02.</li>
+              <li><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST AI RMF Core</a> — supports documenting the task, expected benefits and limits, and human oversight. Source type: standards guidance. Checked: 2026-08-02.</li>
+            </ol>
+            <p><strong>Original calculation:</strong> Synthetic 50-run example: raw context = (12,000 transcript + 1,000 task tokens) × 50; compact workflow = 12,000 setup tokens + (700 workflow + 1,000 task tokens) × 50. It is not a product comparison, cost quote, or measured benchmark.</p>
+            <p><strong>Last reviewed:</strong> 2026-08-02.</p>
+          </section>
+
+          <div class="nav-pagination">
+            <a href="building-the-multi-llm-harness.html">← Part 2: Build the Workflow Card</a>
+            <a href="agentic-automation-series.html">Back to Hub →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a>
+      <div class="footer-address"><span>57 Custom Software Development</span></div>
+      <p class="footer-copy">&copy; 2026 57. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

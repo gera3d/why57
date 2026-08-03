@@ -1,0 +1,4 @@
+interface:
+  display_name: "Outreach Planner"
+  short_description: "Plan thoughtful outreach with approval gates"
+  default_prompt: "Use $outreach-planner to turn my approved relationship map into an owner-reviewed outreach plan without drafting, scheduling, or contacting anyone."

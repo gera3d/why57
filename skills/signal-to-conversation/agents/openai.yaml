@@ -1,0 +1,4 @@
+interface:
+  display_name: "Signal to Conversation"
+  short_description: "Turn social signals into accountable next conversations"
+  default_prompt: "Use $signal-to-conversation to turn 5–15 public LinkedIn, X, or Reddit posts I explicitly provide into a source-linked Demand-to-Conversation Action Packet. Do not scrape, access accounts, read DMs, or automate engagement."

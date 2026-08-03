@@ -1,0 +1,4 @@
+interface:
+  display_name: "Proof Library"
+  short_description: "Turn approved work into safe proof cards"
+  default_prompt: "Use $proof-library to turn my approved project records into a source-linked proof library for owner review."

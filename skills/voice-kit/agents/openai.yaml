@@ -1,0 +1,4 @@
+interface:
+  display_name: "Voice Kit"
+  short_description: "Build writing rules from approved samples"
+  default_prompt: "Use $voice-kit to build a reviewable Voice Kit from my approved samples."

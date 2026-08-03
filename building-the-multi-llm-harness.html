@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="analytics.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://why57.com/building-the-multi-llm-harness.html" />
+  <title>Build a Reviewable Context Engine | Part 2 | 57</title>
+  <meta name="description" content="Part 2 of the Agentic Automation Guide. Turn an authorized transcript into a structured workflow card with uncertainty, stop conditions, and an owner approval point." />
+  <meta name="author" content="Gera Yeremin" />
+  <meta property="og:title" content="Build a Reviewable Context Engine | Agentic Automation Part 2" />
+  <meta property="og:description" content="Turn authorized context into a structured workflow card. Keep uncertainty, stop conditions, and owner approval in the output." />
+  <meta property="og:url" content="https://why57.com/building-the-multi-llm-harness.html" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" type="image/png" href="images/favicon_square.png" />
+  <link rel="apple-touch-icon" href="images/favicon_square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="content.css?v=1" />
+  <style>
+    .prototype-page{--page-indigo:#e04c28;--page-cyan:#ff7940;--page-peach:#ffc1ae;}
+    .prototype-page .nav-logo{margin-right:6px;}
+    .prototype-page .nav-links{gap:24px;}
+    .prototype-page .nav-cta{color:var(--amber);}
+    .prototype-page main{overflow:hidden;}
+    .prototype-hero{position:relative;padding:120px 0 60px;isolation:isolate;}
+    .prototype-hero::before{content:"";position:absolute;z-index:-1;inset:-120px 0 auto;height:500px;background:radial-gradient(circle at 78% 30%,rgba(224,76,40,.12),transparent 29%),radial-gradient(circle at 20% 15%,rgba(224,76,40,.1),transparent 32%);pointer-events:none;}
+    .prototype-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1.01;letter-spacing:-.05em;max-width:800px;margin:0 0 22px;}
+    .prototype-title em{font-style:normal;color:var(--page-cyan);}
+    .article-content { max-width: 720px; margin: 0 auto; font-size: 1.1rem; line-height: 1.75; color: var(--text); padding-bottom: 60px; }
+    .article-content p { margin-bottom: 24px; color: var(--muted); }
+    .article-content h2 { font-size: 2rem; letter-spacing: -0.03em; margin: 48px 0 24px; color: white; }
+    .article-content h3 { font-size: 1.5rem; margin: 36px 0 16px; color: white; }
+    .decision-board { margin: 40px 0; }
+    .nav-pagination { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); }
+    .nav-pagination a { color: var(--amber); font-weight: 600; text-decoration: none; }
+    .nav-pagination a:hover { color: var(--orange); }
+    pre { background: #0a0a0f; padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); overflow-x: auto; font-size: 0.9rem; color: #ffc1ae; }
+    .source-notes { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .source-notes h2 { margin-top: 0; }
+    .source-notes li, .source-notes p { font-size: .96rem; line-height: 1.7; }
+  </style>
+</head>
+<body class="prototype-page">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="agentic-automation-series.html" class="nav-link">Series Hub</a>
+        <a href="/#services" class="nav-link">Services</a>
+      </nav>
+      <a href="https://roi.why57.com/" class="nav-cta" data-cta-location="multi_llm_nav_roi">Calculate Automation ROI</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="prototype-hero">
+      <div class="container fade-up">
+        <div class="hero-badge">Part 2 of 3</div>
+        <h1 class="prototype-title">Build a Reviewable <em>Context Engine.</em></h1>
+        <div class="content-meta" style="margin-top:24px"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>Series:</strong> Agentic Automation</span></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container fade-up delay-1">
+        <div class="article-content">
+          <p>Assume you have an authorized transcript or set of notes. It may be short or long; the important question is whether it contains a decision you can turn into a bounded piece of work.</p>
+          <p>A summary can be useful. It just does not tell you what the next step is, what information is missing, or which actions need an owner to approve.</p>
+
+          <h2>Building the Harness</h2>
+          <p>Start with one model and one job. Use a second model only when it gives you a specific advantage—such as a separate critique—not because a “multi-LLM” setup sounds sophisticated.</p>
+          <p>The useful output is a structured workflow card: the goal, allowed inputs, step sequence, uncertainty, stop conditions, and the person who owns the consequential decision.</p>
+
+          <div class="decision-board">
+            <div class="decision-board-head"><span>The Core Prompt</span><strong>Copy & Paste This</strong></div>
+            <p style="font-size: 1rem; color: var(--text); font-style: italic; border-left: 2px solid var(--page-cyan); padding-left: 16px; margin: 16px 0;">
+              "Review this authorized transcript for one narrow job: [Topic]. Extract only recommendations supported by the material. Create a reviewable workflow card with: goal, allowed inputs, steps, unknowns, stop conditions, and owner approval points.<br><br>
+              Do not send, publish, submit, change settings, or schedule anything. When the transcript is unclear, label the uncertainty instead of guessing."
+            </p>
+          </div>
+
+          <h2>The Workflow Card: From Talk to a Reviewable Method</h2>
+          <p>The point is not to make the browser act on an unreviewed transcript. The point is to give the owner a compact artifact they can inspect before a browser tool receives even a safe task.</p>
+          <p>Here is a synthetic example of a workflow card for a follow-up draft:</p>
+
+<pre><code>{
+  "workflow_name": "Follow-up draft review",
+  "allowed_inputs": ["approved opportunity notes", "owner-approved contact record"],
+  "steps": [
+    {"action": "extract_relevant_facts", "source": "approved notes"},
+    {"action": "draft_email", "tone": "plain and specific"},
+    {"action": "flag_unknowns", "rule": "do not infer missing facts"}
+  ],
+  "stop_conditions": ["contact details are unverified", "claim lacks source", "owner has not approved a send"],
+  "owner_handoff": "Review the draft and decide whether to send."
+}</code></pre>
+
+          <p>A reusable skill makes the method visible. It does not make old advice current, and it does not eliminate the need to check live facts before a real action.</p>
+
+          <p>But why go through the effort of turning the transcript into this JSON file? Why not just pass the raw mentor transcript to the AI every single time you need to do the task?</p>
+          <p>Once a workflow is clear, you can measure whether its compact context is actually cheaper and easier to review than replaying the full transcript. Part 3 shows how to do that without inventing a benchmark.</p>
+
+          <section class="source-notes" aria-label="Sources, examples, and test notes">
+            <h2>Sources, examples, and test notes</h2>
+            <ol>
+              <li><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener">OpenAI, A practical guide to building agents</a> — supports defining tools, guardrails, and human intervention before an agent takes high-risk actions. Source type: official documentation. Checked: 2026-08-02.</li>
+              <li><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST AI RMF Core</a> — supports documenting task scope, knowledge limits, and oversight. Source type: standards guidance. Checked: 2026-08-02.</li>
+            </ol>
+            <p><strong>Example status:</strong> Synthetic. The JSON illustrates a review-only workflow; it has no live account access and cannot send or schedule a message.</p>
+            <p><strong>Last reviewed:</strong> 2026-08-02.</p>
+          </section>
+
+          <div class="nav-pagination">
+            <a href="recording-mentorship-for-ai.html">← Part 1: Capture the Right Context</a>
+            <a href="browser-agents-and-token-economics.html">Part 3: Measure Context Cost →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a>
+      <div class="footer-address"><span>57 Custom Software Development</span></div>
+      <p class="footer-copy">&copy; 2026 57. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
