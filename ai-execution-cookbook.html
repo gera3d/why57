@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=8" />
-  <link rel="stylesheet" href="cookbook-executive.css?v=1" />
+  <link rel="stylesheet" href="cookbook-executive.css?v=2" />
   <style>
     .cb-page {
       --cb-ink: #07070d;
@@ -52,7 +52,7 @@
     .cb-page .nav-link { font-size: .76rem; }
     .cb-page .nav-cta { margin-left: 0; color: var(--cb-amber); }
     .cb-hero { padding: 142px 0 74px; border-bottom: 1px solid var(--cb-line); background: radial-gradient(circle at 78% 10%, rgba(224, 76, 40, .18), transparent 27rem), linear-gradient(135deg, #111118 0%, var(--cb-ink) 62%); }
-    .cb-hero-grid { max-width: 850px; }
+    .cb-hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, .75fr); gap: 46px 68px; align-items: center; }
     .cb-eyebrow, .cb-section-label { margin: 0; color: var(--cb-amber); font: 500 .69rem/1.35 var(--cb-mono); letter-spacing: .12em; text-transform: uppercase; }
     .cb-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .cb-eyebrow::before { content: ""; width: 25px; height: 1px; background: currentColor; }
@@ -156,7 +156,7 @@
     .cb-source-note a { text-decoration: underline; text-decoration-color: rgba(255, 121, 64, .55); text-underline-offset: 3px; }
     .cb-page .footer { border-top-color: var(--cb-line); background: #07070d; }
     @media (max-width: 1040px) { .cb-recipe-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cb-platform-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    @media (max-width: 910px) { .cb-hero { padding-top: 121px; } .cb-section-head, .cb-follow-grid, .cb-boundary { grid-template-columns: 1fr; } .cb-audience-grid, .cb-recipe-grid, .cb-how-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cb-group-note { text-align: left; } }
+    @media (max-width: 910px) { .cb-hero { padding-top: 121px; } .cb-hero-grid, .cb-section-head, .cb-follow-grid, .cb-boundary { grid-template-columns: 1fr; } .cb-audience-grid, .cb-recipe-grid, .cb-how-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cb-group-note { text-align: left; } }
     @media (max-width: 960px) { .cb-page .nav-links.open { flex: none; height: calc(100vh - var(--nav-h)); align-items: stretch; justify-content: flex-start; } }
     @media (max-width: 620px) { .cb-nav-wordmark { display: none; } .cb-hero { padding: 104px 0 62px; } .cb-title { font-size: clamp(3rem, 15vw, 4.45rem); } .cb-section { padding: 68px 0; } .cb-section-head { gap: 21px; } .cb-directory-tools, .cb-group-head { align-items: flex-start; flex-direction: column; } .cb-audience-grid, .cb-recipe-grid, .cb-recipe-grid--four, .cb-how-grid, .cb-platform-grid { grid-template-columns: 1fr; } .cb-recipe-card { min-height: 0; } .cb-how-step { min-height: 0; } .cb-how-step span { margin-bottom: 22px; } .cb-boundary { padding: 23px; } }
   </style>
@@ -178,101 +178,103 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /><span class="cb-nav-wordmark">AI Executive CookBook</span></a>
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
-        <a href="#ai-executive" class="nav-link">Start here</a>
-        <a href="#recipes" class="nav-link">Skills</a>
+        <a href="#install" class="nav-link">Full CookBook</a>
+        <a href="#packages" class="nav-link">Packages</a>
+        <a href="#recipes" class="nav-link">All skills</a>
         <a href="#how-it-works" class="nav-link">How skills work</a>
       </nav>
-      <a href="#recipes" class="nav-cta">Browse skills</a>
+      <a href="#install" class="nav-cta">Get the full CookBook</a>
       <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <main>
-    <section class="cb-hero" aria-labelledby="cookbook-title">
+    <section class="cb-hero" id="install" aria-labelledby="cookbook-title">
       <div class="container cb-hero-grid">
         <div>
           <p class="cb-eyebrow">The AI Executive CookBook</p>
           <h1 class="cb-title" id="cookbook-title">Give your AI a job. <mark>Keep the decision.</mark></h1>
-          <p class="cb-lede">The AI Executive CookBook gives your AI focused skills for the high-value business work that keeps coming back: research, decisions, proof, outreach, and operations. Choose the job, supply current context, then review the move before it affects the business.</p>
+          <p class="cb-lede">A growing library of focused skills for the business work that keeps coming back: research, decisions, proof, outreach, and operating rhythm. Give your AI the right method and current context. Review the move before it affects the business.</p>
           <div class="cb-actions">
-            <a class="cb-button cb-button--primary" href="#recipes">Browse skills <span aria-hidden="true">→</span></a>
-            <a class="cb-button cb-button--quiet" href="#how-it-works">See how it works</a>
+            <a class="cb-button cb-button--primary" href="#packages">Start with a smaller package <span aria-hidden="true">↓</span></a>
+            <a class="cb-button cb-button--quiet" href="#recipes">Browse all skills</a>
           </div>
           <p class="cb-hero-note">The AI does the legwork. You direct the work and approve the moves that matter.</p>
         </div>
+
+        <aside class="cb-full-install fade-up" id="aiExecutiveInstall" aria-labelledby="aiExecutiveInstallTitle">
+          <div class="executive-card-top">
+            <span class="executive-status"><i aria-hidden="true"></i>Full CookBook install</span>
+            <span>11 skills</span>
+          </div>
+          <h2 id="aiExecutiveInstallTitle">Install the full CookBook once.</h2>
+          <p>Copy this link. Paste it into a compatible AI and ask it to install the CookBook. It installs the current skills, leaves unrelated skills alone, and does not start work.</p>
+          <code class="executive-url">https://why57.com/skills/ai-executive-loadout/SKILL.md</code>
+          <div class="executive-actions">
+            <button class="cb-button cb-button--primary" type="button" id="aiExecutiveLoadoutUrl">Copy full install link</button>
+            <a class="executive-loadout-link" href="#recipes" id="aiExecutiveLoadoutSource">Browse all 11 skills →</a>
+          </div>
+          <p class="executive-status-copy" id="aiExecutiveInstallStatus" role="status" aria-live="polite">Use an AI that can install skills or download files. Want one job first? Skip this and choose a package below.</p>
+        </aside>
       </div>
     </section>
 
-    <section class="cb-section section--executive" id="ai-executive" aria-labelledby="aiExecutiveTitle">
+    <section class="cb-section section--executive" id="packages" aria-labelledby="aiExecutiveTitle">
       <div class="container">
         <div class="executive-shell">
           <div class="executive-head fade-up">
             <div>
-              <p class="cb-section-label">Start with one job</p>
-              <h2 class="cb-section-title" id="aiExecutiveTitle">Configure your AI for the work that needs to move <span class="text-orange">next.</span></h2>
+              <p class="cb-section-label">Start smaller</p>
+              <h2 class="cb-section-title" id="aiExecutiveTitle">Choose a skill package for the work in front of you.</h2>
             </div>
-            <p class="executive-lede">Give it a focused skill and the current context it needs. It returns an action packet you can review. You set the priority and approve the moves that affect the business.</p>
+            <p class="executive-lede">You do not need the full library first. A package installs only the skills for one useful job, then shows what to bring, how the steps fit together, what you get, and what still needs your call.</p>
           </div>
 
-          <div class="executive-routes fade-up delay-1" role="group" aria-label="Choose your first business job">
-            <button class="executive-route is-active" type="button" data-route="demand" aria-pressed="true">
-              <span>Create demand</span>
-              <strong>Turn social insight into qualified conversations.</strong>
-              <small>Use LinkedIn, X, or Reddit conversations to find a real problem and a credible next step.</small>
+          <div class="executive-routes fade-up delay-1" role="group" aria-label="Choose a skill package">
+            <button class="executive-route is-active" type="button" data-package="demand" aria-pressed="true">
+              <span>Demand to conversation</span>
+              <strong>Turn a live market problem into a credible contribution.</strong>
+              <small>Signal to Conversation → Proof Library → Content Pattern Map → Voice Kit</small>
             </button>
-            <button class="executive-route" type="button" data-route="customer" aria-pressed="false">
-              <span>Sharpen the offer</span>
-              <strong>Turn customer calls into a better business decision.</strong>
-              <small>Use calls and feedback to find what to improve, test, or stop.</small>
+            <button class="executive-route" type="button" data-package="customer" aria-pressed="false">
+              <span>Customer decision</span>
+              <strong>Turn customer evidence into a sharper next decision.</strong>
+              <small>Call Decision System → Feedback Prioritization → Proof Library</small>
             </button>
-            <button class="executive-route" type="button" data-route="operations" aria-pressed="false">
-              <span>Run execution better</span>
-              <strong>Make one useful AI job repeatable.</strong>
-              <small>Turn a proven task into a lean operating rhythm with a clear review point.</small>
+            <button class="executive-route" type="button" data-package="relationships" aria-pressed="false">
+              <span>Warm reconnect</span>
+              <strong>Turn real relationship evidence into a careful next move.</strong>
+              <small>Relationship Map → Outreach Planner → Voice Kit</small>
             </button>
           </div>
 
           <article class="executive-card executive-card--result fade-up delay-2" aria-live="polite">
             <div class="executive-card-top">
-              <span class="executive-kicker">Your first skill</span>
-              <span id="aiExecutiveRouteSkill">Signal to Conversation</span>
+              <span class="executive-kicker">Package breakdown</span>
+              <span id="aiExecutivePackageName">Demand to Conversation</span>
             </div>
             <div class="executive-result-grid">
               <div>
-                <h3 id="aiExecutiveRouteTitle">Find the conversation worth earning.</h3>
-                <p id="aiExecutiveRouteDescription">Bring a small set of public posts or threads you chose. Your AI uses that tight context to find the problem, the proof gap, and one useful conversation move.</p>
+                <h3 id="aiExecutivePackageTitle">Turn a live problem into a contribution worth making.</h3>
+                <p id="aiExecutivePackageDescription">Start with a small, owner-selected public signal set. The package keeps the market evidence, the proof behind your claim, and the way you express it separate until each part is ready.</p>
+                <ol class="executive-package-flow" id="aiExecutivePackageFlow" aria-label="How this package works">
+                  <li><span>01</span>Signal to Conversation finds the real problem</li>
+                  <li><span>02</span>Proof Library closes the claim gap</li>
+                  <li><span>03</span>Content Pattern Map and Voice Kit shape an approved contribution</li>
+                </ol>
               </div>
               <dl class="executive-result-facts">
-                <div><dt>You bring</dt><dd id="aiExecutiveRouteInput">5–15 selected LinkedIn, X, or Reddit posts or threads.</dd></div>
-                <div><dt>You get</dt><dd id="aiExecutiveRouteOutput">A source-linked action packet with the problem, proof needed, next action, owner, and approval point.</dd></div>
-                <div><dt>It will not</dt><dd id="aiExecutiveRouteBoundary">Scrape accounts, read DMs, or automate replies and outreach.</dd></div>
+                <div><dt>Skills</dt><dd id="aiExecutivePackageSkills">Signal to Conversation, Proof Library, Content Pattern Map, and Voice Kit.</dd></div>
+                <div><dt>Use when</dt><dd id="aiExecutivePackageUseCase">You need to earn a conversation by being useful, not by harvesting a list of people.</dd></div>
+                <div><dt>You get</dt><dd id="aiExecutivePackageOutput">A source-linked action packet, proof-backed contribution direction, and a clear owner decision before anything goes public.</dd></div>
+                <div><dt>You decide</dt><dd id="aiExecutivePackageBoundary">Source approval, claim approval, community checks, and every post, reply, or contact action.</dd></div>
               </dl>
             </div>
             <div class="executive-route-actions">
-              <button class="cb-button cb-button--primary" type="button" id="aiExecutiveRoutePrompt">Copy the demand prompt</button>
-              <a class="executive-loadout-link" href="#aiExecutiveInstall">New here? Install first ↓</a>
-              <a class="executive-loadout-link" href="#recipes" data-analytics-event="ai_executive_loadout_opened" data-cta-location="cookbook_ai_executive_routes" data-offer="ai_executive_loadout">See all skills →</a>
+              <button class="cb-button cb-button--primary" type="button" id="aiExecutivePackageUrl">Copy package install link</button>
+              <a class="executive-loadout-link" href="#recipes" id="aiExecutivePackageSource">Browse the individual breakdowns →</a>
             </div>
-            <p class="executive-status-copy" id="aiExecutiveRouteStatus" role="status" aria-live="polite">This starts one skill. Add another only when the work needs it. That keeps your AI focused and the context small.</p>
-          </article>
-
-          <article class="executive-card executive-card--install fade-up delay-3" id="aiExecutiveInstall">
-            <div class="executive-install-copy">
-              <div class="executive-card-top">
-                <span class="executive-status"><i aria-hidden="true"></i>New to these skills?</span>
-                <span>One-time setup</span>
-              </div>
-              <h3>Install all 11 skills once.</h3>
-              <p>Paste one link into the compatible AI you use. It downloads each skill, leaves unrelated skills alone, and confirms what it installed. The loadout itself is the installer, not a twelfth operating skill.</p>
-            </div>
-            <div class="executive-install-action">
-              <code class="executive-url">https://why57.com/skills/ai-executive-loadout/SKILL.md</code>
-              <div class="executive-actions">
-                <button class="cb-button cb-button--primary" type="button" id="aiExecutiveLoadoutUrl">Copy skills link</button>
-                <a class="executive-loadout-link" href="skills/ai-executive-loadout/SKILL.md" target="_blank" rel="noopener" id="aiExecutiveLoadoutSource">See every skill it installs →</a>
-              </div>
-              <p class="executive-status-copy" id="aiExecutiveInstallStatus" role="status" aria-live="polite">Compatible AI required. If it cannot install files, it should say so plainly.</p>
-            </div>
+            <p class="executive-status-copy" id="aiExecutivePackageStatus" role="status" aria-live="polite">The installer adds every named skill. It does not run all of them or change anything outside your AI.</p>
           </article>
         </div>
       </div>
@@ -285,12 +287,12 @@
             <p class="cb-section-label">What every skill contains</p>
             <h2 class="cb-section-title" id="what-you-get-title">A useful skill should end in a real next move.</h2>
           </div>
-          <p class="cb-section-copy">The full skill page is for the person deciding whether it fits and for the AI that will use it. Both should be able to see the business job, the evidence boundary, the output, and the owner gate.</p>
+          <p class="cb-section-copy">The human guide is for the person deciding whether the method fits; the source file is for the AI that will use it. A full skill page or package breakdown should make the business job, evidence boundary, output, and owner gate visible to both.</p>
         </div>
         <div class="cb-audience-grid">
           <article class="cb-audience-card"><span>01 · NAME THE BUSINESS JOB</span><h3>Start with work that matters now.</h3><p>Every skill opens on a real executive job: create demand, make a decision, prepare a follow-up, close a proof gap, or move a delivery forward.</p></article>
           <article class="cb-audience-card"><span>02 · BUILD THE ACTION PACKET</span><h3>See the evidence before the move.</h3><p>The skill shows the current inputs, controlled steps, useful output, named owner, failure modes, and approval point that turn generic AI into accountable execution.</p></article>
-          <article class="cb-audience-card"><span>03 · INSTALL AND RUN WHEN READY</span><h3>Give the skill to your AI.</h3><p>Every available skill ends with the source link. You can keep reading, run a small test, or install it in the AI environment you use.</p></article>
+          <article class="cb-audience-card"><span>03 · INSTALL AND RUN WHEN READY</span><h3>Give the skill to your AI.</h3><p>Every available skill or package has an install route. You can keep reading, run a small test, or install it in the AI environment you use.</p></article>
         </div>
       </div>
     </section>
@@ -302,10 +304,10 @@
             <p class="cb-section-label">Skill library</p>
             <h2 class="cb-section-title" id="recipes-title">Start with business work that needs to move.</h2>
           </div>
-          <p class="cb-section-copy">Start with the skill that sounds like the business job in front of you. Its page gives you concrete use cases, the operating sequence, the action packet, the owner gate, and the source file.</p>
+          <p class="cb-section-copy">Start with the skill that sounds like the business job in front of you. Each card shows the starting material, useful output, and fit. Open its human guide for the full method, or open a package when several skills need to work together.</p>
         </div>
         <div class="cb-directory-tools">
-          <p class="cb-directory-count"><span>10</span> detailed recipes · <span>11</span> installable skills · <span>1</span> loadout installer · browser operator in development</p>
+          <p class="cb-directory-count"><span>10</span> detailed recipes · <span>11</span> installable skills · <span>1</span> browser-work skill · browser operator in development</p>
           <nav aria-label="Recipe categories">
             <ul class="cb-jump-list">
               <li><a href="#start-here">Start here</a></li>
@@ -319,9 +321,17 @@
         <section class="cb-recipe-group" id="start-here" aria-labelledby="start-here-title">
           <div class="cb-group-head">
             <h3 class="cb-group-title" id="start-here-title">Start here</h3>
-            <p class="cb-group-note">Three contained ways to get a useful result without connecting your whole world.</p>
+            <p class="cb-group-note">Four contained ways to get a useful result without connecting your whole world.</p>
           </div>
-          <div class="cb-recipe-grid">
+          <div class="cb-recipe-grid cb-recipe-grid--four">
+            <article class="cb-recipe-card cb-recipe-card--featured">
+              <div class="cb-card-top"><span class="cb-status">Available now</span><span class="cb-domain">Demand</span></div>
+              <h3>Signal to Conversation</h3>
+              <p>Turn a small set of public posts or threads you chose into evidence of a real problem, one useful contribution, and a careful next-conversation path.</p>
+              <dl class="cb-recipe-facts"><div><dt>Start with</dt><dd>5–15 selected LinkedIn, X, or Reddit posts or threads, plus one business result.</dd></div><div><dt>You get</dt><dd>A Demand-to-Conversation Action Packet with evidence, a proof gap, and an owner decision.</dd></div><div><dt>Best fit</dt><dd>Testing whether you have something useful to say before trying to earn attention.</dd></div></dl>
+              <div class="cb-output-preview"><span>Output preview</span><code>observed problem · inference · proof gap · contribution direction · owner decision</code></div>
+              <a class="cb-guide-link" href="#packages">Open package breakdown &amp; install <span aria-hidden="true">→</span></a>
+            </article>
             <article class="cb-recipe-card cb-recipe-card--featured">
               <div class="cb-card-top"><span class="cb-status">Available now</span><span class="cb-domain">Relationships</span></div>
               <h3>Relationship Map</h3>
@@ -533,6 +543,6 @@
   </footer>
   <script src="main.js"></script>
   <script src="cookbook-signup.js"></script>
-  <script src="cookbook-loadout.js?v=2"></script>
+  <script src="cookbook-loadout.js?v=5"></script>
 </body>
 </html>
