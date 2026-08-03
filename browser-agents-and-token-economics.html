@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://why57.com/browser-agents-and-token-economics.html" />
-  <title>Hardening Skills & Driving the Browser | Part 3 | 57</title>
-  <meta name="description" content="Part 3 of the Agentic Automation Guide. The economics of AI, why raw context wastes tokens, and a definitive ranking of ChatGPT vs Claude for browser driving." />
+  <title>Measure Context Cost & Test the Browser | Part 3 | 57</title>
+  <meta name="description" content="Part 3 of the Agentic Automation Guide. Measure the context cost of a reusable workflow, then test browser tools against a safe task card—not a brand ranking." />
   <meta name="author" content="Gera Yeremin" />
-  <meta property="og:title" content="Token Economics & Browser Agents | Agentic Automation Part 3" />
-  <meta property="og:description" content="Stop paying AI to re-read the same transcript. Harden the skill, and let the agent drive your browser. Here is the math." />
-  <meta property="og:image" content="https://why57.com/images/drake_meme.jpg" />
+  <meta property="og:title" content="Measure Context Cost & Test the Browser | Agentic Automation Part 3" />
+  <meta property="og:description" content="Measure context cost with your own inputs, then score browser tools on a safe task card with explicit stop conditions and human review." />
+  <meta property="og:image" content="https://why57.com/images/ai-executive-os-social-card.png" />
   <meta property="og:url" content="https://why57.com/browser-agents-and-token-economics.html" />
   <meta property="og:type" content="article" />
   <link rel="icon" type="image/png" href="images/favicon_square.png" />
@@ -45,6 +45,9 @@
     .ranking-list { list-style: none; padding: 0; }
     .ranking-list li { margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; }
     .ranking-list h3 { margin-top: 0; color: var(--amber); }
+    .source-notes { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .source-notes h2 { margin-top: 0; }
+    .source-notes li, .source-notes p { font-size: .96rem; line-height: 1.7; }
   </style>
 </head>
 <body class="prototype-page">
@@ -65,7 +68,7 @@
     <section class="prototype-hero">
       <div class="container fade-up">
         <div class="hero-badge">Part 3 of 3</div>
-        <h1 class="prototype-title">Hardening Skills & <em>Driving the Browser</em></h1>
+        <h1 class="prototype-title">Measure Context Cost & <em>Test the Browser.</em></h1>
         <div class="content-meta" style="margin-top:24px"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>Series:</strong> Agentic Automation</span></div>
       </div>
     </section>
@@ -73,67 +76,73 @@
     <section class="section" style="padding-top:0;">
       <div class="container fade-up delay-1">
         <div class="article-content">
-          <p>Why go through the effort of prototyping and hardening a workflow into a JSON skill (as we covered in Part 2)? Why not just pass the raw mentor transcript to the AI every single time you need to execute the task?</p>
+          <p>Why turn a useful workflow into a reusable skill instead of pasting the whole transcript every time? There can be a real cost and review benefit—but only if you measure your own task rather than repeat somebody else’s token math.</p>
 
-          <img src="images/drake_meme.jpg" alt="Meme: Drake rejecting 12,000 token transcripts, approving 700 token SOPs" />
-
-          <p><strong>Because loading a massive transcript every single time just wastes tokens and money.</strong></p>
+          <p><strong>Start by separating reusable instructions from current task data.</strong></p>
 
           <h2>The Token Economics of AI</h2>
-          <p>Yes, to initially build the skill, you still have to load the massive 12,000-token transcript into your harness. You have to pay the token cost to have the AI analyze the expert advice, test the workflow, and figure out the absolute best approach.</p>
-          <p>But the real savings happen <em>after</em> you train it.</p>
-          <p>If you pass the raw transcript to the AI every day to execute the task, you are forcing it to "re-learn" the context every single time. You are paying for the AI to "read" thousands of words of irrelevant information (small talk, tangent stories) just to extract the email strategy.</p>
-          <p>When you <em>harden</em> the skill, the harness distills that 12,000-token transcript into a hyper-focused, 700-token SOP. From that point on, your execution costs plummet.</p>
+          <p>A long source may be necessary once to understand the work. Reusing it blindly can add irrelevant context and make errors harder to spot. A compact workflow card should hold the stable method, while each run receives only the current facts it needs.</p>
+          <p>The numbers below are an <strong>illustrative calculation</strong>, not a vendor benchmark or a promise about cost, speed, or accuracy. Replace them with your measured input lengths, model pricing, and task results.</p>
 
           <table>
             <thead>
               <tr>
                 <th>Workflow Type</th>
-                <th>Context Tokens (Per Run)</th>
-                <th>Task Data</th>
-                <th>Total Tokens (50 Runs)</th>
+                <th>One-time setup</th>
+                <th>Context per run</th>
+                <th>Illustrative total, 50 runs</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Raw Transcript Strategy</strong></td>
-                <td>12,000</td>
-                <td>1,000</td>
+                <td><strong>Repeat full context</strong></td>
+                <td>0</td>
+                <td>13,000</td>
                 <td><strong style="color:white;">650,000 Tokens</strong></td>
               </tr>
               <tr>
-                <td><strong>Hardened AI Skill (SOP)</strong></td>
-                <td>700</td>
-                <td>1,000</td>
-                <td><strong style="color:var(--page-cyan);">85,000 Tokens</strong></td>
+                <td><strong>Reusable workflow card</strong></td>
+                <td>12,000</td>
+                <td>1,700</td>
+                <td><strong style="color:var(--page-cyan);">97,000 Tokens</strong></td>
               </tr>
             </tbody>
           </table>
 
-          <p>By hardening the process into a skill, we achieve an <strong>87% reduction in token consumption</strong>. Not only does this drastically reduce your API costs, but it also significantly reduces latency. An agent processing 1,700 tokens executes tasks in seconds.</p>
+          <p>In this synthetic example, the compact workflow uses about <strong>85% fewer input tokens</strong> across 50 runs: 650,000 versus 97,000. Your result will change with transcript length, current task data, model behavior, and how much review the job needs. Token reduction alone is not proof that the workflow is correct.</p>
 
-          <h2>Who Should Drive? (Ranking the Agents)</h2>
-          <p>Once you have the JSON Skill, you need an agent to actually physically drive the browser to execute it. Here is the definitive, no-nonsense ranking of how well the major players drive a browser today:</p>
+          <h2>Choose a harness by the task, not the brand</h2>
+          <p>I am not publishing a universal ranking here. Browser capability changes quickly, and a useful comparison needs the same allowed domains, account state, task, completion check, and recovery rule for every candidate.</p>
 
           <ul class="ranking-list">
             <li>
-              <h3>1. ChatGPT (with Atlas): The Undisputed #1</h3>
-              <p>OpenAI has merged Codex and Atlas into a single, unified product. Because Atlas is built right in, it is currently the absolute best agent for driving a browser. The killer feature? It enables you to seamlessly import your logins directly from Chrome, removing the biggest friction point in web automation (authentication and session management).</p>
+              <h3>1. Start with a safe task card</h3>
+              <p>Use a low-risk, reversible task: collect a public page field, prepare a draft without sending it, or compare a displayed value against an approved source. Name the allowed site, starting state, completion check, and stop condition.</p>
             </li>
             <li>
-              <h3>2. Claude: A Strong #2</h3>
-              <p>Anthropic’s capabilities are genuinely impressive, and it is very good at navigating messy UIs. However, it has a notable quirk: if you have the Claude extension installed across multiple computers, it occasionally gets confused about which machine you actually intend to drive. It's powerful, but that context-switching bug keeps it out of the top spot.</p>
+              <h3>2. Score observed behavior</h3>
+              <p>Record whether it completed the task, used only permitted information, recognized uncertainty, recovered from a harmless failure, and produced evidence a person could verify. Repeat the same task card before drawing a conclusion.</p>
             </li>
             <li>
-              <h3>3. Antigravity</h3>
-              <p>While Antigravity is a fantastic agentic IDE for technical work, as a pure web-driving harness for business execution on consumer SaaS interfaces, it currently sits in third place.</p>
+              <h3>3. Keep the owner at the consequential step</h3>
+              <p>Do not use the evaluation to grant broader authority. The owner still reviews before sending, publishing, purchasing, submitting, changing settings, or representing the business.</p>
             </li>
           </ul>
 
-          <p><strong>The future of custom software isn't just generating code. It is capturing high-value strategy and letting an agent execute it flawlessly, every time.</strong></p>
+          <p><strong>The practical move is smaller:</strong> capture the method, test one safe browser step, record the evidence, and expand only when the owner can verify the result.</p>
+
+          <section class="source-notes" aria-label="Sources, examples, and test notes">
+            <h2>Sources, examples, and test notes</h2>
+            <ol>
+              <li><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener">OpenAI, A practical guide to building agents</a> — supports assessing tool risk, adding guardrails, and using human intervention for high-risk actions. Source type: official documentation. Checked: 2026-08-02.</li>
+              <li><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST AI RMF Core</a> — supports documenting the task, expected benefits and limits, and human oversight. Source type: standards guidance. Checked: 2026-08-02.</li>
+            </ol>
+            <p><strong>Original calculation:</strong> Synthetic 50-run example: raw context = (12,000 transcript + 1,000 task tokens) × 50; compact workflow = 12,000 setup tokens + (700 workflow + 1,000 task tokens) × 50. It is not a product comparison, cost quote, or measured benchmark.</p>
+            <p><strong>Last reviewed:</strong> 2026-08-02.</p>
+          </section>
 
           <div class="nav-pagination">
-            <a href="building-the-multi-llm-harness.html">← Part 2: The Context Engine</a>
+            <a href="building-the-multi-llm-harness.html">← Part 2: Build the Workflow Card</a>
             <a href="agentic-automation-series.html">Back to Hub →</a>
           </div>
         </div>

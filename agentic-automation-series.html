@@ -7,11 +7,11 @@
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://why57.com/agentic-automation-series.html" />
   <title>Stop Clicking, Start Scaling: Agentic Automation | 57</title>
-  <meta name="description" content="A 3-part guide on capturing mentorship advice and using multi-LLM harnesses to drive browser automation." />
+  <meta name="description" content="A 3-part guide to turning authorized advice into a scoped, reviewable AI workflow—with clear limits before anything changes in a browser." />
   <meta name="author" content="Gera Yeremin" />
   <meta property="og:title" content="Stop Clicking and Start Scaling: Agentic Automation | 57" />
-  <meta property="og:description" content="The definitive guide on shifting from generative AI to execution. Stop wasting tokens and start letting agents drive your browser." />
-  <meta property="og:image" content="https://why57.com/images/boyfriend_meme.jpg" />
+  <meta property="og:description" content="Turn authorized advice into a reviewable workflow. Scope the inputs, test the browser step, and keep consequential actions with the owner." />
+  <meta property="og:image" content="https://why57.com/images/ai-executive-os-social-card.png" />
   <meta property="og:url" content="https://why57.com/agentic-automation-series.html" />
   <meta property="og:type" content="article" />
   <link rel="icon" type="image/png" href="images/favicon_square.png" />
@@ -38,7 +38,14 @@
     .related-card span { font-size: 0.75rem; color: var(--orange); text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; }
     .related-card h3 { font-size: 1.25rem; margin: 10px 0; color: white; }
     .related-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
-    @media(max-width:960px){ .related-grid { grid-template-columns: 1fr; } }
+    .series-context-map { margin: 34px 0 0; padding: 28px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,.02); }
+    .series-context-map h3 { margin: 0 0 18px; color: white; font-size: 1.15rem; }
+    .series-context-map ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; counter-reset: series-step; }
+    .series-context-map li { position: relative; min-height: 108px; padding: 18px; border: 1px solid rgba(255,255,255,.11); border-radius: 9px; background: rgba(0,0,0,.12); color: white; font-weight: 700; counter-increment: series-step; }
+    .series-context-map li::before { display: block; margin-bottom: 8px; color: var(--orange); font-size: .72rem; letter-spacing: .08em; content: "0" counter(series-step) ""; }
+    .series-context-map li span { display: block; margin-top: 8px; color: var(--muted); font-size: .82rem; font-weight: 400; line-height: 1.5; }
+    .series-context-map p { margin: 18px 0 0; color: var(--muted); font-size: .9rem; }
+    @media(max-width:960px){ .related-grid, .series-context-map ol { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body class="prototype-page">
@@ -60,7 +67,7 @@
       <div class="container fade-up">
         <div class="hero-badge">3-Part Guide Series</div>
         <h1 class="prototype-title">Stop Clicking and <em>Start Scaling.</em></h1>
-        <p class="prototype-lede">The gap between getting good advice and actually doing the work is where most businesses stall out. We are moving past AI just generating text; we are entering the era of AI actually <em>doing the clicking</em>. Here is how to build custom AI skills that actually drive your browser.</p>
+        <p class="prototype-lede">Good advice usually fails at the handoff: it becomes notes, then a vague task list, then nothing. This series shows how to turn authorized advice into a small, reviewable workflow—without handing an AI the authority to represent you or change the business on its own.</p>
         <div class="content-meta" style="margin-top:14px"><span><strong>Written by:</strong> Gera Yeremin</span></div>
       </div>
     </section>
@@ -70,24 +77,34 @@
         <div class="section-header fade-up">
           <p class="label">The Playbook</p>
           <h2 class="section-title">The Agentic Automation <span class="text-muted">Series.</span></h2>
-          <p class="section-sub">A complete teardown of how to extract strategy and let AI execute it.</p>
+          <p class="section-sub">A practical sequence for capturing context, building a workflow card, and testing a browser harness before it touches real work.</p>
         </div>
         <div class="related-grid">
           <a class="related-card fade-up" href="recording-mentorship-for-ai.html">
             <span>Part 1</span>
-            <h3>The Mentorship Goldmine</h3>
-            <p>Why paying thousands for advice fails, and how to record calls so your AI can extract the procedural steps you need.</p>
+            <h3>Capture the Right Context</h3>
+            <p>Get permission, keep the input narrow, and turn a useful conversation into a reviewable set of steps.</p>
           </a>
           <a class="related-card fade-up delay-1" href="building-the-multi-llm-harness.html">
             <span>Part 2</span>
-            <h3>The Multi-LLM Context Engine</h3>
-            <p>Don't ask for a summary. Get the exact prompt you need to force an LLM into building a browser-executable JSON SOP.</p>
+            <h3>Build a Reviewable Workflow Card</h3>
+            <p>Extract the decision, inputs, steps, uncertainty, and owner gate—without pretending a summary is an operating method.</p>
           </a>
           <a class="related-card fade-up delay-2" href="browser-agents-and-token-economics.html">
             <span>Part 3</span>
-            <h3>Hardening Skills & Driving the Browser</h3>
-            <p>Why raw transcripts waste 87% of your API tokens, and a definitive ranking of ChatGPT vs Claude for executing your tasks.</p>
+            <h3>Test the Browser Step</h3>
+            <p>Measure the actual context cost for your task, then score a browser harness against safe task cards instead of a brand ranking.</p>
           </a>
+          <aside class="series-context-map fade-up" aria-label="Authorized input to owner-approved outcome workflow map">
+            <h3>One safe route from advice to action</h3>
+            <ol>
+              <li>Authorized input<span>Use only the selected notes or transcript. Exclude sensitive or stale material.</span></li>
+              <li>Workflow card<span>Extract the goal, inputs, steps, uncertainty, and stop conditions.</span></li>
+              <li>Safe task test<span>Try one reversible browser step with a visible completion check.</span></li>
+              <li>Owner decision<span>Review the evidence before any send, publish, purchase, submission, or account change.</span></li>
+            </ol>
+            <p><strong>Stop:</strong> If the input is unauthorized, the task is unclear, or the action has a real-world consequence without an owner ready to approve it.</p>
+          </aside>
         </div>
       </div>
     </section>

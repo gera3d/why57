@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://why57.com/recording-mentorship-for-ai.html" />
-  <title>The Mentorship Goldmine: Recording for AI | Part 1 | 57</title>
-  <meta name="description" content="Part 1 of the Agentic Automation Guide. Why paying thousands for advice fails, and how to record calls so your AI can extract the procedural steps you need." />
+  <title>Capture the Right Context for AI | Part 1 | 57</title>
+  <meta name="description" content="Part 1 of the Agentic Automation Guide. Turn an authorized conversation into a narrow, reviewable workflow without treating a transcript as a blank check." />
   <meta name="author" content="Gera Yeremin" />
-  <meta property="og:title" content="The Mentorship Goldmine | Agentic Automation Part 1" />
-  <meta property="og:description" content="Most founders pay thousands for advice and execute nothing. Here is how to record your strategy calls so an AI agent can execute them for you." />
-  <meta property="og:image" content="https://why57.com/images/boyfriend_meme.jpg" />
+  <meta property="og:title" content="Capture the Right Context for AI | Agentic Automation Part 1" />
+  <meta property="og:description" content="Turn an authorized conversation into a narrow, reviewable workflow. Keep consent, sensitive information, and approval boundaries visible." />
+  <meta property="og:image" content="https://why57.com/images/ai-executive-os-social-card.png" />
   <meta property="og:url" content="https://why57.com/recording-mentorship-for-ai.html" />
   <meta property="og:type" content="article" />
   <link rel="icon" type="image/png" href="images/favicon_square.png" />
@@ -37,6 +37,12 @@
     .article-content h3 { font-size: 1.5rem; margin: 36px 0 16px; color: white; }
     .article-content img { width: 100%; border-radius: 12px; margin: 32px 0; border: 1px solid rgba(255,255,255,0.1); }
     .launch-callout { margin: 40px 0; }
+    .boundary-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: .98rem; }
+    .boundary-table th, .boundary-table td { padding: 14px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(255,255,255,.1); color: var(--muted); }
+    .boundary-table th { color: white; border-bottom: 2px solid rgba(255,255,255,.2); }
+    .source-notes { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .source-notes h2 { margin-top: 0; }
+    .source-notes li, .source-notes p { font-size: .96rem; line-height: 1.7; }
     .nav-pagination { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); }
     .nav-pagination a { color: var(--amber); font-weight: 600; text-decoration: none; }
     .nav-pagination a:hover { color: var(--orange); }
@@ -60,7 +66,7 @@
     <section class="prototype-hero">
       <div class="container fade-up">
         <div class="hero-badge">Part 1 of 3</div>
-        <h1 class="prototype-title">The Mentorship <em>Goldmine</em> (and why you are wasting it)</h1>
+        <h1 class="prototype-title">Capture the Right <em>Context.</em></h1>
         <div class="content-meta" style="margin-top:24px"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>Series:</strong> Agentic Automation</span></div>
       </div>
     </section>
@@ -68,36 +74,47 @@
     <section class="section" style="padding-top:0;">
       <div class="container fade-up delay-1">
         <div class="article-content">
-          <p>Here is a hard truth about business coaching: most founders pay thousands for a mentor, take a bunch of notes, and then execute exactly none of it.</p>
+          <p>Useful advice often fails at the handoff. A call ends with good intentions, a messy set of notes, and no clear owner for the next move.</p>
 
-          <img src="images/boyfriend_meme.jpg" alt="Meme: Me looking at an AI SOP instead of manually executing mentor advice" />
-
-          <p>The gap between getting good advice and actually doing the work is where most businesses stall out. You get off a strategy call with a list of 15 things you need to change in your CRM, 5 new outreach campaigns to build, and 3 software tools to configure. It's overwhelming. So, it sits in a Google Doc and dies.</p>
-          <p>I stopped trying to do it manually. The shift happens when you stop taking notes and start <strong>capturing execution data</strong>.</p>
+          <p>That is not a reason to dump the entire call into an AI. It is a reason to preserve the few parts that matter: the decision, the constraints, the steps, and the questions that still need an answer.</p>
+          <p>The shift is from a loose recap to <strong>capturing execution context</strong> that a person can review and use.</p>
 
           <h2>The Knowledge-Execution Gap</h2>
-          <p>If you look at the landscape of AI workflow automation right now, everyone is talking about using AI to <em>generate</em> things—code, copy, images. But generation isn't execution. The real breakthrough is <strong>Agentic Web Automation</strong>.</p>
-          <p>This is the shift from brittle, static scripts to AI agents that can "reason" about a user interface. They observe the browser state, decide on the next action (click, type, scroll), and navigate the web like a human.</p>
+          <p>Generating a recap is different from producing a workflow. The useful output is a small card that says what the work is, what information belongs in it, what the AI may prepare, and where a person must take over.</p>
+          <p>Browser-capable agents can inspect a page and take permitted steps in some environments. That does not make them a substitute for judgment, consent, or approval—especially when a workflow touches messages, accounts, money, records, or a public commitment.</p>
 
           <div class="launch-callout">
             <p>Core Mindset Shift</p>
-            <h3>Stop taking notes. Start recording the transcript.</h3>
-            <span>To build an automated business, your mentor calls are no longer just conversations. They are the raw data inputs for your execution engine. Using tools like Fireflies, Fathom, or Otter to capture the exact transcript is mandatory.</span>
+            <h3>Capture only what you are allowed to use.</h3>
+            <span>Before recording or sharing a call, get the right permission, remove sensitive details that do not belong in the task, and decide how long the material should be kept. A transcript is context—not blanket authority.</span>
           </div>
 
           <h2>How to Extract Procedural Value</h2>
-          <p>When you get on a call with an expert, do not let them just give you high-level philosophy. If you want an AI to execute their advice later, you must ask procedural questions.</p>
+          <p>When you get advice from an expert, ask questions that make the method usable. The goal is not to turn a person into a script. It is to make the decision and its constraints visible.</p>
           <p>Instead of: <em>"How should I do outbound?"</em></p>
-          <p>Ask: <em>"If you were sitting at my computer right now, what exact buttons would you click? Where do you source the leads? What fields are you looking at in the CRM before you send the email?"</em></p>
-          <p>By forcing the expert to explain the physical, step-by-step clicks, you are generating a perfect transcript for an AI harness to read later.</p>
+          <p>Ask: <em>"What is the first decision? What information should I check? What would make you stop? What can be drafted, and what still needs my approval before it is real?"</em></p>
+          <p>Those answers create a better starting input for a workflow: useful steps, limits, and unresolved questions—not a pretend-perfect transcript.</p>
 
-          <h2>The Era of Agentic Execution</h2>
-          <p>By connecting the context of a highly specific, procedural strategy call directly to an agentic browser, you completely eliminate the "Execution Gap." The AI isn't just giving you a to-do list; it is clicking the buttons.</p>
-          <p>But how do we get the AI to understand that transcript? That is where the Multi-LLM Context Engine comes in.</p>
+          <h2>Keep the handoff honest</h2>
+          <table class="boundary-table">
+            <thead><tr><th>AI may prepare</th><th>The owner must decide</th></tr></thead>
+            <tbody><tr><td>Extract the stated steps, draft a workflow card, flag missing context, and prepare a reviewable draft.</td><td>Whether recording is permitted, which information enters the workflow, whether the plan is correct, and whether any message, update, submission, or account change happens.</td></tr></tbody>
+          </table>
+          <p>Now the question is not “can an agent click this?” It is “is this a small, approved task with a clear verification step?” Part 2 turns that context into a workflow card.</p>
+
+          <section class="source-notes" aria-label="Sources, examples, and test notes">
+            <h2>Sources, examples, and test notes</h2>
+            <ol>
+              <li><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener">OpenAI, A practical guide to building agents</a> — supports defining tool risk and using human intervention for high-risk actions. Source type: official documentation. Checked: 2026-08-02.</li>
+              <li><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST AI RMF Core</a> — supports documented task scope, knowledge limits, and human oversight. Source type: standards guidance. Checked: 2026-08-02.</li>
+            </ol>
+            <p><strong>Example status:</strong> Synthetic workflow. The questions and handoff are illustrative; no client transcript is used.</p>
+            <p><strong>Last reviewed:</strong> 2026-08-02.</p>
+          </section>
 
           <div class="nav-pagination">
             <a href="agentic-automation-series.html">← Back to Hub</a>
-            <a href="building-the-multi-llm-harness.html">Part 2: The Multi-LLM Harness →</a>
+            <a href="building-the-multi-llm-harness.html">Part 2: Build the Workflow Card →</a>
           </div>
         </div>
       </div>
