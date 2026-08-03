@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="analytics.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://why57.com/browser-agents-and-token-economics.html" />
+  <title>Hardening Skills & Driving the Browser | Part 3 | 57</title>
+  <meta name="description" content="Part 3 of the Agentic Automation Guide. The economics of AI, why raw context wastes tokens, and a definitive ranking of ChatGPT vs Claude for browser driving." />
+  <meta name="author" content="Gera Yeremin" />
+  <meta property="og:title" content="Token Economics & Browser Agents | Agentic Automation Part 3" />
+  <meta property="og:description" content="Stop paying AI to re-read the same transcript. Harden the skill, and let the agent drive your browser. Here is the math." />
+  <meta property="og:image" content="https://why57.com/images/drake_meme.jpg" />
+  <meta property="og:url" content="https://why57.com/browser-agents-and-token-economics.html" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" type="image/png" href="images/favicon_square.png" />
+  <link rel="apple-touch-icon" href="images/favicon_square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="content.css?v=1" />
+  <style>
+    .prototype-page{--page-indigo:#e04c28;--page-cyan:#ff7940;--page-peach:#ffc1ae;}
+    .prototype-page .nav-logo{margin-right:6px;}
+    .prototype-page .nav-links{gap:24px;}
+    .prototype-page .nav-cta{color:var(--amber);}
+    .prototype-page main{overflow:hidden;}
+    .prototype-hero{position:relative;padding:120px 0 60px;isolation:isolate;}
+    .prototype-hero::before{content:"";position:absolute;z-index:-1;inset:-120px 0 auto;height:500px;background:radial-gradient(circle at 78% 30%,rgba(224,76,40,.12),transparent 29%),radial-gradient(circle at 20% 15%,rgba(224,76,40,.1),transparent 32%);pointer-events:none;}
+    .prototype-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1.01;letter-spacing:-.05em;max-width:800px;margin:0 0 22px;}
+    .prototype-title em{font-style:normal;color:var(--page-indigo);}
+    .article-content { max-width: 720px; margin: 0 auto; font-size: 1.1rem; line-height: 1.75; color: var(--text); padding-bottom: 60px; }
+    .article-content p { margin-bottom: 24px; color: var(--muted); }
+    .article-content h2 { font-size: 2rem; letter-spacing: -0.03em; margin: 48px 0 24px; color: white; }
+    .article-content h3 { font-size: 1.5rem; margin: 36px 0 16px; color: white; }
+    .article-content img { width: 100%; border-radius: 12px; margin: 32px 0; border: 1px solid rgba(255,255,255,0.1); }
+    table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
+    th, td { padding: 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--muted); }
+    th { color: white; font-weight: 600; border-bottom: 2px solid rgba(255,255,255,0.2); }
+    .nav-pagination { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); }
+    .nav-pagination a { color: var(--amber); font-weight: 600; text-decoration: none; }
+    .nav-pagination a:hover { color: var(--orange); }
+    .ranking-list { list-style: none; padding: 0; }
+    .ranking-list li { margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; }
+    .ranking-list h3 { margin-top: 0; color: var(--amber); }
+  </style>
+</head>
+<body class="prototype-page">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="agentic-automation-series.html" class="nav-link">Series Hub</a>
+        <a href="/#services" class="nav-link">Services</a>
+      </nav>
+      <a href="https://roi.why57.com/" class="nav-cta" data-cta-location="browser_agents_nav_roi">Calculate Automation ROI</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="prototype-hero">
+      <div class="container fade-up">
+        <div class="hero-badge">Part 3 of 3</div>
+        <h1 class="prototype-title">Hardening Skills & <em>Driving the Browser</em></h1>
+        <div class="content-meta" style="margin-top:24px"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>Series:</strong> Agentic Automation</span></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container fade-up delay-1">
+        <div class="article-content">
+          <p>Why go through the effort of prototyping and hardening a workflow into a JSON skill (as we covered in Part 2)? Why not just pass the raw mentor transcript to the AI every single time you need to execute the task?</p>
+
+          <img src="images/drake_meme.jpg" alt="Meme: Drake rejecting 12,000 token transcripts, approving 700 token SOPs" />
+
+          <p><strong>Because loading a massive transcript every single time just wastes tokens and money.</strong></p>
+
+          <h2>The Token Economics of AI</h2>
+          <p>Yes, to initially build the skill, you still have to load the massive 12,000-token transcript into your harness. You have to pay the token cost to have the AI analyze the expert advice, test the workflow, and figure out the absolute best approach.</p>
+          <p>But the real savings happen <em>after</em> you train it.</p>
+          <p>If you pass the raw transcript to the AI every day to execute the task, you are forcing it to "re-learn" the context every single time. You are paying for the AI to "read" thousands of words of irrelevant information (small talk, tangent stories) just to extract the email strategy.</p>
+          <p>When you <em>harden</em> the skill, the harness distills that 12,000-token transcript into a hyper-focused, 700-token SOP. From that point on, your execution costs plummet.</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Workflow Type</th>
+                <th>Context Tokens (Per Run)</th>
+                <th>Task Data</th>
+                <th>Total Tokens (50 Runs)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Raw Transcript Strategy</strong></td>
+                <td>12,000</td>
+                <td>1,000</td>
+                <td><strong style="color:white;">650,000 Tokens</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Hardened AI Skill (SOP)</strong></td>
+                <td>700</td>
+                <td>1,000</td>
+                <td><strong style="color:var(--page-cyan);">85,000 Tokens</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>By hardening the process into a skill, we achieve an <strong>87% reduction in token consumption</strong>. Not only does this drastically reduce your API costs, but it also significantly reduces latency. An agent processing 1,700 tokens executes tasks in seconds.</p>
+
+          <h2>Who Should Drive? (Ranking the Agents)</h2>
+          <p>Once you have the JSON Skill, you need an agent to actually physically drive the browser to execute it. Here is the definitive, no-nonsense ranking of how well the major players drive a browser today:</p>
+
+          <ul class="ranking-list">
+            <li>
+              <h3>1. ChatGPT (with Atlas): The Undisputed #1</h3>
+              <p>OpenAI has merged Codex and Atlas into a single, unified product. Because Atlas is built right in, it is currently the absolute best agent for driving a browser. The killer feature? It enables you to seamlessly import your logins directly from Chrome, removing the biggest friction point in web automation (authentication and session management).</p>
+            </li>
+            <li>
+              <h3>2. Claude: A Strong #2</h3>
+              <p>Anthropic’s capabilities are genuinely impressive, and it is very good at navigating messy UIs. However, it has a notable quirk: if you have the Claude extension installed across multiple computers, it occasionally gets confused about which machine you actually intend to drive. It's powerful, but that context-switching bug keeps it out of the top spot.</p>
+            </li>
+            <li>
+              <h3>3. Antigravity</h3>
+              <p>While Antigravity is a fantastic agentic IDE for technical work, as a pure web-driving harness for business execution on consumer SaaS interfaces, it currently sits in third place.</p>
+            </li>
+          </ul>
+
+          <p><strong>The future of custom software isn't just generating code. It is capturing high-value strategy and letting an agent execute it flawlessly, every time.</strong></p>
+
+          <div class="nav-pagination">
+            <a href="building-the-multi-llm-harness.html">← Part 2: The Context Engine</a>
+            <a href="agentic-automation-series.html">Back to Hub →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a>
+      <div class="footer-address"><span>57 Custom Software Development</span></div>
+      <p class="footer-copy">&copy; 2026 57. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

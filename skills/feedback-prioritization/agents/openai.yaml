@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feedback Prioritization"
+  short_description: "Map customer feedback before product decisions"
+  default_prompt: "Use $feedback-prioritization to turn approved customer feedback into a reviewable map before I decide what to build."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Browser Harness Benchmark"
+  short_description: "Compare browser agents by real tasks"
+  default_prompt: "Use $browser-harness-benchmark to compare browser harnesses on a dated, bounded task suite without crossing review gates."

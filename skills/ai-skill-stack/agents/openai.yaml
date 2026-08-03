@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Skill Stack"
+  short_description: "Route recurring work to approved AI skills"
+  default_prompt: "Use $ai-skill-stack to map my recurring jobs, current inputs, review gates, and stop conditions."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Call Decision System"
+  short_description: "Review customer calls with evidence"
+  default_prompt: "Use $call-decision-system to turn my authorized customer-call transcript into a reviewable decision brief without updating any external record."

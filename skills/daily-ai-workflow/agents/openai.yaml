@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daily AI Workflow"
+  short_description: "Run one approved AI recipe each day"
+  default_prompt: "Use $daily-ai-workflow to run one approved AI recipe with a visible owner review."

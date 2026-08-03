@@ -1,0 +1,4 @@
+interface:
+  display_name: "Relationship Map"
+  short_description: "Map selected email with evidence"
+  default_prompt: "Use $relationship-map to turn my selected email threads into a reviewable relationship map without contacting anyone."

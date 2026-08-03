@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social Content Strategy"
+  short_description: "Map selected social signals into a clear strategy"
+  default_prompt: "Use $social-content-strategy to map my authorized LinkedIn, X, Reddit, or Facebook posts before planning content."

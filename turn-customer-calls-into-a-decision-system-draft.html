@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="analytics.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="canonical" href="https://why57.com/turn-customer-calls-into-a-decision-system.html" />
+  <title>Turn Customer Calls into a Decision System | The AI Executive CookBook | 57</title>
+  <meta name="description" content="A practical AI Executive Cookbook recipe for turning authorized customer-call transcripts into an evidence-backed brief the owner can review before any follow-up or CRM change." />
+  <meta name="author" content="Gera Yeremin" />
+  <link rel="icon" type="image/png" href="images/favicon_square.png" />
+  <link rel="apple-touch-icon" href="images/favicon_square.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="content.css?v=1" />
+  <style>
+    .call-page{--call-accent:100,190,173;--call-warm:255,184,77}
+    .draft-banner{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;padding:9px 18px;background:var(--orange);color:#fff;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.02em}
+    .call-page .content-hero{padding-bottom:74px}
+    .call-page .content-title{max-width:800px}
+    .call-page .content-title em{color:rgb(var(--call-accent))}
+    .hero-note{max-width:560px;margin:13px 0 0;font-size:.78rem;line-height:1.6;color:var(--dim)}
+    .skill-download{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:710px;margin:19px 0 0;padding:16px;border:1px solid rgba(var(--call-accent),.42);border-radius:13px;background:rgba(var(--call-accent),.06)}
+    .skill-download-copy small,.mono-label{display:block;margin-bottom:5px;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:rgb(var(--call-accent))}
+    .skill-download-copy p{margin:0 0 8px;font-size:.78rem;line-height:1.55;color:var(--muted)}
+    .skill-download-url{display:inline-block;font-family:var(--mono);font-size:.7rem;line-height:1.5;color:var(--amber);overflow-wrap:anywhere}
+    .skill-download .btn-ghost{flex:0 0 auto;white-space:nowrap}
+    .copy-status{display:block;min-height:1.4em;margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--amber)}
+    .glance-list{display:grid;gap:0;margin:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.025)}
+    .glance-list div{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:15px 17px;border-bottom:1px solid var(--border)}
+    .glance-list div:last-child{border-bottom:0}
+    .glance-list dt{font-family:var(--mono);font-size:.67rem;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+    .glance-list dd{margin:0;font-size:.84rem;line-height:1.56;color:var(--muted)}
+    .glance-list strong{color:var(--text)}
+    .section-intro{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:42px;align-items:start}
+    .section-intro .section-title{margin-bottom:0}
+    .section-intro>p{margin:3px 0 0;font-size:.97rem;line-height:1.76;color:var(--muted)}
+    .use-grid,.reason-grid,.ingredient-grid,.taste-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}
+    .use-card,.reason-card,.ingredient-card,.taste-card{padding:20px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.025)}
+    .use-card .card-no{display:grid;place-items:center;width:29px;height:29px;margin-bottom:13px;border:1px solid rgba(var(--call-accent),.42);border-radius:8px;background:rgba(var(--call-accent),.08);font-family:var(--mono);font-size:.65rem;font-weight:700;color:rgb(var(--call-accent))}
+    .use-card h3,.reason-card h3,.ingredient-card h3,.taste-card h3{margin:0 0 11px;font-size:1rem;line-height:1.32}
+    .use-card dl{display:grid;gap:10px;margin:0}
+    .use-card dt,.reason-card small,.ingredient-card small,.taste-card small{display:block;margin-bottom:3px;font-family:var(--mono);font-size:.6rem;line-height:1.4;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+    .use-card dd{margin:0;font-size:.77rem;line-height:1.55;color:var(--muted)}
+    .reason-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .reason-card{border-color:rgba(var(--call-accent),.22)}
+    .reason-card p,.ingredient-card p,.taste-card p{margin:0;font-size:.82rem;line-height:1.64;color:var(--muted)}
+    .reason-card b{display:block;margin:4px 0 8px;font-size:.94rem;color:var(--text)}
+    .method-note{margin-top:15px;padding:15px 17px;border-left:3px solid rgb(var(--call-accent));border-radius:0 11px 11px 0;background:rgba(var(--call-accent),.06);font-size:.8rem;line-height:1.63;color:var(--muted)}
+    .method-note strong{color:var(--text)}
+    .prompt-stage{display:flex;align-items:center;min-height:calc(100svh - var(--nav-h));padding:112px 0;background:radial-gradient(circle at 85% 10%,rgba(var(--call-accent),.15),transparent 31%),rgba(255,255,255,.014);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .prompt-stage-inner{width:min(100%,1040px)}
+    .prompt-stage-head{max-width:780px;margin:0 auto 24px}
+    .prompt-stage-head .label{margin-bottom:10px}
+    .prompt-stage-head h2{margin:0;font-size:clamp(2rem,4vw,3.35rem);line-height:1.06;letter-spacing:-.045em}
+    .prompt-reader{margin:0;border:1px solid rgba(var(--call-accent),.45);border-radius:18px;background:linear-gradient(135deg,rgba(var(--call-accent),.1),rgba(255,255,255,.025));overflow:hidden}
+    .prompt-reader-body{padding:clamp(18px,3vw,30px)}
+    .prompt-reader-intro{max-width:720px;margin:0 0 16px;font-size:.84rem;line-height:1.65;color:var(--muted)}
+    .prompt-reader-code{margin:0;padding:20px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(7,7,12,.64);font-family:var(--mono);font-size:.73rem;line-height:1.68;white-space:pre-wrap;overflow-wrap:anywhere;color:#ededed}
+    .prompt-reader-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:16px}
+    .prompt-reader-actions small{font-size:.72rem;line-height:1.55;color:var(--dim)}
+    .prompt-boundary{margin-top:16px;padding:16px;border:1px solid rgba(255,179,157,.3);border-radius:13px;background:rgba(255,179,157,.045)}
+    .prompt-boundary strong{display:block;margin-bottom:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+    .prompt-boundary p{margin:0;font-size:.77rem;line-height:1.58;color:var(--muted)}
+    .context-map{margin:31px 0 8px;padding:clamp(20px,4vw,34px);border:1px solid rgba(var(--call-accent),.35);border-radius:22px;background:radial-gradient(circle at 84% 8%,rgba(var(--call-accent),.13),transparent 30%),rgba(255,255,255,.025)}
+    .context-map h3,.decision-aid h3{margin:0 0 9px;font-size:1.18rem}
+    .context-map>p,.decision-aid>p{max-width:740px;margin:0 0 25px;font-size:.87rem!important;line-height:1.65!important;color:var(--muted)!important}
+    .context-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
+    .flow-node{min-height:146px;padding:16px;border:1px solid var(--border);border-radius:14px;background:rgba(11,11,18,.56)}
+    .flow-node--source{border-color:rgba(255,179,157,.32);background:rgba(255,179,157,.055)}
+    .flow-node--review{border-color:rgba(var(--call-accent),.42);background:rgba(var(--call-accent),.08)}
+    .flow-node--output{border-color:rgba(224,76,40,.43);background:rgba(224,76,40,.07)}
+    .flow-node small{display:block;margin-bottom:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+    .flow-node b{display:block;margin-bottom:7px;font-size:.88rem;color:var(--text)}
+    .flow-node span{display:block;font-size:.75rem;line-height:1.53;color:var(--muted)}
+    .flow-arrow{width:23px;height:2px;background:rgb(var(--call-accent));position:relative}
+    .flow-arrow::after{content:"";position:absolute;right:0;top:-4px;border-left:7px solid rgb(var(--call-accent));border-top:5px solid transparent;border-bottom:5px solid transparent}
+    .exclusion-strip{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin-top:15px;padding:15px 16px;border:1px solid rgba(255,179,157,.28);border-radius:12px;background:rgba(255,179,157,.04)}
+    .exclusion-strip b{display:grid;place-items:center;width:27px;height:27px;border:1px solid rgba(255,179,157,.36);border-radius:8px;color:var(--orange);font-size:.95rem}
+    .exclusion-strip p{margin:0!important;font-size:.77rem!important;line-height:1.58!important;color:var(--muted)!important}
+    .visual-caption{margin:10px 0 34px;font-size:.72rem;line-height:1.6;color:var(--dim)}
+    .article-shell{display:grid;grid-template-columns:210px minmax(0,1fr);gap:54px;align-items:start}
+    .article-toc{position:sticky;top:126px;padding-top:6px}
+    .article-toc strong{display:block;margin-bottom:12px;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+    .article-toc a{display:block;padding:6px 0;font-size:.76rem;line-height:1.4;color:var(--muted)}
+    .article-copy{min-width:0}
+    .article-copy h2{margin:0 0 16px;font-size:clamp(1.6rem,3vw,2.45rem);line-height:1.14;letter-spacing:-.035em;scroll-margin-top:125px}
+    .article-copy>p{font-size:.93rem;line-height:1.76;color:var(--muted)}
+    .article-copy>p:first-of-type{margin-top:0}
+    .ingredient-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:28px}
+    .ingredient-card{min-height:158px}
+    .ingredient-card--exclude{border-color:rgba(255,179,157,.28);background:rgba(255,179,157,.04)}
+    .exclude-list{display:grid;gap:10px;list-style:none;margin:18px 0 30px;padding:0}
+    .exclude-list li{position:relative;padding:13px 14px 13px 39px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.02);font-size:.84rem;line-height:1.55;color:var(--muted)}
+    .exclude-list li::before{content:"×";position:absolute;left:14px;top:10px;color:var(--orange);font-size:1.15rem;font-weight:700}
+    .recipe-steps{display:grid;gap:14px;margin:25px 0 31px;counter-reset:step}
+    .recipe-step{display:grid;grid-template-columns:39px 1fr;gap:16px;padding:21px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.025);counter-increment:step}
+    .recipe-step::before{content:counter(step, decimal-leading-zero);display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:rgba(var(--call-accent),.12);color:rgb(var(--call-accent));font-family:var(--mono);font-size:.68rem;font-weight:700}
+    .recipe-step h3{margin:4px 0 7px;font-size:1.02rem}
+    .recipe-step p{margin:0!important;font-size:.87rem!important;line-height:1.68!important;color:var(--muted)!important}
+    .red-flags{margin:30px 0;padding:21px;border:1px solid rgba(255,179,157,.32);border-radius:16px;background:rgba(255,179,157,.045)}
+    .red-flags h3{margin:0 0 9px;font-size:1.04rem;color:var(--text)}
+    .red-flags>p{margin:0 0 15px!important;font-size:.82rem!important;line-height:1.6!important;color:var(--muted)!important}
+    .red-flags ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0;padding:0;list-style:none}
+    .red-flags li{position:relative;padding:11px 12px 11px 31px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(8,8,14,.32);font-size:.75rem;line-height:1.5;color:var(--muted)}
+    .red-flags li::before{content:"!";position:absolute;left:11px;top:10px;display:grid;place-items:center;width:14px;height:14px;border:1px solid rgba(255,179,157,.55);border-radius:50%;color:var(--orange);font-size:.59rem;font-weight:800}
+    .decision-aid{margin:29px 0 30px;padding:clamp(20px,4vw,34px);border:1px solid rgba(224,76,40,.37);border-radius:22px;background:radial-gradient(circle at 84% 0%,rgba(224,76,40,.14),transparent 30%),rgba(255,255,255,.025)}
+    .synthetic-tag{display:inline-block;margin:0 0 12px;padding:6px 8px;border:1px solid rgba(224,76,40,.4);border-radius:7px;background:rgba(224,76,40,.06);font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+    .scenario-brief{margin:0 0 15px;padding:15px;border-left:3px solid var(--amber);background:rgba(255,255,255,.035);font-size:.8rem;line-height:1.6;color:var(--muted)}
+    .evidence-table-wrap,.authority-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:13px;background:rgba(8,8,14,.42)}
+    .evidence-table,.authority-table{width:100%;border-collapse:collapse;min-width:650px;font-size:.76rem;line-height:1.52}
+    .evidence-table th,.evidence-table td,.authority-table th,.authority-table td{padding:13px 14px;border-bottom:1px solid var(--border);vertical-align:top;text-align:left}
+    .evidence-table tr:last-child td,.authority-table tr:last-child td{border-bottom:0}
+    .evidence-table th,.authority-table th{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);background:rgba(255,255,255,.025)}
+    .evidence-table td,.authority-table td{color:var(--muted)}
+    .evidence-table b,.authority-table b{color:var(--text)}
+    .status-direct{color:rgb(var(--call-accent))!important}.status-open{color:var(--amber)!important}.status-inference{color:#ffb09a!important}
+    .taste-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin:20px 0 29px}
+    .taste-card{min-height:130px}
+    .taste-card--stop{border-color:rgba(255,179,157,.32);background:rgba(255,179,157,.04)}
+    .approval-callout{margin:22px 0 29px;padding:18px;border:1px solid rgba(var(--call-accent),.38);border-radius:14px;background:rgba(var(--call-accent),.06)}
+    .approval-callout strong{display:block;margin-bottom:7px;font-size:.91rem;color:var(--text)}
+    .approval-callout p{margin:0!important;font-size:.82rem!important;line-height:1.63!important;color:var(--muted)!important}
+    .review-cta{padding:42px;border:1px solid rgba(var(--call-accent),.35);border-radius:22px;background:radial-gradient(circle at 82% 15%,rgba(var(--call-accent),.15),transparent 32%),rgba(255,255,255,.025);text-align:center}
+    .review-cta h2{margin:8px auto 12px;max-width:580px;font-size:clamp(1.8rem,3vw,2.65rem);line-height:1.12;letter-spacing:-.04em}
+    .review-cta p{max-width:550px;margin:0 auto 20px;font-size:.89rem;line-height:1.65;color:var(--muted)}
+    .review-cta small{display:block;margin-top:13px;font-size:.73rem;line-height:1.55;color:var(--dim)}
+    .sources-list{display:grid;gap:14px;margin:0;padding:0;list-style:none;counter-reset:source}
+    .sources-list li{position:relative;padding:17px 17px 17px 50px;border:1px solid var(--border);border-radius:13px;background:rgba(255,255,255,.022);font-size:.81rem;line-height:1.63;color:var(--muted);counter-increment:source}
+    .sources-list li::before{content:counter(source);position:absolute;left:16px;top:16px;display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:rgba(var(--call-accent),.13);color:rgb(var(--call-accent));font-family:var(--mono);font-size:.66rem;font-weight:700}
+    .sources-list strong{color:var(--text)}
+    .sources-list a{word-break:break-word}
+    .source-note{margin-top:18px!important;font-size:.75rem!important;line-height:1.65!important;color:var(--dim)!important}
+    @media(max-width:1100px){.article-shell{grid-template-columns:1fr}.article-toc{display:none}.context-flow{grid-template-columns:1fr;gap:10px}.flow-arrow{width:2px;height:22px;margin:0 auto}.flow-arrow::after{right:-4px;top:auto;bottom:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid rgb(var(--call-accent));border-bottom:0}}
+    @media(max-width:850px){.section-intro{grid-template-columns:1fr;gap:13px}.use-grid,.ingredient-grid,.reason-grid,.taste-grid,.red-flags ul{grid-template-columns:1fr}}
+    @media(max-width:680px){.glance-list div{grid-template-columns:1fr;gap:5px}.skill-download{display:block}.skill-download .btn-ghost{width:100%;justify-content:center;margin-top:13px}.prompt-stage{display:block;min-height:auto;padding:91px 0}.prompt-reader-body{padding:15px}.prompt-reader-code{padding:15px;font-size:.69rem}.prompt-reader-actions .btn-primary{width:100%;justify-content:center}.exclusion-strip{grid-template-columns:1fr}.exclusion-strip b{display:none}.recipe-step{grid-template-columns:34px 1fr;gap:12px;padding:17px}.review-cta{padding:30px 19px}}
+  </style>
+</head>
+<body class="content-page call-page" data-page-type="cookbook_recipe_draft">
+  <div class="draft-banner">The AI Executive CookBook · Full recipe and install guide</div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="spotlight-cursor" id="spotlightCursor" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="#where-useful" class="nav-link">Where useful</a>
+        <a href="#call-prompt" class="nav-link">Prompt</a>
+        <a href="#taste-test" class="nav-link">Taste test</a>
+        <a href="#sources" class="nav-link">Sources</a>
+      </nav>
+      <button type="button" class="nav-cta" data-copy-call-prompt>Copy prompt</button>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-hero">
+      <div class="container content-hero-grid">
+        <div>
+          <div class="hero-badge">AI Executive Cookbook · Recipe 7</div>
+          <h1 class="content-title">Turn customer calls into a <em>decision system.</em></h1>
+          <p class="content-lede">Use the specific call you are allowed to review. Pull out what people actually said, mark what remains uncertain, and give the owner a short brief to check before any follow-up becomes real.</p>
+          <div class="content-actions">
+            <button type="button" class="btn-primary btn-lg" data-copy-call-prompt aria-describedby="prompt-copy-note">Copy the prompt</button>
+            <a href="#sources" class="btn-ghost">Read the sources</a>
+          </div>
+          <p id="prompt-copy-note" class="hero-note">The prompt stops at owner review. It does not update a CRM, send a recap, or make a commitment.</p>
+          <div class="skill-download" id="ready-made-skill">
+            <div class="skill-download-copy"><small>Ready-made portable skill</small><p>Includes <code>SKILL.md</code> and <code>agents/openai.yaml</code>. This is a reusable method, not preloaded customer data or an autonomous agent.</p><a class="skill-download-url" href="https://why57.com/skills/call-decision-system/SKILL.md" target="_blank" rel="noopener" data-call-skill-link>why57.com/skills/call-decision-system/SKILL.md</a></div>
+            <button type="button" class="btn-ghost" data-copy-call-install>Copy install instruction</button>
+          </div>
+          <span class="copy-status" id="callCopyStatus" aria-live="polite"></span>
+          <div class="content-meta"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>For:</strong> founders and account owners</span><span><strong>Reviewed:</strong> August 2, 2026</span></div>
+        </div>
+        <aside class="content-hero-card" aria-label="Recipe at a glance">
+          <p class="content-hero-card-label">Recipe at a glance</p>
+          <dl class="glance-list">
+            <div><dt>Daily job</dt><dd>Prepare for a customer decision without re-listening to every minute of a call.</dd></div>
+            <div><dt>Ingredients</dt><dd>One authorized transcript or a small owner-approved set, plus the decision the owner needs to make.</dd></div>
+            <div><dt>Useful output</dt><dd>A <strong>Call Decision Brief</strong> and a small evidence map with source markers.</dd></div>
+            <div><dt>Approval point</dt><dd>The owner approves, corrects, declines, or seeks confirmation for every potential commitment, follow-up, and external record.</dd></div>
+          </dl>
+          <p class="content-hero-note">A clean summary can hide the exact thing you need to verify.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="where-useful">
+      <div class="container">
+        <div class="section-intro"><div><p class="label">Where this is useful</p><h2 class="section-title">Three calls. Three decisions you can actually inspect.</h2></div><p>Start with one decision and the smallest authorized input that can support it. The output is deliberately narrow: enough evidence to prepare, not an invented account history.</p></div>
+        <div class="use-grid">
+          <article class="use-card"><span class="card-no">01</span><h3>Prepare for a renewal conversation</h3><dl><div><dt>Situation</dt><dd>A renewal meeting is coming up and the account owner needs the customer’s stated value, risks, and open conditions.</dd></div><div><dt>Bounded input</dt><dd>One authorized account-review transcript and the owner’s stated renewal question.</dd></div><div><dt>Useful output</dt><dd>A brief separating direct renewal signals, unresolved terms, and preparation questions.</dd></div><div><dt>Owner check</dt><dd>Confirm every claimed commitment, risk, and follow-up before it appears in renewal prep.</dd></div></dl></article>
+          <article class="use-card"><span class="card-no">02</span><h3>Scope a discovery-call next step</h3><dl><div><dt>Situation</dt><dd>A prospect call surfaces a problem, but the team needs a focused next-step brief instead of a generic recap.</dd></div><div><dt>Bounded input</dt><dd>One authorized discovery transcript, speaker labels, and the owner’s definition of a useful next decision.</dd></div><div><dt>Useful output</dt><dd>Stated needs, constraints, objections, and questions that must be answered before scope is drafted.</dd></div><div><dt>Owner check</dt><dd>Approve the proposed scope, materials, and any outreach separately.</dd></div></dl></article>
+          <article class="use-card"><span class="card-no">03</span><h3>Find recurring objections</h3><dl><div><dt>Situation</dt><dd>An owner wants to see why a selected set of conversations stalls without turning a handful of calls into market research.</dd></div><div><dt>Bounded input</dt><dd>An owner-approved set with its date range, count, source-selection rule, and missing-call limits.</dd></div><div><dt>Useful output</dt><dd>A traceable objection map with counts inside that selected set and uncertainty beside each theme.</dd></div><div><dt>Owner check</dt><dd>Decide which pattern deserves a test; do not treat frequency alone as customer priority.</dd></div></dl></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-save-skill">
+      <div class="container article-shell">
+        <aside class="article-toc"><strong>Recipe map</strong><nav><a href="#why-save-skill">Why save it</a><a href="#call-prompt">Copyable prompt</a><a href="#context-map">Context map</a><a href="#ingredients">Ingredients</a><a href="#recipe">Recipe</a><a href="#decision-aid">Decision aid</a><a href="#taste-test">Taste test</a><a href="#authority">Authority line</a><a href="#sources">Sources</a></nav></aside>
+        <article class="article-copy">
+          <p class="label">Why save this as a skill</p>
+          <h2>Keep the method. Load the call context only when the job needs it.</h2>
+          <p>Every call brings its own account, people, dates, and business context. The method stays stable: distinguish direct statements from inference, attach evidence markers, make uncertainty visible, and stop before any outside record changes. Saving that method means you do not have to rebuild the review boundary each time.</p>
+          <div class="reason-grid">
+            <div class="reason-card"><small>Current job context</small><b>What belongs only to this review</b><p>The owner’s goal, the specific authorized transcript, speaker labels, source markers, and only the account detail needed to interpret the call.</p></div>
+            <div class="reason-card"><small>Reusable method</small><b>What the skill keeps consistent</b><p>The evidence lanes, short brief, review queue, red flags, and the rule that a recommendation does not become a CRM record or follow-up by itself.</p></div>
+          </div>
+          <p class="method-note"><strong>Practical value:</strong> the owner starts with a familiar, reviewable workflow instead of re-explaining the safety line on every call. The skill does not contain calls, contacts, account history, or permission to act.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-stage" id="call-prompt" aria-labelledby="call-prompt-title">
+      <div class="container prompt-stage-inner">
+        <div class="prompt-stage-head"><p class="label">Full-screen copyable prompt</p><h2 id="call-prompt-title">Build the evidence map before you decide what to do next.</h2></div>
+        <div class="prompt-reader">
+          <div class="prompt-reader-body">
+            <p class="prompt-reader-intro">Give the model the narrow goal and authorized material. Its job is to make the review easier, not to make a commitment sound settled.</p>
+            <pre class="prompt-reader-code"><code id="callDecisionPromptText">Goal: Turn the authorized call material below into a reviewable Call Decision Brief for [renewal preparation / scoped discovery next step / recurring objection review].
+
+Authorized inputs: [specific transcript or recording-derived transcript, date, speaker labels, and owner-provided context]. Exclude recordings without authority, credentials, private information unnecessary to this goal, and unrelated participant information.
+
+Build a selective brief, not a full recap. Separate every material item into:
+1. Direct statement — speaker, source marker, and concise paraphrase or short necessary quote.
+2. Transcript uncertainty — unclear speaker, missing context, inaudible wording, contradiction, or ambiguity.
+3. AI inference — explicitly label it as an interpretation, not a fact or participant statement.
+4. Owner decision needed — approval, correction, decline, or confirmation.
+
+Do not infer agreement from silence. Do not treat this transcript as a complete record. Do not invent action items, commitments, next meetings, or customer intent. Paraphrase by default; do not copy sensitive quotes unless exact wording changes the owner’s decision.
+
+Return:
+- purpose and input boundary;
+- confirmed direct statements;
+- unresolved questions;
+- labeled inferences with the evidence that suggests them;
+- a commitment and follow-up review queue; and
+- a small evidence map: item | classification | speaker/source marker | concise evidence | uncertainty | owner check.
+
+Stop after the reviewable brief. Ask me to approve, correct, decline, or mark needs-confirmation for every possible commitment, follow-up, and external record before drafting or doing consequential work. Do not update a CRM, create a task, send a recap, schedule anything, or contact anyone.</code></pre>
+            <div class="prompt-reader-actions"><button type="button" class="btn-primary" data-copy-call-prompt>Copy this prompt</button><small>Paste it into the AI system you already use, then add only the approved source material.</small></div>
+            <div class="prompt-boundary"><strong>Approval gate inside the prompt</strong><p>The model must stop at a reviewable brief. An owner’s explicit selection is required before it can draft a follow-up, recap, CRM update, task, or other consequential work.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="container article-shell">
+        <aside class="article-toc"><strong>Recipe map</strong><nav><a href="#context-map">Context map</a><a href="#ingredients">Ingredients</a><a href="#recipe">Recipe</a><a href="#decision-aid">Decision aid</a><a href="#taste-test">Taste test</a><a href="#authority">Authority line</a><a href="#start">Start small</a></nav></aside>
+        <article class="article-copy">
+          <p class="label">The problem in real life</p>
+          <h2>A useful call brief needs proof next to the conclusion.</h2>
+          <p>A customer says, “We need to see the export work,” and someone turns it into “They approved the next phase.” The transcript may contain neither approval nor a next phase. It may contain a condition, a question, or a pause that needs clarification. That is where a polished recap gets expensive.</p>
+          <p>NIST’s generative-AI guidance calls out automation bias and confabulation: people can over-trust an output because it reads cleanly, including when it contains a confident error. This recipe puts the evidence marker, uncertainty, and owner decision beside each material conclusion so the review does not depend on the model’s tone. <a href="#source-1">[1]</a> <a href="#source-2">[2]</a></p>
+
+          <div class="context-map" id="context-map">
+            <p class="mono-label">Visual 1 · context map</p>
+            <h3>Keep the call narrow. Keep the decision visible.</h3>
+            <p>The flow separates source material from AI interpretation and reserves the last move for the owner.</p>
+            <div class="context-flow" role="img" aria-label="Authorized call transcript flows through selected evidence and uncertainty review, then owner review, then a call decision brief and small evidence map.">
+              <div class="flow-node flow-node--source"><small>Authorized input</small><b>One call or selected set</b><span>Transcript, source markers, speaker labels, decision goal.</span></div><div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node"><small>Selective context</small><b>Evidence lanes</b><span>Direct statement, uncertainty, inference, owner decision needed.</span></div><div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node flow-node--review"><small>AI work</small><b>Reviewable brief</b><span>Paraphrase, link material claims to evidence, surface missing proof.</span></div><div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node flow-node--output"><small>Owner review</small><b>Approve, correct, decline, confirm</b><span>Only then may a separate draft or record update be considered.</span></div>
+            </div>
+            <div class="exclusion-strip"><b aria-hidden="true">×</b><p><strong>Excluded:</strong> recordings without authority, credentials, sensitive information unnecessary to the goal, unrelated participant information, and any automatic follow-up or external update.</p></div>
+          </div>
+          <p class="visual-caption">Context map: an instructional workflow, not a system diagram or a claim that the method records calls, stores data, or changes external systems.</p>
+
+          <h2 id="ingredients">Choose the evidence. Leave the rest out.</h2>
+          <div class="ingredient-grid">
+            <div class="ingredient-card"><small>Use</small><h3>Authorized material with a clear job</h3><p>Use a supplied transcript or a recording-derived transcript only when the owner can authorize the review. Name the decision to support and retain only source markers needed to check it.</p></div>
+            <div class="ingredient-card"><small>Use</small><h3>Minimal supporting context</h3><p>Add a short owner-provided note when a transcript needs basic orientation: call date, role labels, stated goal, and what the owner needs to decide.</p></div>
+            <div class="ingredient-card ingredient-card--exclude"><small>Exclude</small><h3>Private details that do not change the decision</h3><p>Do not add credentials, payment data, health information, or sensitive facts with no direct connection to the review goal.</p></div>
+            <div class="ingredient-card ingredient-card--exclude"><small>Exclude</small><h3>Unbounded context and automatic work</h3><p>Do not substitute a whole call archive for selection. Do not create a CRM entry, send a recap, schedule a meeting, or trigger a follow-up from this method.</p></div>
+          </div>
+          <p>Call recordings can contain personal information about participants. The UK Information Commissioner’s Office gives a specific example for workplace monitoring: people should be told a call is recorded and why. Use the authority and privacy rules that apply to your organization and jurisdiction; this recipe does not determine legal permission. <a href="#source-3">[3]</a></p>
+
+          <h2 id="recipe">The recipe</h2>
+          <div class="recipe-steps">
+            <article class="recipe-step"><div><h3>Set the decision and the stop line.</h3><p>Write the practical question first: prepare for a renewal, scope one discovery next step, or review a defined objection set. State that the work ends at the owner’s review unless the owner separately authorizes a draft.</p></div></article>
+            <article class="recipe-step"><div><h3>Confirm authority and narrow the input.</h3><p>Identify the specific transcript or recording-derived transcript, who authorized it, its date, and the source markers available. Remove or withhold material outside the goal. If authority is unclear, stop.</p></div></article>
+            <article class="recipe-step"><div><h3>Build the evidence lanes.</h3><p>Classify material statements as direct evidence, transcript uncertainty, AI inference, or owner decision needed. A direct statement needs a speaker and source marker. An inference needs language that makes clear it is a proposal to investigate.</p></div></article>
+            <article class="recipe-step"><div><h3>Make the short evidence map.</h3><p>For each material item, show what it is, how it is classified, the source marker, a concise paraphrase, uncertainty, and the owner’s check. The goal is inspection, not a transcript rewrite.</p></div></article>
+            <article class="recipe-step"><div><h3>Hold every consequence at review.</h3><p>Ask the owner to approve, correct, decline, or mark needs-confirmation for each possible commitment, follow-up, or external record. Draft only after an explicit selection, and keep the draft unsent.</p></div></article>
+          </div>
+
+          <div class="red-flags" aria-label="Red flags and stop conditions">
+            <h3>Red flags that should stop the workflow</h3>
+            <p>Pause for owner direction when the output would overstate the evidence or turn review into action.</p>
+            <ul><li>Treating a transcript as a complete record of the account or agreement.</li><li>Inferring agreement from silence, a pause, or a vague acknowledgement.</li><li>Inventing action items, commitments, deadlines, or a next meeting.</li><li>Flattening a conflict, unclear speaker, or missing context into certainty.</li><li>Copying sensitive quotes when a short paraphrase is enough.</li><li>Auto-updating a CRM, sending a recap, or triggering follow-up.</li></ul>
+          </div>
+
+          <div class="decision-aid" id="decision-aid">
+            <p class="mono-label">Visual 2 · synthetic decision aid</p>
+            <h3>A brief distinguishes what was said from what you still need to decide.</h3>
+            <p>This compact example shows the point of the evidence map. Every person, detail, and call content below is invented for illustration.</p>
+            <span class="synthetic-tag">Synthetic example · no real customer or call</span>
+            <p class="scenario-brief"><strong>Situation:</strong> The account owner is preparing for a renewal conversation. The supplied transcript includes a request to see an export workflow and concern about handoff time. It contains no expressed renewal commitment and no agreed next meeting.</p>
+            <div class="evidence-table-wrap"><table class="evidence-table"><thead><tr><th>Item</th><th>Classification</th><th>Evidence</th><th>Owner check</th></tr></thead><tbody><tr><td><b>Export workflow</b></td><td class="status-direct">Direct statement</td><td>Customer sponsor · 18:42 · asked to see how the export would work.</td><td>Confirm whether a demonstration is appropriate and who should receive it.</td></tr><tr><td><b>Renewal intent</b></td><td class="status-open">Unresolved</td><td>No direct renewal decision appears in this selected transcript.</td><td>Do not label the account as committed. Bring the question to the conversation.</td></tr><tr><td><b>Handoff concern</b></td><td class="status-direct">Direct statement</td><td>Operations lead · 21:08 · raised a concern about the time required to hand off data.</td><td>Check the concern against current implementation facts before representing a solution.</td></tr><tr><td><b>Possible next move</b></td><td class="status-inference">AI inference</td><td>Evidence suggests an export walkthrough may address both stated points; it is not an agreed action.</td><td>Approve, correct, decline, or seek confirmation before any draft is created.</td></tr></tbody></table></div>
+          </div>
+
+          <h2 id="taste-test">Taste test the brief before it represents the call.</h2>
+          <p>Judge the output by whether an owner can verify it quickly. The test is not whether it sounds comprehensive. It is whether it makes a better next decision without smuggling in a commitment.</p>
+          <div class="taste-grid">
+            <div class="taste-card"><small>Check 1</small><h3>Can every material conclusion be traced?</h3><p>Each direct statement names a speaker and source marker. A reader can find the point again without trusting the model.</p></div>
+            <div class="taste-card"><small>Check 2</small><h3>Can you see what the call did not settle?</h3><p>Unresolved questions, conflicting accounts, unclear language, and missing context remain visible. They do not disappear into a smooth recap.</p></div>
+            <div class="taste-card"><small>Check 3</small><h3>Are inferences clearly labeled?</h3><p>Useful hypotheses are fine when they remain hypotheses. They cannot borrow the authority of a participant’s direct statement.</p></div>
+            <div class="taste-card taste-card--stop"><small>Stop condition</small><h3>Would an external action need a guess?</h3><p>If a commitment, follow-up, or CRM record depends on a guess, mark it needs-confirmation and do no consequential work.</p></div>
+          </div>
+
+          <h2 id="authority">AI may organize the evidence. The owner keeps the authority.</h2>
+          <div class="authority-table-wrap"><table class="authority-table"><thead><tr><th>AI may do</th><th>Owner must do</th></tr></thead><tbody><tr><td>Extract selected, direct statements with speaker and source markers.</td><td>Confirm authority to use the material and decide whether the evidence is complete enough for the purpose.</td></tr><tr><td>Group stated objections, requests, commitments, and unresolved questions.</td><td>Approve, correct, decline, or request confirmation for every potential commitment and follow-up.</td></tr><tr><td>Offer labeled inferences and flag what would prove or disprove them.</td><td>Decide what the account status, next step, and customer commitment actually are.</td></tr><tr><td>Draft one proposed recap, task, or record update after a specific owner choice.</td><td>Edit, approve, send, schedule, update the CRM, create an external record, or do nothing.</td></tr></tbody></table></div>
+          <div class="approval-callout"><strong>The approval has to be granular.</strong><p>“Looks right” does not authorize a CRM update or message. The owner approves each commitment, follow-up, and external record individually, then decides whether a separate draft is worth creating.</p></div>
+
+          <h2 id="start">Start with one bounded review.</h2>
+          <p>Pick one customer conversation with clear authority and one decision you need to make. Build the brief. Keep the evidence that changed the owner’s view. Remove the rest.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section cta-section"><div class="container"><div class="review-cta"><p class="label">One safe test</p><h2>Bring one authorized call and one decision.</h2><p>Use the prompt to create a reviewable brief, then decide whether the method makes the next conversation easier to prepare for.</p><a href="#call-prompt" class="btn-primary btn-lg">Build a call decision brief</a><small>Start with the smallest useful transcript. Do not add credentials, private data outside the goal, or a full call archive.</small></div></div></section>
+
+    <section class="section section--alt" id="sources">
+      <div class="container article-shell">
+        <aside class="article-toc"><strong>Research record</strong><nav><a href="#source-1">Human oversight</a><a href="#source-2">Uncertainty</a><a href="#source-3">Call-recording context</a><a href="#source-4">Provider controls</a><a href="#source-5">Skills</a><a href="#source-6">Example status</a></nav></aside>
+        <article class="article-copy">
+          <p class="label">Research record</p>
+          <h2>Sources, examples, and test notes</h2>
+          <ol class="sources-list">
+            <li id="source-1"><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST AI Risk Management Framework Core</a>. Supports defining human roles, documenting intended scope, output limits, and human oversight for AI-system use. It does not validate this recipe or replace organizational policy. <strong>Source type:</strong> standards body guidance. <strong>Checked:</strong> 2026-08-02.</li>
+            <li id="source-2"><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener">NIST AI 600-1: Generative AI Profile</a>. Supports treating automation bias, confabulation, privacy, and information integrity as risks to manage. It supports the instruction to separate evidence, uncertainty, and inference; it does not prove a business outcome. <strong>Source type:</strong> standards body guidance. <strong>Checked:</strong> 2026-08-02.</li>
+            <li id="source-3"><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/employment/monitoring-workers/specific-data-protection-considerations-for-different-ways-or-methods-of-monitoring-workers/" target="_blank" rel="noopener">UK ICO: monitoring calls</a>. Provides a UK workplace-monitoring example: call recording collects information about callers and workers, and people should be told the call is recorded and why. It is jurisdiction-specific guidance, not universal permission to record or process calls. <strong>Source type:</strong> regulator guidance. <strong>Checked:</strong> 2026-08-02.</li>
+            <li id="source-4"><a href="https://platform.openai.com/docs/models/default-usage-policies-by-endpoint" target="_blank" rel="noopener">OpenAI API data controls</a>. Supports the limited point that provider data handling and retention settings vary by product and endpoint and should be checked before sensitive material is sent. It does not authorize uploading a call recording or transcript. <strong>Source type:</strong> official documentation. <strong>Checked:</strong> 2026-08-02.</li>
+            <li id="source-5"><a href="https://developers.openai.com/api/docs/guides/tools-skills" target="_blank" rel="noopener">OpenAI: Skills</a>. Supports using a skill as a reusable bundle of instructions and conventions. It does not establish a fixed time saving, revenue result, or autonomous outcome. <strong>Source type:</strong> official documentation. <strong>Checked:</strong> 2026-08-02.</li>
+            <li id="source-6"><strong>Example status.</strong> The decision aid is synthetic. It uses invented people, call details, and source markers to demonstrate the review method. It does not report a client result, customer behavior, or a workflow test.</li>
+          </ol>
+          <p class="source-note">Last reviewed: 2026-08-02. This page describes a practical review method, not legal, privacy, security, or compliance advice. Confirm authority, applicable rules, and the data-handling settings of the system you choose before processing customer-call material.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><a href="/" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a><div class="footer-address"><span>57 Custom Software Development</span></div><nav class="footer-nav" aria-label="Footer navigation"><a href="agentic-automation-series.html">Agentic Automation</a><a href="ai-app-prototype-to-production.html">AI Production Guide</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><p class="footer-copy">&copy; 2026 57. All rights reserved.</p></div></footer>
+  <script src="main.js"></script>
+  <script>
+    (() => {
+      const promptText = document.getElementById('callDecisionPromptText');
+      const callPrompt = promptText.textContent.trim();
+      const callSkillUrl = 'https://why57.com/skills/call-decision-system/SKILL.md';
+      const installInstruction = `Download the Call Decision System skill from ${callSkillUrl}. Save it as skills/call-decision-system/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work, then use it with only authorized customer-call material. If this environment does not support skills, follow the file as reusable project instructions. The skill is a method, not preloaded data or permission to take action.`;
+      const status = document.getElementById('callCopyStatus');
+
+      const trackCallRecipe = (eventName) => {
+        window.why57Analytics?.track(eventName, {
+          cookbook_recipe: 'call_decision_system',
+          conversion_stage: 'micro'
+        });
+      };
+
+      const copyText = async (value) => {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(value);
+          return;
+        }
+        const field = document.createElement('textarea');
+        field.value = value;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        const copied = document.execCommand('copy');
+        field.remove();
+        if (!copied) throw new Error('Copy command was unavailable.');
+      };
+
+      const copyPrompt = async (event) => {
+        const button = event.currentTarget;
+        const originalLabel = button.dataset.copyLabel || button.textContent;
+        button.dataset.copyLabel = originalLabel;
+        try {
+          await copyText(callPrompt);
+          trackCallRecipe('call_decision_system_prompt_copied');
+          status.textContent = 'Prompt copied. Start with one authorized call and one decision.';
+          button.textContent = 'Prompt copied';
+          window.setTimeout(() => { button.textContent = originalLabel; }, 2400);
+        } catch (_error) {
+          status.textContent = 'Copy did not work here. Select the prompt from the article and paste it into your AI system.';
+        }
+      };
+
+      const copyInstallInstruction = async (event) => {
+        const button = event.currentTarget;
+        const originalLabel = button.dataset.copyLabel || button.textContent;
+        button.dataset.copyLabel = originalLabel;
+        try {
+          await copyText(installInstruction);
+          trackCallRecipe('call_decision_system_install_instruction_copied');
+          status.textContent = 'Install instruction copied. Give it to an AI agent that can retrieve and use skill files.';
+          button.textContent = 'Instruction copied';
+          window.setTimeout(() => { button.textContent = originalLabel; }, 2400);
+        } catch (_error) {
+          status.textContent = 'Copy did not work here. Copy the direct skill link above and give it to your AI agent.';
+        }
+      };
+
+      document.querySelectorAll('[data-copy-call-prompt]').forEach((button) => button.addEventListener('click', copyPrompt));
+      document.querySelectorAll('[data-copy-call-install]').forEach((button) => button.addEventListener('click', copyInstallInstruction));
+      document.querySelectorAll('[data-call-skill-link]').forEach((link) => link.addEventListener('click', () => trackCallRecipe('call_decision_system_skill_opened')));
+    })();
+  </script>
+</body>
+</html>
