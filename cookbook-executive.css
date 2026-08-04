@@ -66,6 +66,14 @@
 .cookbook-page .cb-roadmap-card h3{margin:0;color:var(--cb-paper);font-size:1.02rem;letter-spacing:-.03em;}
 .cookbook-page .cb-roadmap-card p{margin:9px 0 0;color:var(--cb-copy);font-size:.73rem;line-height:1.58;}
 .cookbook-page .cb-roadmap-note{max-width:760px;margin:18px 0 0;color:var(--cb-muted);font-size:.76rem;line-height:1.6;}
+.cookbook-page .cb-roadmap-details{margin-top:39px;border:1px solid var(--cb-line);border-radius:12px;background:rgba(255,255,255,.018);overflow:hidden;}
+.cookbook-page .cb-roadmap-details>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 22px;color:var(--cb-paper);cursor:pointer;font-size:.84rem;font-weight:800;list-style:none;}
+.cookbook-page .cb-roadmap-details>summary::-webkit-details-marker{display:none;}
+.cookbook-page .cb-roadmap-details>summary::after{color:var(--cb-amber);content:'+';font:500 1.35rem/1 var(--cb-mono);}
+.cookbook-page .cb-roadmap-details[open]>summary{border-bottom:1px solid var(--cb-line);}
+.cookbook-page .cb-roadmap-details[open]>summary::after{content:'−';}
+.cookbook-page .cb-roadmap-details .cb-roadmap-grid{margin:0;border:0;}
+.cookbook-page .cb-roadmap-details .cb-roadmap-note{margin:18px 22px 22px;}
 
 @media(max-width:960px){
   .cookbook-page .executive-shell{grid-template-columns:1fr;gap:30px;}

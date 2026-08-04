@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=8" />
-  <link rel="stylesheet" href="cookbook-executive.css?v=3" />
+  <link rel="stylesheet" href="cookbook-executive.css?v=4" />
   <style>
     .cb-page {
       --cb-ink: #07070d;
@@ -182,7 +182,7 @@
         <a href="#coming-soon" class="nav-link">Coming next</a>
         <a href="#how-it-works" class="nav-link">How it works</a>
       </nav>
-      <a href="#coming-soon" class="nav-cta">See what’s next</a>
+      <a href="put-your-actual-voice-back-into-ai-draft.html" class="nav-cta">Try Voice Kit</a>
       <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -212,6 +212,7 @@
           <div class="executive-actions">
             <a class="cb-button cb-button--primary" href="put-your-actual-voice-back-into-ai-draft.html">See the skill broken down</a>
             <button class="executive-loadout-link" type="button" id="voiceKitInstallCopy">Copy install instruction</button>
+            <a class="executive-loadout-link" href="https://github.com/gera3d/ai-executive-cookbook/tree/master/skills/executive-cookbook-voice-kit" target="_blank" rel="noopener">View source on GitHub</a>
           </div>
           <p class="executive-status-copy" id="voiceKitInstallStatus" role="status" aria-live="polite">This breakdown shows the use cases, execution model, and research behind the skill. Install it when you want that method available for repeat work.</p>
         </aside>
@@ -258,12 +259,12 @@
         <div class="cb-section-head">
           <div>
             <p class="cb-section-label">The release rule</p>
-            <h2 class="cb-section-title" id="what-you-get-title">Useful before it is installable.</h2>
+            <h2 class="cb-section-title" id="what-you-get-title">A recipe helps you decide. A Skill helps your AI do the work.</h2>
           </div>
-          <p class="cb-section-copy">A skill earns a place here only when you can understand the job, inspect how it creates value, see the research that supports the method, give it to your AI, and judge the output. Until then, it stays on the list—not in your system.</p>
+          <p class="cb-section-copy">The recipe is the human-readable breakdown: the job, the use cases, the execution model, and the evidence. The Skill is the reusable instruction you give your AI. Both have to be clear before a release is ready to use.</p>
         </div>
         <div class="cb-audience-grid">
-          <article class="cb-audience-card"><span>01 · A REAL JOB</span><h3>It starts with work you already do.</h3><p>The job, the source material, and the useful output are clear enough to try on one small piece of real work.</p></article>
+          <article class="cb-audience-card"><span>01 · A REAL JOB</span><h3>It starts with work you already do.</h3><p>The job, source material, and useful output are clear enough to try on one small piece of real work.</p></article>
           <article class="cb-audience-card"><span>02 · THE SKILL, BROKEN DOWN</span><h3>You can see the method and the evidence.</h3><p>The human-readable breakdown shows the use cases, how a source becomes an output, where feedback improves the skill, and what research does and does not support.</p></article>
           <article class="cb-audience-card"><span>03 · A CLEAN INSTALL</span><h3>Your AI gets the reusable part.</h3><p>Then it gets an install instruction. The source file is for the AI; the breakdown is there so you can decide whether the skill belongs in your system.</p></article>
         </div>
@@ -275,22 +276,25 @@
         <div class="cb-section-head">
           <div>
             <p class="cb-section-label">In development</p>
-            <h2 class="cb-section-title" id="coming-title">Skills I am still testing.</h2>
+            <h2 class="cb-section-title" id="coming-title">What I am testing next.</h2>
           </div>
-          <p class="cb-section-copy">These methods are in development. They are shown here so you can see where the CookBook is going, but none is ready to install yet. If one matters to your work, join the release list. I’ll send the first usable version—not a placeholder.</p>
+          <p class="cb-section-copy">These are the next areas of work: relationships, proof, customer evidence, and repeatable AI workflows. None is ready to install. The release list gets the first version that has a clear job, a readable recipe, and a way to judge the output.</p>
         </div>
-        <div class="cb-roadmap-grid" aria-label="Skills in development">
-          <article class="cb-roadmap-card"><span>RELATIONSHIPS</span><h3>Relationship Map</h3><p>Find the warm path and the right next move from a selected set of real relationships.</p></article>
-          <article class="cb-roadmap-card"><span>CUSTOMER WORK</span><h3>Feedback Prioritization</h3><p>Separate repeated customer evidence from the loudest request before deciding what changes.</p></article>
-          <article class="cb-roadmap-card"><span>CONTENT</span><h3>Content Pattern Map</h3><p>See the patterns, proof gaps, and next test in your owned content.</p></article>
-          <article class="cb-roadmap-card"><span>DEMAND</span><h3>Signal to Conversation</h3><p>Turn a small set of public signals into one credible contribution and a useful next conversation.</p></article>
-          <article class="cb-roadmap-card"><span>CALLS</span><h3>Call Decision System</h3><p>Turn one approved call into evidence, uncertainty, and a reviewable decision brief.</p></article>
-          <article class="cb-roadmap-card"><span>OUTREACH</span><h3>Outreach Planner</h3><p>Plan careful, evidence-backed follow-up without turning relationships into a lead list.</p></article>
-          <article class="cb-roadmap-card"><span>OPERATING SYSTEM</span><h3>AI Skill Stack</h3><p>Choose the few repeated jobs where a proven skill can help and keep the review gates visible.</p></article>
-          <article class="cb-roadmap-card"><span>OPERATING RHYTHM</span><h3>Daily AI Workflow</h3><p>Turn one proven method into a small repeatable work loop without unattended action.</p></article>
-          <article class="cb-roadmap-card"><span>BROWSER WORK</span><h3>Browser Harness Benchmark</h3><p>Test whether a browser setup is reliable enough for a named safe task before relying on it.</p></article>
-        </div>
-        <p class="cb-roadmap-note">Each one stays here until it has a clear job, a human-readable skill breakdown, and a real install path.</p>
+        <details class="cb-roadmap-details">
+          <summary>See the methods in testing</summary>
+          <div class="cb-roadmap-grid" aria-label="Skills in development">
+            <article class="cb-roadmap-card"><span>RELATIONSHIPS</span><h3>Relationship Map</h3><p>Find the warm path and the right next move from a selected set of real relationships.</p></article>
+            <article class="cb-roadmap-card"><span>CUSTOMER WORK</span><h3>Feedback Prioritization</h3><p>Separate repeated customer evidence from the loudest request before deciding what changes.</p></article>
+            <article class="cb-roadmap-card"><span>CONTENT</span><h3>Content Pattern Map</h3><p>See the patterns, proof gaps, and next test in your owned content.</p></article>
+            <article class="cb-roadmap-card"><span>DEMAND</span><h3>Signal to Conversation</h3><p>Turn a small set of public signals into one credible contribution and a useful next conversation.</p></article>
+            <article class="cb-roadmap-card"><span>CALLS</span><h3>Call Decision System</h3><p>Turn one approved call into evidence, uncertainty, and a reviewable decision brief.</p></article>
+            <article class="cb-roadmap-card"><span>OUTREACH</span><h3>Outreach Planner</h3><p>Plan careful, evidence-backed follow-up without turning relationships into a lead list.</p></article>
+            <article class="cb-roadmap-card"><span>OPERATING SYSTEM</span><h3>AI Skill Stack</h3><p>Choose the few repeated jobs where a proven skill can help and keep the review gates visible.</p></article>
+            <article class="cb-roadmap-card"><span>OPERATING RHYTHM</span><h3>Daily AI Workflow</h3><p>Turn one proven method into a small repeatable work loop without unattended action.</p></article>
+            <article class="cb-roadmap-card"><span>BROWSER WORK</span><h3>Browser Harness Benchmark</h3><p>Test whether a browser setup is reliable enough for a named safe task before relying on it.</p></article>
+          </div>
+          <p class="cb-roadmap-note">Each one stays here until it has a clear job, a human-readable skill breakdown, and a real install path.</p>
+        </details>
       </div>
     </section>
 
@@ -342,11 +346,11 @@
           <div>
             <p class="cb-section-label">Get the useful ones</p>
             <h2 class="cb-section-title" id="return-title">Get an email when the next skill is ready to use.</h2>
-            <p class="cb-section-copy">I’ll email you when Proof Library, Secure Setup, or another CookBook skill is actually ready to use—not when it is just an idea in a folder.</p>
+            <p class="cb-section-copy">I’ll email you when Proof Library, Secure Setup, or another CookBook skill is ready to use. Every release has to clear the same bar before it lands in your inbox.</p>
             <ul class="cb-follow-list">
               <li>The business job it helps with and the output you should expect.</li>
-              <li>The human-readable skill breakdown plus the install instruction in the same release.</li>
-              <li>A plain note about what it does not do and what still needs your approval.</li>
+              <li>The released Skill, the plain-English recipe, and the install instruction together.</li>
+              <li>A small test to run, plus the research, limits, and approval point behind it.</li>
             </ul>
           </div>
           <aside class="cb-signup-shell" id="signup" aria-labelledby="signup-title">
@@ -393,6 +397,6 @@
   </footer>
   <script src="main.js"></script>
   <script src="cookbook-signup.js"></script>
-  <script src="cookbook-loadout.js?v=6"></script>
+  <script src="cookbook-loadout.js?v=8"></script>
 </body>
 </html>

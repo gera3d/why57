@@ -4,8 +4,8 @@
 
   if (!copyButton) return;
 
-  const voiceKitUrl = 'https://why57.com/skills/voice-kit/SKILL.md';
-  const installInstruction = `Download the Voice Kit skill from ${voiceKitUrl}. Save it as skills/voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work. Use it with real samples I selected or am authorized to use. Start by drafting the current request, show the observed patterns alongside the draft, and let my direct feedback override inferred patterns. Do not send, publish, or change an account.`;
+  const voiceKitUrl = 'https://raw.githubusercontent.com/gera3d/ai-executive-cookbook/master/skills/executive-cookbook-voice-kit/SKILL.md';
+  const installInstruction = `Download the Voice Kit skill from ${voiceKitUrl}. Save it as skills/executive-cookbook-voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work. Use it with real samples I selected or am authorized to use. Start by drafting the current request, show the observed patterns alongside the draft, and let my direct feedback override inferred patterns. Ask before creating or updating any private Corpus file. Do not send, publish, or change an account.`;
 
   const copyText = async (value) => {
     if (navigator.clipboard?.writeText) {
