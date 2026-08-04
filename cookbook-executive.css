@@ -7,7 +7,12 @@
   box-shadow:0 14px 36px rgba(0,0,0,.18);
 }
 .cookbook-page .cb-live-install h2{margin:0;font-size:1.45rem;line-height:1.14;letter-spacing:-.03em;color:var(--cb-paper);}
-.cookbook-page .cb-live-install>p:not(.executive-status-copy){margin:11px 0 18px;color:var(--cb-copy);font-size:.84rem;line-height:1.68;}
+.cookbook-page .cb-first-run-kicker{margin:0 0 10px;color:var(--cb-amber);font:500 .62rem/1.4 var(--cb-mono);letter-spacing:.09em;text-transform:uppercase;}
+.cookbook-page .cb-first-run-list{display:grid;gap:0;margin:21px 0 0;}
+.cookbook-page .cb-first-run-list div{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.11);}
+.cookbook-page .cb-first-run-list dt{color:var(--cb-amber);font:500 .59rem/1.55 var(--cb-mono);letter-spacing:.07em;text-transform:uppercase;}
+.cookbook-page .cb-first-run-list dd{margin:0;color:var(--cb-copy);font-size:.77rem;line-height:1.55;}
+.cookbook-page .cb-first-run-note{margin:17px 0 0;color:var(--cb-muted);font-size:.72rem;line-height:1.58;}
 .cookbook-page .section--executive{
   padding:98px 0;
   background:
@@ -57,7 +62,10 @@
 .cookbook-page .cb-launch-card--live{border-color:rgba(255,121,64,.5);background:linear-gradient(150deg,rgba(224,76,40,.16),rgba(255,255,255,.025) 54%,rgba(8,8,14,.6));}
 .cookbook-page .cb-launch-card h3{margin:0;color:var(--cb-paper);font-size:1.28rem;line-height:1.12;letter-spacing:-.04em;}
 .cookbook-page .cb-launch-card>p{margin:11px 0 0;color:var(--cb-copy);font-size:.79rem;line-height:1.63;}
-.cookbook-page .cb-launch-card .cb-output-preview{margin-top:auto;}
+.cookbook-page .cb-card-details{margin:auto 0 0;}
+.cookbook-page .cb-card-details div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding-top:15px;border-top:1px solid var(--cb-line);}
+.cookbook-page .cb-card-details dt{color:var(--cb-amber);font:500 .57rem/1.5 var(--cb-mono);letter-spacing:.07em;text-transform:uppercase;}
+.cookbook-page .cb-card-details dd{margin:0;color:var(--cb-copy);font-size:.72rem;line-height:1.55;}
 .cookbook-page .cb-status--coming{color:#c8a59b;}
 .cookbook-page .cb-status--coming::before{background:#9a6656;box-shadow:none;}
 .cookbook-page .cb-roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:39px;border:1px solid var(--cb-line);background:var(--cb-line);}
@@ -90,6 +98,7 @@
   .cookbook-page .executive-route{min-height:0;padding:18px;}
   .cookbook-page .executive-actions,.cookbook-page .executive-route-actions{align-items:stretch;flex-direction:column;}
   .cookbook-page .executive-actions .cb-button,.cookbook-page .executive-route-actions .cb-button{width:100%;}
+  .cookbook-page .cb-first-run-list div,.cookbook-page .cb-card-details div{grid-template-columns:1fr;gap:4px;}
   .cookbook-page .cb-launch-grid,.cookbook-page .cb-roadmap-grid{grid-template-columns:1fr;}
   .cookbook-page .cb-launch-card,.cookbook-page .cb-roadmap-card{min-height:0;}
 }
