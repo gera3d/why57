@@ -1,0 +1,15 @@
+/* GitHub-backed status for published CookBook Skills */
+.cookbook-page .cb-github-release{margin-top:22px;padding-top:18px;border-top:1px solid var(--cb-line,var(--border,rgba(255,255,255,.1)));}
+.cookbook-page .cb-github-release__top{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.cookbook-page .cb-github-release__label{margin:0;color:var(--cb-amber,var(--amber,#ff7940));font:500 .58rem/1.4 var(--cb-mono,var(--mono,monospace));letter-spacing:.09em;text-transform:uppercase;}
+.cookbook-page .cb-github-release__version{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin:9px 0 0;color:var(--cb-paper,var(--text,#ededed));font-size:.84rem;font-weight:700;line-height:1.4;}
+.cookbook-page .cb-github-release__version strong{color:var(--cb-amber,var(--amber,#ff7940));font:500 .67rem/1.4 var(--cb-mono,var(--mono,monospace));letter-spacing:.03em;}
+.cookbook-page .cb-github-release__updated,.cookbook-page .cb-github-release__summary{margin:7px 0 0;color:var(--cb-muted,var(--dim,#8c8c94));font-size:.72rem;line-height:1.55;}
+.cookbook-page .cb-github-release__summary{color:var(--cb-copy,var(--muted,#c7c7cc));}
+.cookbook-page .cb-github-release__links{display:flex;flex-wrap:wrap;gap:12px;margin-top:13px;}
+.cookbook-page .cb-github-release__links a{color:var(--cb-amber,var(--amber,#ff7940));font:500 .67rem/1.45 var(--cb-mono,var(--mono,monospace));text-decoration:none;}
+.cookbook-page .cb-github-release__links a:hover{text-decoration:underline;text-underline-offset:3px;}
+.cookbook-page .cb-github-release__star{color:var(--cb-paper,var(--text,#ededed))!important;}
+.cookbook-page .cb-github-release--voice{max-width:690px;margin-top:20px;padding:17px 18px;border:1px solid rgba(224,76,40,.3);border-radius:13px;background:rgba(224,76,40,.045);}
+.cookbook-page .cb-github-release--voice .cb-github-release__top{align-items:flex-start;}
+@media(max-width:520px){.cookbook-page .cb-github-release__top{align-items:flex-start;flex-direction:column;gap:7px}.cookbook-page .cb-github-release__links{gap:10px;}}
