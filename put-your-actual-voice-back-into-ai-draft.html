@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=3" />
   <link rel="stylesheet" href="content.css?v=1" />
+  <link rel="stylesheet" href="cookbook-release.css?v=1" />
   <style>
     .cookbook-page{--glow:224,76,40}
     .draft-banner{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;padding:9px 18px;background:var(--orange);color:#fff;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.02em}
@@ -316,6 +317,16 @@
           <p id="prompt-copy-note" class="voice-hero-note">Paste the one-time prompt into the AI you already use. Then give it one past email, post, transcript, or paragraph—and the job in front of you. <a href="#example">See the exchange first.</a></p>
           <span class="copy-status" id="voiceKitCopyStatus" data-voice-kit-copy-status aria-live="polite"></span>
           <div class="content-meta"><span><strong>First run:</strong> about 3 minutes</span><span><strong>You need:</strong> one real sample + one assignment</span></div>
+          <section class="cb-github-release cb-github-release--voice" data-cookbook-skill-release="executive-cookbook-voice-kit" aria-label="Current Voice Kit GitHub version">
+            <div class="cb-github-release__top"><p class="cb-github-release__label">Current GitHub version</p></div>
+            <p class="cb-github-release__version"><span data-release-name>Voice Kit</span><strong data-release-version>Checking GitHub…</strong></p>
+            <p class="cb-github-release__updated" data-release-updated aria-live="polite">Checking the published version and update notes.</p>
+            <p class="cb-github-release__summary" data-release-summary hidden></p>
+            <div class="cb-github-release__links">
+              <a href="https://github.com/gera3d/ai-executive-cookbook/blob/master/CHANGELOG.md" target="_blank" rel="noopener">See what changed ↗</a>
+              <a class="cb-github-release__star" href="https://github.com/gera3d/ai-executive-cookbook" target="_blank" rel="noopener">☆ Star the CookBook ↗</a>
+            </div>
+          </section>
         </div>
         <aside class="content-hero-card vk-start-card" aria-label="How to start with Voice Kit">
           <p class="content-hero-card-label">First run</p>
@@ -570,6 +581,7 @@ Start by drafting from whatever I just shared, right now.</code></pre>
   <footer class="footer"><div class="container footer-inner"><a href="/" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a><div class="footer-address"><span>57 Custom Software Development</span></div><nav class="footer-nav" aria-label="Footer navigation"><a href="agentic-automation-series.html">Agentic Automation</a><a href="ai-app-prototype-to-production.html">AI Production Guide</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><p class="footer-copy">&copy; 2026 57. All rights reserved.</p></div></footer>
   <script src="main.js"></script>
   <script src="cookbook-signup.js"></script>
+  <script src="cookbook-release.js"></script>
   <script>
     (() => {
       const promptText = document.getElementById('voiceKitPromptText');
