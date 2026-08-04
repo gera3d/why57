@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="canonical" href="https://why57.com/put-your-actual-voice-back-into-ai.html" />
-  <title>Put Your Actual Voice Back Into AI | The AI Executive CookBook | 57</title>
-  <meta name="description" content="A practical AI Executive CookBook recipe for using one real writing sample and a current job to get a grounded draft, inspect the pattern notes, and improve the next version." />
+  <title>Voice Kit | Write Closer to Your Voice | The AI Executive CookBook | 57</title>
+  <meta name="description" content="Try Voice Kit with one real writing sample and today's assignment. Get a draft you can inspect, correct, and improve, then install the reusable Skill for repeat work." />
   <meta name="author" content="Gera Yeremin" />
   <link rel="icon" type="image/png" href="images/favicon_square.png" />
   <link rel="apple-touch-icon" href="images/favicon_square.png" />
@@ -29,7 +29,7 @@
     .skill-download-url{display:inline-block;font-family:var(--mono);font-size:.7rem;line-height:1.45;color:var(--amber);overflow-wrap:anywhere}
     .skill-download .btn-ghost{flex:0 0 auto;white-space:nowrap}
     .copy-status{display:block;min-height:1.4em;margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--amber)}
-    .prompt-stage{display:flex;align-items:center;min-height:calc(100svh - var(--nav-h));padding:116px 0;background:radial-gradient(circle at 82% 12%,rgba(var(--glow),.13),transparent 32%),rgba(255,255,255,.014);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .prompt-stage{padding:92px 0;background:radial-gradient(circle at 82% 12%,rgba(var(--glow),.13),transparent 32%),rgba(255,255,255,.014);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
     .prompt-stage-inner{width:min(100%,1000px)}
     .prompt-stage-head{max-width:760px;margin:0 auto 24px}
     .prompt-stage-head .label{margin-bottom:10px}
@@ -37,12 +37,6 @@
     .prompt-reader{margin:0;border:1px solid rgba(var(--glow),.42);border-radius:18px;background:linear-gradient(135deg,rgba(var(--glow),.09),rgba(255,255,255,.025));overflow:hidden}
     .prompt-reader-body{padding:clamp(18px,3vw,30px)}
     .prompt-reader-intro{max-width:690px;margin:0 0 16px;font-size:.84rem;line-height:1.65;color:var(--muted)}
-    .prompt-source-menu{margin:0 0 18px;padding:17px;border:1px solid rgba(255,255,255,.08);border-radius:13px;background:rgba(255,255,255,.02)}
-    .prompt-source-menu>strong{display:block;margin-bottom:12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
-    .prompt-source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-    .prompt-source-path{padding:13px;border:1px solid var(--border);border-radius:10px;background:rgba(8,8,14,.44)}
-    .prompt-source-path b{display:block;margin-bottom:4px;font-size:.81rem;color:var(--text)}
-    .prompt-source-path span{display:block;font-size:.71rem;line-height:1.5;color:var(--muted)}
     .prompt-reader-code{margin:0;padding:20px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(7,7,12,.62);font-family:var(--mono);font-size:.74rem;line-height:1.68;white-space:pre-wrap;overflow-wrap:anywhere;color:#ededed}
     .prompt-reader-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:16px}
     .prompt-reader-actions small{font-size:.72rem;line-height:1.55;color:var(--dim)}
@@ -82,6 +76,64 @@
     .use-case-card h3,.evidence-model-card h3{margin:0 0 8px;font-size:1rem;line-height:1.22;color:var(--text)}
     .use-case-card p,.evidence-model-card p{margin:0!important;font-size:.79rem!important;line-height:1.63!important;color:var(--muted)!important}
     .evidence-model-card .evidence-limit{margin:14px 0 0!important;padding:10px 11px;font-size:.71rem!important}
+    .voice-hero-note{max-width:610px;margin:13px 0 0;font-size:.77rem;line-height:1.58;color:var(--dim)}
+    .voice-first-run{border-top:1px solid var(--border);background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(var(--glow),.055))}
+    .first-run-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+    .first-run-card{min-height:198px;padding:21px;border:1px solid var(--border);border-radius:16px;background:rgba(8,8,14,.5)}
+    .first-run-card small,.voice-path small,.skill-inspection-card small{display:block;margin-bottom:11px;color:var(--orange);font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase}
+    .first-run-card h3,.voice-path h3,.skill-inspection-card h3{margin:0 0 9px;font-size:1.03rem;line-height:1.22;color:var(--text)}
+    .first-run-card p,.voice-path p,.skill-inspection-card p{margin:0!important;color:var(--muted)!important;font-size:.8rem!important;line-height:1.62!important}
+    .voice-path p a{color:var(--amber);text-decoration:underline;text-underline-offset:3px}
+    .first-run-card ul{display:grid;gap:7px;margin:14px 0 0;padding:0;list-style:none}
+    .first-run-card li{position:relative;padding-left:15px;color:var(--dim);font-size:.74rem;line-height:1.48}
+    .first-run-card li::before{content:"•";position:absolute;left:0;color:var(--amber)}
+    .first-run-example{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:22px;align-items:start;margin-top:14px;padding:21px;border:1px solid rgba(var(--glow),.34);border-radius:16px;background:rgba(var(--glow),.06)}
+    .first-run-example>div>small{display:block;margin-bottom:10px;color:var(--orange);font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase}
+    .first-run-example h3{margin:0;font-size:1.03rem;line-height:1.25;color:var(--text)}
+    .first-run-example>div>p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+    .first-run-example-output{padding:15px;border:1px solid rgba(255,255,255,.09);border-radius:11px;background:rgba(8,8,14,.54)}
+    .first-run-example-output p{margin:0;color:var(--text);font-size:.82rem;line-height:1.62}
+    .first-run-example-output ul{display:grid;gap:6px;margin:13px 0 0;padding:0;list-style:none}
+    .first-run-example-output li{position:relative;padding-left:15px;color:var(--dim);font-size:.73rem;line-height:1.45}
+    .first-run-example-output li::before{content:"•";position:absolute;left:0;color:var(--amber)}
+    .voice-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px}
+    .voice-path{padding:23px;border:1px solid var(--border);border-radius:16px;background:rgba(8,8,14,.48)}
+    .voice-path--install{border-color:rgba(var(--glow),.38);background:linear-gradient(145deg,rgba(var(--glow),.11),rgba(8,8,14,.55))}
+    .voice-path .btn-primary,.voice-path .btn-ghost{margin-top:18px}
+    .voice-path .skill-download-url{margin-top:13px}
+    .voice-path .copy-status{margin:12px 0 0}
+    .full-instruction{max-width:900px;margin:22px auto 0;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.02)}
+    .full-instruction summary{padding:17px 19px;cursor:pointer;color:var(--text);font-size:.87rem;font-weight:700}
+    .full-instruction summary::marker{color:var(--orange)}
+    .full-instruction[open] summary{border-bottom:1px solid var(--border)}
+    .full-instruction .prompt-reader-code{margin:18px}
+    .full-instruction-note{margin:18px 18px 0;color:var(--muted);font-size:.78rem;line-height:1.55}
+    .skill-inspection{padding-top:0}
+    .skill-inspection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:27px}
+    .skill-inspection-card{padding:20px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.022)}
+    .skill-inspection-card ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+    .skill-inspection-card li{position:relative;padding-left:16px;color:var(--dim);font-size:.75rem;line-height:1.5}
+    .skill-inspection-card li::before{content:"•";position:absolute;left:0;color:var(--orange)}
+    .voice-follow{border-top:1px solid var(--border);background:radial-gradient(circle at 76% 12%,rgba(var(--glow),.17),transparent 27rem),#101018}
+    .voice-follow-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(320px,.72fr);gap:42px 78px;align-items:center}
+    .voice-follow-copy .section-title{margin-bottom:15px}
+    .voice-follow-copy p{max-width:580px;margin:0;color:var(--muted);font-size:.91rem;line-height:1.7}
+    .voice-signup-shell{padding:25px;border:1px solid rgba(var(--glow),.42);border-radius:16px;background:linear-gradient(145deg,rgba(var(--glow),.12),rgba(8,8,14,.66));box-shadow:0 18px 42px rgba(0,0,0,.17)}
+    .voice-signup-shell h3{margin:0;color:var(--text);font-size:1.25rem;line-height:1.12;letter-spacing:-.03em}
+    .voice-signup-shell>p{margin:10px 0 0;color:var(--muted);font-size:.78rem;line-height:1.58}
+    .cookbook-page .voice-signup-shell .signup-form{display:grid;gap:13px;margin-top:19px}
+    .cookbook-page .voice-signup-shell .signup-form label{display:grid;gap:7px;color:var(--text);font-size:.73rem;font-weight:700}
+    .cookbook-page .voice-signup-shell .signup-form input[type="email"]{width:100%;min-height:48px;padding:0 13px;border:1px solid var(--border);border-radius:8px;background:#0a0a10;color:var(--text);font:400 .88rem var(--font)}
+    .cookbook-page .voice-signup-shell .signup-consent{grid-template-columns:18px 1fr;gap:9px!important;align-items:start;color:var(--muted)!important;font-size:.7rem!important;font-weight:400!important;line-height:1.5}
+    .cookbook-page .voice-signup-shell .signup-consent input{width:16px;height:16px;margin-top:1px;accent-color:var(--orange)}
+    .cookbook-page .voice-signup-shell .signup-consent a{color:var(--amber);text-decoration:underline;text-underline-offset:3px}
+    .cookbook-page .voice-signup-shell .signup-form button{min-height:48px;border:0;border-radius:8px;background:var(--orange);color:#fff;cursor:pointer;font:800 .79rem/1 var(--font)}
+    .cookbook-page .voice-signup-shell .signup-form button:disabled{cursor:wait;opacity:.7}
+    .cookbook-page .voice-signup-shell .signup-error{margin:0;color:#ffb09a;font-size:.72rem;line-height:1.5}
+    .cookbook-page .voice-signup-shell .signup-note{margin:0;color:var(--dim);font-size:.68rem;line-height:1.5}
+    .cookbook-page .voice-signup-shell .signup-success{padding:17px;border:1px solid rgba(var(--glow),.45);border-radius:10px;background:rgba(var(--glow),.08)}
+    .cookbook-page .voice-signup-shell .signup-success strong{display:block;margin-bottom:6px;color:var(--text);font-size:.9rem}
+    .cookbook-page .voice-signup-shell .signup-success p{margin:0;color:var(--muted);font-size:.75rem;line-height:1.55}
     .recipe-kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:17px}
     .context-map{margin:32px 0 12px;padding:clamp(20px,4vw,34px);border:1px solid rgba(var(--glow),.33);border-radius:22px;background:radial-gradient(circle at 80% 15%,rgba(var(--glow),.13),transparent 34%),rgba(255,255,255,.025)}
     .context-map h3{margin:0 0 9px;font-size:1.18rem}
@@ -138,14 +190,102 @@
     .sources-list strong{color:var(--text)}
     .sources-list a{word-break:break-word}
     .source-note{margin-top:18px;font-size:.75rem;line-height:1.65;color:var(--dim)}
+    .vk-start-card h2{max-width:380px;margin:0;color:var(--text);font-size:1.35rem;line-height:1.15;letter-spacing:-.035em}
+    .vk-start-list{display:grid;gap:15px;margin:22px 0 0;padding:0;list-style:none}
+    .vk-start-list li{display:grid;grid-template-columns:25px 1fr;gap:11px;align-items:start}
+    .vk-start-list span,.vk-steps>li>span{display:grid;place-items:center;width:25px;height:25px;border:1px solid rgba(var(--glow),.45);border-radius:7px;background:rgba(var(--glow),.1);color:var(--amber);font:700 .68rem var(--mono)}
+    .vk-start-list strong{display:block;color:var(--text);font-size:.82rem;line-height:1.35}
+    .vk-start-list p{margin:3px 0 0;color:var(--muted);font-size:.75rem;line-height:1.5}
+    .vk-first-run{border-top:1px solid var(--border);background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(var(--glow),.055))}
+    .vk-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:30px 0 0;padding:0;list-style:none}
+    .vk-steps>li{display:grid;grid-template-columns:29px 1fr;gap:13px;min-height:143px;padding:20px;border:1px solid var(--border);border-radius:15px;background:rgba(8,8,14,.48)}
+    .vk-steps>li>span{width:29px;height:29px}
+    .vk-steps h3{margin:4px 0 8px;color:var(--text);font-size:1rem;line-height:1.25}
+    .vk-steps p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.58}
+    .vk-example-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .vk-example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:30px}
+    .vk-example-card{padding:24px;border:1px solid var(--border);border-radius:16px;background:rgba(8,8,14,.46)}
+    .vk-example-card--output{border-color:rgba(var(--glow),.45);background:linear-gradient(145deg,rgba(var(--glow),.1),rgba(8,8,14,.58))}
+    .vk-example-card small{display:block;margin-bottom:11px;color:var(--orange);font:500 .64rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+    .vk-example-card h3{margin:0 0 15px;color:var(--text);font-size:1.08rem;line-height:1.23}
+    .vk-example-text{padding:15px;border:1px solid rgba(255,255,255,.09);border-radius:11px;background:rgba(255,255,255,.024)}
+    .vk-example-text p{margin:0 0 12px;color:var(--muted);font-size:.81rem;line-height:1.67}
+    .vk-example-text p:last-child{margin-bottom:0}
+    .vk-example-text strong,.vk-example-card li strong{color:var(--text)}
+    .vk-example-card ul{display:grid;gap:7px;margin:15px 0 0;padding:0;list-style:none}
+    .vk-example-card li{position:relative;padding-left:15px;color:var(--dim);font-size:.74rem;line-height:1.5}
+    .vk-example-card li::before{content:"•";position:absolute;left:0;color:var(--amber)}
+    .vk-example-note{max-width:800px;margin:17px 0 0;color:var(--muted);font-size:.82rem;line-height:1.62}
+    .vk-install-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);gap:25px;align-items:start;padding:25px;border:1px solid rgba(var(--glow),.4);border-radius:17px;background:linear-gradient(145deg,rgba(var(--glow),.1),rgba(8,8,14,.52))}
+    .vk-install-panel h3{margin:0 0 9px;color:var(--text);font-size:1.08rem;line-height:1.25}
+    .vk-install-panel p{max-width:610px;margin:0;color:var(--muted);font-size:.81rem;line-height:1.65}
+    .vk-install-actions{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+    .vk-install-actions .btn-ghost{margin:0}
+    .vk-platform-link{color:var(--amber);font-size:.74rem;line-height:1.5;text-decoration:underline;text-underline-offset:3px}
+    .vk-install-actions .copy-status{margin:0}
+    .vk-sources{padding-top:72px;padding-bottom:72px}
+    .vk-sources .article-copy{max-width:920px}
+    .vk-source-record{margin-top:24px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.018)}
+    .vk-source-record summary{padding:17px 19px;cursor:pointer;color:var(--text);font-size:.87rem;font-weight:700}
+    .vk-source-record summary::marker{color:var(--orange)}
+    .vk-source-record[open] summary{border-bottom:1px solid var(--border)}
+    .vk-source-record-body{padding:18px}
+    .vk-source-record-body .sources-list{margin:0}
+    .vk-context-section{border-top:1px solid var(--border);background:linear-gradient(135deg,rgba(255,255,255,.018),rgba(var(--glow),.045))}
+    .vk-context-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
+    .vk-context-doc{padding:24px;border:1px solid var(--border);border-radius:16px;background:rgba(8,8,14,.46)}
+    .vk-context-doc--guide{border-color:rgba(var(--glow),.44);background:linear-gradient(145deg,rgba(var(--glow),.1),rgba(8,8,14,.56))}
+    .vk-doc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:13px}
+    .vk-doc-head small{display:block;margin-bottom:6px;color:var(--orange);font:500 .64rem/1.35 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+    .vk-doc-head h3{margin:0;color:var(--text);font-size:1.2rem;line-height:1.15;letter-spacing:-.03em}
+    .vk-doc-head>span{display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(var(--glow),.42);border-radius:8px;background:rgba(var(--glow),.09);color:var(--amber);font:700 .67rem var(--mono)}
+    .vk-context-doc>p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.62}
+    .vk-doc-paper{min-height:192px;margin:17px 0 13px;padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.026)}
+    .vk-doc-paper>small{display:block;margin-bottom:11px;color:var(--dim);font:500 .61rem/1.35 var(--mono);letter-spacing:.09em;text-transform:uppercase}
+    .vk-doc-paper p{margin:0 0 13px;color:var(--muted);font-size:.78rem;line-height:1.62}
+    .vk-doc-paper p:last-child{margin-bottom:0}
+    .vk-doc-paper ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .vk-doc-paper li{position:relative;padding-left:15px;color:var(--muted);font-size:.76rem;line-height:1.5}
+    .vk-doc-paper li::before{content:"•";position:absolute;left:0;color:var(--amber)}
+    .vk-doc-paper strong{color:var(--text)}
+    .vk-context-doc .vk-doc-note{color:var(--dim);font-size:.7rem;line-height:1.5}
+    .vk-context-flow{display:flex;align-items:center;justify-content:center;gap:11px;flex-wrap:wrap;margin:18px 0 0;padding:17px;border:1px solid rgba(var(--glow),.3);border-radius:13px;background:rgba(var(--glow),.05);color:var(--muted);font-size:.75rem;line-height:1.45;text-align:center}
+    .vk-context-flow span,.vk-context-flow strong{padding:7px 9px;border:1px solid rgba(255,255,255,.09);border-radius:7px;background:rgba(8,8,14,.38)}
+    .vk-context-flow strong{color:var(--text);border-color:rgba(var(--glow),.36);background:rgba(var(--glow),.1)}
+    .vk-context-flow b{color:var(--orange)}
+    .vk-context-flow i{color:var(--amber);font-style:normal;font-size:1.1rem}
+    .vk-context-caption{max-width:860px;margin:14px 0 0;color:var(--dim);font-size:.72rem;line-height:1.55}
+    .vk-details-section{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--border)}
+    .cookbook-page main{display:flex;flex-direction:column}
+    .cookbook-page .content-hero{order:1}
+    .cookbook-page #how-to-use{order:2}
+    .cookbook-page #example{order:3}
+    .cookbook-page #two-contexts{order:4}
+    .cookbook-page #install{order:5}
+    .cookbook-page #method-details{order:6}
+    .cookbook-page #sources{order:7}
+    .cookbook-page #follow{order:8}
+    .cookbook-page .vk-detail-group{padding:12px 0!important;border:0!important;background:radial-gradient(circle at 82% 12%,rgba(var(--glow),.1),transparent 32%),rgba(255,255,255,.014)}
+    .cookbook-page #install{padding-top:72px!important;border-top:1px solid var(--border)!important}
+    .cookbook-page #sources{padding-bottom:72px!important;border-bottom:1px solid var(--border)!important}
+    .vk-details-head{max-width:760px;margin:0 auto 19px}
+    .vk-details-head .label{margin-bottom:9px}
+    .vk-details-head h2{margin:0;color:var(--text);font-size:clamp(1.72rem,3.6vw,2.7rem);line-height:1.08;letter-spacing:-.042em}
+    .vk-accordion{max-width:1000px;margin:0 auto;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.02)}
+    .vk-accordion>summary{padding:19px 21px;cursor:pointer;color:var(--text);font-size:.92rem;font-weight:700;line-height:1.4}
+    .vk-accordion>summary::marker{color:var(--orange)}
+    .vk-accordion[open]>summary{border-bottom:1px solid var(--border)}
+    .vk-accordion-body{padding:clamp(20px,3vw,32px)}
+    .vk-accordion-body .prompt-stage-head{margin:0 0 22px}
+    .prompt-stage-head h2,.prompt-stage-head h3{margin:0;color:var(--text);font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.1;letter-spacing:-.04em}
     .cookbook-page .article-copy h2{scroll-margin-top:126px}
     @media(max-width:1180px){.context-flow{grid-template-columns:1fr;gap:10px}.flow-arrow{width:2px;height:22px;margin:0 auto}.flow-arrow::after{right:-4px;top:auto;bottom:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--orange);border-bottom:0}}
-    @media(max-width:980px){.ingredient-grid,.compare-grid,.taste-grid,.evidence-stats,.prompt-source-grid,.prompt-boundary-list,.use-case-grid,.evidence-model-grid{grid-template-columns:1fr}}
+    @media(max-width:980px){.ingredient-grid,.compare-grid,.taste-grid,.evidence-stats,.prompt-boundary-list,.use-case-grid,.evidence-model-grid,.first-run-grid,.first-run-example,.voice-paths,.skill-inspection-grid,.voice-follow-grid,.vk-steps,.vk-example-grid,.vk-install-panel,.vk-context-pair{grid-template-columns:1fr}}
     @media(max-width:680px){.recipe-glance div{grid-template-columns:1fr;gap:5px}.content-hero-card{padding:22px}.cookbook-page .section{padding:72px 0}.skill-download{display:block}.skill-download .btn-ghost{width:100%;justify-content:center;margin-top:13px}.recipe-step{grid-template-columns:34px 1fr;gap:12px;padding:17px}.boundary-panel{grid-template-columns:1fr}.boundary-mark{display:none}.prompt-stage{display:block;min-height:auto;padding:92px 0}.prompt-reader-body{padding:15px}.prompt-reader-code{padding:15px;font-size:.7rem}.prompt-reader-actions .btn-primary{width:100%;justify-content:center}}
   </style>
 </head>
 <body class="content-page cookbook-page">
-  <div class="draft-banner">The AI Executive CookBook · Voice Kit skill breakdown + install</div>
+  <div class="draft-banner">The AI Executive CookBook · Voice Kit</div>
   <div class="noise" aria-hidden="true"></div>
   <div class="spotlight-cursor" id="spotlightCursor" aria-hidden="true"></div>
 
@@ -153,11 +293,11 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="nav-logo-img" /></a>
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
-        <a href="#use-cases" class="nav-link">Use cases</a>
-        <a href="#execution-model" class="nav-link">How it works</a>
-        <a href="#sources" class="nav-link">Sources</a>
+        <a href="#how-to-use" class="nav-link">How to use it</a>
+        <a href="#example" class="nav-link">Example</a>
+        <a href="#sources" class="nav-link">Research</a>
       </nav>
-      <button type="button" class="nav-cta nav-copy-prompt" data-copy-voice-kit-prompt>Copy prompt</button>
+      <button type="button" class="nav-cta nav-copy-prompt" data-copy-voice-kit-prompt>Copy the one-time prompt</button>
       <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -167,60 +307,123 @@
       <div class="container content-hero-grid">
         <div>
           <div class="hero-badge">AI Executive CookBook · Skill 1</div>
-          <h1 class="content-title">Put your actual <em>voice</em> back into AI.</h1>
-          <p class="content-lede">A clean draft is not the same thing as a draft that sounds like you. Give this one real sample—a talk, post, email, or even a paragraph—and a current writing job. Voice Kit drafts immediately, shows the evidence behind its choices, and gives you a simple way to make the next version better.</p>
+          <h1 class="content-title">Give your AI something you wrote. <em>Get a draft that starts closer to you.</em></h1>
+          <p class="content-lede">Voice Kit is a skill for one useful job: take a piece of writing you stand behind, pair it with the thing you need to write today, and make a first draft without inventing a fake version of your voice.</p>
           <div class="content-actions">
-            <button type="button" class="btn-primary btn-lg" data-copy-voice-kit-prompt aria-describedby="prompt-copy-note">Copy the prompt</button>
-            <a href="#execution-model" class="btn-ghost">See how it works</a>
+            <button type="button" class="btn-primary btn-lg" data-copy-voice-kit-prompt aria-describedby="prompt-copy-note">Use it once — copy the prompt</button>
+            <a href="#install" class="btn-ghost">Install for repeat work</a>
           </div>
-          <p id="prompt-copy-note" class="hero-prompt-note">Paste this into the AI agent you already use.</p>
-          <div class="skill-download" id="ready-made-skill">
-            <div class="skill-download-copy"><small>Already use skills?</small><p>This is the ready-made method, not a preset voice. Give your AI this direct file.</p><a class="skill-download-url" href="https://why57.com/skills/voice-kit/SKILL.md" target="_blank" rel="noopener" data-voice-kit-skill-link>why57.com/skills/voice-kit/SKILL.md</a></div>
-            <button type="button" class="btn-ghost" data-copy-voice-kit-install>Copy install instruction</button>
-          </div>
-          <p class="hero-prompt-note">This recipe changes as real use turns up real failures. <a href="https://why57.com/skills/voice-kit/CHANGELOG.md" target="_blank" rel="noopener">See what's changed and why</a>.</p>
-          <span class="copy-status" id="voiceKitCopyStatus" aria-live="polite"></span>
-          <div class="content-meta"><span><strong>Written by:</strong> Gera Yeremin</span><span><strong>For:</strong> founders and operators</span><span><strong>Reviewed:</strong> August 3, 2026</span></div>
+          <p id="prompt-copy-note" class="voice-hero-note">Paste the one-time prompt into the AI you already use. Then give it one past email, post, transcript, or paragraph—and the job in front of you. <a href="#example">See the exchange first.</a></p>
+          <span class="copy-status" id="voiceKitCopyStatus" data-voice-kit-copy-status aria-live="polite"></span>
+          <div class="content-meta"><span><strong>First run:</strong> about 3 minutes</span><span><strong>You need:</strong> one real sample + one assignment</span></div>
         </div>
-        <aside class="content-hero-card" aria-label="Voice Kit skill at a glance">
-          <p class="content-hero-card-label">Skill at a glance</p>
-          <dl class="recipe-glance">
-            <div><dt>Daily job</dt><dd>Draft the emails, posts, and explanations you keep rewriting from scratch.</dd></div>
-            <div><dt>Ingredients</dt><dd>One real sample to start, pasted, linked, or grabbed directly by your agent if it has a connected browser ("go look at my blog"), plus your current request. Relaxed, unscripted material works best.</dd></div>
-            <div><dt>Effort boundary</dt><dd>Drafts immediately from what you share. No interview before the first draft.</dd></div>
-            <div><dt>Output</dt><dd>A first draft, plus short pattern notes tied to the sample so you can correct anything off.</dd></div>
-            <div><dt>Handoff</dt><dd>You verify facts and decide whether the draft sounds like you.</dd></div>
-          </dl>
-          <p class="content-hero-note">A Voice Kit drafts first. You correct what's off.</p>
-          <div class="skill-value-card">
-            <small>Why make it a skill</small>
-            <strong>Keep the method. Load the job.</strong>
-            <p>A skill keeps the repeatable method: use real source material, draft from the current job, show the pattern notes, then improve from your feedback.<sup><a href="#source-11">11</a></sup></p>
-            <div class="skill-value-grid" aria-label="The reusable part and task-specific part of a Voice Kit">
-              <div><small>Reuse</small><b>The grounded drafting method</b></div>
-              <div><small>Load for this job</small><b>One current request + real sample</b></div>
-            </div>
-            <p>That keeps the workflow consistent without pretending one sample proves every rule or one platform behaves the same as another.</p>
-          </div>
+        <aside class="content-hero-card vk-start-card" aria-label="How to start with Voice Kit">
+          <p class="content-hero-card-label">First run</p>
+          <h2>Three facts before you start.</h2>
+          <ol class="vk-start-list">
+            <li><span>1</span><div><strong>You bring one real sample.</strong><p>An email, post, transcript, or paragraph you would stand behind.</p></div></li>
+            <li><span>2</span><div><strong>The skill gives you a draft and pattern notes.</strong><p>You can see the source-based choices behind the draft.</p></div></li>
+            <li><span>3</span><div><strong>You decide what improves the next version.</strong><p>Keep it, fix it, or say exactly what feels wrong.</p></div></li>
+          </ol>
+          <p class="content-hero-note">The AI drafts. You decide whether it is accurate, useful, and worth sending or publishing.</p>
         </aside>
       </div>
     </section>
 
-    <section class="prompt-stage" id="voice-kit-prompt" aria-labelledby="prompt-title">
-      <div class="container prompt-stage-inner">
-        <div class="prompt-stage-head"><p class="label">First step</p><h2 id="prompt-title">Give it one sample. Get a draft.</h2></div>
-        <article class="prompt-reader">
-          <div class="prompt-reader-body">
-            <p class="prompt-reader-intro">The agent drafts from whatever you share first, then shows you the real patterns it used so you can correct anything off, no interview required before it writes anything.</p>
-            <div class="prompt-source-menu" aria-label="Sources you can combine to start your Voice Kit">
-              <strong>Share one to start, relaxed and unscripted beats rehearsed</strong>
-              <div class="prompt-source-grid">
-                <div class="prompt-source-path"><b>1. Paste or link it</b><span>A YouTube link, a post, an email, a transcript. Names and sensitive details get redacted automatically.</span></div>
-                <div class="prompt-source-path"><b>2. A real conversation</b><span>A call recording or voice memo transcript. Usually the single most valuable source, since nobody performs in it.</span></div>
-                <div class="prompt-source-path"><b>3. "Just go look"</b><span>If your agent has a connected browser, tell it where: your YouTube channel, your blog, your LinkedIn. It reads the page directly, nothing private, nothing beyond what you named.</span></div>
-              </div>
+    <section class="section vk-first-run" id="how-to-use" aria-labelledby="how-to-use-title">
+      <div class="container">
+        <div class="answer-block">
+          <div><p class="label">Use it once first</p><h2 class="section-title" id="how-to-use-title">You do not need to set up a whole system to find out if this is useful.</h2></div>
+          <div class="answer-copy"><p>Start with the work already in front of you. The first run should leave you with a draft you can edit and a clear signal about whether Voice Kit reduces the part of writing you actually dislike.</p></div>
+        </div>
+        <ol class="vk-steps" aria-label="Three steps to use Voice Kit">
+          <li><span>1</span><div><h3>Copy the one-time prompt into your AI.</h3><p>Use the button above. You do not need to install anything for the first run.</p></div></li>
+          <li><span>2</span><div><h3>Give it a sample and an assignment.</h3><p>“Here is an email I wrote. Write a short follow-up to this founder about the meeting we just had.”</p></div></li>
+          <li><span>3</span><div><h3>Judge the draft, then correct it.</h3><p>Tell it what sounds unlike you, what fact is wrong, or what it missed. That is the useful feedback.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--alt vk-example-section" id="example" aria-labelledby="example-title">
+      <div class="container">
+        <div class="answer-block">
+          <div><p class="label">See the exchange</p><h2 class="section-title" id="example-title">A small example of what you give it and what comes back.</h2></div>
+          <div class="answer-copy"><p>This is a synthetic example. It shows the shape of the work, not a performance result or a promise that every draft will land on the first try.</p></div>
+        </div>
+        <div class="vk-example-grid">
+          <article class="vk-example-card">
+            <small>What you give the AI</small>
+            <h3>A real piece of writing + today’s job.</h3>
+            <div class="vk-example-text"><p><strong>Sample:</strong> “The hard part of using AI well is usually not getting words on the page. It is deciding which real detail belongs in the first sentence.”</p><p><strong>Assignment:</strong> “Write a short follow-up after meeting a founder. Keep it direct. Ask about one workflow they are trying to make useful.”</p></div>
+          </article>
+          <article class="vk-example-card vk-example-card--output">
+            <small>What Voice Kit gives back</small>
+            <h3>A draft, plus a few choices you can inspect.</h3>
+            <div class="vk-example-text"><p><strong>Draft:</strong> “Good meeting you. The question I keep coming back to is which workflow needs to become useful first. If you have one you are trying to improve, send it over. I would be interested in seeing where the real friction is.”</p></div>
+            <ul><li><strong>Pattern note:</strong> Starts with the point instead of a generic follow-up line.</li><li><strong>Pattern note:</strong> Keeps the ask specific and low-pressure.</li><li><strong>Your review:</strong> Check that the phrase “real friction” sounds like you and fits the meeting.</li></ul>
+          </article>
+        </div>
+        <p class="vk-example-note">The output is useful because you can point to the source, see the choice, and correct the line that is off. You are not being asked to trust a personality label.</p>
+      </div>
+    </section>
+
+    <section class="section vk-context-section" id="two-contexts" aria-labelledby="two-contexts-title">
+      <div class="container">
+        <div class="answer-block">
+          <div><p class="label">What the skill keeps separate</p><h2 class="section-title" id="two-contexts-title">Your private examples stay separate from the reusable Skill.</h2></div>
+          <div class="answer-copy"><p>Voice Kit is the reusable instruction. Your Corpus holds the real writing and corrections you choose to keep. Today’s assignment gives both of them a specific job to do.</p></div>
+        </div>
+        <div class="vk-context-pair" aria-label="A private Corpus and the reusable Voice Kit working together">
+          <article class="vk-context-doc vk-context-doc--corpus">
+            <div class="vk-doc-head"><div><small>Private working context</small><h3>Corpus</h3></div><span>01</span></div>
+            <p>The writing you share, plus corrections you choose to save. It stays close to the source instead of getting flattened into a personality label.</p>
+            <div class="vk-doc-paper">
+              <small>Sample · synthetic</small>
+              <p>“The hard part of using AI well is usually not getting words on the page. It is deciding which real detail belongs in the first sentence.”</p>
+              <p>“If you have one workflow you are trying to improve, send it over. I would be interested in seeing where the friction is.”</p>
             </div>
-            <pre class="prompt-reader-code"><code id="voiceKitPromptText"># Voice Kit: make AI draft like me, not like AI
+            <p class="vk-doc-note">Use only material you own or are allowed to use. The skill asks before creating or updating a saved Corpus file.</p>
+          </article>
+          <article class="vk-context-doc vk-context-doc--guide">
+            <div class="vk-doc-head"><div><small>Reusable instruction</small><h3>Voice Kit</h3></div><span>02</span></div>
+            <p>The method your AI uses to read the source, draft from today’s assignment, show the pattern notes, and take your correction seriously.</p>
+            <div class="vk-doc-paper">
+              <small>Reusable rules · illustrative</small>
+              <ul><li><strong>Start:</strong> draft from one real sample and today’s job.</li><li><strong>Show:</strong> make the observed patterns visible beside the draft.</li><li><strong>Check:</strong> cut clever wording the source does not support.</li><li><strong>Keep private:</strong> do not store samples or corrections inside the shared Skill.</li></ul>
+            </div>
+            <p class="vk-doc-note">Your direct correction wins over a pattern the AI inferred, whether you save it for later or use it only in this session.</p>
+          </article>
+        </div>
+        <div class="vk-context-flow" role="img" aria-label="A private Corpus and reusable Voice Kit, paired with a current writing assignment, produce a reviewable draft. Owner feedback can update the private Corpus for the next draft.">
+          <span>Private Corpus</span><b>+</b><span>Voice Kit</span><b>+</b><span>Today’s assignment</span><i aria-hidden="true">→</i><strong>Draft you can review</strong>
+        </div>
+        <p class="vk-context-caption">Illustrative working context. In a skills-capable AI, Voice Kit is the reusable instruction and the Corpus is private context you control. In a normal chat, use the current sample and feedback for that session. The skill never creates or updates a saved Corpus file until you approve it.</p>
+      </div>
+    </section>
+
+    <section class="section vk-details-section vk-detail-group" id="install" aria-labelledby="prompt-title">
+      <div class="container">
+        <div class="vk-details-head"><p class="label">Optional details</p><h2 id="prompt-title">The first run is enough. The rest is here when you need it.</h2></div>
+        <details class="vk-accordion">
+          <summary>Install Voice Kit for repeat work</summary>
+          <div class="vk-accordion-body prompt-stage-inner">
+        <div class="prompt-stage-head"><p class="label">Optional setup</p><h3>If the first run helps, make the method available for repeat work.</h3></div>
+        <div class="vk-install-panel">
+          <div>
+            <h3>Install Voice Kit in an AI that supports skills.</h3>
+            <p>The one-time prompt above is enough for a first run. Install this version when you want the method available for future writing work. You still provide the current sample and assignment every time, and you choose whether any private Corpus is saved or updated.</p>
+          </div>
+          <div class="vk-install-actions">
+            <a class="skill-download-url" href="https://raw.githubusercontent.com/gera3d/ai-executive-cookbook/master/skills/executive-cookbook-voice-kit/SKILL.md" target="_blank" rel="noopener" data-voice-kit-skill-link>Open the Voice Kit skill file</a>
+            <button type="button" class="btn-ghost" data-copy-voice-kit-install>Copy install instruction</button>
+            <a class="vk-platform-link" href="ai-execution-cookbook.html#platforms">See the AI apps with documented skills support</a>
+            <span class="copy-status" data-voice-kit-copy-status aria-live="polite"></span>
+          </div>
+        </div>
+        <details class="full-instruction">
+          <summary>Read the exact Voice Kit instruction before you copy it</summary>
+          <p class="full-instruction-note">The hero button copies this whole instruction. Read it when you want to see the checks, feedback loop, and limits behind the draft.</p>
+          <pre class="prompt-reader-code"><code id="voiceKitPromptText"># Voice Kit: make AI draft like me, not like AI
 
 Give me a draft in my actual voice from whatever real samples I share, a YouTube link, a doc, a pasted email, even one paragraph. Don't run an interview before drafting.
 
@@ -247,43 +450,28 @@ For LinkedIn, X, or other short-form/social posts specifically:
 
 What you don't do: read my full inbox, drive, or archive, use anyone else's writing as my sample, or send, publish, submit, spend money, or change an account. Automatically redact any other person's name or sensitive detail you find in a sample before using it in a pattern list or draft, don't ask me to pre-redact first. I review and take every consequential action myself.
 
-If I give direct feedback ("I don't write like that"), that always overrides an inferred pattern. Log it with the date and my own words.
+If I give direct feedback ("I don't write like that"), that always overrides an inferred pattern. Offer to save the correction, dated and in my own words, in my private Corpus. Only create or update that file after I approve the write. If I do not approve a saved Corpus, use the feedback only for this current session.
 
 Start by drafting from whatever I just shared, right now.</code></pre>
-            <div class="prompt-reader-actions"><button type="button" class="btn-primary" data-copy-voice-kit-prompt>Copy this prompt</button><small>Use only examples you own or are authorized to use.</small></div>
-            <div class="prompt-boundaries"><strong>AI writing red flags</strong><ul class="prompt-boundary-list"><li>Generic openers, closers, and polished signoffs.</li><li>Fake contrast and rhetorical bait.</li><li>"Leverage," "unlock," and other empty corporate filler.</li><li>Formulaic headings and three-item lists.</li><li>Unwarranted certainty or invented outcomes.</li><li>Em dashes or punctuation the source author does not use.</li><li>A punchy idiom that sounds right but appears nowhere in the real Corpus.</li></ul></div>
+        </details>
           </div>
-        </article>
+        </details>
       </div>
     </section>
 
-    <div class="jump-bar"><div class="container jump-inner"><span>On this page</span><a href="#use-cases">Use cases</a><a href="#execution-model">How it works</a><a href="#evidence">Why this is credible</a><a href="#recipe">The recipe</a><a href="#taste-test">Taste test</a><a href="#sources">Sources</a></div></div>
-
-    <section class="section" id="use-cases">
-      <div class="container answer-block">
-        <div><p class="label">What it is useful for</p><h2 class="section-title">Use it where the words actually matter.</h2></div>
-        <div class="answer-copy">
-          <p>Voice Kit is for the work that needs to sound like you, not like a competent default. It gives your AI a real reference, a current job, and a way to show its work before the draft represents you.</p>
-          <div class="use-case-grid" aria-label="Voice Kit use cases">
-            <article class="use-case-card"><small>Outbound email</small><h3>Start with a message you would actually send.</h3><p>Bring one real email or transcript and the person you are writing to. Get a draft with the source-based choices visible, so you can fix the logic or tone before it goes anywhere.</p></article>
-            <article class="use-case-card"><small>Post or carousel</small><h3>Keep the writing and visual beats together.</h3><p>Bring a post, talk, or rough story. Get short blocks that follow the source's actual rhythm, with a caption and visual beats that match in the same order.</p></article>
-            <article class="use-case-card"><small>Client explanation</small><h3>Make a clear point without sounding borrowed.</h3><p>Bring a strong explanation and the facts for this job. Get a draft that keeps the owner's style separate from the claims that still need verification.</p></article>
-          </div>
-          <div class="field-test"><strong>The failure this is designed to avoid.</strong><p>Abstract instructions such as “be direct” or “avoid jargon” can still produce a clean draft you would never say. In testing, short quoted fragments and abstracted rules led to a made-up punctuation habit and an idiom the writer had never used. Keeping a real sample available made both misses easy to spot and remove.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" aria-labelledby="context-map-title">
-      <div class="container article-shell">
-        <aside class="article-toc"><strong>Skill breakdown</strong><nav><a href="#execution-model">What it does</a><a href="#evidence">Why it is credible</a><a href="#context-efficiency">Why make it a skill</a><a href="#ingredients">What to bring</a><a href="#recipe">Steps</a><a href="#taste-test">Taste test</a><a href="#authority">Control point</a></nav></aside>
-        <article class="article-copy">
-          <h2 id="execution-model">What the skill actually does.</h2>
-          <p>Voice Kit does not manufacture a personality from a label. It reads a real source you chose, uses that evidence to make a first draft for the job in front of it, then gives you visible pattern notes to correct. Your correction becomes the useful part of the method for the next draft.</p>
+    <section class="section section--alt vk-details-section vk-detail-group" id="method-details" aria-labelledby="context-map-title">
+      <div class="container">
+        <details class="vk-accordion" id="execution-model">
+          <summary>See how Voice Kit works, the research behind it, and its limits</summary>
+          <div class="vk-accordion-body">
+            <article class="article-copy">
+          <p class="label">What it is doing</p>
+          <h2>It keeps the context small, drafts before it overthinks, and gives you something you can correct.</h2>
+          <p>Voice Kit takes a real source you chose and the writing job in front of you. It uses both to make a draft, shows the choices it relied on, and gives you a clear place to correct it. That is useful for follow-ups, post drafts, and client explanations where generic polish is not enough.</p>
 
           <div class="context-map" role="img" aria-label="A real sample and current writing job create a grounded draft and pattern notes. The owner corrects what is off before deciding whether to use it. Feedback improves the next draft.">
             <p class="recipe-kicker">Visual 1 · Execution model</p>
-            <h3 id="context-map-title">Real source. Current job. Visible judgment.</h3>
+            <h3 id="context-map-title">Real source. Current writing job. Visible judgment.</h3>
             <p>This is the execution value: the AI has a specific reference and a specific job, while you can see and change the choices it makes.</p>
             <div class="context-flow">
               <div class="flow-node flow-node--voice"><small>You bring</small><b>One real sample</b><span>A talk, post, email, transcript, or named public page you are allowed to use.</span></div>
@@ -294,110 +482,76 @@ Start by drafting from whatever I just shared, right now.</code></pre>
               <div class="flow-arrow" aria-hidden="true"></div>
               <div class="flow-node flow-node--output"><small>You improve it</small><b>Feedback + review</b><span>Correct what is off, verify facts, then use, revise, or discard the result.</span></div>
             </div>
-            <div class="boundary-panel"><div class="boundary-mark" aria-hidden="true">×</div><div><small>One clear boundary</small><p>Use material you own or are allowed to use. The AI can prepare and draft; you verify facts and decide what, if anything, gets sent or published.</p></div></div>
+            <div class="boundary-panel"><div class="boundary-mark" aria-hidden="true">×</div><div><small>Your control point</small><p>The AI drafts and shows its reasoning. You correct the voice, verify the facts, and decide whether anything gets used.</p></div></div>
           </div>
           <p class="visual-caption">Illustrative workflow. This diagram shows a method, not a measured result.</p>
 
-          <h2 id="evidence">Why this approach is worth trying.</h2>
-          <p>The research below supports the pieces of this method. It does not prove this exact skill will create a specific business outcome, save a fixed amount of time, or make every draft sound right on the first pass.</p>
+          <h2 id="evidence">Why this is a reasonable way to start.</h2>
+          <p>The research supports the pieces of this method: relevant context, real source text, and direct feedback. It does not prove a business result or guarantee that your first draft is ready to send.</p>
           <div class="evidence-model-grid" aria-label="Research supporting the Voice Kit method">
             <article class="evidence-model-card"><small>Relevant context</small><h3>Personal history can improve task-specific generation.</h3><p>LaMP tested retrieval from a person's history across seven personalized tasks, including email-subject generation and tweet paraphrasing. That supports selecting a real source that fits the current job instead of relying on a generic “sound like me” request.<sup><a href="#source-4">4</a></sup></p><p class="evidence-limit"><strong>It does not prove:</strong> reply rates, sales results, or that your first email is ready to send.</p></article>
             <article class="evidence-model-card"><small>Real source text</small><h3>Style is hard to imitate from a thin summary.</h3><p>A large evaluation found models handled structured email better than nuanced blogs and forums when trying to imitate everyday authors. That supports keeping the real sample available and treating a single draft as something to inspect, not as an authority.<sup><a href="#source-8">8</a></sup></p><p class="evidence-limit"><strong>It does not prove:</strong> that one sample captures every part of a person's voice.</p></article>
             <article class="evidence-model-card"><small>Owner feedback</small><h3>Explicit preferences and refinement have a role.</h3><p>Research on personalized writing agents supports checking inferred preferences across samples and refining them over time. That is why direct feedback overrides an inferred pattern in this skill.<sup><a href="#source-10">10</a></sup></p><p class="evidence-limit"><strong>It does not prove:</strong> that the AI should act without your review.</p></article>
           </div>
 
-          <h2 id="context-efficiency">Why make this a skill instead of saving one prompt?</h2>
-          <p>A prompt can solve one assignment. A skill keeps the repeatable method: read real source text, draft first, show the pattern notes, run the red-flag pass, and improve from your feedback. The current job and source are what change each time.<sup><a href="#source-11">11</a></sup></p>
-          <div class="article-note"><strong>Keep the context bounded.</strong><p>Select the material that fits the task instead of dumping an archive into every prompt. Research on context compression supports the general efficiency case, but it did not test this Voice Kit or promise a fixed cost saving on every platform.<sup><a href="#source-12">12</a></sup></p></div>
-
-          <h2 id="ingredients">What to bring.</h2>
-          <p>One real sample starts the work. More material is optional—use it when the first draft tells you the current sample is too formal, too old, or simply not representative of the job.<sup><a href="#source-1">1</a></sup><sup><a href="#source-9">9</a></sup></p>
-
-          <div class="ingredient-grid">
-            <article class="ingredient-card"><span>Ingredient 1</span><h3>One real sample</h3><p>A talk, post, email, transcript, paragraph, or named public page that is actually yours to use.</p></article>
-            <article class="ingredient-card"><span>Ingredient 2</span><h3>One current job</h3><p>The reader, channel, facts, and point you need to make—usually already present in your request.</p></article>
-            <article class="ingredient-card"><span>Ingredient 3</span><h3>Optional stronger examples</h3><p>Add another relaxed conversation or a better channel match only after the first result shows you it would help.</p></article>
-            <article class="ingredient-card"><span>Ingredient 4</span><h3>Your direct correction</h3><p>“I don't write like that” is more useful than a vague score. It replaces an inferred rule.</p></article>
+          <div class="article-note"><strong>A practical test.</strong><p>Run one assignment without Voice Kit and one with it. Keep the method only if it reduces meaningful editing without creating accuracy failures. That is the evidence that matters for your work.</p></div>
+            </article>
           </div>
-
-          <h2 id="prep">How it reads the sample.</h2>
-          <p>Writing style has observable patterns, including word choice and sentence structure.<sup><a href="#source-2">2</a></sup> The skill names only the patterns it can point to in the source: a repeated phrase, a sentence-length habit, a real opener, a qualification move, or an actual way of making a point.</p>
-          <div class="article-note"><strong>Show the pattern notes with the draft.</strong><p>A 2025 story-generation study supports making implicit style traits explicit and checking them with human feedback. Its story data does not make a claim about business email. The useful part here is visibility: you can correct a bad pattern after seeing a usable first draft, rather than approving a long theory of your voice before the work starts.<sup><a href="#source-7">7</a></sup></p></div>
-          <p>One sample starts the kit. It does not prove every rule. In a 40,000-generation evaluation spanning more than 400 authors, models handled structured email better than nuanced blogs and forums.<sup><a href="#source-8">8</a></sup></p>
-          <p>Check each rule across samples and revise it from feedback. A 2025 email-writing study found iterative refinement plus cross-sample verification improved its writing-agent quality over its comparison method.<sup><a href="#source-10">10</a></sup></p>
-          <ul class="exclude-list">
-            <li><strong>Skip third-party messages.</strong> They are not your voice samples.</li>
-            <li><strong>Sensitive details get redacted automatically.</strong> Other people's names and private details are stripped before use, you don't have to pre-clean samples yourself.</li>
-            <li><strong>Skip stale samples.</strong> They may reflect an old offer or tone.</li>
-            <li><strong>Skip copied writing.</strong> You do not own it.</li>
-          </ul>
-
-          <h2 id="recipe">The skill, step by step.</h2>
-          <div class="recipe-steps">
-            <article class="recipe-step"><div><h3>Ask for the actual draft.</h3><p>Name the writing job. If the request already has the reader, channel, topic, and facts, the skill should start there instead of making you complete an intake form.</p></div></article>
-            <article class="recipe-step"><div><h3>Share one real sample, or let it look.</h3><p>Paste a link or doc, or if your agent has a connected browser, say “check my YouTube channel” or “look at my blog.” One sample is enough to start.</p></div></article>
-            <article class="recipe-step"><div><h3>Get the first draft and its pattern notes.</h3><p>The skill drafts from what you gave it, then shows the real patterns it used beside the draft. It does not make you approve a writing sheet before it writes anything.</p></div></article>
-            <article class="recipe-step"><div><h3>Correct what is off.</h3><p>Fix a wrong pattern in plain language. Add a stronger or additional sample only if you want a more complete kit for the next job.</p></div></article>
-            <article class="recipe-step"><div><h3>Run a side-by-side test when the work matters.</h3><p>For a repeat assignment, compare a normal AI draft with the Voice Kit draft. Keep the method only when it reduces meaningful editing without creating accuracy or privacy failures.</p></div></article>
-          </div>
-
-          <div class="prompt-box"><strong>Drafting rule</strong><p>Use the Voice Kit. Preserve facts. Flag gaps. Run the red-flag pass. Name what I must verify. Do not send.</p></div>
-
-          <div class="compare-card" role="group" aria-labelledby="comparison-title">
-            <p class="recipe-kicker">Visual 2 · Synthetic comparison</p>
-            <h3 id="comparison-title">One way to judge the method on real work.</h3>
-            <p>Use the same brief. Inspect whether the relevant source changes the reasoning, tone, and review points in a useful way.</p>
-            <p class="compare-brief"><strong>Synthetic brief:</strong> Write a short reconnect email. Do not claim a project, result, or urgency.</p>
-            <div class="compare-grid">
-              <article class="compare-draft"><small>Generic draft</small><p>"Hi [Name], I hope you're doing well. I wanted to reach out because I've been helping businesses streamline their operations with AI and automation. I'd love to connect and explore how we might work together."</p><ul><li>Generic opener</li><li>Invents a broad value claim</li><li>No reason this person received this message</li></ul></article>
-              <article class="compare-draft compare-draft--context"><small>Voice-Kit draft</small><p>"Hi [Name], I saw [specific public signal]. It made me think about the handoff work teams still push through email and spreadsheets. I'm mapping a practical way to use AI around the actual workflow instead of adding another tool. If you are looking at that this year, where is the manual work still getting stuck?"</p><ul><li>Starts with a fact the sender must verify</li><li>States a bounded idea</li><li>Asks one real question</li></ul></article>
-            </div>
-          </div>
-          <p class="visual-caption">Synthetic example. It does not show a response-rate or performance result.</p>
-
-          <h2 id="taste-test">Review it before the draft represents you.</h2>
-          <p>Define the task, record the source, and review the output.<sup><a href="#source-3">3</a></sup></p>
-          <p>Profile-informed scoring outperformed a zero-shot GPT-4 reviewer in one story-generation study.<sup><a href="#source-5">5</a></sup> Score the preferences you can name.</p>
-          <div class="taste-grid">
-            <div class="taste-item"><b>Recognizability</b><span>Would I plausibly say or write this?</span></div>
-            <div class="taste-item"><b>Reasoning</b><span>Does it make the point in an order that makes sense for me?</span></div>
-            <div class="taste-item"><b>Channel fit</b><span>Does it work as this email, post, or explanation, not as an abstract personality exercise?</span></div>
-            <div class="taste-item"><b>Accuracy</b><span>Are names, facts, commitments, and the level of certainty right?</span></div>
-            <div class="taste-item"><b>Editing burden</b><span>Did I make a few useful edits, or rewrite the central logic?</span></div>
-            <div class="taste-item"><b>Privacy</b><span>Did it expose a detail that does not belong in this assignment?</span></div>
-          </div>
-          <div class="article-note"><strong>Stop condition</strong><p>Discard drafts with unverified claims, sensitive details, false familiarity, or the wrong audience fit.</p></div>
-
-          <h2 id="authority">Keep one clear control point.</h2>
-          <div class="table-scroll"><table class="decision-table"><thead><tr><th>AI may do</th><th>The owner must do</th></tr></thead><tbody>
-            <tr><td>Analyze shared examples.</td><td>Choose material you own or are allowed to use.</td></tr>
-            <tr><td>Show observed patterns beside a draft.</td><td>Correct, keep, or reject those patterns.</td></tr>
-            <tr><td>Draft and flag review points.</td><td>Verify facts, promises, and audience fit.</td></tr>
-            <tr><td>Suggest revisions.</td><td>Edit, approve, send, publish, or discard.</td></tr>
-          </tbody></table></div>
-
-          <h2 id="start">Run one useful test.</h2>
-          <p>Start with the writing job in front of you. If it becomes repeat work, test the method against a normal draft and keep only the parts that reduce editing.</p>
-        </article>
+        </details>
       </div>
     </section>
 
-    <section class="section cta-section"><div class="container"><div class="review-cta"><p class="label">Map one AI workflow</p><h2>Bring one task. Build one recipe.</h2><p>Start with one real sample and one job that matters this week.</p><a href="https://calendar.app.google/93NLV73sQd1DXuUB6" target="_blank" rel="noopener" class="btn-primary btn-lg" data-cta-location="cookbook_voice_footer">Map your AI workflow</a><small>Use material you own or are authorized to use. Keep credentials and unrelated private data out of the task.</small></div></div></section>
+    <section class="section voice-follow" id="follow" aria-labelledby="follow-title">
+      <div class="container voice-follow-grid">
+        <div class="voice-follow-copy">
+          <p class="label">Get the next tested skill</p>
+          <h2 class="section-title" id="follow-title">Want the next useful one when it is actually ready?</h2>
+          <p>Voice Kit is the first working skill. I will send the next one only when you can see what it does, copy it into your AI, and decide whether it earns a place in your work.</p>
+        </div>
+        <aside class="voice-signup-shell" aria-labelledby="voice-signup-title">
+          <h3 id="voice-signup-title">Send me the next useful skill.</h3>
+          <p>One email when there is something you can actually try. No generic AI-newsletter filler.</p>
+          <form class="signup-form" id="cookbookSignupForm" action="https://why57-roi-intake.gera-695.workers.dev/cookbook-signup" method="post" novalidate>
+            <input type="hidden" name="request_id" id="cookbookRequestId" />
+            <input type="hidden" name="form_started_at" id="cookbookFormStartedAt" />
+            <input type="hidden" name="site_source" value="why57_voice_kit_skill" />
+            <input type="hidden" name="page_url" id="cookbookPageUrl" />
+            <input type="hidden" name="referrer" id="cookbookReferrer" />
+            <input type="hidden" name="session_id" id="cookbookSessionId" />
+            <input type="hidden" name="utm_source" id="cookbookUtmSource" />
+            <input type="hidden" name="utm_medium" id="cookbookUtmMedium" />
+            <input type="hidden" name="utm_campaign" id="cookbookUtmCampaign" />
+            <input class="signup-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-label="Leave this field empty" hidden />
+            <label for="cookbookEmail">Email address
+              <input id="cookbookEmail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@example.com" required />
+            </label>
+            <label class="signup-consent" for="cookbookConsent"><input id="cookbookConsent" name="consent" type="checkbox" value="yes" required /><span>I want to receive AI Executive CookBook updates from 57. I can unsubscribe at any time. See the <a href="privacy.html">Privacy Policy</a>.</span></label>
+            <p class="signup-error" id="cookbookSignupError" role="alert" tabindex="-1" hidden></p>
+            <button id="cookbookSignupSubmit" type="submit">Send me the next skill</button>
+            <p class="signup-note">I only use this address for CookBook releases and a short note on what changed.</p>
+          </form>
+          <div class="signup-success" id="cookbookSignupSuccess" role="status" tabindex="-1" hidden><strong>You’re on the early list.</strong><p>We’ll send the next AI Executive CookBook skill to this address.</p></div>
+          <noscript><p class="signup-note">JavaScript is off. <a href="https://why57-roi-intake.gera-695.workers.dev/cookbook-signup/form">Use the secure signup form</a>.</p></noscript>
+        </aside>
+      </div>
+    </section>
 
-    <section class="section section--alt" id="sources">
-      <div class="container article-shell">
-        <aside class="article-toc"><strong>Research record</strong><nav><a href="#source-1">Prompt context</a><a href="#source-2">Style attributes</a><a href="#source-3">Human oversight</a><a href="#source-4">Published benchmark</a><a href="#source-5">Preference scoring</a><a href="#source-6">Example status</a><a href="#source-7">Writing sheet</a><a href="#source-8">Imitation limits</a><a href="#source-9">Sample selection</a><a href="#source-10">Refinement</a><a href="#source-11">Skills</a><a href="#source-12">Context compression</a></nav></aside>
-        <article class="article-copy">
+    <section class="section section--alt vk-sources vk-details-section vk-detail-group" id="sources">
+      <div class="container">
+        <details class="vk-accordion">
+          <summary>What the research supports—and what it does not prove</summary>
+          <div class="vk-accordion-body">
+            <article class="article-copy">
           <p class="label">Research record</p>
-          <h2>Sources, examples, and test notes</h2>
-          <p>This record separates the evidence for each part of the method from the claims this page does not make. The sources support relevant context, observable style patterns, refinement, and human review. They do not guarantee an outcome for your business or this exact skill.</p>
+          <h2>Research, limits, and the full source record.</h2>
+          <p>These sources support the basic method: use relevant context, inspect the draft, and correct it. They do not guarantee a business result or prove that Voice Kit will work the same way for every person.</p>
           <ol class="sources-list">
             <li id="source-1"><a href="https://developers.openai.com/api/docs/guides/prompt-engineering" target="_blank" rel="noopener">Prompt engineering</a>. Supports the use of a handful of examples and relevant task-specific context to steer a model toward a defined task. <strong>Source type:</strong> official documentation. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-2"><a href="https://aclanthology.org/2024.personalize-1.8/" target="_blank" rel="noopener">Personalized Text Generation with Fine-Grained Linguistic Control</a>. Supports the research framing that writing style can be treated as multiple linguistic attributes. Its evidence is controlled text generation, not business-email performance. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-3"><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener">NIST AI 600-1: Generative AI Profile</a>. Supports defining intended tasks, documenting data origin and limitations, evaluating output quality, and retaining human oversight. <strong>Source type:</strong> standards body guidance. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-4"><a href="https://aclanthology.org/2024.acl-long.399/" target="_blank" rel="noopener">LaMP: When Large Language Models Meet Personalization</a>. Supports the published benchmark facts in this recipe: 7 personalized tasks, including email-subject generation and tweet paraphrasing; the authors reported 12.2% relative average improvement with their profile-retrieval method in a zero-shot setting and 23.5% after fine-tuning across their benchmark. These are research metrics, not business-writing or response-rate results. <strong>Source type:</strong> original research and public benchmark. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-5"><a href="https://aclanthology.org/2024.emnlp-main.737/" target="_blank" rel="noopener">Learning Personalized Alignment for Evaluating Open-ended Text Generation</a>. Supports the use of explicit preference criteria in evaluation. The authors reported a 15.8% increase in Kendall correlation and 13.7% higher accuracy for their profile-informed evaluator than zero-shot GPT-4 reviewers on their study. The study is about story generation, not email or commercial outcomes. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
-            <li id="source-6"><strong>Example status.</strong> The before-and-after comparison is synthetic. It demonstrates the recipe and review method. It does not establish a performance result, a response-rate result, or a client outcome.</li>
+            <li id="source-6"><strong>Example status.</strong> The illustrative output preview is synthetic. It demonstrates the skill and review method. It does not establish a performance result, a response-rate result, or a client outcome.</li>
             <li id="source-7"><a href="https://aclanthology.org/2025.ijcnlp-long.82/" target="_blank" rel="noopener">Whose story is it? Personalizing story generation by inferring author styles</a>. Supports the two-stage Author Writing Sheet method: infer implicit characteristics, organize them into explicit rules, and validate them with humans before generation. The study used 3,600 stories from 112 authors and reported a 78% win-rate over its non-personalized baseline for capturing past style. It is story-generation evidence, not email evidence. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-8"><a href="https://aclanthology.org/2025.findings-emnlp.532/" target="_blank" rel="noopener">Catch Me If You Can? Not Yet: LLMs Still Struggle to Imitate the Implicit Writing Styles of Everyday Authors</a>. Supports the limit on simple sample-based imitation. The authors evaluated more than 40,000 generations per model across samples from more than 400 authors; models approximated structured email better than nuanced informal writing. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
             <li id="source-9"><a href="https://aclanthology.org/2024.customnlp4u-1.16/" target="_blank" rel="noopener">Pearl: Personalizing Large Language Model Writing Assistants with Generation-Calibrated Retrievers</a>. Supports selecting historic user-authored documents likely to improve the current generation instead of using every stored document. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
@@ -406,21 +560,27 @@ Start by drafting from whatever I just shared, right now.</code></pre>
             <li id="source-12"><a href="https://arxiv.org/abs/2310.06201" target="_blank" rel="noopener">Compressing Context to Enhance Inference Efficiency of Large Language Models</a>. Supports the bounded context-efficiency example: its Selective Context experiments reported a 50% reduction in context cost and a 32% reduction in inference time while preserving comparable downstream performance. It tests compression of long context, not this Voice Kit or every AI provider. <strong>Source type:</strong> original research. <strong>Checked:</strong> 2026-08-02.</li>
           </ol>
           <p class="source-note">Last reviewed: 2026-08-03. This is a human-readable breakdown of the current Voice Kit skill, not a guarantee of output quality or a substitute for your judgment. Use material you are authorized to use, and review consequential claims before use.</p>
-        </article>
+            </article>
+          </div>
+        </details>
       </div>
     </section>
   </main>
 
   <footer class="footer"><div class="container footer-inner"><a href="/" class="footer-logo" aria-label="57 home"><img src="images/57_wht_notext.png" alt="57" class="footer-logo-img" /></a><div class="footer-address"><span>57 Custom Software Development</span></div><nav class="footer-nav" aria-label="Footer navigation"><a href="agentic-automation-series.html">Agentic Automation</a><a href="ai-app-prototype-to-production.html">AI Production Guide</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><p class="footer-copy">&copy; 2026 57. All rights reserved.</p></div></footer>
   <script src="main.js"></script>
+  <script src="cookbook-signup.js"></script>
   <script>
     (() => {
       const promptText = document.getElementById('voiceKitPromptText');
       const voiceKitPrompt = promptText.textContent.trim();
-      const voiceKitSkillUrl = 'https://why57.com/skills/voice-kit/SKILL.md';
-      const voiceKitInstallInstruction = `Download the Voice Kit skill from ${voiceKitSkillUrl}. Save it as skills/voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work, then use it for drafts from real samples I provide or authorize. Draft first, show the observed patterns alongside the draft, and let my direct feedback override inferred patterns. If this environment does not support skills, follow the file as reusable project instructions for this work.`;
+      const voiceKitSkillUrl = 'https://raw.githubusercontent.com/gera3d/ai-executive-cookbook/master/skills/executive-cookbook-voice-kit/SKILL.md';
+      const voiceKitInstallInstruction = `Download the Voice Kit skill from ${voiceKitSkillUrl}. Save it as skills/executive-cookbook-voice-kit/SKILL.md, or in this environment's equivalent skills folder. Read it before doing any work, then use it for drafts from real samples I provide or authorize. Draft first, show the observed patterns alongside the draft, and let my direct feedback override inferred patterns. Offer to create or update a private Corpus file only after I approve that write; otherwise keep samples and corrections in the current session. If this environment does not support skills, follow the file as reusable project instructions for this work.`;
 
-      const status = document.getElementById('voiceKitCopyStatus');
+      const statusTargets = [...document.querySelectorAll('[data-voice-kit-copy-status]')];
+      const setStatus = (message) => {
+        statusTargets.forEach((status) => { status.textContent = message; });
+      };
       const trackVoiceKitEvent = (eventName, detail = {}) => {
         window.why57Analytics?.track(eventName, {
           cookbook_recipe: 'voice_kit',
@@ -453,11 +613,11 @@ Start by drafting from whatever I just shared, right now.</code></pre>
         try {
           await copyText(voiceKitPrompt);
           trackVoiceKitEvent('voice_kit_prompt_copied');
-          status.textContent = 'Prompt copied. Paste it into your AI agent, then start with one writing job.';
+          setStatus('One-time prompt copied. Paste it into your AI, then share one sample and the writing job in front of you.');
           button.textContent = 'Prompt copied';
           window.setTimeout(() => { button.textContent = originalLabel; }, 2400);
         } catch (error) {
-          status.textContent = 'Copy did not work here. Select the prompt from the article and paste it into your AI agent.';
+          setStatus('Copy did not work here. Open the full one-time prompt below, then copy it into your AI.');
         }
       };
 
@@ -468,11 +628,11 @@ Start by drafting from whatever I just shared, right now.</code></pre>
         try {
           await copyText(voiceKitInstallInstruction);
           trackVoiceKitEvent('voice_kit_install_instruction_copied', { skill_url: voiceKitSkillUrl });
-          status.textContent = 'Install instruction copied. Give it to an AI agent that can retrieve and use skill files.';
+          setStatus('Install instruction copied. Give it to an AI that supports skill files when you are ready for repeat work. It will ask before saving or updating a private Corpus.');
           button.textContent = 'Instruction copied';
           window.setTimeout(() => { button.textContent = originalLabel; }, 2400);
         } catch (error) {
-          status.textContent = 'Copy did not work here. Copy the direct skill link above and give it to your AI agent.';
+          setStatus('Copy did not work here. Open the Voice Kit skill file above and give that link to your AI.');
         }
       };
 
