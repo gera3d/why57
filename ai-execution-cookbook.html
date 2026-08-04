@@ -27,6 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=8" />
   <link rel="stylesheet" href="cookbook-executive.css?v=4" />
+  <link rel="stylesheet" href="cookbook-release.css?v=1" />
   <style>
     .cb-page {
       --cb-ink: #07070d;
@@ -213,6 +214,16 @@
             <div><dt>You decide</dt><dd>What sounds right, what needs changing, and what to keep for next time.</dd></div>
           </dl>
           <p class="cb-first-run-note">Start with the Voice Kit page when you are ready. It walks you through the first run before it ever asks you to install anything.</p>
+          <section class="cb-github-release" data-cookbook-skill-release="executive-cookbook-voice-kit" aria-label="Current Voice Kit GitHub version">
+            <div class="cb-github-release__top"><p class="cb-github-release__label">Current GitHub version</p></div>
+            <p class="cb-github-release__version"><span data-release-name>Voice Kit</span><strong data-release-version>Checking GitHub…</strong></p>
+            <p class="cb-github-release__updated" data-release-updated aria-live="polite">Checking the published version and update notes.</p>
+            <p class="cb-github-release__summary" data-release-summary hidden></p>
+            <div class="cb-github-release__links">
+              <a href="https://github.com/gera3d/ai-executive-cookbook/blob/master/CHANGELOG.md" target="_blank" rel="noopener">See what changed ↗</a>
+              <a class="cb-github-release__star" href="https://github.com/gera3d/ai-executive-cookbook" target="_blank" rel="noopener">☆ Star the CookBook ↗</a>
+            </div>
+          </section>
         </aside>
       </div>
     </section>
@@ -395,5 +406,6 @@
   </footer>
   <script src="main.js"></script>
   <script src="cookbook-signup.js"></script>
+  <script src="cookbook-release.js"></script>
 </body>
 </html>
