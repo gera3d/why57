@@ -6,66 +6,42 @@ const test = require('node:test');
 const repositoryRoot = path.resolve(__dirname, '..');
 const homepage = fs.readFileSync(path.join(repositoryRoot, 'index.html'), 'utf8');
 const cookbook = fs.readFileSync(path.join(repositoryRoot, 'ai-execution-cookbook.html'), 'utf8');
+const voiceBreakdown = fs.readFileSync(path.join(repositoryRoot, 'put-your-actual-voice-back-into-ai-draft.html'), 'utf8');
 const cookbookLoadout = fs.readFileSync(path.join(repositoryRoot, 'cookbook-loadout.js'), 'utf8');
-const fullLoadoutManifest = fs.readFileSync(path.join(repositoryRoot, 'skills', 'ai-executive-loadout', 'SKILL.md'), 'utf8');
+const cookbookExecutiveStyles = fs.readFileSync(path.join(repositoryRoot, 'cookbook-executive.css'), 'utf8');
 
-test('CookBook landing page presents guided execution skills and outcome-led starting routes', () => {
-  assert.doesNotMatch(homepage, /id="ai-executive"/);
-  assert.match(cookbook, /id="ai-executive"/);
-  assert.match(cookbook, /id="aiExecutiveLoadoutUrl"/);
-  assert.match(cookbook, /https:\/\/why57\.com\/skills\/ai-executive-loadout\/SKILL\.md/);
-  assert.match(cookbook, /href="skills\/ai-executive-loadout\/SKILL\.md"[^>]+id="aiExecutiveLoadoutSource"/);
-  assert.match(cookbook, /data-route="demand"/);
-  assert.match(cookbook, /data-route="customer"/);
-  assert.match(cookbook, /data-route="operations"/);
-  assert.match(cookbook, /id="aiExecutiveRoutePrompt"/);
-  assert.match(cookbook, /Turn social insight into qualified conversations/);
-  assert.match(cookbook, /The AI Executive CookBook/);
-  assert.match(cookbook, /Give your AI a job/);
-  assert.match(cookbook, /Keep the decision/);
-  assert.match(cookbook, /Configure your AI for the work that needs to move/);
-  assert.match(cookbook, /id="aiExecutiveRouteSkill"/);
-  assert.match(cookbook, /Each recipe gives you the human guide/);
-  assert.match(cookbook, /Each skill gives your AI reusable instructions for one job/);
-  assert.match(cookbook, /id="aiExecutiveRouteInput"/);
-  assert.match(cookbook, /id="aiExecutiveInstall"/);
-  assert.match(cookbook, /og:image" content="https:\/\/why57\.com\/images\/ai-executive-os-social-card\.png/);
-  assert.match(cookbook, /twitter:card" content="summary_large_image/);
-  assert.match(cookbook, /10<\/span> detailed recipes/);
-  assert.doesNotMatch(cookbook, /id="aiExecutiveFocusPrompt"/);
-  assert.match(cookbook, /href="#recipes"/);
-  assert.match(cookbook, /cookbook-loadout\.js\?v=2/);
-  assert.equal(fs.existsSync(path.join(repositoryRoot, 'skills', 'ai-executive-loadout', 'SKILL.md')), true);
-  assert.equal(fs.existsSync(path.join(repositoryRoot, 'images', 'ai-executive-os-social-card.png')), true);
+const canonicalVoiceKitUrl = 'https://raw.githubusercontent.com/gera3d/ai-executive-cookbook/master/skills/executive-cookbook-voice-kit/SKILL.md';
+
+test('CookBook offers one honest, ready-to-install skill', () => {
+  assert.doesNotMatch(homepage, /id="voice-kit"/);
+  assert.match(cookbook, /id="voice-kit"/);
+  assert.match(cookbook, /Voice Kit is the only ready-to-install module today/);
+  assert.match(cookbook, /id="coming-soon"/);
+  assert.match(cookbook, /Proof Library/);
+  assert.match(cookbook, /Secure Setup/);
+  assert.match(cookbook, /Each one stays here until it has a clear job, a human-readable skill breakdown, and a real install path/);
+  assert.match(cookbook, /https:\/\/github\.com\/gera3d\/ai-executive-cookbook\/tree\/master\/skills\/executive-cookbook-voice-kit/);
+  assert.match(cookbook, /cookbook-loadout\.js\?v=8/);
+  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-live-install\{/);
+  assert.match(cookbookExecutiveStyles, /\.cookbook-page \.cb-roadmap-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\);/);
 });
 
-test('CookBook controls copy a direct manifest URL and guided starting instructions without deleting skills', () => {
-  assert.match(cookbookLoadout, /const allSkillsUrl = 'https:\/\/why57\.com\/skills\/ai-executive-loadout\/SKILL\.md'/);
-  assert.match(cookbookLoadout, /ai_executive_all_skills_url_copied/);
-  assert.match(cookbookLoadout, /actionLabel: 'Copy the demand prompt'/);
-  assert.match(cookbookLoadout, /Keep only the skill needed for the current step active; leave the rest installed and idle/);
-  assert.match(cookbookLoadout, /Set up a guided execution workstream in the AI environment I already use\. I am leading it/);
-  assert.match(cookbookLoadout, /Keep the context tight so you do not waste tokens on unrelated skills or records/);
-  assert.match(cookbookLoadout, /ai_executive_route_prompt_copied/);
-  assert.match(cookbookLoadout, /Do not scrape broadly, connect accounts, read DMs, auto-like, auto-comment, auto-DM, publish/);
+test('Voice Kit copy and direct file link use the canonical public source', () => {
+  assert.match(cookbookLoadout, new RegExp(canonicalVoiceKitUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(voiceBreakdown, new RegExp(canonicalVoiceKitUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(cookbookLoadout, /Start by drafting the current request/);
+  assert.match(cookbookLoadout, /Ask before creating or updating any private Corpus file/);
+  assert.match(voiceBreakdown, /Install Voice Kit for repeat work/);
+  assert.doesNotMatch(cookbookLoadout, /raw\.githubusercontent\.com\/gera3d\/why57\/main\/skills\/voice-kit\/SKILL\.md/);
+  assert.doesNotMatch(voiceBreakdown, /raw\.githubusercontent\.com\/gera3d\/why57\/main\/skills\/voice-kit\/SKILL\.md/);
 });
 
-test('full loadout manifest names every skill source and protects unrelated skills', () => {
-  for (const skill of ['relationship-map', 'voice-kit', 'feedback-prioritization', 'social-content-strategy', 'signal-to-conversation', 'call-decision-system', 'proof-library', 'outreach-planner', 'ai-skill-stack', 'daily-ai-workflow', 'browser-harness-benchmark']) {
-    assert.match(fullLoadoutManifest, new RegExp(`https://why57\\.com/skills/${skill}/SKILL\\.md`));
+test('Voice Kit keeps its page anchors and locally loaded signup dependencies intact', () => {
+  const ids = new Set([...voiceBreakdown.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
+  for (const target of [...voiceBreakdown.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1])) {
+    assert.equal(ids.has(target), true, `Missing Voice Kit anchor target: #${target}`);
   }
-  assert.match(fullLoadoutManifest, /Do not delete, move, rename, or overwrite unrelated skills/);
-  assert.match(fullLoadoutManifest, /Do not run the installed skills now/);
-  assert.match(fullLoadoutManifest, /This is a user-led setup for an existing AI harness/);
-});
-
-test('Signal to Conversation works from a bounded social source set and preserves owner approval', () => {
-  const signalSkill = fs.readFileSync(path.join(repositoryRoot, 'skills', 'signal-to-conversation', 'SKILL.md'), 'utf8');
-  assert.match(signalSkill, /LinkedIn, X, or Reddit/);
-  assert.match(signalSkill, /Five to fifteen public/);
-  assert.match(signalSkill, /Do not ask for account credentials/);
-  assert.match(signalSkill, /Demand-to-Conversation Action Packet/);
-  assert.match(signalSkill, /Execution handoff/);
-  assert.match(signalSkill, /Do not draft, post, reply, DM, schedule, or send unless the owner explicitly advances/);
-  assert.equal(fs.existsSync(path.join(repositoryRoot, 'skills', 'signal-to-conversation', 'agents', 'openai.yaml')), true);
+  for (const localFile of ['ai-execution-cookbook.html', 'privacy.html', 'cookbook-signup.js']) {
+    assert.equal(fs.existsSync(path.join(repositoryRoot, localFile)), true, `Missing Voice Kit dependency: ${localFile}`);
+  }
 });
