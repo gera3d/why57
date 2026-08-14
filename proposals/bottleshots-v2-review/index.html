@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071820">
+  <meta name="description" content="BottleShots v2 launch-readiness review prepared for Left Coast Marketing & Design.">
+  <link rel="canonical" href="https://why57.com/proposals/bottleshots-v2-review/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BottleShots v2 | Launch-Readiness Review">
+  <meta property="og:description" content="Review the app. Know if it is ready to launch.">
+  <meta property="og:url" content="https://why57.com/proposals/bottleshots-v2-review/">
+  <meta property="og:image" content="https://why57.com/images/bottleshots-v2-launch-readiness-review-og-v3.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BottleShots v2 | Launch-Readiness Review">
+  <meta name="twitter:description" content="Review the app. Know if it is ready to launch.">
+  <meta name="twitter:image" content="https://why57.com/images/bottleshots-v2-launch-readiness-review-og-v3.png">
+  <title>BottleShots v2 | Launch-Readiness Review</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+    :root {
+      --ink: #343b3e;
+      --muted: #697174;
+      --paper: #ffffff;
+      --paper-2: #f5f6f4;
+      --white: #ffffff;
+      --graphite: #434c50;
+      --graphite-2: #344146;
+      --orange: #ba1936;
+      --amber: #018dad;
+      --amber-soft: #bee7ee;
+      --green: #13775f;
+      --red: #ba1936;
+      --line: rgba(67, 76, 80, .16);
+      --soft-line: rgba(255, 255, 255, .22);
+      --shadow: 0 18px 42px rgba(38, 49, 53, .15);
+      --sans: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: Montserrat, ui-sans-serif, system-ui, sans-serif;
+      --display: "Playfair Display", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background: var(--paper-2);
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+
+    body { overflow: hidden; }
+    button { font: inherit; }
+
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--paper-2);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        linear-gradient(120deg, #ffffff 0%, #ffffff 68%, #f1f7f8 100%);
+    }
+
+    .slide.active { display: block; }
+
+    .slide.dark {
+      color: var(--white);
+      background:
+        linear-gradient(115deg, #434c50 0%, #3c484d 68%, #364246 100%);
+    }
+
+    .slide.orange-wash {
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, #fbfaf8 0%, #f7f4f1 66%, #eef7f8 100%);
+    }
+
+    .slide-inner {
+      position: relative;
+      width: min(1180px, calc(100% - 112px));
+      height: 100%;
+      margin: 0 auto;
+      padding: 80px 0 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .brand {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 9px 14px;
+      color: var(--white);
+      background: var(--orange);
+      box-shadow: 0 8px 18px rgba(186, 25, 54, .18);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .brand-logo { width: 126px; height: auto; max-height: 33px; object-fit: contain; }
+    .brand-rule { display: inline-block; width: 22px; height: 2px; background: rgba(255, 255, 255, .78); }
+    .brand-provider { color: rgba(255, 255, 255, .82); }
+
+    .eyebrow {
+      margin: 0 0 13px;
+      color: var(--orange);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .dark .eyebrow { color: var(--amber-soft); }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 820px;
+      margin-bottom: 22px;
+      font-size: clamp(46px, 5.35vw, 78px);
+      line-height: .96;
+      font-weight: 700;
+      letter-spacing: -.045em;
+    }
+
+    h2 {
+      max-width: 1020px;
+      margin-bottom: 17px;
+      font-size: clamp(35px, 3.6vw, 56px);
+      line-height: 1.01;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    h3 {
+      margin-bottom: 9px;
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: clamp(18px, 1.65vw, 24px);
+      line-height: 1.42;
+    }
+
+    .lead { color: var(--muted); }
+    .dark .lead { color: rgba(255, 255, 255, .82); }
+    .accent { color: var(--orange); }
+    .gold { color: var(--white); font-family: var(--display); font-size: 1.06em; font-style: italic; font-weight: 500; letter-spacing: -.04em; }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+      gap: 58px;
+      align-items: center;
+    }
+
+    .split.equal { grid-template-columns: 1fr 1fr; }
+
+    .proof-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      margin-top: 30px;
+      color: rgba(255, 255, 255, .88);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .proof-line span::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 0 5px rgba(1, 141, 173, .16);
+      vertical-align: 1px;
+    }
+
+    .decision-stage {
+      position: relative;
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+    }
+
+    .decision-card {
+      position: relative;
+      width: min(100%, 390px);
+      padding: 28px;
+      border: 0;
+      background: var(--orange);
+      box-shadow: var(--shadow);
+    }
+
+    .decision-card::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 28px;
+      width: 86px;
+      height: 3px;
+      background: var(--amber);
+    }
+
+    .card-label {
+      margin-bottom: 18px;
+      color: rgba(255, 255, 255, .86);
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .decision-card h3 { margin-bottom: 13px; font-size: 30px; }
+    .decision-card p { margin: 0; color: rgba(255, 255, 255, .88); line-height: 1.42; }
+    .decision-steps { display: grid; gap: 10px; margin-top: 22px; }
+    .decision-step { padding: 10px 0; border-top: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.86); font-size: 14px; font-weight: 760; }
+    .decision-step strong { display: inline-block; width: 32px; color: var(--amber-soft); font-family: var(--sans); }
+
+    .two-column-note {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .note-panel {
+      min-height: 160px;
+      padding: 21px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(38, 49, 53, .06);
+    }
+
+    .note-panel strong { display: block; margin-bottom: 9px; color: var(--orange); font-family: var(--sans); font-size: 11px; letter-spacing: .09em; }
+    .note-panel p { margin: 0; color: var(--muted); line-height: 1.42; }
+
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .path-card {
+      min-height: 224px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(38, 49, 53, .06);
+    }
+
+    .path-card .number, .lens-card .number {
+      display: block;
+      margin-bottom: 24px;
+      color: var(--orange);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .11em;
+    }
+
+    .path-card p, .lens-card p { margin: 0; color: var(--muted); line-height: 1.42; }
+    .path-card.emphasis { border-color: var(--orange); box-shadow: 0 14px 34px rgba(186, 25, 54, .12); }
+
+    .lens-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 27px;
+    }
+
+    .lens-card {
+      min-height: 213px;
+      padding: 20px;
+      border: 1px solid var(--soft-line);
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .lens-card .number { margin-bottom: 26px; color: var(--amber-soft); }
+    .lens-card h3 { color: var(--white); font-size: 20px; }
+    .lens-card p { color: rgba(255,255,255,.82); font-size: 14px; }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      padding-left: 18px;
+      border-left: 2px solid var(--orange);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 18px;
+      padding: 12px 0 13px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -25px;
+      top: 19px;
+      width: 12px;
+      height: 12px;
+      border: 3px solid var(--paper);
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .timeline-item time { color: var(--orange); font-family: var(--sans); font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+    .timeline-item strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 17px; }
+    .timeline-item span { color: var(--muted); line-height: 1.35; }
+
+    .start-note {
+      margin-top: 20px;
+      padding: 15px 18px;
+      border-left: 3px solid var(--orange);
+      background: rgba(1, 141, 173, .07);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.42;
+    }
+
+    .start-note strong { color: var(--ink); }
+
+    .deliverable-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 52px;
+      margin-top: 22px;
+    }
+
+    .deliverable {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 13px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .deliverable span { color: var(--orange); font-family: var(--sans); font-size: 12px; font-weight: 800; }
+    .deliverable h3 { margin-bottom: 5px; font-size: 19px; }
+    .deliverable p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.38; }
+
+    .price-layout {
+      display: grid;
+      grid-template-columns: minmax(290px, .85fr) 1.15fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .price-panel {
+      position: relative;
+      min-height: 335px;
+      padding: 32px;
+      color: var(--white);
+      background: var(--graphite);
+      box-shadow: var(--shadow);
+    }
+
+    .price-panel::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 45%;
+      height: 5px;
+      background: var(--orange);
+    }
+
+    .price-label {
+      display: inline-block;
+      padding: 8px 11px;
+      color: var(--white);
+      background: var(--orange);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      line-height: 1.25;
+    }
+    .price { margin: 18px 0 2px; font-size: clamp(58px, 6vw, 82px); font-weight: 900; line-height: .9; letter-spacing: -.06em; }
+    .price-detail { color: rgba(255,255,255,.88); font-size: 17px; font-weight: 600; }
+    .price-credit { margin-top: 36px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.28); color: rgba(255,255,255,.90); line-height: 1.4; }
+    .price-credit strong { color: var(--amber-soft); }
+
+    .terms { display: grid; gap: 18px; }
+    .term { display: grid; grid-template-columns: 38px 1fr; gap: 15px; align-items: start; }
+    .term span { display: grid; place-items: center; width: 30px; height: 30px; color: var(--orange); border: 1px solid rgba(186,25,54,.38); font-family: var(--sans); font-size: 11px; font-weight: 800; }
+    .term h3 { margin-bottom: 5px; }
+    .term p { margin: 0; color: var(--muted); line-height: 1.4; }
+
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .role {
+      min-height: 210px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,.17);
+      background: rgba(255,255,255,.045);
+    }
+
+    .role h3 { color: var(--amber-soft); }
+    .role p { margin: 0; color: rgba(255,255,255,.84); line-height: 1.43; }
+
+    .boundary {
+      margin-top: 20px;
+      padding: 15px 19px;
+      color: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.13);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .boundary strong { color: var(--amber-soft); }
+
+    .decision-list { display: grid; gap: 12px; margin-top: 26px; }
+    .decision-list div { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.92); font-size: 17px; line-height: 1.35; }
+    .decision-list span { display: inline-block; width: 34px; color: var(--amber-soft); font-family: var(--sans); font-size: 12px; font-weight: 800; }
+
+    .next-card { margin-top: 32px; padding: 22px; border-left: 4px solid var(--amber); background: rgba(255,255,255,.08); }
+    .next-card p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.46; }
+
+    .next-slide h1 { max-width: 640px; font-size: clamp(44px, 4.25vw, 64px); line-height: .98; }
+    .next-slide .lead { max-width: 620px; margin-bottom: 22px; font-size: clamp(17px, 1.45vw, 21px); }
+    .next-slide .decision-list { gap: 7px; margin-top: 20px; }
+    .next-slide .decision-list div { padding: 10px 0; font-size: 16px; }
+    .next-slide .next-card { max-width: 390px; margin-top: 0; justify-self: end; }
+
+    .boundary p { margin: 0; }
+    .boundary p + p { margin-top: 9px; padding-top: 9px; border-top: 1px solid rgba(255,255,255,.13); }
+
+    .deck-ui {
+      position: fixed;
+      right: 28px;
+      bottom: 26px;
+      z-index: 5;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.15);
+      background: var(--orange);
+      box-shadow: 0 12px 35px rgba(0,0,0,.20);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-btn {
+      display: grid;
+      place-items: center;
+      width: 37px;
+      height: 34px;
+      border: 0;
+      color: var(--white);
+      background: transparent;
+      cursor: pointer;
+      font-size: 21px;
+    }
+
+    .nav-btn:hover, .nav-btn:focus-visible { color: var(--amber-soft); outline: 1px solid rgba(255,255,255,.55); outline-offset: -1px; }
+    .nav-btn:disabled { opacity: .33; cursor: default; }
+    .counter { min-width: 52px; color: rgba(255,255,255,.72); font-family: var(--mono); font-size: 12px; text-align: center; }
+
+    .progress { position: fixed; right: 0; bottom: 0; left: 0; z-index: 6; height: 4px; background: rgba(255,255,255,.12); }
+    .progress-bar { width: 0; height: 100%; background: linear-gradient(90deg, var(--orange) 0 72%, var(--amber) 72%); transition: width .24s ease; }
+
+    @media (max-width: 950px) {
+      .slide-inner { width: min(100% - 64px, 760px); padding: 88px 0 82px; }
+      .split, .split.equal, .price-layout { grid-template-columns: 1fr; gap: 28px; }
+      .decision-stage { min-height: 235px; }
+      .decision-card { padding: 22px; }
+      .lens-grid { grid-template-columns: repeat(2, 1fr); }
+      .roles { grid-template-columns: 1fr; }
+      .role { min-height: 0; }
+      .slide { overflow-y: auto; }
+      .slide-inner { height: auto; min-height: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 680px) {
+      body, .deck { overflow: auto; }
+      .slide-inner { width: min(100% - 38px, 560px); padding: 84px 0 96px; }
+      h1 { font-size: clamp(42px, 13vw, 60px); }
+      h2 { font-size: clamp(33px, 9.5vw, 47px); }
+      .lead { font-size: 18px; }
+      .brand { top: 23px; font-size: 9px; }
+      .brand-logo { width: 105px; }
+      .brand-rule { width: 22px; }
+      .brand span:last-child { display: none; }
+      .two-column-note, .path-grid, .deliverable-grid { grid-template-columns: 1fr; }
+      .path-card { min-height: 0; }
+      .lens-grid { grid-template-columns: 1fr; }
+      .lens-card { min-height: 170px; }
+      .timeline-item { grid-template-columns: 74px 1fr; gap: 12px; }
+      .price-layout { gap: 32px; }
+      .deck-ui { right: 14px; bottom: 16px; }
+      .proof-line { display: grid; gap: 11px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" aria-live="polite">
+
+    <section class="slide dark active" data-title="BottleShots v2">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">BottleShots v2</span></div>
+        <div class="split">
+          <div>
+            <p class="eyebrow">BottleShots v2 launch-readiness review</p>
+            <h1>Before you launch v2, make sure the current app works the way you need it to.</h1>
+            <p class="lead">I walk through v2 as a customer would and then look at the pieces behind it that can cause problems at launch. You get a report with what works, what needs to be fixed, and what needs a decision.</p>
+            <div class="proof-line">
+              <span>Current v2</span>
+              <span>Second set of eyes</span>
+              <span>Read-only access</span>
+            </div>
+          </div>
+          <div class="decision-stage" aria-label="Launch review visual">
+            <div class="decision-card">
+              <div class="card-label">WHAT YOU GET</div>
+              <h3>What you get before launch.</h3>
+              <p>A report that shows what is working, what needs to be fixed first, and what needs a separate discussion.</p>
+              <div class="decision-steps">
+                <div class="decision-step"><strong>01</strong> Review current v2</div>
+                <div class="decision-step"><strong>02</strong> Check launch risks</div>
+                <div class="decision-step"><strong>03</strong> Hand over the report + fix list</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="What we heard">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">What we heard</span></div>
+        <p class="eyebrow">What you asked for</p>
+        <h2>Review the current v2 before it goes live.</h2>
+        <p class="lead">I am going through the version you have now. The v1 comparison and any rebuild estimate are separate. This review covers the customer path and the setup behind it.</p>
+        <div class="path-grid">
+          <article class="path-card emphasis"><span class="number">01 / CURRENT V2</span><h3>Review what exists</h3><p>Use the current build as it works today. Follow the path from builder to delivery.</p></article>
+          <article class="path-card"><span class="number">02 / LAUNCH BLOCKERS</span><h3>Find what can stop launch</h3><p>Customer workflow, access, data, integrations, and production setup.</p></article>
+          <article class="path-card"><span class="number">03 / REPORT</span><h3>Tell the team what to do</h3><p>What needs to happen next, why it matters, and who should own it.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide orange-wash" data-title="What launch ready means">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">Launch-ready criteria</span></div>
+        <p class="eyebrow">What ready looks like</p>
+        <h2>For v2 to launch, three things need to be true.</h2>
+        <div class="path-grid">
+          <article class="path-card emphasis"><span class="number">CHECK 01</span><h3>Customer can get through it</h3><p>Customers can build, approve, and receive the result they came for.</p></article>
+          <article class="path-card"><span class="number">CHECK 02</span><h3>We understand where it can fail</h3><p>Access, data, storage, APIs, and the main failure points are understood.</p></article>
+          <article class="path-card"><span class="number">CHECK 03</span><h3>Team knows what to fix</h3><p>Every important issue has a priority, an owner, and a way to verify the fix.</p></article>
+        </div>
+        <p class="lead" style="margin-top: 25px; margin-bottom: 0;"><strong>The point:</strong> You get the answer you need before you put v2 in front of more people.</p>
+      </div>
+    </section>
+
+    <section class="slide dark" data-title="What we review">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">What we review</span></div>
+        <p class="eyebrow">What I go through</p>
+        <h2>I check the parts of the app that matter at launch.</h2>
+        <p class="lead">I start with the experience customers have. Then I look at the pieces behind it. If something can break the flow or create a problem for the team, it goes in the report.</p>
+        <div class="lens-grid">
+          <article class="lens-card"><span class="number">01</span><h3>Customer path</h3><p>Builder, approvals, Commerce7 where used, and download delivery.</p></article>
+          <article class="lens-card"><span class="number">02</span><h3>Image output</h3><p>Bottle and label results, controls, errors, and bad outcomes that need fixing.</p></article>
+          <article class="lens-card"><span class="number">03</span><h3>Technical + access</h3><p>App configuration, data, access, APIs, AWS, MongoDB, and Commerce7.</p></article>
+          <article class="lens-card"><span class="number">04</span><h3>Report + fixes</h3><p>What I found, why it matters, who owns it, and how we know it is fixed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Ten business days">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">Ten business days</span></div>
+        <div class="split equal">
+          <div>
+            <p class="eyebrow">How the review works</p>
+            <h2>Ten business days from demo to report.</h2>
+            <p class="lead">We start with a live v2 demo and the current build, then work through the parts that matter before launch.</p>
+            <div class="start-note"><strong>To start:</strong> a walkthrough, test account, read-only repo and app access, an owner-led AWS/MongoDB/Commerce7 review, and known issues. Any gaps go in the report.</div>
+          </div>
+          <div class="timeline" aria-label="Ten-business-day review timeline">
+            <div class="timeline-item"><time>Start</time><div><strong>v2 demo + context</strong><span>Walk through v2, the launch flow, and current issues.</span></div></div>
+            <div class="timeline-item"><time>Days 2-4</time><div><strong>App + system</strong><span>Follow the customer path. Review the setup behind it.</span></div></div>
+            <div class="timeline-item"><time>Days 5-7</time><div><strong>Issues + fix list</strong><span>Sort what matters, who owns it, and how to tell when it is fixed.</span></div></div>
+            <div class="timeline-item"><time>Days 8-10</time><div><strong>Report + working call</strong><span>Hand over the report and talk through what needs to happen next.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="What you receive">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">The handoff</span></div>
+        <p class="eyebrow">What you receive</p>
+        <h2>You get the report the team needs before launch.</h2>
+        <div class="deliverable-grid">
+          <div class="deliverable"><span>01</span><div><h3>Launch-readiness report</h3><p>What is working, what needs to be fixed, and what needs a separate decision.</p></div></div>
+          <div class="deliverable"><span>02</span><div><h3>Fix list</h3><p>The issue, why it matters, who owns it, and how we know it is fixed.</p></div></div>
+          <div class="deliverable"><span>03</span><div><h3>Technical + security notes</h3><p>What I reviewed across the app, AWS, MongoDB, APIs, access, and Commerce7. Any gaps are listed.</p></div></div>
+          <div class="deliverable"><span>04</span><div><h3>Working call</h3><p>One 60-minute call with Dan, Tony, Chris, and the Left Coast team to walk through the report.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dark" data-title="Working boundary">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">How we work</span></div>
+        <p class="eyebrow">Who does what</p>
+        <h2>I work through the app with your team. Your build team handles approved fixes.</h2>
+        <div class="roles">
+          <article class="role"><h3>Left Coast</h3><p>Brings the v2 walkthrough, customer flow, known issues, a point person, and agreed read-only access.</p></article>
+          <article class="role"><h3>Current build team</h3><p>Brings build context, then uses the report and fix list to make approved fixes.</p></article>
+          <article class="role"><h3>57</h3><p>I review current v2 and its setup. Then I write up what I found for the team.</p></article>
+        </div>
+        <div class="boundary">
+          <p><strong>Not included:</strong> new feature work, credit tracking, client portal, scene-builder expansion, platform consolidation, rebuild work, production changes, or deployments.</p>
+          <p><strong>Separate scope:</strong> scans, exploit testing, retesting, formal penetration testing, and compliance certification. This review stays read-only.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide orange-wash" data-title="Investment">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">Fixed investment</span></div>
+        <p class="eyebrow">Fixed price</p>
+        <h2>The review is $5,500 fixed. You know the cost before you start.</h2>
+        <div class="price-layout">
+          <div class="price-panel">
+            <div class="price-label">V2 LAUNCH-READINESS REVIEW</div>
+            <div class="price">$5,500</div>
+            <div class="price-detail">Fixed fee. Ten business days. Up to 24 review hours.</div>
+            <div class="price-credit"><strong>If you hire 57 for the first fixes:</strong> $2,500 applies to the first implementation release we scope and approve within 30 days. The report is yours either way.</div>
+          </div>
+          <div class="terms">
+            <div class="term"><span>01</span><div><h3>$2,750 at kickoff</h3><p>Covers the demo, access, and start of the review.</p></div></div>
+            <div class="term"><span>02</span><div><h3>$2,750 on delivery</h3><p>Due with the report and 60-minute working call.</p></div></div>
+            <div class="term"><span>03</span><div><h3>Build work comes later</h3><p>Fixes are a separate project if you want 57 to help with them.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dark next-slide" data-title="The next move">
+      <div class="slide-inner">
+        <div class="brand"><img class="brand-logo" src="../../images/left-coast-marketing-logo-white.png" alt="Left Coast Marketing &amp; Design"><span class="brand-rule"></span><span class="brand-provider">The next move</span></div>
+        <div class="split">
+          <div>
+            <p class="eyebrow">Next step</p>
+            <h1>Start with a v2 walkthrough.</h1>
+            <p class="lead">Show me the app and how it is set up. I review it, write the report, and send you the list of fixes.</p>
+            <div class="decision-list">
+              <div><span>01</span> Schedule the v2 walkthrough.</div>
+              <div><span>02</span> Confirm read-only access, owners, and current documentation.</div>
+              <div><span>03</span> Run the review and receive the report.</div>
+              <div><span>04</span> Decide what needs to be fixed before launch.</div>
+            </div>
+          </div>
+          <div class="next-card">
+            <p class="card-label">WHEN THIS IS DONE</p>
+            <h3>You have the report.</h3>
+            <p>It shows whether v2 is ready to launch. If there are issues, it shows what needs to be fixed first.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="deck-ui" aria-label="Presentation navigation">
+    <div class="controls">
+      <button class="nav-btn" id="prev" type="button" aria-label="Previous slide">←</button>
+      <div class="counter"><span id="current">1</span> / <span id="total">9</span></div>
+      <button class="nav-btn" id="next" type="button" aria-label="Next slide">→</button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" id="progress"></div></div>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const current = document.getElementById('current');
+      const total = document.getElementById('total');
+      const progress = document.getElementById('progress');
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      let index = Math.max(0, Math.min(slides.length - 1, Number(location.hash.slice(1)) - 1 || 0));
+      let touchStartX = null;
+
+      total.textContent = String(slides.length);
+
+      function show(nextIndex, updateHash = true) {
+        index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === index;
+          slide.classList.toggle('active', active);
+          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+          if (active) slide.scrollTop = 0;
+        });
+        current.textContent = String(index + 1);
+        progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+        prev.disabled = index === 0;
+        next.disabled = index === slides.length - 1;
+        document.title = `BottleShots v2 | Launch-Readiness Review (${index + 1}/${slides.length})`;
+        if (updateHash) history.replaceState(null, '', `#${index + 1}`);
+      }
+
+      prev.addEventListener('click', () => show(index - 1));
+      next.addEventListener('click', () => show(index + 1));
+
+      document.addEventListener('keydown', (event) => {
+        if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(event.key)) {
+          event.preventDefault();
+          show(index + 1);
+        } else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) {
+          event.preventDefault();
+          show(index - 1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          show(0);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          show(slides.length - 1);
+        }
+      });
+
+      window.addEventListener('hashchange', () => {
+        const hashIndex = Number(location.hash.slice(1)) - 1;
+        if (Number.isInteger(hashIndex)) show(hashIndex, false);
+      });
+
+      document.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].screenX;
+      }, { passive: true });
+
+      document.addEventListener('touchend', (event) => {
+        if (touchStartX === null) return;
+        const distance = event.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(distance) > 58) show(index + (distance < 0 ? 1 : -1));
+        touchStartX = null;
+      }, { passive: true });
+
+      show(index, false);
+    })();
+  </script>
+</body>
+</html>
