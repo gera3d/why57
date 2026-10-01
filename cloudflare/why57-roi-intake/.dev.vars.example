@@ -1,0 +1,10 @@
+# Copy to .dev.vars and replace every value before a local delivery test.
+# Never commit .dev.vars.
+RESEND_API_KEY="replace-me"
+FROM_EMAIL="57 <verified-sender@why57.com>"
+FOUNDER_REPLY_TO="replace-me@why57.com"
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/replace-me"
+LEAD_LOG_WEBHOOK_URL="https://script.google.com/macros/s/replace-me/exec"
+LEAD_LOG_WEBHOOK_SECRET="replace-with-a-long-random-value"
+STAGING_SUBMISSION_TOKEN="replace-with-a-long-random-value"
+TEST_EMAIL_ALLOWLIST="your-test-address@example.com"
